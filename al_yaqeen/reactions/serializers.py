@@ -3,14 +3,11 @@
 from rest_framework.serializers import ModelSerializer
 
 from al_yaqeen.reactions.models import Reaction
-from al_yaqeen.users.serializers import UserSerializer
 
 
 # Create your serializers here.
 class ReactionSerializer(ModelSerializer):
     """Reaction Serializer"""
-
-    user = UserSerializer(read_only=True)
 
     class Meta:
         """Meta data"""

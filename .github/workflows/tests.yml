@@ -52,4 +52,5 @@ jobs:
       - name: Run tests
         run: |
           source .venv/bin/activate
+          poetry run python core/manage.py migrate
           poetry run python core/manage.py test

@@ -16,13 +16,15 @@ Methods:
 
 from django.db import models
 
+from al_yaqeen.users import User
+
 
 # Create your models here.
 class Comment(models.Model):
     """Article Comments"""
 
     user = models.ForeignKey(
-        "users.User",
+        User,
         on_delete=models.CASCADE,
         help_text="Comment Owner",
     )

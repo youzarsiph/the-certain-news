@@ -10,19 +10,21 @@ Fields:
 
 from django.db import models
 
+from al_yaqeen.users import User
+
 
 # Create your models here.
 class Follower(models.Model):
     """Followers"""
 
     from_user = models.ForeignKey(
-        "users.User",
+        User,
         related_name="following",
         on_delete=models.CASCADE,
         help_text="Follower",
     )
     to_user = models.ForeignKey(
-        "users.User",
+        User,
         on_delete=models.CASCADE,
         help_text="Followed",
     )

@@ -15,6 +15,7 @@ from django.db import models
 
 
 from al_yaqeen.reports import REPORT_REASONS
+from al_yaqeen.users import User
 
 
 # Create your models here.
@@ -22,7 +23,7 @@ class Report(models.Model):
     """Abuse Reports"""
 
     user = models.ForeignKey(
-        "users.User",
+        User,
         on_delete=models.CASCADE,
         help_text="Reporter",
     )

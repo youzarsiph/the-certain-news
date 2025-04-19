@@ -11,7 +11,7 @@ from rest_framework.permissions import IsAuthenticated
 
 from al_yaqeen.ai.views import ArticleAIActions
 from al_yaqeen.articles.models import Article
-from al_yaqeen.articles.serializers import ArticleRetrieveSerializer, ArticleSerializer
+from al_yaqeen.articles.serializers import ArticleSerializer
 from al_yaqeen.followers.models import Follower
 from al_yaqeen.mixins import OwnerMixin
 from al_yaqeen.reactions.serializers import ReactionSerializer
@@ -35,14 +35,8 @@ class ArticleViewSet(OwnerMixin, ArticleAIActions, ModelViewSet):
             case "react":
                 self.serializer_class = ReactionSerializer
 
-            case "retrieve":
-                self.serializer_class = ArticleRetrieveSerializer
-
             case "star":
                 self.serializer_class = Serializer
-
-            case _:
-                pass
 
         return super().get_serializer_class()
 

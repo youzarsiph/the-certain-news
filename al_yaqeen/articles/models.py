@@ -30,13 +30,15 @@ Methods:
 
 from django.db import models
 
+from al_yaqeen.users import User
+
 
 # Create your models here.
 class Article(models.Model):
     """Articles"""
 
     user = models.ForeignKey(
-        "users.User",
+        User,
         on_delete=models.CASCADE,
         related_name="articles",
         help_text="Article owner",
@@ -77,13 +79,13 @@ class Article(models.Model):
         help_text="Designates if the Article is pinned",
     )
     comments = models.ManyToManyField(
-        "users.User",
+        User,
         related_name="comments",
         through="comments.Comment",
         help_text="Article comments",
     )
     reactions = models.ManyToManyField(
-        "users.User",
+        User,
         related_name="reactions",
         through="reactions.Reaction",
         help_text="Article reactions",
@@ -94,12 +96,12 @@ class Article(models.Model):
         help_text="Similar articles",
     )
     stargazers = models.ManyToManyField(
-        "users.User",
+        User,
         related_name="stargazers",
         help_text="Article stargazers",
     )
     reports = models.ManyToManyField(
-        "users.User",
+        User,
         related_name="reports",
         through="reports.Report",
         help_text="Article reports",

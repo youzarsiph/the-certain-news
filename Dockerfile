@@ -40,6 +40,9 @@ RUN echo "]" >> core/settings.py
 RUN echo "from django.urls import include" >> core/urls.py
 RUN echo "urlpatterns += [path('', include('al_yaqeen.urls'))]" >> core/urls.py
 
+# Run migrations
+RUN cd core && python manage.py migrate
+
 
 WORKDIR /app
 COPY . /app

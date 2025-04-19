@@ -12,6 +12,7 @@ Fields:
 from django.db import models
 
 from al_yaqeen.reactions import REACTIONS
+from al_yaqeen.users import User
 
 
 # Create your models here.
@@ -19,7 +20,7 @@ class Reaction(models.Model):
     """Article Reactions"""
 
     user = models.ForeignKey(
-        "users.User",
+        User,
         on_delete=models.CASCADE,
         help_text="User",
     )
