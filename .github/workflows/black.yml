@@ -3,7 +3,7 @@ name: Black
 on: [push]
 
 jobs:
-  build:
+  format:
     runs-on: ubuntu-latest
 
     steps:
@@ -12,10 +12,15 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
 
-      - name: Install requirements
+      - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
-          python -m pip install black
+          python -m venv .venv
+          source .venv/bin/activate
+          pip install --upgrade pip
+          pip install poetry
+          poetry install
 
-      - name: Checking the code format with Black
-        run: python -m black --check .
+      - name: Run tests
+        run: |
+          source .venv/bin/activate
+          poetry run black --check .

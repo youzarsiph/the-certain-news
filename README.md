@@ -1,149 +1,115 @@
-# Blog
+# al-yaqeen
 
-[![Django CI](https://github.com/youzarsiph/blog/actions/workflows/django.yml/badge.svg)](https://github.com/youzarsiph/blog/actions/workflows/django.yml)
-[![Black](https://github.com/youzarsiph/blog/actions/workflows/black.yml/badge.svg)](https://github.com/youzarsiph/blog/actions/workflows/black.yml)
-[![Ruff](https://github.com/youzarsiph/blog/actions/workflows/ruff.yml/badge.svg)](https://github.com/youzarsiph/blog/actions/workflows/ruff.yml)
+[![CI](https://github.com/youzarsiph/al-yaqeen/actions/workflows/ci.yml/badge.svg)](https://github.com/youzarsiph/al-yaqeen/actions/workflows/ci.yml)
+[![CD](https://github.com/youzarsiph/al-yaqeen/actions/workflows/cd.yml/badge.svg)](https://github.com/youzarsiph/al-yaqeen/actions/workflows/cd.yml)
+[![Code Style: Black](https://github.com/youzarsiph/al-yaqeen/actions/workflows/black.yml/badge.svg)](https://github.com/youzarsiph/al-yaqeen/actions/workflows/black.yml)
+[![Code Linting: Ruff](https://github.com/youzarsiph/al-yaqeen/actions/workflows/ruff.yml/badge.svg)](https://github.com/youzarsiph/al-yaqeen/actions/workflows/ruff.yml)
+[![Code Testing](https://github.com/youzarsiph/al-yaqeen/actions/workflows/tests.yml/badge.svg)](https://github.com/youzarsiph/al-yaqeen/actions/workflows/tests.yml)
+[![Docker Image](https://github.com/youzarsiph/al-yaqeen/actions/workflows/docker-image.yml/badge.svg)](https://github.com/youzarsiph/al-yaqeen/actions/workflows/docker-image.yml)
+[![Docker Publish](https://github.com/youzarsiph/al-yaqeen/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/youzarsiph/al-yaqeen/actions/workflows/docker-publish.yml)
+[![PyPI - Version](https://img.shields.io/pypi/v/al-yaqeen?logo=pypi&logoColor=white)](https://pypi.org/project/al-yaqeen/)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/al-yaqeen?logo=python&logoColor=white)](https://pypi.org/project/al-yaqeen/)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/al-yaqeen?logo=pypi&logoColor=white)](https://pypi.org/project/al-yaqeen/)
+[![PyPI - License](https://img.shields.io/pypi/l/al-yaqeen?logo=pypi&logoColor=white)](https://pypi.org/project/al-yaqeen/)
 
-Blog API built using Python, Django and DRF.
+## Overview
 
-## Get started
+This repository serves as a comprehensive Python application template designed to facilitate robust development practices. Leveraging modern tools and methodologies, this template is tailored for developers aiming to build maintainable, scalable applications. It emphasizes dependency management, code quality, and seamless integration with DevOps pipelines.
 
-Make sure you have Python installed on your machine, it is recommended to create a virtual env:
+## Key Features
 
-```bash
-python -m venv .venv
-source .venv/bin/activate
-```
+- **CI/CD Pipelines**: Automated using GitHub Actions to ensure consistent and reliable deployment processes.
+- **Dependency Management**: Powered by Poetry, a sophisticated tool for managing project dependencies with precision and reliability.
+- **Code Formatting**: Automatically formatted with Black to maintain a consistent and readable codebase.
+- **Code Linting**: Utilizes Ruff to identify and address potential issues early, enhancing code quality and maintainability.
+- **Code Testing**: Utilizes Django to run tests.
+- **Configuration Files**: Includes `.gitignore`, `pyproject.toml`, and other essential configuration files to streamline setup.
 
-Clone the repo:
+## Quick Start Guide
 
-```bash
-git clone https://github.com/youzarsiph/blog
-```
+To initiate a new project using this template, follow these steps:
 
-If you have `make` on your system, you can use the `Makefile` to setup the project:
+1. **Create a Repository from Template**:
+   - Navigate to the repository on GitHub.
+   - Click on the `Use this template` button.
+   - Customize the new repository with your project details.
 
-```bash
-make setup
-```
+2. **Clone Your New Repository**:
 
-This command installs the dependencies, creates a project, configures the settings and runs migrations, checks and tests. You may need to configure `DRF` and `django-cors-headers` settings.
+   ```bash
+   git clone https://github.com/your-username/your-new-project.git
+   cd your-new-project
+   ```
 
-Install dependencies:
+3. **Set Up the Environment**:
+   - Install Poetry if not already installed:
 
-```bash
-pip install -r blog/requirements.txt
-```
+     ```bash
+     pip install poetry
+     ```
 
-Create a new project:
+   - Install the project dependencies:
 
-```bash
-python -m django startproject mysite
-mv -r blog mysite/blog
-cd mysite
-```
+     ```bash
+     poetry install
+     ```
 
-Use `blog`'s custom User model, in `mysite/settings.py`:
+4. **Create a new Django project**:
 
-```python
-AUTH_USER_MODEL = 'users.User'  # Add this line
-```
+   ```bash
+   poetry run django-admin startproject core
+   mv core/* .
+   ```
 
-Configure the settings, in `mysite/settings.py`:
+5. **Configure the app**:
 
-```python
-INSTALLED_APPS = [
-    # Add the following lines
-    "blog",
-    "blog.ai",
-    "blog.recsys",
-    "blog.articles",
-    "blog.comments",
-    "blog.followers",
-    "blog.reactions",
-    "blog.reports",
-    "blog.tags",
-    "blog.users",
-    "corsheaders",
-    "drf_redesign",  # Makes the API interface prettier
-    "rest_framework",  # REST Framework
-    "rest_framework.authtoken",  # DRF Token authentication
-    "django_filters",  # For filtering support
-    "django_extensions",  # For running script that computes recommendations
-]
+   Open `core/settings.py`:
 
-# DRF configuration
-REST_FRAMEWORK = {
-    "DEFAULT_FILTER_BACKENDS": [
-        "rest_framework.filters.SearchFilter",
-        "rest_framework.filters.OrderingFilter",
-        "django_filters.rest_framework.DjangoFilterBackend",
-    ],
-    "DEFAULT_AUTHENTICATION_CLASSES": [
-        "rest_framework.authentication.BasicAuthentication",
-        "rest_framework.authentication.SessionAuthentication",
-        "rest_framework.authentication.TokenAuthentication",
-    ],
-    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
-    "PAGE_SIZE": 25,
-}
+   ```python
+   # Add the following line
+   AUTH_USER_MODEL = "users.User"
 
-CORS_ALLOW_ALL_ORIGINS = True
-```
+   # Application definition
+   INSTALLED_APPS = [
+      # Add the app to INSTALLED_APPS
+      "app",
+      "app.books",
+      "app.users",
+      "drf_redesign",
+      "rest_framework",
+      # Default apps
+      ...
+   ]
+   ```
 
-Add `blog` to `URLConf`, in `mysite/urls.py`:
+   Open `core/urls.py`:
 
-```python
-from django.urls import path, include
+   ```python
+   # Import `include`
+   from django.urls import path, include
+   
+   
+   urlpatterns = [
+      # Include `app.urls`
+      path("", include("app.urls")),
+      ...
+   ]
+   ```
 
+6. **Run the Application**:
 
-urlpatterns = [
-    # Add the following lines
-    path("", include("blog.urls")),
-    path("auth/", include("rest_framework.urls")),
-]
-```
+   ```bash
+   poetry run python manage.py runserver
+   ```
 
-Run migrations:
+## Contributing
 
-```bash
-python manage.py migrate
-```
+We warmly welcome contributions from the community. Please refer to our [CONTRIBUTING](CONTRIBUTING.md) guide for detailed instructions on how to contribute effectively. Your feedback and participation are essential for the continued improvement of this template.
 
-Run `makerecs` to compute recommendations:
+## Support
 
-```bash
-python manage.py runscript makerecs
-```
+For inquiries or support, please open an issue or join the discussion in the [GitHub Discussions](https://github.com/youzarsiph/al-yaqeen/discussions) section to engage with the community.
 
-Create a `.env`file and add your [HuggingFace Token](https://huggingface.co), if you want to use the AI services:
+## Licensing
 
-```bash
-HF_TOKEN=<YOUR_TOKEN>
-```
-
-Or you can export your token as an env variable:
-
-```bash
-export HF_TOKEN=<YOUR_TOKEN>
-```
-
-Replace `<YOUR_TOKEN>` with your actual HF token.
-
-## Project Structure
-
-The app consists of the following sub apps:
-
-- `ai`: Provides extra actions for articles and comments like summarization, sentiment analysis etc...
-- `articles`: Articles API.
-- `comments`: Comments API.
-- `followers`: Followers API.
-- `reactions`: Reactions API.
-- `recsys`: Recommendation system.
-- `reports`: Abuse Reports API.
-- `tags`: Tags API.
-- `users`: Users API.
-
-## License
-
-Licensed under MIT License
+This project is licensed under the MIT License. A detailed copy of the terms can be found in the [LICENSE](LICENSE) file.

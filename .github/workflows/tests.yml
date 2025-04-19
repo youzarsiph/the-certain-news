@@ -1,0 +1,55 @@
+name: Tests
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+
+      - name: Install Dependencies
+        run: |
+          python -m venv .venv
+          source .venv/bin/activate
+          pip install --upgrade pip
+          pip install poetry
+          poetry install
+          
+      - name: Start Django project
+        run: |
+          source .venv/bin/activate
+          poetry run django-admin startproject core
+          mv al_yaqeen core
+
+          # Configure settings
+          echo "AUTH_USER_MODEL = 'users.User'" >> core/settings.py
+          echo "INSTALLED_APPS += [" >> core/settings.py
+          echo "    'al_yaqeen'," >> core/settings.py
+          echo "    'al_yaqeen.ai'," >> core/settings.py
+          echo "    'al_yaqeen.articles'," >> core/settings.py
+          echo "    'al_yaqeen.categories'," >> core/settings.py
+          echo "    'al_yaqeen.comments'," >> core/settings.py
+          echo "    'al_yaqeen.followers'," >> core/settings.py
+          echo "    'al_yaqeen.reactions'," >> core/settings.py
+          echo "    'al_yaqeen.reports'," >> core/settings.py
+          echo "    'al_yaqeen.tags'," >> core/settings.py
+          echo "    'al_yaqeen.users'," >> core/settings.py
+          echo "    'rest_wind'," >> core/settings.py
+          echo "    'django_filters'," >> core/settings.py
+          echo "    'corsheaders'" >> core/settings.py
+          echo "    'rest_framework'" >> core/settings.py
+          echo "]" >> core/settings.py
+
+          # Setup URLConf
+          echo "from django.urls import include" >> core/urls.py
+          echo "urlpatterns += [path('', include('al_yaqeen.urls'))]" >> core/urls.py
+
+      - name: Run tests
+        run: |
+          source .venv/bin/activate
+          poetry run python core/manage.py test
