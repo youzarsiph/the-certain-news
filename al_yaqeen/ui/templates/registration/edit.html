@@ -1,0 +1,15 @@
+<!-- prettier ignore -->
+{% extends 'registration/form.html' %}{% load i18n %}
+
+<!-- prettier ignore -->
+{% block title %}{{ block.super }} | {% trans 'Edit account' %}{% endblock %}
+
+<!-- prettier ignore -->
+{% block breadcrumbs %}{{ block.super }}
+<li>{% trans 'Edit account' %}</li>
+{% endblock %}
+
+<!-- prettier ignore -->
+{% block form_content %}
+<h1 class="text-xl font-semibold lg:text-4xl">{% trans 'Edit account' %}</h1>
+{% endblock %}

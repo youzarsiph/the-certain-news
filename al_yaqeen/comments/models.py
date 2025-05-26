@@ -5,7 +5,6 @@ Fields:
 - user: Comment owner
 - article: Comment article
 - content: Comment content
-- extras: Comment extra data like summary etc...
 - replies: Comment replies
 - updated_at: Last update
 - created_at: Date published
@@ -36,11 +35,6 @@ class Comment(models.Model):
     content = models.TextField(
         db_index=True,
         help_text="Content",
-    )
-    extras = models.JSONField(
-        null=True,
-        blank=True,
-        help_text="Comment extra data like summary etc...",
     )
     replies = models.ManyToManyField(
         "self",

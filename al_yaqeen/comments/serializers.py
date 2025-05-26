@@ -13,14 +13,13 @@ class CommentSerializer(ModelSerializer):
         """Meta data"""
 
         model = Comment
-        read_only_fields = ["user", "article", "extras", "replies"]
+        read_only_fields = ["user", "article", "replies"]
         fields = [
             "id",
             "url",
             "user",
             "article",
             "content",
-            "extras",
             "replies",
             "created_at",
             "updated_at",

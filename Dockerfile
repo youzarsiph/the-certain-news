@@ -29,6 +29,7 @@ RUN echo "    'al_yaqeen.followers'," >> core/settings.py
 RUN echo "    'al_yaqeen.reactions'," >> core/settings.py
 RUN echo "    'al_yaqeen.reports'," >> core/settings.py
 RUN echo "    'al_yaqeen.tags'," >> core/settings.py
+RUN echo "    'al_yaqeen.ui'," >> core/settings.py
 RUN echo "    'al_yaqeen.users'," >> core/settings.py
 RUN echo "    'corsheaders'" >> core/settings.py
 RUN echo "    'rest_wind'," >> core/settings.py

@@ -1,0 +1,16 @@
+{% if messages %}
+<ol class="list">
+  {% for message in messages %}
+  <li class="list-row alert alert-{{message.tags}}">
+    <div>
+      <span class="badge badge-soft badge-{{message.tags}} font-semibold"
+        >{{ message.tags|upper }}</span
+      >
+    </div>
+    <div>
+      <p>{{ message }}</p>
+    </div>
+  </li>
+  {% endfor %}
+</ol>
+{% endif %}

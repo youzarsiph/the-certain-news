@@ -1,0 +1,250 @@
+<!-- prettier ignore -->
+{% extends "ui/base.html" %}{% load i18n %}
+
+<!-- prettier ignore -->
+{% block title %}{{ block.super }} | {% trans 'Profile' %}{% endblock %}
+
+<!-- prettier ignore -->
+{% block content_styles %} hidden lg:block{% endblock %}
+
+<!-- prettier ignore -->
+{% block searchbar %}{% endblock %}
+
+<div class="hidden lg:h-[calc(100dvh-1rem)] lg:max-h-[calc(100dvh-1rem)]"></div>
+
+<!-- prettier ignore -->
+{% block sidebar_height %}lg:h-[calc(100dvh-1rem)] lg:max-h-[calc(100dvh-1rem)]{% endblock %}
+<!-- prettier ignore -->
+{% block content_height %}lg:h-[calc(100dvh-1rem)] lg:max-h-[calc(100dvh-1rem)]{% endblock %}
+
+<!-- prettier ignore -->
+{% block sidebar %}
+<section class="relative flex h-full flex-col gap-6 rounded-box">
+  <header class="absolute inset-x-0 top-0 z-10">
+    <nav
+      class="flex items-center justify-between p-4 gap-4 backdrop-blur-3xl rounded-box"
+    >
+      <h1 class="text-xl font-semibold">{% trans 'Profile' %}</h1>
+    </nav>
+  </header>
+
+  <main
+    class="grid grow gap-4 size-full p-4 pt-20 max-h-[calc(100dvh-1rem)] overflow-y-auto"
+  >
+    <nav class="menu menu-vertical gap-2 w-full justify-between p-0">
+      <ul class="menu menu-vertical gap-2 w-full p-0">
+        <li
+          class="tooltip tooltip-bottom tooltip-primary"
+          data-tip="{% trans 'My Profile' %}"
+        >
+          <a
+            href="{% url 'ui:profile' %}"
+            class="btn btn-ghost justify-between gap-4 w-full"
+          >
+            <div class="flex items-center gap-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-user size-4 lg:size-6"
+              >
+                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
+
+              <span>{% trans 'Profile' %}</span>
+            </div>
+
+            <!-- prettier ignore -->
+            {% if request.user.is_instructor %}
+            <span class="badge badge-primary"> {% trans 'Instructor' %} </span>
+            {% endif %}
+          </a>
+        </li>
+        <!-- prettier ignore -->
+        {% if request.user.is_instructor %}
+        <li
+          class="tooltip tooltip-bottom"
+          data-tip="{% trans 'Dashboard' %}"
+        >
+          <a
+            href="/dashboard/"
+            class="btn btn-ghost justify-start gap-4 w-full"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-layout-dashboard-icon lucide-layout-dashboard size-4 lg:size-6"
+            >
+              <rect width="7" height="9" x="3" y="3" rx="1" />
+              <rect width="7" height="5" x="14" y="3" rx="1" />
+              <rect width="7" height="9" x="14" y="12" rx="1" />
+              <rect width="7" height="5" x="3" y="16" rx="1" />
+            </svg>
+
+            <span>{% trans 'Dashboard' %}</span>
+          </a>
+        </li>
+        {% endif %}
+        <li
+          class="tooltip tooltip-bottom"
+          data-tip="{% trans 'Edit account' %}"
+        >
+          <a
+            href="{% url 'ui:u-user' request.user.id %}"
+            class="btn btn-ghost justify-start gap-4 w-full"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-user-pen-icon lucide-user-pen size-4 lg:size-6"
+            >
+              <path d="M11.5 15H7a4 4 0 0 0-4 4v2" />
+              <path
+                d="M21.378 16.626a1 1 0 0 0-3.004-3.004l-4.01 4.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"
+              />
+              <circle cx="10" cy="7" r="4" />
+            </svg>
+
+            <span>{% trans 'Edit account' %}</span>
+          </a>
+        </li>
+        <li
+          class="tooltip tooltip-bottom"
+          data-tip="{% trans 'Change Password' %}"
+        >
+          <a
+            href="{% url 'ui:password_change' %}"
+            class="btn btn-ghost justify-start gap-4 w-full"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-rotate-ccw-key-icon lucide-rotate-ccw-key size-4 lg:size-6"
+            >
+              <path d="m14.5 9.5 1 1" />
+              <path d="m15.5 8.5-4 4" />
+              <path d="M3 12a9 9 0 1 0 9-9 9.74 9.74 0 0 0-6.74 2.74L3 8" />
+              <path d="M3 3v5h5" />
+              <circle cx="10" cy="14" r="2" />
+            </svg>
+
+            <span>{% trans 'Change Password' %}</span>
+          </a>
+        </li>
+      </ul>
+
+      <ul class="menu menu-vertical gap-2 w-full p-0">
+        <li
+          class="tooltip tooltip-top tooltip-error"
+          data-tip="{% trans 'Delete account' %}"
+        >
+          <a
+            href="{% url 'ui:d-user' request.user.id %}"
+            class="btn btn-soft btn-error justify-start gap-4 w-full"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-user-x-icon lucide-user-x size-4 lg:size-6"
+            >
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <line x1="17" x2="22" y1="8" y2="13" />
+              <line x1="22" x2="17" y1="8" y2="13" />
+            </svg>
+
+            <span>{% trans 'Delete account' %}</span>
+          </a>
+        </li>
+        <li class="tooltip tooltip-top" data-tip="{% trans 'Logout' %}">
+          <button
+            form="logout-form"
+            type="submit"
+            class="btn btn-ghost justify-start gap-4 w-full"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-log-out size-4 lg:size-6"
+            >
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+              <polyline points="16 17 21 12 16 7" />
+              <line x1="21" x2="9" y1="12" y2="12" />
+            </svg>
+
+            <span>{% trans 'Logout' %}</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </main>
+</section>
+{% endblock %}
+
+<!-- prettier ignore -->
+{% block content %}
+<section class="relative size-full">
+  <header class="absolute inset-x-0 top-0 z-10">
+    <nav class="flex items-center p-4 gap-4 backdrop-blur-3xl rounded-box">
+      <div class="breadcrumbs p-0">
+        <ol>
+          <li>
+            <a href="{% url 'ui:profile' %}"> {% trans 'Profile' %} </a>
+          </li>
+          {% block breadcrumbs %}{% endblock %}
+        </ol>
+      </div>
+    </nav>
+  </header>
+
+  <main class="size-full p-4 pt-16 max-h-[calc(100dvh-1rem)] overflow-y-auto">
+    <!-- prettier ignore -->
+    {% include 'ui/components/messages.html' %}
+
+    <!-- prettier ignore -->
+    {% block main_content %}{% endblock %}
+  </main>
+</section>
+{% endblock %}

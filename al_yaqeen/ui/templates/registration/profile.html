@@ -1,0 +1,22 @@
+<!-- prettier ignore -->
+{% extends 'registration/base.html' %}{% load i18n %}
+
+<!-- prettier ignore -->
+{% block title %}{{ block.super }} | {% trans 'Profile' %}{% endblock %}
+
+<!-- prettier ignore -->
+{% block breadcrumbs %}
+<li>{{ request.user }}</li>
+{% endblock %}
+
+<!-- prettier ignore -->
+{% block main_content %}
+<div class="flex flex-col items-center justify-center gap-4 size-full">
+  <h1 class="text-4xl font-black font-serif">
+    {{ request.user }} {% trans 'Profile' %}
+  </h1>
+  <p class="text-xl font-light">
+    {% trans 'You will find all your relevant info here' %}
+  </p>
+</div>
+{% endblock %}

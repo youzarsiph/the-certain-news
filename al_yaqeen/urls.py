@@ -24,5 +24,6 @@ router.register("tags", TagViewSet, "tag")
 router.register("users", UserViewSet, "user")
 
 urlpatterns = [
-    path("", include(router.urls)),
+    path("", include("al_yaqeen.ui.urls")),
+    path("api/", include(router.urls)),
 ]

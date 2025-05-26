@@ -1,0 +1,35 @@
+<!-- prettier ignore -->
+{% extends "registration/base.html" %}{% load i18n %}
+
+<!-- prettier ignore -->
+{% block title %}{{ block.super }} | {% trans 'Sign up' %}{% endblock %}
+
+<!-- prettier ignore -->
+{% block main %}
+<section class="flex col-span-12 size-full items-center justify-center lg:max-h-[calc(100dvh-1rem)] lg:overflow-y-auto">
+  <div class="card mx-2 max-w-md w-full rounded-box bg-base-200 mt-40 mb-20">
+    <div class="card-body gap-8">
+      <h1 class="text-4xl font-black text-center font-serif text-primary">
+        {% trans 'Al yaqeen' %}
+      </h1>
+
+      <div class="grid gap-4">
+        <h2 class="text-2xl">{% trans 'Sign up' %}</h2>
+        <p>{% trans 'Welcome, please signup to continue.' %}</p>
+      </div>
+
+      <!-- prettier ignore -->
+      {% include 'ui/components/form.html' %}
+
+      <p>
+        <a href="{% url 'ui:login' %}" class="btn btn-ghost">
+          {% trans 'Already have an account?' %}
+        </a>
+        <a href="{% url 'ui:password_reset' %}" class="btn btn-ghost">
+          {% trans 'Lost password?' %}
+        </a>
+      </p>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -7,7 +7,6 @@ Fields:
 - photo: Article photo
 - title: Article title
 - headline: Article headline
-- extras: Article extra data like summary etc...
 - content: Article content
 - is_pinned: Designates if the Article is pinned
 - comments: Article comments
@@ -65,11 +64,6 @@ class Article(models.Model):
         db_index=True,
         help_text="Article headline",
     )
-    extras = models.JSONField(
-        null=True,
-        blank=True,
-        help_text="Article extra data like summary etc...",
-    )
     content = models.TextField(
         db_index=True,
         help_text="Article content",
@@ -77,6 +71,12 @@ class Article(models.Model):
     is_pinned = models.BooleanField(
         default=False,
         help_text="Designates if the Article is pinned",
+    )
+    tags = models.ManyToManyField(
+        "tags.Tag",
+        blank=True,
+        related_name="articles",
+        help_text="Article tags",
     )
     comments = models.ManyToManyField(
         User,
@@ -105,12 +105,6 @@ class Article(models.Model):
         related_name="reports",
         through="reports.Report",
         help_text="Article reports",
-    )
-    tags = models.ManyToManyField(
-        "tags.Tag",
-        blank=True,
-        related_name="articles",
-        help_text="Article tags",
     )
     updated_at = models.DateTimeField(
         auto_now=True,

@@ -43,6 +43,7 @@ jobs:
           echo "    'al_yaqeen.reactions'," >> core/settings.py
           echo "    'al_yaqeen.reports'," >> core/settings.py
           echo "    'al_yaqeen.tags'," >> core/settings.py
+          echo "    'al_yaqeen.ui'," >> core/settings.py
           echo "    'al_yaqeen.users'," >> core/settings.py
           echo "    'rest_wind'," >> core/settings.py
           echo "    'django_filters'," >> core/settings.py
