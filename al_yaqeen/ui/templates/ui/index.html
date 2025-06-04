@@ -2,23 +2,30 @@
 {% extends 'ui/base.html' %}{% load i18n %}
 
 <!-- prettier ignore -->
-{% block title %}{% trans 'Al yaqeen' %}{% endblock %}
+{% block title %}{% trans 'Al Yaqeen' %}{% endblock %}
+
+<!-- prettier ignore -->
+{% block nav %}{% endblock %}
+
+<!-- prettier ignore -->
+{% block searchbar %}{% endblock %}
 
 <!-- prettier ignore -->
 {% block main %}
-<div class="flex flex-col col-span-12 items-center justify-center gap-4 size-full">
-  <h1 class="text-5xl font-black font-serif">
-    {% trans 'Welcome to Al yaqeen' %}
-  </h1>
-  <p class="font-light text-xl">
-    <!-- prettier ignore -->
-    {% blocktranslate %}Al yaqeen is an innovative Learning Management
-    System (LMS) dedicated to nurturing intellectual growth{% endblocktranslate %}
-  </p>
+<div class="relative col-span-12 size-full">
+  <header class="absolute inset-x-0 top-0 backdrop-blur-3xl rounded-t-box px-4 py-2 shadow-sm">
+    <nav class="flex items-center justify-between">
+      <h1 class="font-bold text-xl">Al-Yaqeen</h1>
 
-  <div class="alert alert-info">
-    <span class="badge badge-info badge-soft text-bold">{% trans 'Info' %}</span>
-    <p>{% trans 'Al yaqeen is under heavy development' %}</p>
-  </div>
+      <ul class="menu">
+        <li><a href="{% url 'ui:home' %}">{% trans 'Home' %}</a></li>
+      </ul>
+
+      <ul class="flex items-center gap-4">
+        <li><a href="{% url 'ui:signup' %}" class="btn btn-primary">{% trans 'Sign up' %}</a></li>
+        <li><a href="{% url 'ui:login' %}" class="btn btn-seecondary">{% trans 'Log in' %}</a></li>
+      </ul>
+    </nav>
+  </header>
 </div>
 {% endblock %}

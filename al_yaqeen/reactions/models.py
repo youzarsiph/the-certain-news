@@ -10,38 +10,32 @@ Fields:
 """
 
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
+from al_yaqeen.mixins.models import DateTimeMixin
 from al_yaqeen.reactions import REACTIONS
 from al_yaqeen.users import User
 
 
 # Create your models here.
-class Reaction(models.Model):
+class Reaction(DateTimeMixin, models.Model):
     """Article Reactions"""
 
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
-        help_text="User",
+        help_text=_("User"),
     )
     article = models.ForeignKey(
         "articles.Article",
         on_delete=models.CASCADE,
-        help_text="Article",
+        help_text=_("Article"),
     )
     emoji = models.CharField(
         max_length=8,
         default="👍🏻",
-        help_text="Reaction",
+        help_text=_("Reaction"),
         choices=REACTIONS,
-    )
-    updated_at = models.DateTimeField(
-        auto_now=True,
-        help_text="Last update",
-    )
-    created_at = models.DateTimeField(
-        auto_now_add=True,
-        help_text="Date reacted",
     )
 
     class Meta:

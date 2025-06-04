@@ -8,6 +8,6 @@ class CategoryViewSetTests(APITestCase):
     """Category ViewSet tests"""
 
     def setUp(self) -> None:
-        """Setup before tests"""
+        """Setup before running tests"""
 
         return super().setUp()

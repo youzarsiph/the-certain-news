@@ -39,10 +39,7 @@ jobs:
           echo "    'al_yaqeen.articles'," >> core/settings.py
           echo "    'al_yaqeen.categories'," >> core/settings.py
           echo "    'al_yaqeen.comments'," >> core/settings.py
-          echo "    'al_yaqeen.followers'," >> core/settings.py
           echo "    'al_yaqeen.reactions'," >> core/settings.py
-          echo "    'al_yaqeen.reports'," >> core/settings.py
-          echo "    'al_yaqeen.tags'," >> core/settings.py
           echo "    'al_yaqeen.ui'," >> core/settings.py
           echo "    'al_yaqeen.users'," >> core/settings.py
           echo "    'rest_wind'," >> core/settings.py

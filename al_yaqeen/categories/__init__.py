@@ -1,1 +1,1 @@
-"""Article Categories"""
+"""Categories"""

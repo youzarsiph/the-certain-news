@@ -25,10 +25,7 @@ RUN echo "    'al_yaqeen.ai'," >> core/settings.py
 RUN echo "    'al_yaqeen.articles'," >> core/settings.py
 RUN echo "    'al_yaqeen.categories'," >> core/settings.py
 RUN echo "    'al_yaqeen.comments'," >> core/settings.py
-RUN echo "    'al_yaqeen.followers'," >> core/settings.py
 RUN echo "    'al_yaqeen.reactions'," >> core/settings.py
-RUN echo "    'al_yaqeen.reports'," >> core/settings.py
-RUN echo "    'al_yaqeen.tags'," >> core/settings.py
 RUN echo "    'al_yaqeen.ui'," >> core/settings.py
 RUN echo "    'al_yaqeen.users'," >> core/settings.py
 RUN echo "    'corsheaders'" >> core/settings.py

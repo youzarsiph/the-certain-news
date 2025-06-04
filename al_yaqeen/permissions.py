@@ -1,6 +1,6 @@
-"""Custom permissions"""
+"""Custom API access permissions"""
 
-from rest_framework.permissions import BasePermission, SAFE_METHODS
+from rest_framework.permissions import BasePermission
 
 
 # Create your permissions here.
@@ -10,7 +10,7 @@ class IsOwner(BasePermission):
     def has_object_permission(self, request, view, obj):
         """Check if the user is the owner of the object"""
 
-        return request.user == obj.user
+        return request.user.id == obj.user.id
 
 
 class IsAccountOwner(BasePermission):
@@ -22,19 +22,11 @@ class IsAccountOwner(BasePermission):
         return request.user == obj
 
 
-class IsReadOnly(BasePermission):
-    """Allows read only access"""
+class DenyAll(BasePermission):
+    """Deny all requests"""
 
-    def has_permission(self, request, view):
-        """Check request.method"""
+    def has_permission(self, request, view) -> bool:
+        return False
 
-        return request.method in SAFE_METHODS
-
-
-class IsListOnly(BasePermission):
-    """Allow access only to list action"""
-
-    def has_permission(self, request, view):
-        """Allow access to list action"""
-
-        return view.action == "list"
+    def has_object_permission(self, request, view, obj) -> bool:
+        return False

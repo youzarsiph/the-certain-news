@@ -1,25 +1,8 @@
 <!-- prettier ignore -->
-{% extends 'rest_framework/base.html' %}{% load i18n %}
+{% extends 'rest_framework/base.html' %}{% load i18n static %}
 
 <!-- prettier ignore -->
-{% block title %}{% trans 'Al yaqeen' %} | API | {{ name }}{% endblock %}
-
-{% block highlight_theme %}
-<link id="highlight" rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" />
-
-<script>
-  const themeToggle = document.querySelector('label.swap')
-  themeToggle.onclick = () => {
-    document.getElementById('highlight').setAttribute(
-      'href',
-      document.querySelector('.theme-controller').checked ?
-        'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css'
-        : 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css'
-    )
-  }
-</script>
-{% endblock %}
+{% block title %}{% trans 'Al Yaqeen' %} | API | {{ name }}{% endblock %}
 
 <!-- prettier ignore -->
 {% block theme %}silk{% endblock %}
@@ -29,7 +12,7 @@
 
 <!-- prettier ignore -->
 {% block branding %}
-<li class="tooltip tooltip-right tooltip-primary" data-tip="{% trans 'Al yaqeen' %} - API">
+<li class="tooltip tooltip-right tooltip-primary" data-tip="{% trans 'Al Yaqeen' %} - API">
   <a href="/api/" class="btn btn-square btn-primary lg:btn-lg">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -43,7 +26,7 @@
       <circle cx="12" cy="9" r="2" />
     </svg>
 
-    <span class="sr-only"> {% trans 'Al yaqeen' %} - API </span>
+    <span class="sr-only"> {% trans 'Al Yaqeen' %} - API </span>
   </a>
 </li>
 {% endblock %}
@@ -51,7 +34,7 @@
 <!-- prettier ignore -->
 {% block branding_text %}
 <h1 class="hidden text-xl font-semibold text-primary lg:block">
-  {% trans 'Al yaqeen' %}
+  {% trans 'Al Yaqeen' %}
 </h1>
 {% endblock %}
 

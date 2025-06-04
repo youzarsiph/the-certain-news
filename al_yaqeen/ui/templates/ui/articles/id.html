@@ -1,0 +1,15 @@
+<!-- prettier ignore -->
+{% extends 'ui/base.html' %}{% load i18n wagtailcore_tags wagtailuserbar %}
+
+<!-- prettier ignore -->
+{% block title %}{{ article.title }}{% endblock %}
+
+<!-- prettier ignore -->
+{% block main %}
+{% wagtailuserbar %}
+<div class="flex flex-col gap-6 col-span-12 p-4">
+  <h1 class="text-4xl font-bold">{{ article.title }}</h1>
+
+  <article class="prose">{% include_block article.content %}</article>
+</div>
+{% endblock %}

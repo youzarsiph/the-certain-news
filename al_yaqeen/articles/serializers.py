@@ -13,23 +13,17 @@ class ArticleSerializer(ModelSerializer):
         """Meta data"""
 
         model = Article
-        read_only_fields = ["user", "recommendations"]
+        read_only_fields = ["owner"]
         fields = [
             "id",
             "url",
-            "user",
+            "owner",
             "category",
-            "photo",
+            "image",
             "title",
             "headline",
             "content",
-            "is_pinned",
-            "stars",
-            "tags",
-            "recommendations",
-            "comment_count",
-            "reaction_count",
-            "tag_count",
+            "is_breaking",
             "created_at",
             "updated_at",
         ]

@@ -7,7 +7,7 @@ from al_yaqeen.categories.models import Category
 
 # Create your serializers here.
 class CategorySerializer(ModelSerializer):
-    """Category Serializer"""
+    """Category serializer"""
 
     class Meta:
         """Meta data"""
@@ -16,9 +16,8 @@ class CategorySerializer(ModelSerializer):
         fields = [
             "id",
             "url",
-            "name",
+            "title",
             "description",
-            "article_count",
             "created_at",
             "updated_at",
         ]

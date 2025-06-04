@@ -14,40 +14,35 @@ Methods:
 """
 
 from django.db import models
+from django.utils.translation import gettext_lazy as _
+from wagtail.fields import RichTextField
 
+from al_yaqeen.mixins.models import DateTimeMixin
 from al_yaqeen.users import User
 
 
 # Create your models here.
-class Comment(models.Model):
+class Comment(DateTimeMixin, models.Model):
     """Article Comments"""
 
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
-        help_text="Comment Owner",
+        help_text=_("Comment Owner"),
     )
     article = models.ForeignKey(
         "articles.Article",
         on_delete=models.CASCADE,
-        help_text="Commented Article",
+        help_text=_("Commented Article"),
     )
-    content = models.TextField(
+    content = RichTextField(
         db_index=True,
-        help_text="Content",
+        help_text=_("Comment Content"),
     )
     replies = models.ManyToManyField(
         "self",
         symmetrical=False,
-        help_text="Comment Replies",
-    )
-    updated_at = models.DateTimeField(
-        auto_now=True,
-        help_text="Last update",
-    )
-    created_at = models.DateTimeField(
-        auto_now_add=True,
-        help_text="Date published",
+        help_text=_("Comment Replies"),
     )
 
     @property

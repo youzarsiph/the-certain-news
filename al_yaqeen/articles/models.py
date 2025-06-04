@@ -4,146 +4,107 @@ Article model
 Fields:
 - user: Article owner
 - category: Article category
-- photo: Article photo
+- image: Article image
 - title: Article title
 - headline: Article headline
 - content: Article content
-- is_pinned: Designates if the Article is pinned
-- comments: Article comments
-- reactions: Article reactions
-- recommendations: Similar articles
-- stargazers: Article stargazers
-- reports: Article reports
-- tags: Article tags
+- is_breaking: Designates if the Article is in breaking news
 - updated_at: Last update
 - created_at: Date published
+- recommendations: Similar articles
+- tags: Article tags
 
 Methods:
 - comment_count: Number of comments of an article
 - reaction_count: Number of reactions of an article
 - star_count: Number of stargazers of an article
-- report_count: Number of reports of an article
 - recommendation_count: Number of recommendations of an article
 - tag_count: Number of tags of an article
 """
 
 from django.db import models
+from django.contrib.auth import get_user_model
+from django.utils.translation import gettext_lazy as _
+from modelcluster.contrib.taggit import ClusterTaggableManager
+from wagtail.admin.panels import FieldPanel
+from wagtail.api import APIField
+from wagtail.fields import StreamField
+from wagtail.models import Page
+from wagtail.search import index
 
-from al_yaqeen.users import User
+from al_yaqeen.mixins.models import DateTimeMixin
+from al_yaqeen.ui.cms.blocks import CommonContentBlock
 
 
 # Create your models here.
-class Article(models.Model):
-    """Articles"""
+User = get_user_model()
 
-    user = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-        related_name="articles",
-        help_text="Article owner",
-    )
-    category = models.ForeignKey(
-        "categories.Category",
-        on_delete=models.CASCADE,
-        related_name="articles",
-        help_text="Article category",
-    )
-    photo = models.ImageField(
-        null=True,
-        blank=True,
-        help_text="Article Photo",
-        upload_to="al_yaqeen/images/articles/",
-    )
-    title = models.CharField(
-        max_length=64,
-        db_index=True,
-        help_text="Article title",
+
+class Article(DateTimeMixin, Page):
+    """News Articles"""
+
+    image = models.ForeignKey(
+        "wagtailimages.Image",
+        on_delete=models.PROTECT,
+        related_name="+",
+        help_text=_("Article image"),
     )
     headline = models.CharField(
         max_length=256,
         db_index=True,
-        help_text="Article headline",
+        help_text=_("Article headline"),
     )
-    content = models.TextField(
-        db_index=True,
-        help_text="Article content",
+    content = StreamField(
+        CommonContentBlock(),
+        help_text=_("Article content"),
     )
-    is_pinned = models.BooleanField(
+    is_breaking = models.BooleanField(
         default=False,
-        help_text="Designates if the Article is pinned",
+        help_text=_("Designates if the Article is in breaking news"),
     )
-    tags = models.ManyToManyField(
-        "tags.Tag",
+    tags = ClusterTaggableManager(
         blank=True,
-        related_name="articles",
-        help_text="Article tags",
-    )
-    comments = models.ManyToManyField(
-        User,
-        related_name="comments",
-        through="comments.Comment",
-        help_text="Article comments",
-    )
-    reactions = models.ManyToManyField(
-        User,
-        related_name="reactions",
-        through="reactions.Reaction",
-        help_text="Article reactions",
+        through="tags.Tag",
     )
     recommendations = models.ManyToManyField(
         "self",
         symmetrical=True,
-        help_text="Similar articles",
-    )
-    stargazers = models.ManyToManyField(
-        User,
-        related_name="stargazers",
-        help_text="Article stargazers",
-    )
-    reports = models.ManyToManyField(
-        User,
-        related_name="reports",
-        through="reports.Report",
-        help_text="Article reports",
-    )
-    updated_at = models.DateTimeField(
-        auto_now=True,
-        help_text="Last update",
-    )
-    created_at = models.DateTimeField(
-        auto_now_add=True,
-        help_text="Date published",
+        help_text=_("Similar articles"),
     )
 
-    @property
-    def comment_count(self) -> int:
-        """Number of comments of an article"""
+    # Dashboard UI config
+    context_object_name = "article"
+    template = "ui/articles/id.html"
+    page_description = _("News Articles")
+    content_panels = Page.content_panels + [
+        FieldPanel("image"),
+        FieldPanel("headline"),
+        FieldPanel("content"),
+        FieldPanel("is_breaking"),
+        FieldPanel("tags"),
+    ]
 
-        return self.comments.count()
+    # Search
+    search_fields = Page.search_fields + [
+        index.SearchField("title"),
+        index.SearchField("headline"),
+        index.SearchField("content"),
+        index.FilterField("is_breaking"),
+        index.FilterField("updated_at"),
+        index.FilterField("created_at"),
+    ]
 
-    @property
-    def reaction_count(self) -> int:
-        """Number of reactions of an article"""
+    # API fields
+    api_fields = [
+        APIField("image"),
+        APIField("headline"),
+        APIField("content"),
+        APIField("is_breaking"),
+        APIField("updated_at"),
+        APIField("created_at"),
+    ]
 
-        return self.reactions.count()
-
-    @property
-    def report_count(self) -> int:
-        """Number of reports of an article"""
-
-        return self.reports.count()
-
-    @property
-    def tag_count(self) -> int:
-        """Number of tags of an article"""
-
-        return self.tags.count()
-
-    @property
-    def stars(self) -> int:
-        """Number of stars of an article"""
-
-        return self.stargazers.count()
+    parent_page_types = ["categories.Category"]
 
     def __str__(self) -> str:
         return self.title

@@ -2,7 +2,7 @@
 {% load i18n static %}
 
 <!doctype html>
-<html lang="en" data-theme="{% block theme %}silk{% endblock %}">
+<html lang="en" data-theme="{% block theme %}cupcake{% endblock %}">
 
 <head>
   <!-- prettier ignore -->
@@ -11,7 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- prettier ignore -->
-  <title>{% block title %}{% trans 'Al yaqeen' %}{% endblock %}</title>
+  <title>{% block title %}{% trans 'Al Yaqeen' %}{% endblock %}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -31,7 +31,7 @@
         <ul class="menu menu-vertical items-center gap-1 p-0 lg:gap-2">
           <!-- prettier ignore -->
           {% block branding %}
-          <li class="tooltip tooltip-right tooltip-primary" data-tip="{% trans 'Al yaqeen' %}">
+          <li class="tooltip tooltip-right tooltip-primary" data-tip="{% trans 'Al Yaqeen' %}">
             <a href="{% url 'ui:home' %}" class="btn btn-square btn-primary lg:btn-lg">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -45,7 +45,7 @@
                 <circle cx="12" cy="9" r="2" />
               </svg>
 
-              <span class="sr-only"> {% trans 'Al yaqeen' %} </span>
+              <span class="sr-only"> {% trans 'Al Yaqeen' %} </span>
             </a>
           </li>
           {% endblock %}
@@ -209,13 +209,13 @@
   </section>
   {% endblock %}
 
-  <section id="content" class="relative flex h-dvh max-h-dvh w-full flex-col gap-2 py-2 pr-2 overflow-hidden">
+  <section id="content" class="relative flex h-dvh max-h-dvh w-full flex-col gap-2 p-1 lg:p-2 overflow-hidden">
     <!-- prettier ignore -->
     {% block searchbar %}
     <section id="searchbar" class="z-20 w-full {% block searchbar_styles %}{% endblock %}">
       <nav class="flex items-center justify-between w-full gap-2 lg:gap-4">
         <h1 class="hidden text-xl font-semibold text-primary lg:block">
-          {% trans 'Al yaqeen' %}
+          {% trans 'Al Yaqeen' %}
         </h1>
 
         <form method="get" class="join w-full lg:max-w-lg">

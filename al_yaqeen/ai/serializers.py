@@ -1,5 +1,6 @@
 """Serializers for al_yaqeen.ai"""
 
+from django.utils.translation import gettext_lazy as _
 from rest_framework import serializers
 
 
@@ -10,7 +11,7 @@ class BaseSerializer(serializers.Serializer):
     model = serializers.CharField(
         max_length=64,
         required=False,
-        help_text="HuggingFace model name",
+        help_text=_("HuggingFace model name"),
     )
 
 
@@ -19,7 +20,7 @@ class QuestionAnsweringSerializer(BaseSerializer):
 
     question = serializers.CharField(
         max_length=1024,
-        help_text="Question",
+        help_text=_("Question"),
     )
 
 
@@ -28,7 +29,7 @@ class ChatSerializer(BaseSerializer):
 
     message = serializers.CharField(
         max_length=1024,
-        help_text="Prompt",
+        help_text=_("Prompt"),
     )
 
 
@@ -37,9 +38,9 @@ class TranslationSerializer(BaseSerializer):
 
     source = serializers.CharField(
         max_length=5,
-        help_text="Source language for example en_XX",
+        help_text=_("Source language for example en_XX"),
     )
     target = serializers.CharField(
         max_length=5,
-        help_text="Target language for example ar_XX",
+        help_text=_("Target language for example ar_XX"),
     )
