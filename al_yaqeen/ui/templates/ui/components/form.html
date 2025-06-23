@@ -20,24 +20,26 @@
 
   // Style inputs
   document
-    .querySelectorAll("input")
+    .querySelectorAll("form > div > input")
     .forEach((e) => e.classList.add("input", "input-primary", "w-full"));
-  document.querySelectorAll("input[type=checkbox]").forEach((e) => {
-    e.classList.remove("input", "w-full");
-    e.classList.add("checkbox", "checkbox-primary");
-  });
-  document.querySelectorAll("input[type=radio]").forEach((e) => {
+  document
+    .querySelectorAll("form > div > input[type=checkbox]")
+    .forEach((e) => {
+      e.classList.remove("input", "w-full");
+      e.classList.add("checkbox", "checkbox-primary");
+    });
+  document.querySelectorAll("form > div > input[type=radio]").forEach((e) => {
     e.classList.remove("input", "w-full");
     e.classList.add("radio", "radio-primary");
   });
-  document.querySelectorAll("input[type=file]").forEach((e) => {
+  document.querySelectorAll("form > div > input[type=file]").forEach((e) => {
     e.classList.remove("input");
     e.classList.add("file-input");
   });
   document
-    .querySelectorAll("textarea")
+    .querySelectorAll("form > div > textarea")
     .forEach((e) => e.classList.add("textarea", "textarea-primary", "w-full"));
   document
-    .querySelectorAll("select")
+    .querySelectorAll("form > div > select")
     .forEach((e) => e.classList.add("select", "select-primary", "w-full"));
 </script>

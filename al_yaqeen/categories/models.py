@@ -23,7 +23,7 @@ class Category(DateTimeMixin, Page):
     # Dashboard UI config
     show_in_menus = True
     context_object_name = "category"
-    template = "ui/previews/category.html"
+    template = "ui/categories/id.html"
     content_panels = Page.content_panels + [FieldPanel("description")]
     page_description = _(
         "Categories help organize articles into thematic or subject-related groupings, "

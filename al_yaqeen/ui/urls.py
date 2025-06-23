@@ -1,10 +1,9 @@
 """URLConf for al_yaqeen.ui"""
 
-from django.urls import path
 from django.contrib.auth import views as auth
+from django.urls import path
 
 from al_yaqeen.ui import views
-
 
 # Create your URLConf here.
 app_name = "ui"
@@ -52,7 +51,7 @@ auth_urls = [
 
 urlpatterns = [
     *auth_urls,
-    path("", views.HomeView.as_view(), name="home"),
+    path("", views.HomeView.as_view(template_name="ui/index.html"), name="home"),
     path("categories/", views.CategoryListView.as_view(), name="categories"),
     path(
         "categories/<slug:slug>/", views.CategoryDetailView.as_view(), name="category"

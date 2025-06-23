@@ -1,22 +1,70 @@
-<!-- prettier ignore -->
 {% extends 'registration/base.html' %}{% load i18n %}
 
-<!-- prettier ignore -->
-{% block title %}{{ block.super }} | {% trans 'Profile' %}{% endblock %}
-
-<!-- prettier ignore -->
-{% block breadcrumbs %}
-<li>{{ request.user }}</li>
-{% endblock %}
-
-<!-- prettier ignore -->
+<!---->
 {% block main_content %}
-<div class="flex flex-col items-center justify-center gap-4 size-full">
-  <h1 class="text-4xl font-black font-serif">
-    {{ request.user }} {% trans 'Profile' %}
-  </h1>
-  <p class="text-xl font-light">
-    {% trans 'You will find all your relevant info here' %}
-  </p>
-</div>
+<section id="profile" class="grid gap-8 size-full">
+  <div
+    class="card text-center card-sm rounded-box bg-base-200 shadow-sm md:card-md lg:card-lg xl:card-xl"
+  >
+    <figure class="mx-auto size-32 lg:size-56">
+      <i data-lucide="user" class="size-full"></i>
+    </figure>
+
+    <div class="card-body gap-4 lg:gap-6">
+      <h1 class="card-title text-center text-primary">{{ request.user }}</h1>
+      <p>{% trans 'Welcome to your Profile' %}</p>
+    </div>
+    <div class="join">
+      <div
+        class="tooltip tooltip-top tooltip-primary"
+        data-tip="{% trans 'Log out' %}"
+      >
+        <button
+          type="submit"
+          form="logout"
+          class="btn join-item btn-square btn-primary btn-lg lg:btn-xl"
+        >
+          <i data-lucide="log-out" class="size-4 lg:size-6"></i>
+          <span class="sr-only">{% trans 'Log out' %}</span>
+        </button>
+      </div>
+      <div
+        class="tooltip tooltip-top tooltip-success grow"
+        data-tip="{% trans 'Settings' %}"
+      >
+        <a
+          class="btn w-full join-item btn-square btn-success btn-lg lg:btn-xl"
+          href="{% url 'ui:u-user' request.user.id %}"
+        >
+          <i data-lucide="user-cog" class="size-4 lg:size-6"></i>
+          <span class="sr-only">{% trans 'Settings' %}</span>
+        </a>
+      </div>
+      <div
+        class="tooltip tooltip-top tooltip-scondary grow"
+        data-tip="{% trans 'Dashboard' %}"
+      >
+        <a
+          class="btn w-full join-item btn-square btn-scondary btn-lg lg:btn-xl"
+          href="/dashborad/"
+        >
+          <i data-lucide="layout-dashboard" class="size-4 lg:size-6"></i>
+          <span class="sr-only">{% trans 'Dashboard' %}</span>
+        </a>
+      </div>
+      <div
+        class="tooltip tooltip-top tooltip-error"
+        data-tip="{% trans 'Delete' %}"
+      >
+        <a
+          class="btn join-item btn-square btn-error btn-lg lg:btn-xl"
+          href="{% url 'ui:d-user' request.user.id %}"
+        >
+          <i data-lucide="user-x" class="size-4 lg:size-6"></i>
+          <span class="sr-only">{% trans 'Delete account' %}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 {% endblock %}

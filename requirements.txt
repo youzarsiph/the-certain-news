@@ -5,7 +5,8 @@ django-filter
 djangorestframework
 djoser
 drf-restwind
+gunicorn
 pillow
 python-dotenv
 wagtail
-gunicorn
+wagtail-localize

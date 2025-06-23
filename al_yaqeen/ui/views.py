@@ -1,10 +1,14 @@
 """Views for al_yaqeen.ui"""
 
+from typing import Any, Dict
+
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
+from django.utils.translation import get_language_from_request
 from django.views import generic
+from django_filters.views import FilterView
 
 from al_yaqeen.articles.models import Article
 from al_yaqeen.categories.models import Category
@@ -18,6 +22,27 @@ class HomeView(generic.TemplateView):
     """Home page"""
 
     template_name = "ui/index.html"
+
+    def get_context_data(self, **kwargs) -> Dict[str, Any]:
+        """Filter context data by language"""
+
+        lang = get_language_from_request(self.request).lower()
+
+        return {
+            **super().get_context_data(**kwargs),
+            "breaking_news": Article.objects.live()
+            .public()
+            .filter(is_breaking=True, locale__language_code=lang)
+            .order_by("-created_at")[:6],
+            "latest_news": Article.objects.live()
+            .public()
+            .filter(locale__language_code=lang)
+            .order_by("-created_at")[:6],
+            "categories": Category.objects.live()
+            .public()
+            .filter(locale__language_code=lang)
+            .order_by("-created_at")[:3],
+        }
 
 
 # Auth views
@@ -70,39 +95,88 @@ class UserDeleteView(
 
 
 # Categories
-class CategoryListView(generic.ListView):
+class CategoryListView(mixins.LanguageFilterMixin, generic.ListView):
     """Category list"""
 
     paginate_by = 25
     ordering = "-created_at"
     template_name = "ui/categories/list.html"
-    queryset = Category.objects.all()
+    queryset = Category.objects.live().public()
 
 
-class CategoryDetailView(generic.DetailView):
+class CategoryDetailView(mixins.LanguageFilterMixin, generic.DetailView):
     """Category list"""
 
     slug_field = "slug"
     slug_url_kwarg = "slug"
     template_name = "ui/categories/id.html"
-    queryset = Category.objects.prefetch_related("articles")
+    queryset = Category.objects.live().public()
 
 
 # Articles
-class ArticleListView(generic.ListView):
+class BaseArticleListView(FilterView, mixins.LanguageFilterMixin):
+    """Base class for article list views"""
+
+    model = Article
+    paginate_by = 25
+    date_field = "created_at"
+    queryset = Article.objects.live().public()
+    filterset_fields = ["is_breaking"]
+
+
+class ArticleListView(BaseArticleListView, generic.ListView):
     """Article list"""
 
-    paginate_by = 25
     ordering = "-created_at"
     template_name = "ui/articles/list.html"
+
+
+class ArticleArchiveView(BaseArticleListView, generic.ArchiveIndexView):
+    """Top level archive of articles"""
+
+    template_name = "ui/articles/archive/index.html"
+
+
+class ArticleYearArchiveView(BaseArticleListView, generic.YearArchiveView):
+    """Year archive for articles"""
+
+    template_name = "ui/articles/archive/year.html"
+
+
+class ArticleMonthArchiveView(BaseArticleListView, generic.MonthArchiveView):
+    """Month archive for articles"""
+
+    template_name = "ui/articles/archive/month.html"
+
+
+class ArticleWeekArchiveView(BaseArticleListView, generic.WeekArchiveView):
+    """Week archive for articles"""
+
+    template_name = "ui/articles/archive/week.html"
+
+
+class ArticleDayArchiveView(BaseArticleListView, generic.DayArchiveView):
+    """Week archive for articles"""
+
+    template_name = "ui/articles/archive/day.html"
+
+
+class ArticleTodayArchiveView(BaseArticleListView, generic.TodayArchiveView):
+    """Week archive for articles"""
+
+    template_name = "ui/articles/archive/today.html"
+
+
+class ArticleDetailView(mixins.LanguageFilterMixin, generic.DetailView):
+    """Article details"""
+
+    template_name = "ui/articles/id.html"
     queryset = Article.objects.live().public()
 
 
-class ArticleDetailView(generic.DetailView):
-    """Article list"""
+class ArticleDateDetailView(mixins.LanguageFilterMixin, generic.DateDetailView):
+    """Article details on a single date"""
 
-    slug_field = "slug"
-    slug_url_kwarg = "slug"
     template_name = "ui/articles/id.html"
     queryset = Article.objects.live().public()
 

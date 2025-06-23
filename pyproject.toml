@@ -23,6 +23,7 @@ drf-restwind = ">=0.2.0"
 pillow = ">=11.2.1"
 python-dotenv = ">=1.1.0"
 wagtail = ">=7.0"
+wagtail-localize = ">=1.12.1"
 
 
 [tool.poetry.group.dev.dependencies]

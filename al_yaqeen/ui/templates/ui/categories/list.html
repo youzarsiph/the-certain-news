@@ -1,0 +1,89 @@
+{% extends 'ui/base.html' %}{% load i18n wagtailimages_tags %}
+
+<!---->
+{% block title %}{% trans 'News by Category' %}{% endblock %}
+
+<!---->
+{% block content %}
+<section class="grid gap-16">
+  <div class="hero min-h-96">
+    <div class="hero-content">
+      <h1 class="text-primary text-2xl font-black lg:text-5xl">
+        {% trans 'News by Category' %}
+      </h1>
+    </div>
+  </div>
+
+  {% for category in category_list %}
+  <section id="{{ category.slug }}" class="grid gap-4 lg:gap-8">
+    <div
+      class="rounded-box border-primary flex items-center justify-between border-x-8 p-4"
+    >
+      <h2 class="text-primary text-xl font-semibold lg:text-3xl">
+        {{ category.title }}
+      </h2>
+
+      <div
+        class="tooltip tooltip-left rtl:tooltip-right tooltip-primary"
+        data-tip="{% trans 'See All' %}"
+      >
+        <a
+          href="{% url 'ui:category' category.slug %}"
+          class="btn btn-circle btn-soft btn-primary lg:btn-lg"
+        >
+          <i
+            data-lucide="chevron-right"
+            class="size-4 lg:size-6 rtl:rotate-180"
+          ></i>
+          <span class="sr-only">{% trans 'See All' %}</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="carousel rounded-box">
+      {% for article in category.get_children.specific|slice:'0:6' %}
+      <div
+        id="{{ article.slug }}"
+        class="join-vertical carousel-item join hover:border-success active:border-primary group w-full border border-transparent md:w-1/2 lg:w-1/3"
+      >
+        <article
+          class="card join-item bg-base-200 group-hover:bg-primary group-hover:text-primary-content lg:card-lg xl:card-xl relative size-full rounded-none p-4 hover:shadow"
+        >
+          <main class="card-body">
+            <h1
+              class="card-title text-primary group-hover:text-primary-content rtl:font-kufi font-serif"
+            >
+              {{ article.title }}
+            </h1>
+
+            <p>{{ article.headline }}</p>
+
+            <div
+              class="tooltip tooltip-right rtl:tooltip-left tooltip-info"
+              data-tip="{% trans 'Date published' %}"
+            >
+              <time
+                class="badge badge-soft badge-info"
+                datetime="{{ article.created_at|date }}"
+              >
+                {{ article.created_at|date }}
+              </time>
+            </div>
+          </main>
+        </article>
+
+        <a
+          href="{% url 'ui:article' article.slug %}"
+          class="btn join-item btn-primary group-hover:btn-success"
+        >
+          {% trans 'Continue reading' %}
+        </a>
+
+        <figure class="join-item">{% image article.image scale-100 %}</figure>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+  {% endfor %}
+</section>
+{% endblock %}

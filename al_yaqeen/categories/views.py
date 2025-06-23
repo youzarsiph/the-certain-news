@@ -1,7 +1,7 @@
 """API endpoints for al_yaqeen.categories"""
 
-from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAdminUser, IsAuthenticated
+from rest_framework.viewsets import ModelViewSet
 
 from al_yaqeen.categories.models import Category
 from al_yaqeen.categories.serializers import CategorySerializer

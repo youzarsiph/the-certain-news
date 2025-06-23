@@ -9,14 +9,13 @@
   <div class="hero min-h-96">
     <div class="hero-content">
       <h1 class="text-primary text-2xl font-black lg:text-5xl">
-        {% if request.GET.is_breaking %}{% trans 'Breaking News' %}{% else %}
-        {% trans 'Latest News' %}{% endif %}
+        {% trans 'Article Archive' %}
       </h1>
     </div>
   </div>
 
   <div class="rounded-box grid grid-cols-12 overflow-hidden">
-    {% for article in article_list %}
+    {% for article in latest %}
     <div
       id="{{ article.slug }}"
       class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3"

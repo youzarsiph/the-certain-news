@@ -1,7 +1,7 @@
 {% extends 'ui/base.html' %}{% load i18n wagtailimages_tags %}
 
 <!---->
-{% block title %}{% trans 'News' %}{% endblock %}
+{% block title %}{% trans 'Monthly Article Archive' %}{% endblock %}
 
 <!---->
 {% block content %}
@@ -9,14 +9,13 @@
   <div class="hero min-h-96">
     <div class="hero-content">
       <h1 class="text-primary text-2xl font-black lg:text-5xl">
-        {% if request.GET.is_breaking %}{% trans 'Breaking News' %}{% else %}
-        {% trans 'Latest News' %}{% endif %}
+        {% trans 'Article Archive' %}
       </h1>
     </div>
   </div>
 
   <div class="rounded-box grid grid-cols-12 overflow-hidden">
-    {% for article in article_list %}
+    {% for article in latest %}
     <div
       id="{{ article.slug }}"
       class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3"
@@ -76,5 +75,18 @@
     </div>
     {% endfor %}
   </div>
+
+  <!-- Use this instead -->
+  <ul>
+    {% for article in object_list %}
+    <li>{{ article.pub_date|date:"F j, Y" }}: {{ article.title }}</li>
+    {% endfor %}
+  </ul>
+
+  <p>
+    {% if previous_month %} Previous Month: {{ previous_month|date:"F Y" }} {%
+    endif %} {% if next_month %} Next Month: {{ next_month|date:"F Y" }} {%
+    endif %}
+  </p>
 </section>
 {% endblock %}

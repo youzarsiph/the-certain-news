@@ -1,320 +1,702 @@
-<!-- prettier ignore -->
 {% load i18n static %}
-
 <!doctype html>
-<html lang="en" data-theme="{% block theme %}cupcake{% endblock %}">
+<html
+  lang="{{ LANGUAGE_CODE }}"
+  dir="{% if LANGUAGE_CODE == 'ar' %}rtl{% else %}ltr{% endif %}"
+  data-theme="luxury"
+>
+  <head>
+    {% block head %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}{% endblock %}</title>
+    <link
+      href="{% static 'ui/css/styles.css' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100..900&family=Noto+Naskh+Arabic:wght@400..700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    {% endblock %}
+  </head>
 
-<head>
-  <!-- prettier ignore -->
-  {% block head %}
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <body class="antialiased h-dvh overflow-hidden">
+    <div class="drawer">
+      <input id="nav-drawer" type="checkbox" class="drawer-toggle sr-only" />
 
-  <!-- prettier ignore -->
-  <title>{% block title %}{% trans 'Al Yaqeen' %}{% endblock %}</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap"
-    rel="stylesheet" />
+      <section id="content" class="drawer-content">
+        <div class="relative h-dvh overflow-hidden bg-base-300 p-1 lg:p-2">
+          <header
+            class="absolute inset-x-1 top-1 z-20 rounded-t-box backdrop-blur-3xl lg:inset-x-2 lg:top-2"
+          >
+            <nav class="navbar px-3 py-2 lg:px-6 lg:py-4">
+              <div class="navbar-start join divide-x divide-base-100">
+                <div
+                  class="tooltip tooltip-right rtl:tooltip-left tooltip-primary"
+                  data-tip="Open Drawer"
+                >
+                  <label
+                    for="nav-drawer"
+                    aria-label="{% trans 'Close drawer' %}"
+                    class="btn join-item btn-square btn-soft btn-sm btn-primary lg:btn-md"
+                  >
+                    <i data-lucide="menu" class="size-4 lg:size-6"></i>
+                    <span class="sr-only">{% trans 'Open drawer' %}</span>
+                  </label>
+                </div>
 
-  <link href="{% static 'ui/css/styles.css' %}" rel="stylesheet" type="text/css" />
-  {% endblock %}
-</head>
+                <div
+                  class="tooltip tooltip-right rtl:tooltip-left tooltip-info"
+                  data-tip="{% translate 'Language' %}"
+                >
+                  <button
+                    popovertarget="language"
+                    style="anchor-name: --language"
+                    class="btn btn-sm btn-square btn-soft btn-info lg:btn-md"
+                  >
+                    <i data-lucide="languages" class="size-4 lg:size-6"></i>
 
-<body class="flex h-dvh bg-base-300 overflow-hidden">
-  <!-- prettier ignore -->
-  {% block nav %}
-  <section id="nav" class="h-full z-30 {% block nav_styles %}{% endblock %}">
-    <header class="h-full">
-      <nav class="menu menu-vertical h-full items-center justify-between gap-4 lg:w-auto">
-        <ul class="menu menu-vertical items-center gap-1 p-0 lg:gap-2">
-          <!-- prettier ignore -->
-          {% block branding %}
-          <li class="tooltip tooltip-right tooltip-primary" data-tip="{% trans 'Al Yaqeen' %}">
-            <a href="{% url 'ui:home' %}" class="btn btn-square btn-primary lg:btn-lg">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="lucide lucide-school-icon lucide-school lg:size-8">
-                <path d="M14 22v-4a2 2 0 1 0-4 0v4" />
-                <path
-                  d="m18 10 3.447 1.724a1 1 0 0 1 .553.894V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-7.382a1 1 0 0 1 .553-.894L6 10" />
-                <path d="M18 5v17" />
-                <path d="m4 6 7.106-3.553a2 2 0 0 1 1.788 0L20 6" />
-                <path d="M6 5v17" />
-                <circle cx="12" cy="9" r="2" />
-              </svg>
+                    <span class="sr-only">{% translate 'Language' %}</span>
+                  </button>
 
-              <span class="sr-only"> {% trans 'Al Yaqeen' %} </span>
-            </a>
-          </li>
-          {% endblock %}
+                  <ul
+                    id="language"
+                    popover
+                    style="position-anchor: --language"
+                    class="menu dropdown rounded-box bg-base-100 text-base-content shadow-sm rtl:dropdown-left"
+                  >
+                    <li class="menu-title">{% translate 'Language' %}</li>
+                    <form
+                      id="lang-form"
+                      class="hidden"
+                      action="{% url 'set_language' %}"
+                      method="post"
+                    >
+                      {% csrf_token %}
+                      <input
+                        name="next"
+                        type="hidden"
+                        value="{{ redirect_to }}"
+                      />
+                    </form>
+                    <!---->
+                    {% get_available_languages as LANGUAGES %}
+                    <!---->
+                    {% get_language_info_list for LANGUAGES as languages %}
+                    <!---->
+                    {% for language in languages %}
+                    <li>
+                      <label
+                        class="flex flex-row items-center justify-between gap-8"
+                      >
+                        <div class="flex flex-row items-center gap-2">
+                          <input
+                            form="lang-form"
+                            type="submit"
+                            name="language"
+                            value="{{ language.code|upper }}"
+                            aria-label="{{ language.name_local }} ({{ language.code }})"
+                          />
+                          <span
+                            >{{ language.name_local }} ({{ language.code
+                            }})</span
+                          >
+                        </div>
+                        {% if language.code == LANGUAGE_CODE %}
+                        <i data-lucide="check" class="size-4 lg:size-6"></i>
+                        {% endif %}
+                      </label>
+                    </li>
+                    {% endfor %}
+                  </ul>
+                </div>
 
-          <!-- prettier ignore -->
-          {% block nav_links %}
-          <li class="tooltip tooltip-right tooltip-secondary" data-tip="{% trans 'Home' %}">
-            <a href="{% url 'ui:home' %}" class="btn btn-sm btn-square btn-ghost lg:btn-md">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="lucide lucide-house size-4 lg:size-6">
-                <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
-                <path
-                  d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-              </svg>
+                <div
+                  class="tooltip tooltip-right rtl:tooltip-left tooltip-success"
+                  data-tip="{% trans 'Search' %}"
+                >
+                  <button
+                    onclick="modal.showModal()"
+                    class="btn join-item btn-square btn-soft btn-sm btn-success lg:btn-md"
+                  >
+                    <i data-lucide="search" class="size-4 lg:size-6"></i>
 
-              <span class="sr-only">{% trans 'Home' %}</span>
-            </a>
-          </li>
-          <li class="tooltip tooltip-right tooltip-secondary" data-tip="{% trans 'My learning' %}">
-            <a href="{% url 'ui:home' %}" class="btn btn-sm btn-square btn-ghost lg:btn-md">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="lucide lucide-graduation-cap-icon lucide-graduation-cap size-4 lg:size-6">
-                <path
-                  d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" />
-                <path d="M22 10v6" />
-                <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" />
-              </svg>
+                    <span class="sr-only">{% trans 'Search' %}</span>
+                  </button>
+                </div>
+              </div>
 
-              <span class="sr-only">{% trans 'My learning' %}</span>
-            </a>
-          </li>
-          <li class="tooltip tooltip-right tooltip-secondary" data-tip="{% trans 'Courses' %}">
-            <a href="{% url 'ui:home' %}" class="btn btn-sm btn-square btn-ghost lg:btn-md">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="lucide lucide-library-icon lucide-library size-4 lg:size-6">
-                <path d="m16 6 4 14" />
-                <path d="M12 6v14" />
-                <path d="M8 8v12" />
-                <path d="M4 4v16" />
-              </svg>
+              <div class="navbar-center">
+                <div class="join items-center">
+                  <div
+                    class="tooltip tooltip-bottom tooltip-success"
+                    data-tip="{% trans 'Latest News' %}"
+                  >
+                    <a
+                      href="{% url 'ui:articles' %}"
+                      class="btn btn-square btn-sm join-item btn-success lg:btn-md"
+                    >
+                      <i data-lucide="scroll-text" class="size-4 lg:size-6"></i>
+                      <span class="sr-only">{% trans 'Latest News' %}</span>
+                    </a>
+                  </div>
+                  <div
+                    class="tooltip tooltip-bottom tooltip-primary"
+                    data-tip="{% trans 'Al Yaqeen' %}"
+                  >
+                    <a
+                      href="{% url 'ui:home' %}"
+                      class="btn btn-square rounded-sm join-item btn-primary lg:btn-lg"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-feather-text-icon lucide-feather-text size-8"
+                      >
+                        <path d="M17.9 8H9.2" />
+                        <path
+                          d="M5.1 12H14l8-8.2c-2.3-2.3-6.1-2.3-8.5 0L2 15"
+                        />
+                        <path d="M2 19h8" />
+                        <path
+                          d="M21 17v1c0 1 1 1.5 1 2.5 0 .8-.7 1.5-1.5 1.5h-5c-.8 0-1.5-.7-1.5-1.5 0-1 1-1.5 1-2.5v-1"
+                        />
+                        <path d="M14 17h8" />
+                      </svg>
+                      <span class="sr-only">{% trans 'Al Yaqeen' %}</span>
+                    </a>
+                  </div>
+                  <div
+                    class="tooltip tooltip-bottom tooltip-success"
+                    data-tip="{% trans 'Categories' %}"
+                  >
+                    <a
+                      href="{% url 'ui:categories' %}"
+                      class="btn btn-square btn-sm join-item btn-success lg:btn-md"
+                    >
+                      <i data-lucide="component" class="size-4 lg:size-6"></i>
+                      <span class="sr-only">{% trans 'Categories' %}</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
 
-              <span class="sr-only">{% trans 'Courses' %}</span>
-            </a>
-          </li>
-          <li class="tooltip tooltip-right tooltip-secondary" data-tip="{% trans 'Learning paths' %}">
-            <a href="{% url 'ui:home' %}" class="btn btn-sm btn-square btn-ghost lg:btn-md">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="lucide lucide-route-icon lucide-route size-4 lg:size-6">
-                <circle cx="6" cy="19" r="3" />
-                <path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15" />
-                <circle cx="18" cy="5" r="3" />
-              </svg>
+              <div class="navbar-end join divide-x divide-base-100">
+                {% if request.user.is_authenticated %}
+                <div
+                  class="tooltip tooltip-left rtl:tooltip-right tooltip-success"
+                  data-tip="{% trans 'Profile' %}"
+                >
+                  <a
+                    href="{% url 'ui:profile' %}"
+                    class="btn join-item btn-square btn-soft btn-sm btn-success lg:btn-md"
+                  >
+                    <i data-lucide="user" class="size-4 lg:size-6"></i>
+                    <span class="sr-only">{% trans 'Profile' %}</span>
+                  </a>
+                </div>
+                <div
+                  class="tooltip tooltip-left tooltip-info rtl:tooltip-right"
+                  data-tip="{% trans 'Toggle theme' %}"
+                >
+                  <label
+                    class="swap swap-rotate btn join-item btn-square btn-soft btn-sm btn-info lg:btn-md"
+                  >
+                    <input
+                      type="checkbox"
+                      class="theme-controller"
+                      value="silk"
+                    />
+                    <i data-lucide="sun" class="swap-off size-4 lg:size-6"></i>
+                    <i
+                      data-lucide="moon-star"
+                      class="swap-on size-4 lg:size-6"
+                    ></i>
+                  </label>
+                </div>
+                <div
+                  class="tooltip tooltip-left rtl:tooltip-right tooltip-primary"
+                  data-tip="{% trans 'Logout' %}"
+                >
+                  <button
+                    type="submit"
+                    form="logout"
+                    class="btn join-item btn-square btn-soft btn-sm btn-primary lg:btn-md"
+                  >
+                    <i data-lucide="log-out" class="size-4 lg:size-6"></i>
+                    <span class="sr-only">{% trans 'Logout' %}</span>
+                  </button>
+                </div>
+                {% else %}
+                <div
+                  class="tooltip tooltip-left rtl:tooltip-right tooltip-success"
+                  data-tip="{% trans 'Subscribe' %}"
+                >
+                  <a
+                    href="{% url 'ui:signup' %}"
+                    class="btn join-item btn-square btn-soft btn-sm btn-success lg:btn-md"
+                  >
+                    <i data-lucide="podcast" class="size-4 lg:size-6"></i>
+                    <span class="sr-only">{% trans 'Subscribe' %}</span>
+                  </a>
+                </div>
+                <div
+                  class="tooltip tooltip-left tooltip-info rtl:tooltip-right"
+                  data-tip="{% trans 'Toggle theme' %}"
+                >
+                  <label
+                    class="swap swap-rotate btn join-item btn-square btn-soft btn-sm btn-info lg:btn-md"
+                  >
+                    <input
+                      type="checkbox"
+                      class="theme-controller"
+                      value="silk"
+                    />
+                    <i data-lucide="sun" class="swap-off size-4 lg:size-6"></i>
+                    <i
+                      data-lucide="moon-star"
+                      class="swap-on size-4 lg:size-6"
+                    ></i>
+                  </label>
+                </div>
+                <div
+                  class="tooltip tooltip-left rtl:tooltip-right tooltip-primary"
+                  data-tip="{% trans 'Login' %}"
+                >
+                  <a
+                    href="{% url 'ui:login' %}"
+                    class="btn join-item btn-square btn-soft btn-sm btn-primary lg:btn-md"
+                  >
+                    <i data-lucide="log-in" class="size-4 lg:size-6"></i>
+                    <span class="sr-only">{% trans 'Login' %}</span>
+                  </a>
+                </div>
+                {% endif %}
+              </div>
+            </nav>
+          </header>
 
-              <span class="sr-only">{% trans 'Learning paths' %}</span>
-            </a>
-          </li>
-          <li class="tooltip tooltip-right tooltip-secondary" data-tip="{% trans 'News' %}">
-            <a href="{% url 'ui:home' %}" class="btn btn-sm btn-square btn-ghost lg:btn-md">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="lucide lucide-scroll-text-icon lucide-scroll-text size-4 lg:size-6">
-                <path d="M15 12h-5" />
-                <path d="M15 8h-5" />
-                <path d="M19 17V5a2 2 0 0 0-2-2H4" />
-                <path
-                  d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3" />
-              </svg>
+          <section
+            class="m-auto flex size-full max-h-[calc(100dvh-0.5rem)] max-w-[calc(100dvw-0.5rem)] flex-col gap-16 overflow-y-auto rounded-box bg-base-100 p-4 pt-20 lg:max-h-[calc(100dvh-1rem)] lg:max-w-[calc(100dvw-1rem)]"
+          >
+            {% block content %}{% endblock %}
 
-              <span class="sr-only">{% trans 'News' %}</span>
-            </a>
-          </li>
-          {% endblock %}
-        </ul>
+            <!---->
+            {% block footer %}
+            <footer
+              class="footer w-full rounded-box bg-base-200 p-10 text-base-content sm:footer-horizontal"
+            >
+              <nav>
+                <h6 class="footer-title">{% trans 'Services' %}</h6>
+                <a class="link link-hover">{% trans 'Marketing' %}</a>
+                <a class="link link-hover">{% trans 'Advertisement' %}</a>
+              </nav>
+              <nav>
+                <h6 class="footer-title">{% trans 'Company' %}</h6>
+                <a class="link link-hover">{% trans 'About us' %}</a>
+                <a class="link link-hover">{% trans 'Contact' %}</a>
+              </nav>
+              <nav>
+                <h6 class="footer-title">{% trans 'Legal' %}</h6>
+                <a class="link link-hover">{% trans 'Terms of use' %}</a>
+                <a class="link link-hover">{% trans 'Privacy policy' %}</a>
+              </nav>
+              <form>
+                <h6 class="footer-title">{% trans 'Newsletter' %}</h6>
+                <fieldset class="w-full">
+                  <label>{% trans 'Enter your email address' %}</label>
+                  <div class="join">
+                    <input
+                      type="text"
+                      placeholder="username@site.com"
+                      class="input-bordered input join-item"
+                    />
+                    <button class="btn join-item btn-primary">
+                      {% trans 'Subscribe' %}
+                    </button>
+                  </div>
+                </fieldset>
+              </form>
+            </footer>
+            {% endblock %}
+          </section>
+        </div>
+      </section>
 
-        <ul class="menu menu-vertical items-center gap-1 p-0 lg:gap-2">
-          <li class="tooltip tooltip-right tooltip-accent" data-tip="{% trans 'Profile' %}">
-            <button popovertarget="profile" style="anchor-name: --profile"
-              class="btn btn-sm btn-square btn-ghost lg:btn-md">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="lucide lucide-user size-4 lg:size-6">
-                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-                <circle cx="12" cy="7" r="4" />
-              </svg>
+      <section id="sidebar" class="drawer-side z-50">
+        <label
+          for="nav-drawer"
+          aria-label="{% trans 'Close drawer' %}"
+          class="drawer-overlay"
+        ></label>
 
-              <span class="sr-only">{% trans 'Profile' %}</span>
-            </button>
-
-            <ul popover id="profile" style="position-anchor: --profile"
-              class="menu dropdown dropdown-top dropdown-right bg-base-200 rounded-box shadow-lg">
-              <li class="menu-title">{% trans 'Profile' %}</li>
-              <li>
-                <a href="{% url 'ui:profile' %}" class="flex items-center gap-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="lucide lucide-circle-user size-4 lg:size-6">
-                    <circle cx="12" cy="12" r="10" />
-                    <circle cx="12" cy="10" r="3" />
-                    <path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662" />
+        <section
+          class="m-1 flex h-full max-h-[calc(100dvh-0.5rem)] w-full max-w-[calc(100dvw-0.5rem)] flex-col justify-between overflow-hidden rounded-box bg-base-100/50 backdrop-blur-3xl sm:w-10/12 md:w-8/12 lg:m-2 lg:max-h-[calc(100dvh-1rem)] lg:w-1/3 lg:max-w-[calc(100dvw-1rem)] lg:rounded-r-box xl:w-1/4"
+        >
+          <div class="grid gap-4">
+            <header class="flex items-center justify-between gap-4 p-4">
+              <div
+                class="tooltip tooltip-right rtl:tooltip-left tooltip-primary tooltip-open"
+                data-tip="{% trans 'Al Yaqeen' %}"
+              >
+                <a
+                  href="{% url 'ui:home' %}"
+                  class="btn btn-square btn-lg btn-primary"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-feather-text-icon lucide-feather-text size-8"
+                  >
+                    <path d="M17.9 8H9.2" />
+                    <path d="M5.1 12H14l8-8.2c-2.3-2.3-6.1-2.3-8.5 0L2 15" />
+                    <path d="M2 19h8" />
+                    <path
+                      d="M21 17v1c0 1 1 1.5 1 2.5 0 .8-.7 1.5-1.5 1.5h-5c-.8 0-1.5-.7-1.5-1.5 0-1 1-1.5 1-2.5v-1"
+                    />
+                    <path d="M14 17h8" />
                   </svg>
+                  <span class="sr-only">{% trans 'Al Yaqeen' %}</span>
+                </a>
+              </div>
 
-                  <span>{% trans 'Profile' %}</span>
+              <div
+                class="tooltip tooltip-left rtl:tooltip-right hover:tooltip-error"
+                data-tip="{% trans 'Close' %}"
+              >
+                <label
+                  for="nav-drawer"
+                  aria-label="{% trans 'Close drawer' %}"
+                  class="btn btn-square btn-soft btn-sm btn-primary hover:btn-error lg:btn-md"
+                >
+                  <i data-lucide="x" class="size-4 lg:size-6"></i>
+                  <span class="sr-only">{% trans 'Close' %}</span>
+                </label>
+              </div>
+            </header>
+
+            <ol class="grid gap-4 size-full p-4">
+              <li>
+                <a
+                  href="{% url 'ui:home' %}"
+                  class="btn gap-4 w-full justify-start btn-soft btn-primary"
+                >
+                  <i data-lucide="home" class="size-4 lg:size-6"></i>
+                  {% trans 'Home' %}
                 </a>
               </li>
-              <!-- prettier ignore -->
-              {% if request.user.is_authenticated %}
-              <!-- prettier ignore -->
-              {% if request.user.is_instructor %}
+              {% if request.user.is_authenticated and request.user.is_staff %}
               <li>
-                <a href="/dashboard/" class="flex items-center gap-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="lucide lucide-layout-dashboard-icon lucide-layout-dashboard size-4 lg:size-6">
-                    <rect width="7" height="9" x="3" y="3" rx="1" />
-                    <rect width="7" height="5" x="14" y="3" rx="1" />
-                    <rect width="7" height="9" x="14" y="12" rx="1" />
-                    <rect width="7" height="5" x="3" y="16" rx="1" />
-                  </svg>
+                <a
+                  href="/dashboard/"
+                  class="btn gap-4 w-full justify-between btn-soft btn-primary"
+                >
+                  <span class="flex items-center gap-4">
+                    <i
+                      data-lucide="layout-dashboard"
+                      class="size-4 lg:size-6"
+                    ></i>
+                    {% trans 'Dashboard' %}
+                  </span>
 
-                  <span>{% trans 'Dashboard' %}</span>
+                  <i
+                    data-lucide="chevron-right"
+                    class="size-4 lg:size-6 rtl:rotate-180"
+                  ></i>
                 </a>
               </li>
               {% endif %}
               <li>
-                <button type="submit" form="logout" class="flex items-center gap-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="lucide lucide-log-out-icon lucide-log-out size-4 lg:size-6">
-                    <path d="m16 17 5-5-5-5" />
-                    <path d="M21 12H9" />
-                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
-                  </svg>
-
-                  <span>{% trans 'Log out' %}</span>
-                </button>
-              </li>
-              {% else %}
-              <li>
-                <a href="{% url 'ui:login' %}" class="flex items-center gap-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="lucide lucide-log-in-icon lucide-log-in size-4 lg:size-6">
-                    <path d="m10 17 5-5-5-5" />
-                    <path d="M15 12H3" />
-                    <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
-                  </svg>
-
-                  <span>{% trans 'Log in' %}</span>
+                <a
+                  href="{% url 'ui:category' 'economy' %}"
+                  class="btn gap-4 w-full justify-start btn-soft btn-primary"
+                >
+                  <i data-lucide="hand-coins" class="size-4 lg:size-6"></i>
+                  {% trans 'Economy' %}
                 </a>
               </li>
-              {% endif %}
-            </ul>
-          </li>
-        </ul>
-      </nav>
-    </header>
-  </section>
-  {% endblock %}
+              <li>
+                <a
+                  href="{% url 'ui:category' 'politics' %}"
+                  class="btn gap-4 w-full justify-start btn-soft btn-primary"
+                >
+                  <i data-lucide="vote" class="size-4 lg:size-6"></i>
+                  {% trans 'Politics' %}
+                </a>
+              </li>
+              <li>
+                <a
+                  href="{% url 'ui:category' 'technology' %}"
+                  class="btn gap-4 w-full justify-start btn-soft btn-primary"
+                >
+                  <i data-lucide="cpu" class="size-4 lg:size-6"></i>
+                  {% trans 'Technology' %}
+                </a>
+              </li>
+              <li>
+                <a
+                  href="{% url 'ui:category' 'entertainment' %}"
+                  class="btn gap-4 w-full justify-start btn-soft btn-primary"
+                >
+                  <i data-lucide="clapperboard" class="size-4 lg:size-6"></i>
+                  {% trans 'Entertainment' %}
+                </a>
+              </li>
+              <li>
+                <a
+                  href="{% url 'ui:category' 'health' %}"
+                  class="btn gap-4 w-full justify-start btn-soft btn-primary"
+                >
+                  <i data-lucide="heart-pulse" class="size-4 lg:size-6"></i>
+                  {% trans 'Health' %}
+                </a>
+              </li>
+              <li>
+                <a
+                  href="{% url 'ui:category' 'sports' %}"
+                  class="btn gap-4 w-full justify-start btn-soft btn-primary"
+                >
+                  <i data-lucide="medal" class="size-4 lg:size-6"></i>
+                  {% trans 'Sports' %}
+                </a>
+              </li>
+              <li>
+                <a
+                  href="{% url 'ui:category' 'tourism' %}"
+                  class="btn gap-4 w-full justify-start btn-soft btn-primary"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-palmtree-island-sun-icon lucide-palmtree-island-sun size-4 lg:size-6"
+                  >
+                    <circle cx="6" cy="7" r="3" />
+                    <path d="M16 14s1-3 1-8V4s-1-2-3-2c-1 0-2 .5-2 .5" />
+                    <path d="M13 8a4 4 0 0 1 8 0" />
+                    <path d="M17 4s1-2 3-2c1 0 2 .5 2 .5" />
+                    <path d="M19.75 19A8 8 0 0 0 4 21" />
+                    <path
+                      d="M2 20c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"
+                    />
+                  </svg>
+                  {% trans 'Tourism' %}
+                </a>
+              </li>
+              <li>
+                <a
+                  href="{% url 'ui:category' 'culture' %}"
+                  class="btn gap-4 w-full justify-start btn-soft btn-primary"
+                >
+                  <i data-lucide="castle" class="size-4 lg:size-6"></i>
+                  {% trans 'Culture' %}
+                </a>
+              </li>
+            </ol>
+          </div>
 
-  <section id="content" class="relative flex h-dvh max-h-dvh w-full flex-col gap-2 p-1 lg:p-2 overflow-hidden">
-    <!-- prettier ignore -->
-    {% block searchbar %}
-    <section id="searchbar" class="z-20 w-full {% block searchbar_styles %}{% endblock %}">
-      <nav class="flex items-center justify-between w-full gap-2 lg:gap-4">
-        <h1 class="hidden text-xl font-semibold text-primary lg:block">
-          {% trans 'Al Yaqeen' %}
-        </h1>
+          <section class="join divide-base-100 divide-x-2">
+            {% if request.user.is_authenticated %}
+            <div
+              class="tooltip tooltip-top tooltip-primary grow"
+              data-tip="{% trans 'Log out' %}"
+            >
+              <button
+                type="submit"
+                form="logout"
+                class="btn btn-square btn-lg join-item btn-primary btn-soft w-full rounded-none"
+              >
+                <i data-lucide="log-out" class="size-4 lg:size-6"></i>
+                <span class="sr-only">{% trans 'Log out' %}</span>
+              </button>
+            </div>
+            {% else %}
+            <div
+              class="tooltip tooltip-top tooltip-primary grow"
+              data-tip="{% trans 'Log in' %}"
+            >
+              <a
+                href="{% url 'ui:login' %}"
+                class="btn btn-square btn-lg join-item btn-primary btn-soft w-full rounded-none"
+              >
+                <i data-lucide="log-in" class="size-4 lg:size-6"></i>
+                <span class="sr-only">{% trans 'Log in' %}</span>
+              </a>
+            </div>
+            {% endif %}
+            <div
+              class="tooltip tooltip-top tooltip-info"
+              data-tip="{% trans 'Facebook' %}"
+            >
+              <a
+                href="https://facebook.com/"
+                class="btn btn-square btn-lg join-item btn-info btn-soft"
+              >
+                <i data-lucide="facebook" class="size-4 lg:size-6"></i>
+                <span class="sr-only">{% trans 'Facebook' %}</span>
+              </a>
+            </div>
+            <div
+              class="tooltip tooltip-top tooltip-error"
+              data-tip="{% trans 'Instagram' %}"
+            >
+              <a
+                href="https://instagram.com/"
+                class="btn btn-square btn-lg join-item btn-error btn-soft"
+              >
+                <i data-lucide="instagram" class="size-4 lg:size-6"></i>
+                <span class="sr-only">{% trans 'Instagram' %}</span>
+              </a>
+            </div>
+            <div
+              class="tooltip tooltip-top tooltip-primary"
+              data-tip="{% trans 'X' %}"
+            >
+              <a
+                href="https://x.com/"
+                class="btn btn-square btn-lg join-item btn-primary btn-soft"
+              >
+                <i data-lucide="twitter" class="size-4 lg:size-6"></i>
+                <span class="sr-only">{% trans 'C' %}</span>
+              </a>
+            </div>
+            <div
+              class="tooltip tooltip-top tooltip-accent"
+              data-tip="{% trans 'Linkedin' %}"
+            >
+              <a
+                href="https://linkedin.com/"
+                class="btn btn-square btn-lg join-item btn-accent btn-soft"
+              >
+                <i data-lucide="linkedin" class="size-4 lg:size-6"></i>
+                <span class="sr-only">{% trans 'Linkedin' %}</span>
+              </a>
+            </div>
+            {% if request.user.is_authenticated %}
+            <div
+              class="tooltip tooltip-top tooltip-primary grow"
+              data-tip="{% trans 'Profile' %}"
+            >
+              <a
+                href="{% url 'ui:profile' %}"
+                class="btn btn-square btn-lg join-item btn-primary btn-soft w-full rounded-none"
+              >
+                <i data-lucide="user" class="size-4 lg:size-6"></i>
+                <span class="sr-only">{% trans 'Profile' %}</span>
+              </a>
+            </div>
+            {% else %}
+            <div
+              class="tooltip tooltip-top tooltip-primary grow"
+              data-tip="{% trans 'Subscribe' %}"
+            >
+              <a
+                href="{% url 'ui:signup' %}"
+                class="btn btn-square btn-lg join-item btn-primary btn-soft w-full rounded-none"
+              >
+                <i data-lucide="join" class="size-4 lg:size-6"></i>
+                <span class="sr-only">{% trans 'Subscribe' %}</span>
+              </a>
+            </div>
+            {% endif %}
+          </section>
+        </section>
+      </section>
+    </div>
 
-        <form method="get" class="join w-full lg:max-w-lg">
-          <label class="input input-sm input-primary w-full join-item lg:input-md">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-              class="lucide lucide-search opacity-50 size-4 lg:size-6">
-              <circle cx="11" cy="11" r="8" />
-              <path d="m21 21-4.3-4.3" />
-            </svg>
+    <dialog id="modal" class="modal">
+      <section class="relative modal-box grid max-w-xl gap-6 bg-base-100">
+        <header class="flex items-center justify-between gap-4 text-primary">
+          <h1 class="text-lg font-semibold lg:text-2xl">
+            {% trans 'Search' %}
+          </h1>
 
-            <input type="search" class="grow" name="search" value="{{ request.GET.search }}"
-              placeholder="{% trans 'Search...' %}" />
-          </label>
+          <div
+            class="tooltip tooltip-left rtl:tooltip-right tooltip-error"
+            data-tip="{% trans 'Close' %}"
+          >
+            <button
+              onclick="modal.close()"
+              class="btn btn-square btn-soft btn-primary hover:btn-error"
+            >
+              <i data-lucide="x" class="size-4 lg:size-6"></i>
 
-          <div class="tooltip tooltip-bottom" data-tip="{% trans 'Search' %}">
-            <button class="btn btn-sm btn-primary join-item lg:btn-md" type="submit">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="lucide lucide-circle-check-icon lucide-circle-check size-4 lg:size-6">
-                <circle cx="12" cy="12" r="10" />
-                <path d="m9 12 2 2 4-4" />
-              </svg>
-
-              <span class="sr-only"> {% trans "Search" %} </span>
+              <span class="sr-only">{% trans 'Close' %}</span>
             </button>
           </div>
-        </form>
+        </header>
 
-        <ul class="flex items-center gap-2 p-0 lg:gap-4">
-          <li class="tooltip tooltip-left tooltip-accent" data-tip="{% trans 'Toggle theme' %}">
-            <label class="swap swap-rotate btn btn-sm btn-square btn-ghost lg:btn-md">
-              <input type="checkbox" class="theme-controller" value="{% block toggle_theme %}luxury{% endblock %}" />
+        <main>
+          <form id="search-form">
+            <label
+              class="input w-full bg-transparent text-primary input-primary"
+            >
+              <i data-lucide="search" class="size-4 lg:size-6"></i>
 
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="lucide lucide-sun-icon lucide-sun size-4 lg:size-6 fill-current swap-off">
-                <circle cx="12" cy="12" r="4" />
-                <path d="M12 2v2" />
-                <path d="M12 20v2" />
-                <path d="m4.93 4.93 1.41 1.41" />
-                <path d="m17.66 17.66 1.41 1.41" />
-                <path d="M2 12h2" />
-                <path d="M20 12h2" />
-                <path d="m6.34 17.66-1.41 1.41" />
-                <path d="m19.07 4.93-1.41 1.41" />
-              </svg>
-
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="lucide lucide-moon-star-icon lucide-moon-star size-4 lg:size-6 fill-current swap-on">
-                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9" />
-                <path d="M20 3v4" />
-                <path d="M22 5h-4" />
-              </svg>
+              <input
+                type="search"
+                name="search"
+                placeholder="{% trans 'Search' %}"
+                class="grow"
+              />
             </label>
-          </li>
-        </ul>
-      </nav>
-    </section>
-    {% endblock %}
+          </form>
+        </main>
 
-    <main class="grid gap-4 grow grid-cols-12 rounded-box bg-base-100 overflow-y-auto lg:overflow-y-visible lg:gap-0">
-      <!-- prettier ignore -->
-      {% block main %}
-      <section id="sidebar"
-        class="col-span-12 h-full lg:col-span-3 {% block sidebar_height %} lg:h-[calc(100dvh-4rem)] lg:max-h-[calc(100dvh-4rem)] {% endblock %} {% block sidebar_styles %}{% endblock %}">
-        <!-- prettier ignore -->
-        {% block sidebar %}
-        <section id="sidebar-content" class="relative h-full">
-          <header class="absolute inset-x-0 top-0 z-10">
-            <nav class="flex items-center justify-between p-4 gap-4 backdrop-blur-3xl rounded-t-box"></nav>
-          </header>
-
-          <main class="flex flex-col gap-4 gap-4 h-full px-4 py-20 lg:max-h-dvh lg:overflow-y-auto"></main>
-        </section>
-        {% endblock %}
+        <footer class="-mx-5 -mb-5 grid grid-cols-2">
+          <button
+            type="submit"
+            form="search-form"
+            class="btn rounded-none rounded-tl rounded-bl-box btn-primary"
+          >
+            {% trans 'Search' %}
+          </button>
+          <button
+            onclick="modal.close()"
+            class="btn rounded-none rounded-tr rounded-br-box btn-ghost"
+          >
+            {% trans 'Close' %}
+          </button>
+        </footer>
       </section>
+    </dialog>
 
-      <section id="content"
-        class="col-span-12 h-full lg:col-span-9 {% block content_height %} lg:h-[calc(100dvh-4rem)] lg:max-h-[calc(100dvh-4rem)] {% endblock %} {% block content_styles %}{% endblock %}">
-        <!-- prettier ignore -->
-        {% block content %}
-        <section id="main-content" class="relative h-full">
-          <header class="absolute inset-x-0 top-0 z-10">
-            <nav class="navbar items-center justify-between gap-4 rounded-t-box backdrop-blur-3xl px-4"></nav>
-          </header>
+    <form
+      id="logout"
+      action="{% url 'ui:logout' %}"
+      method="post"
+      class="hidden"
+    >
+      {% csrf_token %}
+    </form>
 
-          <main class="flex flex-col gap-4 h-full p-4 pt-20 lg:max-h-dvh lg:overflow-y-auto"></main>
-        </section>
-        {% endblock %}
-      </section>
-      {% endblock %}
-    </main>
-  </section>
-
-  <form id="logout" action="{% url 'ui:logout' %}" method="post" class="hidden">
-    {% csrf_token %}
-  </form>
-</body>
-
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      lucide.createIcons();
+    </script>
+  </body>
 </html>

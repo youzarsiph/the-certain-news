@@ -1,6 +1,6 @@
 """View Mixins"""
 
-from typing import Any, Mapping, List, Optional
+from typing import Any, List, Mapping, Optional
 
 
 # Create your mixins here.

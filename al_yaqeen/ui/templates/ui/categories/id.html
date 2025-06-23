@@ -1,22 +1,23 @@
-{% extends 'ui/base.html' %}{% load i18n wagtailimages_tags %}
+{% extends 'ui/base.html' %}{% load i18n wagtailcore_tags wagtailimages_tags %}
 
 <!---->
-{% block title %}{% trans 'News' %}{% endblock %}
+{% block title %}{{ category.title }}{% endblock %}
 
 <!---->
 {% block content %}
 <section class="grid gap-8">
   <div class="hero min-h-96">
-    <div class="hero-content">
+    <div class="hero-content grid gap-4 lg:gap-8">
       <h1 class="text-primary text-2xl font-black lg:text-5xl">
-        {% if request.GET.is_breaking %}{% trans 'Breaking News' %}{% else %}
-        {% trans 'Latest News' %}{% endif %}
+        {{ category.title }}
       </h1>
+
+      <div class="prose">{{ category.description }}</div>
     </div>
   </div>
 
   <div class="rounded-box grid grid-cols-12 overflow-hidden">
-    {% for article in article_list %}
+    {% for article in category.get_children.specific %}
     <div
       id="{{ article.slug }}"
       class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3"
@@ -28,10 +29,11 @@
           class="card bg-base-200 lg:card-lg xl:card-xl relative size-full rounded-none"
         >
           <figure>{% image article.image scale-100 %}</figure>
-          <main class="card-body gap-4">
+          <main class="gird card-body gap-4 lg:gap-6">
             <h1 class="card-title text-primary rtl:font-kufi font-serif">
               {{ article.title }}
             </h1>
+
             <p>{{ article.headline }}</p>
 
             <div class="flex items-center justify-between">
@@ -52,10 +54,10 @@
                 data-tip="{% trans 'Category' %}"
               >
                 <a
-                  href="{% url 'ui:category' article.get_parent.slug %}"
+                  href="{% url 'ui:category' category.slug %}"
                   class="badge badge-soft badge-primary"
                 >
-                  <span>{{ article.get_parent.title }}</span>
+                  <span>{{ category.title }}</span>
                   <i
                     data-lucide="chevron-right"
                     class="size-4 lg:size-6 rtl:rotate-180"
@@ -63,13 +65,6 @@
                 </a>
               </div>
             </div>
-
-            <a
-              href="{% url 'ui:article' article.slug %}"
-              class="btn btn-primary"
-            >
-              {% trans 'Continue reading' %}
-            </a>
           </main>
         </article>
       </div>

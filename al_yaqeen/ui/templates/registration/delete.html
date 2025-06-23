@@ -1,24 +1,25 @@
-<!-- prettier ignore -->
 {% extends 'registration/form.html' %}{% load i18n %}
 
-<!-- prettier ignore -->
+<!---->
 {% block title %}{{ block.super }} | {% trans 'Delete account' %}{% endblock %}
 
-<!-- prettier ignore -->
-{% block breadcrumbs %}{{ block.super }}
+<!---->
+{% block breadcrumbs %} {{ block.super }}
 <li>{% trans 'Delete account' %}</li>
 {% endblock %}
 
-<!-- prettier ignore -->
+<!---->
 {% block form_content %}
-<h1 class="text-xl font-semibold lg:text-4xl">{% trans 'Delete account' %}</h1>
+<h1 class="text-primary text-xl font-semibold lg:text-4xl">
+  {% trans 'Delete account' %}
+</h1>
 
 <p class="lg:text-xl">
   {% trans 'Are your sure that you want to delete your account?' %}
 </p>
 
-<div class="alert alert-soft alert-error">
-  <span class="badge badge-error">{% trans 'Danger' %}</span>
+<div class="alert alert-error">
+  <i data-lucide="circle-x" class="size-4 lg:size-6"></i>
   <p>{% trans 'This action is destructive!' %}</p>
 </div>
 {% endblock %}

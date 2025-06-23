@@ -1,15 +1,144 @@
-<!-- prettier ignore -->
-{% extends 'ui/base.html' %}{% load i18n wagtailcore_tags wagtailuserbar %}
+{% extends 'ui/base.html' %}{% load i18n wagtailcore_tags wagtailimages_tags %}
 
-<!-- prettier ignore -->
+<!---->
 {% block title %}{{ article.title }}{% endblock %}
 
-<!-- prettier ignore -->
-{% block main %}
-{% wagtailuserbar %}
-<div class="flex flex-col gap-6 col-span-12 p-4">
-  <h1 class="text-4xl font-bold">{{ article.title }}</h1>
+<!---->
+{% block content %}
+<div class="grid w-full grid-cols-12 gap-8">
+  <section
+    id="article-options"
+    class="col-span-12 lg:col-span-8 lg:col-start-4 lg:col-end-10"
+  >
+    <div class="flex w-full items-center justify-between">
+      <div class="join-vertical join divide-base-100 divide-y-2">
+        <div
+          class="tooltip tooltip-right rtl:tooltip-left tooltip-primary"
+          data-tip="{% trans 'Category' %}"
+        >
+          <a
+            href="{% url 'ui:category' article.get_parent.slug %}"
+            class="join-item badge badge-soft badge-primary lg:badge-xl w-full font-bold"
+          >
+            {{ article.get_parent.title }}
+          </a>
+        </div>
 
-  <article class="prose">{% include_block article.content %}</article>
+        {% if article.is_breaking %}
+        <div
+          class="tooltip tooltip-right rtl:tooltip-left tooltip-error"
+          data-tip="{% trans 'Breaking' %}"
+        >
+          <a
+            class="join-item badge badge-soft badge-error w-full animate-pulse lg:badge-lg"
+          >
+            {% trans 'Breaking' %}
+          </a>
+        </div>
+        {% endif %}
+
+        <div
+          class="tooltip tooltip-right rtl:tooltip-left tooltip-info"
+          data-tip="{% trans 'Date published' %}"
+        >
+          <a
+            href="{% url 'ui:articles' %}"
+            class="join-item badge badge-soft badge-info w-full"
+          >
+            <time class="text-xs" datetime="{{ article.created_at }}">
+              {{ article.created_at|date }}
+            </time>
+          </a>
+        </div>
+      </div>
+
+      <div class="join divide-base-100 items-center divide-x-2">
+        <div
+          class="tooltip tooltip-bottom tooltip-error"
+          data-tip="{% trans 'Save' %}"
+        >
+          <button class="btn join-item btn-square btn-soft btn-error">
+            <i data-lucide="heart" class="size-4 lg:size-6"></i>
+            <span class="sr-only">{% trans 'Save' %}</span>
+          </button>
+        </div>
+        <div
+          class="tooltip tooltip-bottom tooltip-success"
+          data-tip="{% trans 'Copy Link' %}"
+        >
+          <button class="btn join-item btn-square btn-soft btn-success">
+            <i data-lucide="link-2" class="size-4 lg:size-6"></i>
+            <span class="sr-only">{% trans 'Copy Link' %}</span>
+          </button>
+        </div>
+        <div
+          class="tooltip tooltip-bottom tooltip-info"
+          data-tip="{% trans 'Share' %}"
+        >
+          <button class="btn join-item btn-square btn-soft btn-info">
+            <i data-lucide="share-2" class="size-4 lg:size-6"></i>
+            <span class="sr-only">{% trans 'Share' %}</span>
+          </button>
+        </div>
+        <div
+          class="tooltip tooltip-bottom tooltip-primary"
+          data-tip="{% trans 'Options' %}"
+        >
+          <button class="btn join-item btn-square btn-soft btn-primary">
+            <i data-lucide="ellipsis-vertical" class="size-4 lg:size-6"></i>
+            <span class="sr-only">{% trans 'Options' %}</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section
+    id="article-header"
+    class="col-span-12 w-full lg:col-span-10 lg:col-start-3 lg:col-end-11"
+  >
+    <div class="grid gap-4 lg:gap-6">
+      <h1
+        class="text-primary text-center text-xl font-serif font-bold rtl:font-kufi lg:text-5xl"
+      >
+        {{ article.title }}
+      </h1>
+
+      <div class="w-full">
+        <figure>{% image article.image scale-100 %}</figure>
+      </div>
+    </div>
+  </section>
+
+  <section
+    id="article-content"
+    class="col-span-12 lg:col-span-8 lg:col-start-4 lg:col-end-10"
+  >
+    <div
+      class="prose prose-neutral prose-video:rounded-box xl:prose-lg 2xl:prose-xl prose-headings:text-primary prose-headings:font-serif rtl:prose-headings:font-kufi prose-img:rounded-box max-w-none"
+    >
+      <h2>{{ article.headline }}</h2>
+      {% include_block article.content %}
+    </div>
+  </section>
+
+  <section
+    id="article-tags"
+    class="col-span-12 lg:col-span-8 lg:col-start-4 lg:col-end-10"
+  >
+    <div class="grid gap-4 lg:gap-6">
+      <h1 class="text-primary lg:text-2xl">{% trans 'Tags' %}</h1>
+
+      <ul class="flex items-center gap-4 flex-wrap">
+        {% for tag in article.tags.all %}
+        <li
+          class="badge {% cycle 'badge-primary' 'badge-secondary' 'badge-success' 'badge-accent' 'badge-warnig' 'badge-error' 'badge-neutral' %}"
+        >
+          {{ tag }}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
 </div>
 {% endblock %}

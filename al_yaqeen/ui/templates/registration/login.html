@@ -1,58 +1,89 @@
-<!-- prettier ignore -->
-{% extends "registration/base.html" %}{% load i18n %}
+{% extends 'registration/base.html' %}{% load i18n %}
 
-<!-- prettier ignore -->
-{% block title %}{{ block.super }} | {% trans 'Login' %}{% endblock %}
+<!---->
+{% block title %}{{ block.super }} | {% trans 'Log in' %}{% endblock %}
 
-<!-- prettier ignore -->
-{% block main %}
-<section class="flex col-span-12 size-full items-center justify-center rounded-box bg-base-100 lg:p-40">
-  <div class="card mx-2 max-w-md w-full rounded-box bg-base-200">
-    <div class="card-body gap-8">
-      <h1 class="text-4xl font-black text-center font-serif text-primary">
-        {% trans 'Al Yaqeen' %}
-      </h1>
+<!---->
+{% block content %}
+<div
+  class="flex col-span-12 py-24 items-center justify-center rounded-box bg-base-100"
+>
+  <section
+    class="card relative overflow-hidden max-w-3xl rounded-box bg-base-200 shadow-xs lg:card-lg"
+  >
+    <header
+      class="tooltip tooltip-bottom tooltip-primary tooltip-open mt-4 mx-auto"
+      data-tip="{% trans 'Al-Yaqeen' %}"
+    >
+      <a href="{% url 'ui:home' %}" class="btn btn-square btn-xl btn-primary">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-feather-text-icon lucide-feather-text size-8"
+        >
+          <path d="M17.9 8H9.2" />
+          <path d="M5.1 12H14l8-8.2c-2.3-2.3-6.1-2.3-8.5 0L2 15" />
+          <path d="M2 19h8" />
+          <path
+            d="M21 17v1c0 1 1 1.5 1 2.5 0 .8-.7 1.5-1.5 1.5h-5c-.8 0-1.5-.7-1.5-1.5 0-1 1-1.5 1-2.5v-1"
+          />
+          <path d="M14 17h8" />
+        </svg>
+        <span class="sr-only">{% trans 'Al-Yaqeen' %}</span>
+      </a>
+    </header>
 
-      <div class="grid gap-4">
-        <h2 class="text-2xl">{% trans 'Log in' %}</h2>
-        <p>{% trans 'Welcome, please login to continue.' %}</p>
-      </div>
+    <main class="card-body gap-6">
+      <h2 class="text-xl font-bold text-primary lg:text-3xl">
+        {% trans 'Log in' %}
+      </h2>
 
-      <!-- prettier ignore -->
-      {% if form.errors %}
-      <p>
-        <!-- prettier ignore -->
-        {% trans 'Your username and password did not match. Please try again.' %}
-      </p>
-      <!-- prettier ignore -->
-      {% endif %}
-      <!-- prettier ignore -->
+      <p>{% trans 'Welcome, please login to continue.' %}</p>
+
+      <!---->
       {% if next %}
-      <!-- prettier ignore -->
+      <!---->
       {% if user.is_authenticated %}
-      <p>
-        <!-- prettier ignore -->
-        {% blocktranslate %}Your account doesn't have access to this page. To
-        proceed, please login with an account that has access.{% endblocktranslate %}
-      </p>
-      <!-- prettier ignore -->
-      {% else %}
-      <p>{% trans 'Please login to see this page.' %}</p>
-      <!-- prettier ignore -->
-      {% endif %}{% endif %}
+      <div role="alert" class="alert alert-horizontal alert-warning">
+        <i data-lucide="triangle-alert" class="size-4 lg:size-6"></i>
 
-      <!-- prettier ignore -->
+        <p>
+          {% blocktrans trimmed %}Your account doesn't have access to this page.
+          To proceed, please login with an account that has access.
+          <!---->
+          {% endblocktrans %}
+        </p>
+      </div>
+      <!---->
+      {% endif %}
+      <!---->
+      {% endif %}
+
+      <!---->
       {% include 'ui/components/form.html' %}
+    </main>
 
-      <p>
-        <a href="{% url 'ui:signup' %}" class="btn btn-ghost">
-          {% trans 'Do not have an account?' %}
-        </a>
-        <a href="{% url 'ui:password_reset' %}" class="btn btn-ghost">
-          {% trans 'Lost password?' %}
-        </a>
-      </p>
-    </div>
-  </div>
-</section>
+    <footer class="grid grid-cols-2">
+      <a
+        href="{% url 'ui:signup' %}"
+        class="btn rounded-none btn-soft btn-primary"
+      >
+        {% trans 'Sign up' %}
+      </a>
+      <a
+        href="{% url 'ui:password_reset' %}"
+        class="btn rounded-none btn-soft btn-primary"
+      >
+        {% trans 'Forgot password?' %}
+      </a>
+    </footer>
+  </section>
+</div>
 {% endblock %}

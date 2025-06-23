@@ -1,27 +1,67 @@
-<!-- prettier ignore -->
 {% extends 'registration/base.html' %}{% load i18n %}
 
-<!-- prettier ignore -->
+<!---->
 {% block title %}{{ block.super }} | {% trans 'Logged out' %}{% endblock %}
 
-<!-- prettier ignore -->
-{% block main %}
-<section
-  class="flex col-span-12 size-full items-center justify-center rounded-box bg-base-100 lg:p-40"
+<!---->
+{% block content %}
+<div
+  class="flex col-span-12 py-24 items-center justify-center rounded-box bg-base-100"
 >
-  <div
-    class="card gap-4 mx-2 max-w-md card-body w-full rounded-box bg-base-200"
+  <section
+    class="card relative overflow-hidden max-w-3xl rounded-box bg-base-200 shadow-xs lg:card-lg"
   >
-    <h1 class="text-3xl font-black">{% trans 'Logged Out' %}</h1>
+    <header
+      class="tooltip tooltip-bottom tooltip-primary tooltip-open mt-4 mx-auto"
+      data-tip="{% trans 'Al-Yaqeen' %}"
+    >
+      <a href="{% url 'ui:home' %}" class="btn btn-square btn-xl btn-primary">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-feather-text-icon lucide-feather-text size-8"
+        >
+          <path d="M17.9 8H9.2" />
+          <path d="M5.1 12H14l8-8.2c-2.3-2.3-6.1-2.3-8.5 0L2 15" />
+          <path d="M2 19h8" />
+          <path
+            d="M21 17v1c0 1 1 1.5 1 2.5 0 .8-.7 1.5-1.5 1.5h-5c-.8 0-1.5-.7-1.5-1.5 0-1 1-1.5 1-2.5v-1"
+          />
+          <path d="M14 17h8" />
+        </svg>
+        <span class="sr-only">{% trans 'Al-Yaqeen' %}</span>
+      </a>
+    </header>
 
-    <p>
-      <!-- prettier ignore -->
-      {% trans 'Thanks for spending some quality time with us today.' %}
-    </p>
+    <main class="card-body gap-6">
+      <h2 class="text-xl font-bold text-primary lg:text-3xl">
+        {%trans 'Logged Out' %}
+      </h2>
 
-    <a href="{% url 'ui:login' %}" class="btn btn-lg btn-primary">
-      {% trans 'Login' %}
-    </a>
-  </div>
-</section>
+      <p>{% trans 'Thanks for spending some quality time with us today.' %}</p>
+    </main>
+
+    <footer class="grid grid-cols-2">
+      <a
+        href="{% url 'ui:login' %}"
+        class="btn rounded-none btn-soft btn-primary"
+      >
+        {% trans 'Log in' %}
+      </a>
+      <a
+        href="{% url 'ui:signup' %}"
+        class="btn rounded-none btn-soft btn-primary"
+      >
+        {% trans 'Sign up' %}
+      </a>
+    </footer>
+  </section>
+</div>
 {% endblock %}

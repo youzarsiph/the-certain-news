@@ -1,24 +1,10 @@
-<!-- prettier ignore -->
 {% extends 'registration/base.html' %}{% load i18n %}
 
-<!-- prettier ignore -->
-{% block sidebar_styles %} hidden lg:block{% endblock %}
-
-<!-- prettier ignore -->
-{% block content_styles %}{% endblock %}
-
-<!-- prettier ignore -->
-{% block breadcrumbs %}
-<li>{{ request.user }}</li>
-{% endblock %}
-
-<!-- prettier ignore -->
+<!---->
 {% block main_content %}
 <div class="grid gap-4">
-  <!-- prettier ignore -->
   {% block form_content %}{% endblock %}
-
-  <!-- prettier ignore -->
+  <!---->
   {% include 'ui/components/form.html' %}
 </div>
 {% endblock %}

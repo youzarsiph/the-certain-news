@@ -3,6 +3,7 @@
 import polars as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+
 from al_yaqeen.articles.models import Article
 
 
