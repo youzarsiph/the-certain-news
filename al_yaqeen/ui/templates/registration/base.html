@@ -39,10 +39,7 @@
               </ol>
             </div>
           </nav>
-          <!---->
-          {% include 'ui/components/messages.html' %}
 
-          <!---->
           {% block main_content %}{% endblock %}
         </main>
       </section>
@@ -60,40 +57,36 @@
       class="m-1 flex h-full max-h-[calc(100dvh-0.5rem)] w-full max-w-[calc(100dvw-0.5rem)] flex-col justify-between overflow-hidden rounded-box bg-base-100 backdrop-blur-3xl sm:w-10/12 md:w-8/12 lg:m-2 lg:max-h-[calc(100dvh-1rem)] lg:w-1/3 lg:max-w-[calc(100dvw-1rem)] lg:rounded-r-box xl:w-1/4"
     >
       <header class="flex items-center justify-between gap-4 p-4">
-        <div class="flex items-center gap-4">
-          <div
-            class="tooltip tooltip-right rtl:tooltip-left tooltip-primary"
-            data-tip="{% trans 'Al-Yaqeen' %}"
+        <div
+          class="tooltip tooltip-right rtl:tooltip-left tooltip-primary tooltip-open"
+          data-tip="{% trans 'Profile' %}"
+        >
+          <a
+            href="{% url 'ui:home' %}"
+            class="btn btn-square btn-lg btn-primary"
           >
-            <a
-              href="{% url 'ui:home' %}"
-              class="btn btn-square btn-lg btn-primary"
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-feather-text-icon lucide-feather-text size-8"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-feather-text-icon lucide-feather-text size-8"
-              >
-                <path d="M17.9 8H9.2" />
-                <path d="M5.1 12H14l8-8.2c-2.3-2.3-6.1-2.3-8.5 0L2 15" />
-                <path d="M2 19h8" />
-                <path
-                  d="M21 17v1c0 1 1 1.5 1 2.5 0 .8-.7 1.5-1.5 1.5h-5c-.8 0-1.5-.7-1.5-1.5 0-1 1-1.5 1-2.5v-1"
-                />
-                <path d="M14 17h8" />
-              </svg>
-              <span class="sr-only">{% trans 'Al-Yaqeen' %}</span>
-            </a>
-          </div>
-
-          <h1 class="text-xl font-bold text-primary">{% trans 'Profile' %}</h1>
+              <path d="M17.9 8H9.2" />
+              <path d="M5.1 12H14l8-8.2c-2.3-2.3-6.1-2.3-8.5 0L2 15" />
+              <path d="M2 19h8" />
+              <path
+                d="M21 17v1c0 1 1 1.5 1 2.5 0 .8-.7 1.5-1.5 1.5h-5c-.8 0-1.5-.7-1.5-1.5 0-1 1-1.5 1-2.5v-1"
+              />
+              <path d="M14 17h8" />
+            </svg>
+            <span class="sr-only">{% trans 'Al-Yaqeen | Profile' %}</span>
+          </a>
         </div>
 
         <div
@@ -159,7 +152,7 @@
           </li>
           <li>
             <button
-              form="logout-form"
+              form="logout"
               type="submit"
               class="btn btn-ghost justify-start gap-4 w-full"
             >

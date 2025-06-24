@@ -45,6 +45,18 @@ class HomeView(generic.TemplateView):
         }
 
 
+class AboutView(generic.TemplateView):
+    """About page"""
+
+    template_name = "ui/about.html"
+
+
+class ContactView(generic.TemplateView):
+    """Contact page"""
+
+    template_name = "ui/contact.html"
+
+
 # Auth views
 User = get_user_model()
 

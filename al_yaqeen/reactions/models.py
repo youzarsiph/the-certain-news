@@ -21,14 +21,16 @@ from al_yaqeen.users import User
 class Reaction(DateTimeMixin, models.Model):
     """Article Reactions"""
 
-    user = models.ForeignKey(
+    owner = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
+        related_name="reactions",
         help_text=_("User"),
     )
     article = models.ForeignKey(
         "articles.Article",
         on_delete=models.CASCADE,
+        related_name="reactions",
         help_text=_("Article"),
     )
     emoji = models.CharField(
@@ -43,10 +45,10 @@ class Reaction(DateTimeMixin, models.Model):
 
         constraints = [
             models.UniqueConstraint(
-                fields=["user", "article"],
+                fields=["owner", "article"],
                 name="unique_reaction",
             )
         ]
 
     def __str__(self) -> str:
-        return f"{self.user} --{self.emoji}-> {self.article}"
+        return f"{self.owner}---{self.emoji}-> {self.article}"

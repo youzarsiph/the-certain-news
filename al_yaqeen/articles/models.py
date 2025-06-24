@@ -22,7 +22,6 @@ Methods:
 - tag_count: Number of tags of an article
 """
 
-from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from modelcluster.contrib.taggit import ClusterTaggableManager
@@ -36,9 +35,6 @@ from al_yaqeen.mixins.models import DateTimeMixin
 from al_yaqeen.ui.cms.blocks import CommonContentBlock
 
 # Create your models here.
-User = get_user_model()
-
-
 class Article(DateTimeMixin, Page):
     """News Articles"""
 

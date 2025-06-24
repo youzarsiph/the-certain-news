@@ -37,17 +37,16 @@ class User(AbstractUser):
         help_text=_("User photo"),
         upload_to="al_yaqeen/images/users/",
     )
-    cover = models.ImageField(
-        null=True,
-        blank=True,
-        help_text=_("User cover"),
-        upload_to="al_yaqeen/images/covers/",
-    )
     bio = models.CharField(
         max_length=256,
         null=True,
         blank=True,
         help_text=_("User bio"),
+    )
+    saved = models.ManyToManyField(
+        "articles.Article",
+        blank=True,
+        help_text=_("Saved news articles"),
     )
 
     @property

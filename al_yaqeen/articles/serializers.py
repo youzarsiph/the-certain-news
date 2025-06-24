@@ -18,12 +18,11 @@ class ArticleSerializer(ModelSerializer):
             "id",
             "url",
             "owner",
-            "category",
+            "is_breaking",
             "image",
             "title",
             "headline",
             "content",
-            "is_breaking",
             "created_at",
             "updated_at",
         ]

@@ -1,0 +1,29 @@
+{% load i18n wagtailimages_tags %}
+
+<article class="card relative size-full bg-base-200 p-4 hover:shadow lg:card-lg xl:card-xl">
+  <figure class="rounded-box overflow-hidden">
+    {% image article.image scale-100 %}
+  </figure>
+  <main class="card-body gap-4 lg:gap-8">
+    <h1 class="card-title font-serif text-primary rtl:font-kufi">
+      {{ article.title }}
+    </h1>
+
+    <p>{{ article.headline }}</p>
+
+    <div class="flex items-center justify-between">
+      <time class="badge badge-sm badge-info lg:badge-lg" datetime="{{ article.created_at }}">
+        {{ article.created_at|timesince }}
+      </time>
+      <div class="tooltip tooltip-primary tooltip-top" data-tip="{% trans 'Category' %}">
+        <a href="{% url 'ui:category' article.get_parent.slug %}" class="badge badge-sm badge-primary lg:badge-lg">
+          {{ article.get_parent.title }}
+        </a>
+      </div>
+    </div>
+    <a href="{% url 'ui:article' article.slug %}" class="btn btn-primary btn-lg">
+      {% trans 'Continue reading' %}
+      <i data-lucide="chevron-right" class="size-4 lg:size-6 rtl:rotate-180"></i>
+    </a>
+  </main>
+</article>

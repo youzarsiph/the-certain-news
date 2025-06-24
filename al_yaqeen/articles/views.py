@@ -1,6 +1,9 @@
 """API endpoints for al_yaqeen.articles"""
 
-from django.utils import timezone
+from django.contrib import messages
+from django.shortcuts import redirect
+from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
 from rest_framework import status
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
@@ -313,23 +316,22 @@ class ArticleViewSet(ActionSerializersMixin, ActionPermissionsMixin, ModelViewSe
     ```
     """
 
-    queryset = Article.objects.all()
+    queryset = Article.objects.live().public()
     serializer_class = ArticleSerializer
     permission_classes = [IsAuthenticated, IsOwner]
     search_fields = ["title", "headline", "content"]
-    filterset_fields = ["owner", "category", "is_breaking"]
+    filterset_fields = ["owner", "is_breaking"]
     ordering_fields = ["title", "created_at", "updated_at"]
     action_serializers = {
         "default": serializer_class,
-        "star": Serializer,
         "react": ReactionSerializer,
+        "save": Serializer,
     }
     action_permissions = {
         "default": permission_classes,
         "list": permission_classes[:1],
         "retrieve": permission_classes[:1],
         "react": permission_classes[:1],
-        "star": permission_classes[:1],
     }
 
     def perform_create(self, serializer):
@@ -355,19 +357,32 @@ class ArticleViewSet(ActionSerializersMixin, ActionPermissionsMixin, ModelViewSe
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
-        if self.request.user not in article.reactions.all():
-            article.reactions.add(self.request.user)
-            message = f"You reacted to {article} with {serializer.validated_data.get('emoji')}"
+        emoji = serializer.validated_data.get("emoji")
+        reaction = article.reactions.get(user_id=self.request.user.id)
+
+        if reaction:
+            if reaction.emoji == emoji:
+                reaction.delete()
+                message = _("Reaction removed")
+
+            else:
+                reaction.emoji = emoji
+                reaction.save()
+                message = _("You reacted to '%s' with '%s'") % article, emoji
 
         else:
-            article.reactions.remove(self.request.user)
-            message = f"You un-reacted to {article}"
+            article.reactions.create(user=self.request.user, emoji=emoji)
+            message = _("You reacted to '%s' with '%s'") % article, emoji
+
+        if request.query_params["redirect"]:
+            messages.success(request, message)
+            return redirect(reverse_lazy("ui:article", args=[article.slug]))
 
         return Response({"details": message}, status=status.HTTP_200_OK)
 
     @action(methods=["post"], detail=True)
-    def star(self, request: Request, pk: int) -> Response:
-        """Star an article"""
+    def save(self, request: Request, pk: int) -> Response:
+        """Add an article to saved articles"""
 
         message: str
 
@@ -383,70 +398,16 @@ class ArticleViewSet(ActionSerializersMixin, ActionPermissionsMixin, ModelViewSe
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
-        if self.request.user not in article.stargazers.all():
-            article.stargazers.add(self.request.user)
-            message = f"Article {article} starred"
+        if request.user.saved.contains(article):
+            request.user.saved.remove(article)
+            message = _("Article '%s' removed form saved articles") % article
 
         else:
-            article.stargazers.remove(self.request.user)
-            message = f"Article {article} un-starred"
+            request.user.saved.add(article)
+            message = _("Article '%s' added to saved articles") % article
+
+        if request.query_params["redirect"]:
+            messages.success(request, message)
+            return redirect(reverse_lazy("ui:article", args=[article.slug]))
 
         return Response({"details": message}, status=status.HTTP_200_OK)
-
-    @action(methods=["get"], detail=False)
-    def popular(self, request: Request) -> Response:
-        """Popular articles"""
-
-        # Get queryset and filter
-        queryset = self.filter_queryset(self.get_queryset()).order_by("-stargazers")
-
-        # Paginate the queryset
-        page = self.paginate_queryset(queryset)
-        if page is not None:
-            serializer = self.get_serializer(page, many=True)
-            return self.get_paginated_response(serializer.data)
-
-        serializer = self.get_serializer(queryset, many=True)
-
-        # Return the data
-        return Response(serializer.data)
-
-    @action(methods=["get"], detail=False)
-    def trending(self, request: Request) -> Response:
-        """Trending articles"""
-
-        # Get queryset and filter
-        queryset = self.filter_queryset(self.get_queryset()).filter(
-            created_at__gt=timezone.now()
-        )
-
-        # Paginate the queryset
-        page = self.paginate_queryset(queryset)
-        if page is not None:
-            serializer = self.get_serializer(page, many=True)
-            return self.get_paginated_response(serializer.data)
-
-        serializer = self.get_serializer(queryset, many=True)
-
-        # Return the data
-        return Response(serializer.data)
-
-    @action(methods=["get"], detail=False)
-    def starred(self, request: Request) -> Response:
-        """Starred articles"""
-
-        # Get queryset and filter
-        queryset = self.filter_queryset(self.get_queryset()).filter(
-            stargazers=request.user
-        )
-
-        # Paginate the queryset
-        page = self.paginate_queryset(queryset)
-        if page is not None:
-            serializer = self.get_serializer(page, many=True)
-            return self.get_paginated_response(serializer.data)
-
-        serializer = self.get_serializer(queryset, many=True)
-
-        # Return the data
-        return Response(serializer.data)

@@ -25,7 +25,7 @@ from al_yaqeen.users import User
 class Comment(DateTimeMixin, models.Model):
     """Article Comments"""
 
-    user = models.ForeignKey(
+    owner = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
         help_text=_("Comment Owner"),

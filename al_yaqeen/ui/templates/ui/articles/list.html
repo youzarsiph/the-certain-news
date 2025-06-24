@@ -8,73 +8,26 @@
 <section class="grid gap-8">
   <div class="hero min-h-96">
     <div class="hero-content">
+      {% if request.GET.is_breaking %}
       <h1 class="text-primary text-2xl font-black lg:text-5xl">
-        {% if request.GET.is_breaking %}{% trans 'Breaking News' %}{% else %}
-        {% trans 'Latest News' %}{% endif %}
+        {% trans 'Breaking News' %}
       </h1>
+      {% else %}
+      <h1 class="text-primary text-2xl font-black lg:text-5xl">
+        {% trans 'Latest News' %}
+      </h1>
+      {% endif %}
     </div>
   </div>
 
-  <div class="rounded-box grid grid-cols-12 overflow-hidden">
+  <ol class="grid grid-cols-12 gap-4">
     {% for article in article_list %}
-    <div
-      id="{{ article.slug }}"
-      class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3"
-    >
-      <div
-        class="hover:border-success active:border-primary size-full w-full border border-transparent"
-      >
-        <article
-          class="card bg-base-200 lg:card-lg xl:card-xl relative size-full rounded-none"
-        >
-          <figure>{% image article.image scale-100 %}</figure>
-          <main class="card-body gap-4">
-            <h1 class="card-title text-primary rtl:font-kufi font-serif">
-              {{ article.title }}
-            </h1>
-            <p>{{ article.headline }}</p>
-
-            <div class="flex items-center justify-between">
-              <div
-                class="tooltip tooltip-right rtl:tooltip-left tooltip-info"
-                data-tip="{% trans 'Date published' %}"
-              >
-                <time
-                  class="badge badge-soft badge-info"
-                  datetime="{{ article.created_at|date }}"
-                >
-                  {{ article.created_at|date }}
-                </time>
-              </div>
-
-              <div
-                class="tooltip tooltip-right rtl:tooltip-left tooltip-info"
-                data-tip="{% trans 'Category' %}"
-              >
-                <a
-                  href="{% url 'ui:category' article.get_parent.slug %}"
-                  class="badge badge-soft badge-primary"
-                >
-                  <span>{{ article.get_parent.title }}</span>
-                  <i
-                    data-lucide="chevron-right"
-                    class="size-4 lg:size-6 rtl:rotate-180"
-                  ></i>
-                </a>
-              </div>
-            </div>
-
-            <a
-              href="{% url 'ui:article' article.slug %}"
-              class="btn btn-primary"
-            >
-              {% trans 'Continue reading' %}
-            </a>
-          </main>
-        </article>
-      </div>
-    </div>
+    <li id="{{ article.slug }}" class="col-span-12 md:col-span-6 lg:col-span-4">
+      {% include 'ui/components/article.html' %}
+    </li>
     {% endfor %}
-  </div>
+  </ol>
+
+  {% include 'ui/components/pagination.html' %}
 </section>
 {% endblock %}

@@ -10,6 +10,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %}{% endblock %}</title>
+    <meta name="description"
+      content="OpenGraph.Dev: Generate and preview Open Graph meta tags for images, titles, and more, ensuring optimal display on Facebook, Twitter, LinkedIn, WhatsApp...">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:url" content="https://opengraph.dev">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="OpenGraph - Preview Images and Generate Open Graph Meta Tags">
+    <meta property="og:description"
+      content="OpenGraph.Dev: Generate and preview Open Graph meta tags for images, titles, and more, ensuring optimal display on Facebook, Twitter, LinkedIn, WhatsApp...">
+    <meta property="og:image" content="https://opengraph.dev/banner.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:domain" content="opengraph.dev">
+    <meta property="twitter:url" content="https://opengraph.dev">
+    <meta name="twitter:title" content="OpenGraph - Preview Images and Generate Open Graph Meta Tags">
+    <meta name="twitter:description"
+      content="OpenGraph.Dev: Generate and preview Open Graph meta tags for images, titles, and more, ensuring optimal display on Facebook, Twitter, LinkedIn, WhatsApp...">
+    <meta name="twitter:image" content="https://opengraph.dev/banner.png">
+    
+    <!-- Meta Tags Generated via https://opengraph.dev -->
     <link
       href="{% static 'ui/css/styles.css' %}"
       rel="stylesheet"
@@ -37,7 +60,7 @@
               <div class="navbar-start join divide-x divide-base-100">
                 <div
                   class="tooltip tooltip-right rtl:tooltip-left tooltip-primary"
-                  data-tip="Open Drawer"
+                  data-tip="{% trans 'Open drawer' %}"
                 >
                   <label
                     for="nav-drawer"
@@ -101,10 +124,9 @@
                             value="{{ language.code|upper }}"
                             aria-label="{{ language.name_local }} ({{ language.code }})"
                           />
-                          <span
-                            >{{ language.name_local }} ({{ language.code
-                            }})</span
-                          >
+                          <span>
+                            {{ language.name_local }} ({{ language.code }})
+                          </span>
                         </div>
                         {% if language.code == LANGUAGE_CODE %}
                         <i data-lucide="check" class="size-4 lg:size-6"></i>
@@ -140,7 +162,7 @@
                       href="{% url 'ui:articles' %}"
                       class="btn btn-square btn-sm join-item btn-success lg:btn-md"
                     >
-                      <i data-lucide="scroll-text" class="size-4 lg:size-6"></i>
+                      <i data-lucide="newspaper" class="size-4 lg:size-6"></i>
                       <span class="sr-only">{% trans 'Latest News' %}</span>
                     </a>
                   </div>
@@ -185,7 +207,7 @@
                       href="{% url 'ui:categories' %}"
                       class="btn btn-square btn-sm join-item btn-success lg:btn-md"
                     >
-                      <i data-lucide="component" class="size-4 lg:size-6"></i>
+                      <i data-lucide="group" class="size-4 lg:size-6"></i>
                       <span class="sr-only">{% trans 'Categories' %}</span>
                     </a>
                   </div>
@@ -227,7 +249,7 @@
                 </div>
                 <div
                   class="tooltip tooltip-left rtl:tooltip-right tooltip-primary"
-                  data-tip="{% trans 'Logout' %}"
+                  data-tip="{% trans 'Log out' %}"
                 >
                   <button
                     type="submit"
@@ -235,7 +257,7 @@
                     class="btn join-item btn-square btn-soft btn-sm btn-primary lg:btn-md"
                   >
                     <i data-lucide="log-out" class="size-4 lg:size-6"></i>
-                    <span class="sr-only">{% trans 'Logout' %}</span>
+                    <span class="sr-only">{% trans 'Log out' %}</span>
                   </button>
                 </div>
                 {% else %}
@@ -247,7 +269,7 @@
                     href="{% url 'ui:signup' %}"
                     class="btn join-item btn-square btn-soft btn-sm btn-success lg:btn-md"
                   >
-                    <i data-lucide="podcast" class="size-4 lg:size-6"></i>
+                    <i data-lucide="heart-handshake" class="size-4 lg:size-6"></i>
                     <span class="sr-only">{% trans 'Subscribe' %}</span>
                   </a>
                 </div>
@@ -272,14 +294,14 @@
                 </div>
                 <div
                   class="tooltip tooltip-left rtl:tooltip-right tooltip-primary"
-                  data-tip="{% trans 'Login' %}"
+                  data-tip="{% trans 'Log in' %}"
                 >
                   <a
                     href="{% url 'ui:login' %}"
                     class="btn join-item btn-square btn-soft btn-sm btn-primary lg:btn-md"
                   >
                     <i data-lucide="log-in" class="size-4 lg:size-6"></i>
-                    <span class="sr-only">{% trans 'Login' %}</span>
+                    <span class="sr-only">{% trans 'Log in' %}</span>
                   </a>
                 </div>
                 {% endif %}
@@ -290,6 +312,8 @@
           <section
             class="m-auto flex size-full max-h-[calc(100dvh-0.5rem)] max-w-[calc(100dvw-0.5rem)] flex-col gap-16 overflow-y-auto rounded-box bg-base-100 p-4 pt-20 lg:max-h-[calc(100dvh-1rem)] lg:max-w-[calc(100dvw-1rem)]"
           >
+            {% include 'ui/components/messages.html' %}
+            <!---->
             {% block content %}{% endblock %}
 
             <!---->
@@ -299,35 +323,19 @@
             >
               <nav>
                 <h6 class="footer-title">{% trans 'Services' %}</h6>
-                <a class="link link-hover">{% trans 'Marketing' %}</a>
+                <a href="{% url 'ui:articles' %}" class="link link-hover">{% trans 'News' %}</a>
                 <a class="link link-hover">{% trans 'Advertisement' %}</a>
               </nav>
               <nav>
                 <h6 class="footer-title">{% trans 'Company' %}</h6>
-                <a class="link link-hover">{% trans 'About us' %}</a>
-                <a class="link link-hover">{% trans 'Contact' %}</a>
+                <a href="{% url 'ui:about' %}" class="link link-hover">{% trans 'About us' %}</a>
+                <a href="{% url 'ui:contact' %}" class="link link-hover">{% trans 'Contact' %}</a>
               </nav>
               <nav>
                 <h6 class="footer-title">{% trans 'Legal' %}</h6>
                 <a class="link link-hover">{% trans 'Terms of use' %}</a>
                 <a class="link link-hover">{% trans 'Privacy policy' %}</a>
               </nav>
-              <form>
-                <h6 class="footer-title">{% trans 'Newsletter' %}</h6>
-                <fieldset class="w-full">
-                  <label>{% trans 'Enter your email address' %}</label>
-                  <div class="join">
-                    <input
-                      type="text"
-                      placeholder="username@site.com"
-                      class="input-bordered input join-item"
-                    />
-                    <button class="btn join-item btn-primary">
-                      {% trans 'Subscribe' %}
-                    </button>
-                  </div>
-                </fieldset>
-              </form>
             </footer>
             {% endblock %}
           </section>

@@ -51,7 +51,9 @@ auth_urls = [
 
 urlpatterns = [
     *auth_urls,
-    path("", views.HomeView.as_view(template_name="ui/index.html"), name="home"),
+    path("", views.HomeView.as_view(), name="home"),
+    path("about/", views.AboutView.as_view(), name="about"),
+    path("contact/", views.ContactView.as_view(), name="contact"),
     path("categories/", views.CategoryListView.as_view(), name="categories"),
     path(
         "categories/<slug:slug>/", views.CategoryDetailView.as_view(), name="category"
