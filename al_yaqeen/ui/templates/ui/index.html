@@ -151,10 +151,7 @@
 
   <div class="carousel">
     {% for article in latest_news %}
-    <div
-      id="{{ article.slug }}"
-      class="carousel-item w-full md:w-1/2 lg:w-1/3"
-    >
+    <div id="{{ article.slug }}" class="carousel-item w-full md:w-1/2 lg:w-1/3">
       <article
         class="card relative size-full bg-base-200 p-4 hover:shadow lg:card-lg xl:card-xl"
       >
@@ -162,19 +159,23 @@
           {% image article.image scale-100 %}
         </figure>
         <main class="card-body gap-4 lg:gap-8">
-          <h1
-            class="card-title font-serif text-primary rtl:font-kufi"
-          >
+          <h1 class="card-title font-serif text-primary rtl:font-kufi">
             {{ article.title }}
           </h1>
 
           <p>{{ article.headline }}</p>
 
           <div class="flex items-center justify-between">
-            <time class="badge badge-sm badge-info lg:badge-lg" datetime="{{ article.created_at }}">
+            <time
+              class="badge badge-sm badge-info lg:badge-lg"
+              datetime="{{ article.created_at }}"
+            >
               {{ article.created_at|timesince }}
             </time>
-            <div class="tooltip tooltip-primary tooltip-top" data-tip="{% trans 'Category' %}">
+            <div
+              class="tooltip tooltip-primary tooltip-top"
+              data-tip="{% trans 'Category' %}"
+            >
               <a
                 href="{% url 'ui:category' article.get_parent.slug %}"
                 class="badge badge-sm badge-primary lg:badge-lg"
@@ -183,7 +184,10 @@
               </a>
             </div>
           </div>
-          <a href="{% url 'ui:article' article.slug %}" class="btn btn-primary btn-lg xl:btn-xl">
+          <a
+            href="{% url 'ui:article' article.slug %}"
+            class="btn btn-primary btn-lg xl:btn-xl"
+          >
             {% trans 'Continue reading' %}
             <i
               data-lucide="chevron-right"

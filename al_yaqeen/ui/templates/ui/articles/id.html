@@ -61,14 +61,17 @@
       </div>
 
       <div class="join divide-base-100 items-center divide-x-2">
-        <form 
+        <form
           method="post"
           data-tip="{% trans 'Save' %}"
           class="tooltip tooltip-bottom tooltip-error"
           action="/api/articles/{{ article.id }}/save?redirect=1"
         >
           {% csrf_token %}
-          <button type="submit" class="btn join-item btn-square btn-soft btn-error">
+          <button
+            type="submit"
+            class="btn join-item btn-square btn-soft btn-error"
+          >
             <i data-lucide="bookmark" class="size-4 lg:size-6"></i>
             <span class="sr-only">{% trans 'Save' %}</span>
           </button>
@@ -90,13 +93,19 @@
           data-tip="{% trans 'Share' %}"
         >
           <div class="dropdown dropdown-left dropdown-bottom">
-            <button tabindex="0" class="btn join-item btn-square btn-soft btn-info">
+            <button
+              tabindex="0"
+              class="btn join-item btn-square btn-soft btn-info"
+            >
               <i data-lucide="share-2" class="size-4 lg:size-6"></i>
               <span class="sr-only">{% trans 'Share' %}</span>
             </button>
-            <ul tabindex="0" class="dropdown-content menu gap-4 bg-base-100 rounded-box shadow-sm">
+            <ul
+              tabindex="0"
+              class="dropdown-content menu gap-4 bg-base-100 rounded-box shadow-sm"
+            >
               <li>
-                <a 
+                <a
                   href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}"
                   class="btn btn-ghost btn-sm justify-start gap-4 lg:btn-md"
                 >
@@ -105,7 +114,7 @@
                 </a>
               </li>
               <li>
-                <a 
+                <a
                   href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}&text={{ article.title }}"
                   class="btn btn-ghost btn-sm justify-start gap-4 lg:btn-md"
                 >
@@ -177,7 +186,6 @@
     </div>
   </section>
 </div>
-
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
 

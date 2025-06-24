@@ -3,7 +3,9 @@
 <!---->
 {% block main_content %}
 <section id="profile" class="grid gap-8 size-full">
-  <div class="card text-center card-sm rounded-box bg-base-200 shadow-sm md:card-md lg:card-lg xl:card-xl">
+  <div
+    class="card text-center card-sm rounded-box bg-base-200 shadow-sm md:card-md lg:card-lg xl:card-xl"
+  >
     <figure class="mx-auto size-32 lg:size-56">
       <i data-lucide="user" class="size-full"></i>
     </figure>
@@ -13,27 +15,51 @@
       <p>{% trans 'Welcome to your Profile' %}</p>
     </div>
     <div class="join">
-      <div class="tooltip tooltip-top tooltip-primary" data-tip="{% trans 'Log out' %}">
-        <button type="submit" form="logout" class="btn join-item btn-square btn-primary btn-lg lg:btn-xl">
+      <div
+        class="tooltip tooltip-top tooltip-primary"
+        data-tip="{% trans 'Log out' %}"
+      >
+        <button
+          type="submit"
+          form="logout"
+          class="btn join-item btn-square btn-primary btn-lg lg:btn-xl"
+        >
           <i data-lucide="log-out" class="size-4 lg:size-6"></i>
           <span class="sr-only">{% trans 'Log out' %}</span>
         </button>
       </div>
-      <div class="tooltip tooltip-top tooltip-success grow" data-tip="{% trans 'Settings' %}">
-        <a class="btn w-full join-item btn-square btn-success btn-lg lg:btn-xl"
-          href="{% url 'ui:u-user' request.user.id %}">
+      <div
+        class="tooltip tooltip-top tooltip-success grow"
+        data-tip="{% trans 'Settings' %}"
+      >
+        <a
+          class="btn w-full join-item btn-square btn-success btn-lg lg:btn-xl"
+          href="{% url 'ui:u-user' request.user.id %}"
+        >
           <i data-lucide="user-cog" class="size-4 lg:size-6"></i>
           <span class="sr-only">{% trans 'Settings' %}</span>
         </a>
       </div>
-      <div class="tooltip tooltip-top tooltip-scondary grow" data-tip="{% trans 'Dashboard' %}">
-        <a class="btn w-full join-item btn-square btn-scondary btn-lg lg:btn-xl" href="/dashboard/">
+      <div
+        class="tooltip tooltip-top tooltip-scondary grow"
+        data-tip="{% trans 'Dashboard' %}"
+      >
+        <a
+          class="btn w-full join-item btn-square btn-scondary btn-lg lg:btn-xl"
+          href="/dashboard/"
+        >
           <i data-lucide="layout-dashboard" class="size-4 lg:size-6"></i>
           <span class="sr-only">{% trans 'Dashboard' %}</span>
         </a>
       </div>
-      <div class="tooltip tooltip-top tooltip-error" data-tip="{% trans 'Delete' %}">
-        <a class="btn join-item btn-square btn-error btn-lg lg:btn-xl" href="{% url 'ui:d-user' request.user.id %}">
+      <div
+        class="tooltip tooltip-top tooltip-error"
+        data-tip="{% trans 'Delete' %}"
+      >
+        <a
+          class="btn join-item btn-square btn-error btn-lg lg:btn-xl"
+          href="{% url 'ui:d-user' request.user.id %}"
+        >
           <i data-lucide="user-x" class="size-4 lg:size-6"></i>
           <span class="sr-only">{% trans 'Delete account' %}</span>
         </a>
