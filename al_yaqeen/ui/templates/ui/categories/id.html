@@ -1,13 +1,13 @@
 {% extends 'ui/base.html' %}{% load i18n wagtailcore_tags wagtailimages_tags %}
 
 <!---->
-{% block title %}{{ category.title }}{% endblock %}
+{% block title %}{{ block.super }} | {{ category.title }}{% endblock %}
 
 <!---->
 {% block content %}
-<section class="grid gap-8">
+<section class="grid gap-6">
   <div class="hero min-h-96">
-    <div class="hero-content grid gap-4 lg:gap-8">
+    <div class="hero-content grid gap-4 lg:gap-6">
       <h1 class="text-primary text-2xl font-black lg:text-5xl">
         {{ category.title }}
       </h1>
@@ -16,7 +16,7 @@
     </div>
   </div>
 
-  <div class="rounded-box grid grid-cols-12 overflow-hidden">
+  <div class="grid grid-cols-12 gap-4 lg:gap-6">
     {% for article in category.get_children.specific %}
     <div
       id="{{ article.slug }}"

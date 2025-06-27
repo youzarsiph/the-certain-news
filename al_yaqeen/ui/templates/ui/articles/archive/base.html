@@ -1,27 +1,18 @@
-{% extends 'ui/base.html' %}{% load i18n wagtailimages_tags %}
-
-<!---->
-{% block title %}{% trans 'News' %}{% endblock %}
+{% extends 'ui/base.html' %}{% load i18n %}
 
 <!---->
 {% block content %}
 <section class="grid gap-6">
   <div class="hero min-h-96">
     <div class="hero-content">
-      {% if request.GET.is_breaking %}
       <h1 class="text-primary text-2xl font-black lg:text-5xl">
-        {% trans 'Breaking News' %}
+        {% trans 'News for' %} {% block page_title %}{% endblock %}
       </h1>
-      {% else %}
-      <h1 class="text-primary text-2xl font-black lg:text-5xl">
-        {% trans 'Latest News' %}
-      </h1>
-      {% endif %}
     </div>
   </div>
 
   <ol class="grid grid-cols-12 gap-4 lg:gap-6">
-    {% for article in article_list %}
+    {% for article in articles %}
     <li id="{{ article.slug }}" class="col-span-12 md:col-span-6 lg:col-span-4">
       {% include 'ui/components/article.html' %}
     </li>

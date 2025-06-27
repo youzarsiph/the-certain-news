@@ -1,7 +1,7 @@
 {% extends 'ui/base.html' %}{% load i18n wagtailimages_tags %}
 
 <!---->
-{% block title %}{% trans 'News by Category' %}{% endblock %}
+{% block title %}{{ block.super }} | {% trans 'Categories' %}{% endblock %}
 
 <!---->
 {% block content %}
@@ -9,15 +9,15 @@
   <div class="hero min-h-96">
     <div class="hero-content">
       <h1 class="text-primary text-2xl font-black lg:text-5xl">
-        {% trans 'News by Category' %}
+        {% trans 'Categories' %}
       </h1>
     </div>
   </div>
 
   {% for category in category_list %}
-  <section id="{{ category.slug }}" class="grid gap-4 lg:gap-8">
+  <section id="{{ category.slug }}" class="grid gap-4 lg:gap-6">
     <div
-      class="rounded-box border-primary flex items-center justify-between border-l-8 rtl:border-r-8 p-4"
+      class="rounded border-primary flex items-center justify-between border-l-8 rtl:border-r-8 p-4"
     >
       <h2 class="text-primary text-xl font-semibold lg:text-3xl">
         {{ category.title }}

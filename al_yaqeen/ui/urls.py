@@ -59,5 +59,20 @@ urlpatterns = [
         "categories/<slug:slug>/", views.CategoryDetailView.as_view(), name="category"
     ),
     path("articles/", views.ArticleListView.as_view(), name="articles"),
-    path("articles/<slug:slug>/", views.ArticleDetailView.as_view(), name="article"),
+    path("articles/<int:year>/", views.ArticleYearView.as_view(), name="articles-y"),
+    path(
+        "articles/<int:year>/<int:month>/",
+        views.ArticleMonthView.as_view(),
+        name="articles-m",
+    ),
+    path(
+        "articles/<int:year>/<int:month>/<int:day>/",
+        views.ArticleDayView.as_view(),
+        name="articles-d",
+    ),
+    path(
+        "articles/<int:year>/<int:month>/<int:day>/<slug:slug>/",
+        views.ArticleDetailView.as_view(),
+        name="article",
+    ),
 ]

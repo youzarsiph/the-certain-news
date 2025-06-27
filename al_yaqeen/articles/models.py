@@ -34,6 +34,7 @@ from wagtail.search import index
 from al_yaqeen.mixins.models import DateTimeMixin
 from al_yaqeen.ui.cms.blocks import CommonContentBlock
 
+
 # Create your models here.
 class Article(DateTimeMixin, Page):
     """News Articles"""

@@ -126,69 +126,52 @@ class CategoryDetailView(mixins.LanguageFilterMixin, generic.DetailView):
 
 
 # Articles
-class BaseArticleListView(FilterView, mixins.LanguageFilterMixin):
+class BaseArticleListView:
     """Base class for article list views"""
 
     model = Article
     paginate_by = 25
+    ordering = "-created_at"
     date_field = "created_at"
+    context_object_name = "articles"
     queryset = Article.objects.live().public()
-    filterset_fields = ["is_breaking"]
 
 
-class ArticleListView(BaseArticleListView, generic.ListView):
+class ArticleListView(BaseArticleListView, FilterView, generic.ListView):
     """Article list"""
 
-    ordering = "-created_at"
+    filterset_fields = ["is_breaking"]
     template_name = "ui/articles/list.html"
 
 
-class ArticleArchiveView(BaseArticleListView, generic.ArchiveIndexView):
-    """Top level archive of articles"""
-
-    template_name = "ui/articles/archive/index.html"
-
-
-class ArticleYearArchiveView(BaseArticleListView, generic.YearArchiveView):
+class ArticleYearView(BaseArticleListView, generic.YearArchiveView):
     """Year archive for articles"""
 
+    allow_empty = True
+    allow_future = True
+    make_object_list = True
     template_name = "ui/articles/archive/year.html"
 
 
-class ArticleMonthArchiveView(BaseArticleListView, generic.MonthArchiveView):
+class ArticleMonthView(BaseArticleListView, generic.MonthArchiveView):
     """Month archive for articles"""
 
+    month_format = "%m"
     template_name = "ui/articles/archive/month.html"
 
 
-class ArticleWeekArchiveView(BaseArticleListView, generic.WeekArchiveView):
+class ArticleDayView(BaseArticleListView, generic.DayArchiveView):
     """Week archive for articles"""
 
-    template_name = "ui/articles/archive/week.html"
-
-
-class ArticleDayArchiveView(BaseArticleListView, generic.DayArchiveView):
-    """Week archive for articles"""
-
+    month_format = "%m"
     template_name = "ui/articles/archive/day.html"
 
 
-class ArticleTodayArchiveView(BaseArticleListView, generic.TodayArchiveView):
-    """Week archive for articles"""
-
-    template_name = "ui/articles/archive/today.html"
-
-
-class ArticleDetailView(mixins.LanguageFilterMixin, generic.DetailView):
+class ArticleDetailView(mixins.LanguageFilterMixin, generic.DateDetailView):
     """Article details"""
 
-    template_name = "ui/articles/id.html"
-    queryset = Article.objects.live().public()
-
-
-class ArticleDateDetailView(mixins.LanguageFilterMixin, generic.DateDetailView):
-    """Article details on a single date"""
-
+    month_format = "%m"
+    date_field = "created_at"
     template_name = "ui/articles/id.html"
     queryset = Article.objects.live().public()
 
@@ -221,5 +204,4 @@ class CommentDeleteView(LoginRequiredMixin, BaseCommentView, generic.DeleteView)
     """Delete a comment"""
 
     model = Comment
-    fields = ["content"]
     template_name = "ui/comments/new.html"

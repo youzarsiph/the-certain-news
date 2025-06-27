@@ -3,8 +3,8 @@
 from django.utils.translation import gettext_lazy as _
 from wagtail import blocks
 from wagtail.documents.blocks import DocumentChooserBlock
-from wagtail.images.blocks import ImageBlock
 from wagtail.embeds.blocks import EmbedBlock
+from wagtail.images.blocks import ImageBlock
 
 
 # Create your blocks here.

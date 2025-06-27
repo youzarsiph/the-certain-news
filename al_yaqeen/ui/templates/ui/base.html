@@ -1,4 +1,4 @@
-{% load i18n static %}
+{% load i18n static wagtailuserbar %}
 <!doctype html>
 <html
   lang="{{ LANGUAGE_CODE }}"
@@ -9,7 +9,7 @@
     {% block head %}
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{% block title %}{% endblock %}</title>
+    <title>{% block title %}{% trans 'Al-Yaqeen' %}{% endblock %}</title>
     <meta
       name="description"
       content="OpenGraph.Dev: Generate and preview Open Graph meta tags for images, titles, and more, ensuring optimal display on Facebook, Twitter, LinkedIn, WhatsApp..."
@@ -60,6 +60,7 @@
   </head>
 
   <body class="antialiased h-dvh overflow-hidden">
+    {% if request.user.is_staff %}{% wagtailuserbar %}{% endif %}
     <div class="drawer">
       <input id="nav-drawer" type="checkbox" class="drawer-toggle sr-only" />
 
@@ -126,7 +127,7 @@
                     {% for language in languages %}
                     <li>
                       <label
-                        class="flex flex-row items-center justify-between gap-8"
+                        class="flex flex-row items-center justify-between gap-6"
                       >
                         <div class="flex flex-row items-center gap-2">
                           <input
@@ -647,7 +648,7 @@
                 href="{% url 'ui:signup' %}"
                 class="btn btn-square btn-lg join-item btn-primary btn-soft w-full rounded-none"
               >
-                <i data-lucide="join" class="size-4 lg:size-6"></i>
+                <i data-lucide="heart-handshake" class="size-4 lg:size-6"></i>
                 <span class="sr-only">{% trans 'Subscribe' %}</span>
               </a>
             </div>

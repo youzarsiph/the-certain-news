@@ -12,7 +12,18 @@
   </div>
 </div>
 
-<div class="relative grid w-full grid-cols-12 gap-8">
+<div class="relative grid w-full grid-cols-12 gap-6 lg:gap-12">
+  <section
+    id="article-header"
+    class="col-span-12 w-full lg:col-span-10 lg:col-start-3 lg:col-end-11"
+  >
+    <div class="grid gap-4 lg:gap-6">
+      <div class="w-full">
+        <figure>{% image article.image scale-100 %}</figure>
+      </div>
+    </div>
+  </section>
+
   <section
     id="article-options"
     class="col-span-12 lg:col-span-8 lg:col-start-4 lg:col-end-10"
@@ -47,20 +58,21 @@
 
         <div
           class="tooltip tooltip-right rtl:tooltip-left tooltip-info"
-          data-tip="{% trans 'Date published' %}"
+          data-tip="{{ article.created_at|timesince }}"
         >
           <a
-            href="{% url 'ui:articles' %}"
             class="join-item badge badge-soft badge-info w-full"
+            href="{% url 'ui:articles-d' article.created_at|date:'Y' article.created_at|date:'m' article.created_at|date:'d' %}"
           >
-            <time class="text-xs" datetime="{{ article.created_at }}">
-              {{ article.created_at|date }}
-            </time>
+            <time class="text-xs" datetime="{{ article.created_at }}"
+              >{{ article.created_at|date }}</time
+            >
           </a>
         </div>
       </div>
 
       <div class="join divide-base-100 items-center divide-x-2">
+        {% if request.user.is_authenticated %}
         <form
           method="post"
           data-tip="{% trans 'Save' %}"
@@ -76,6 +88,7 @@
             <span class="sr-only">{% trans 'Save' %}</span>
           </button>
         </form>
+        {% endif %}
         <div
           class="tooltip tooltip-bottom tooltip-success"
           data-tip="{% trans 'Copy Link' %}"
@@ -139,29 +152,13 @@
   </section>
 
   <section
-    id="article-header"
-    class="col-span-12 w-full lg:col-span-10 lg:col-start-3 lg:col-end-11"
-  >
-    <div class="grid gap-4 lg:gap-6">
-      <h1
-        class="text-primary text-center text-xl font-serif font-bold rtl:font-kufi lg:text-5xl"
-      >
-        {{ article.title }}
-      </h1>
-
-      <div class="w-full">
-        <figure>{% image article.image scale-100 %}</figure>
-      </div>
-    </div>
-  </section>
-
-  <section
     id="article-content"
     class="col-span-12 lg:col-span-8 lg:col-start-4 lg:col-end-10"
   >
     <div
-      class="prose prose-neutral prose-video:rounded-box xl:prose-lg 2xl:prose-xl prose-headings:text-primary prose-headings:font-serif rtl:prose-headings:font-kufi prose-img:rounded-box max-w-none"
+      class="prose prose-neutral max-w-none prose-video:rounded-box xl:prose-lg 2xl:prose-xl prose-headings:text-primary prose-headings:font-serif rtl:prose-headings:font-kufi prose-img:rounded-box prose-img:w-full"
     >
+      <h1>{{ article.title }}</h1>
       <h2>{{ article.headline }}</h2>
       {% include_block article.content %}
     </div>

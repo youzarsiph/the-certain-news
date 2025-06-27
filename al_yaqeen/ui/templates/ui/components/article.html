@@ -6,7 +6,7 @@
   <figure class="rounded-box overflow-hidden">
     {% image article.image scale-100 %}
   </figure>
-  <main class="card-body gap-4 lg:gap-8">
+  <main class="card-body gap-4 lg:gap-6">
     <h1 class="card-title font-serif text-primary rtl:font-kufi">
       {{ article.title }}
     </h1>
@@ -14,27 +14,54 @@
     <p>{{ article.headline }}</p>
 
     <div class="flex items-center justify-between">
-      <time
-        class="badge badge-sm badge-info lg:badge-lg"
-        datetime="{{ article.created_at }}"
-      >
-        {{ article.created_at|timesince }}
-      </time>
       <div
-        class="tooltip tooltip-primary tooltip-top"
-        data-tip="{% trans 'Category' %}"
+        class="tooltip tooltip-info tooltip-top"
+        data-tip="{{ article.created_at|timesince }}"
       >
         <a
-          href="{% url 'ui:category' article.get_parent.slug %}"
-          class="badge badge-sm badge-primary lg:badge-lg"
+          class="badge badge-sm badge-info lg:badge-lg"
+          href="{% url 'ui:articles-d' article.created_at|date:'Y' article.created_at|date:'m' article.created_at|date:'d' %}"
         >
-          {{ article.get_parent.title }}
+          <time class="text-xs" datetime="{{ article.created_at }}"
+            >{{ article.created_at|date }}</time
+          >
         </a>
+      </div>
+
+      <div class="join items-center divide-x-2 divide-base-100">
+        <div
+          class="tooltip tooltip-top flex tooltip-error"
+          data-tip="{% trans 'Breaking' %}"
+        >
+          <a
+            href="{% url 'ui:articles' %}?is_breaking=True"
+            class="relative join-item badge badge-sm badge-error lg:badge-lg"
+          >
+            <i data-lucide="podcast" class="size-4 lg:size-6"></i>
+
+            <span
+              class="absolute badge badge-sm aspect-square animate-ping rounded-full badge-xl badge-error"
+            ></span>
+            <span class="sr-only">{% trans 'Breaking' %}</span>
+          </a>
+        </div>
+
+        <div
+          class="tooltip tooltip-top flex tooltip-primary"
+          data-tip="{% trans 'Category' %}"
+        >
+          <a
+            href="{% url 'ui:category' article.get_parent.slug %}"
+            class="join-item badge badge-sm badge-primary text-shadow-lg lg:badge-lg"
+          >
+            <span class="text-xs"> {{ article.get_parent.title }} </span>
+          </a>
+        </div>
       </div>
     </div>
     <a
-      href="{% url 'ui:article' article.slug %}"
-      class="btn btn-primary btn-lg"
+      class="btn btn-primary lg:btn-lg"
+      href="{% url 'ui:article' article.created_at|date:'Y' article.created_at|date:'m' article.created_at|date:'d' article.slug %}"
     >
       {% trans 'Continue reading' %}
       <i

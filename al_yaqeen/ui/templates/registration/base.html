@@ -109,17 +109,30 @@
           <li>
             <a
               href="{% url 'ui:profile' %}"
-              class="btn btn-ghost justify-between gap-4 w-full"
+              class="btn btn-ghost justify-start gap-4 w-full"
             >
-              <div class="flex items-center gap-4">
-                <i data-lucide="user" class="size-4 lg:size-6"></i>
-                <span>{% trans 'Profile' %}</span>
-              </div>
-              {% if request.user.is_staff %}
-              <span class="badge badge-primary"> {% trans 'Admin' %} </span>
-              {% endif %}
+              <i data-lucide="user" class="size-4 lg:size-6"></i>
+              <span>{% trans 'Profile' %}</span>
             </a>
           </li>
+          {% if request.user.is_staff %}
+          <li>
+            <a
+              href="/dashboard/"
+              class="btn btn-ghost justify-between gap-4 w-full"
+            >
+              <span class="flex items-center gap-4">
+                <i data-lucide="layout-dashboard" class="size-4 lg:size-6"></i>
+                {% trans 'Dashboard' %}
+              </span>
+
+              <i
+                data-lucide="chevron-right"
+                class="size-4 lg:size-6 rtl:rotate-180"
+              ></i>
+            </a>
+          </li>
+          {% endif %}
           <li>
             <a
               href="{% url 'ui:u-user' request.user.id %}"

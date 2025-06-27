@@ -18,8 +18,8 @@
             data-tip="{% trans 'Read' %}"
           >
             <a
-              href="{% url 'ui:article' article.slug %}"
               class="btn btn-circle btn-primary lg:btn-xl"
+              href="{% url 'ui:article' article.created_at|date:'Y' article.created_at|date:'m' article.created_at|date:'d' article.slug %}"
             >
               <i
                 data-lucide="arrow-right"
@@ -33,9 +33,9 @@
 
         <figure>{% image article.image scale-100 %}</figure>
 
-        <main class="card-body justify-between gap-4 lg:gap-8">
+        <main class="card-body justify-between gap-4 lg:gap-6">
           <div class="hero grow">
-            <div class="hero-content flex-col gap-4 lg:gap-8">
+            <div class="hero-content flex-col gap-4 lg:gap-6">
               <h1
                 class="card-title font-serif text-2xl font-black text-shadow-lg lg:text-7xl rtl:font-kufi"
               >
@@ -149,53 +149,10 @@
     </div>
   </div>
 
-  <div class="carousel">
+  <div class="carousel md:gap-4 lg:gap-6">
     {% for article in latest_news %}
     <div id="{{ article.slug }}" class="carousel-item w-full md:w-1/2 lg:w-1/3">
-      <article
-        class="card relative size-full bg-base-200 p-4 hover:shadow lg:card-lg xl:card-xl"
-      >
-        <figure class="rounded-box overflow-hidden">
-          {% image article.image scale-100 %}
-        </figure>
-        <main class="card-body gap-4 lg:gap-8">
-          <h1 class="card-title font-serif text-primary rtl:font-kufi">
-            {{ article.title }}
-          </h1>
-
-          <p>{{ article.headline }}</p>
-
-          <div class="flex items-center justify-between">
-            <time
-              class="badge badge-sm badge-info lg:badge-lg"
-              datetime="{{ article.created_at }}"
-            >
-              {{ article.created_at|timesince }}
-            </time>
-            <div
-              class="tooltip tooltip-primary tooltip-top"
-              data-tip="{% trans 'Category' %}"
-            >
-              <a
-                href="{% url 'ui:category' article.get_parent.slug %}"
-                class="badge badge-sm badge-primary lg:badge-lg"
-              >
-                {{ article.get_parent.title }}
-              </a>
-            </div>
-          </div>
-          <a
-            href="{% url 'ui:article' article.slug %}"
-            class="btn btn-primary btn-lg xl:btn-xl"
-          >
-            {% trans 'Continue reading' %}
-            <i
-              data-lucide="chevron-right"
-              class="size-4 lg:size-6 rtl:rotate-180"
-            ></i>
-          </a>
-        </main>
-      </article>
+      {% include 'ui/components/article.html' %}
     </div>
     {% endfor %}
   </div>
@@ -204,7 +161,7 @@
 <section id="categories" class="grid gap-6">
   <div class="flex items-center justify-between gap-4">
     <h2 class="text-xl font-black text-primary lg:text-2xl">
-      {% trans 'Browse news by category' %}
+      {% trans 'Categories' %}
     </h2>
 
     <div
@@ -225,7 +182,7 @@
     </div>
   </div>
 
-  <div class="carousel">
+  <div class="carousel md:gap-4 lg:gap-6">
     {% for category in categories %}
     <div
       id="{{ category.slug }}"
@@ -234,12 +191,12 @@
       <article
         class="card relative size-full bg-base-200 p-4 hover:shadow lg:card-lg xl:card-xl"
       >
-        <main class="card-body gap-4 lg:gap-8">
+        <main class="card-body gap-4 lg:gap-6">
           <div
             class="tooltip tooltip-left tooltip-info absolute top-4 right-4 rtl:left-4"
             data-tip="{% trans 'Article count' %}"
           >
-            <span class="badge badge-sm badge-soft badge-info lg:badge-lg">
+            <span class="badge badge-sm badge-info lg:badge-lg">
               {{ category.get_children.count }} {% trans 'articles' %}
             </span>
           </div>
@@ -252,7 +209,7 @@
 
           <a
             href="{% url 'ui:category' category.slug %}"
-            class="btn btn-primary btn-lg xl:btn-xl"
+            class="btn btn-primary lg:btn-lg"
           >
             {% trans 'See all' %}
             <i
