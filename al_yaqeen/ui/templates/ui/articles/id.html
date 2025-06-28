@@ -1,7 +1,26 @@
 {% extends 'ui/base.html' %}{% load i18n wagtailcore_tags wagtailimages_tags %}
 
 <!---->
-{% block title %}{{ article.title }}{% endblock %}
+{% block title %}{{ block.super }} | {{ article.title }}{% endblock %}
+
+<!---->
+{% block meta %}
+<meta name="description" content="{{ article.headline }}" />
+<meta property="og:url" content="{{ request.build_absolute_uri }}" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="{% trans 'Al-Yaqeen' %} | {{ article.title }}" />
+<meta property="og:description" content="{{ article.headline }}" />
+<meta property="og:image" content="{{ article.image.file.url }}" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:domain" content="alyaqeen.pythonanywhere.com" />
+<meta property="twitter:url" content="{{ request.build_absolute_uri }}" />
+<meta name="twitter:title" content="{% trans 'Al-Yaqeen' %} | {{ article.title }}" />
+<meta name="twitter:description" content="{{ article.headline }}" />
+<meta name="twitter:image" content="{{ article.image.file.url }}" />
+{% endblock %}
 
 <!---->
 {% block content %}
@@ -13,10 +32,7 @@
 </div>
 
 <div class="relative grid w-full grid-cols-12 gap-6 lg:gap-12">
-  <section
-    id="article-header"
-    class="col-span-12 w-full lg:col-span-10 lg:col-start-3 lg:col-end-11"
-  >
+  <section id="article-header" class="col-span-12 w-full lg:col-span-10 lg:col-start-3 lg:col-end-11">
     <div class="grid gap-4 lg:gap-6">
       <div class="w-full">
         <figure>{% image article.image scale-100 %}</figure>
@@ -24,113 +40,70 @@
     </div>
   </section>
 
-  <section
-    id="article-options"
-    class="col-span-12 lg:col-span-8 lg:col-start-4 lg:col-end-10"
-  >
+  <section id="article-options" class="col-span-12 lg:col-span-8 lg:col-start-4 lg:col-end-10">
     <div class="flex w-full items-center justify-between">
       <div class="join-vertical join divide-base-100 divide-y-2">
-        <div
-          class="tooltip tooltip-right rtl:tooltip-left tooltip-primary"
-          data-tip="{% trans 'Category' %}"
-        >
-          <a
-            href="{% url 'ui:category' article.get_parent.slug %}"
-            class="join-item badge badge-soft badge-primary lg:badge-xl w-full font-bold"
-          >
+        <div class="tooltip tooltip-right rtl:tooltip-left tooltip-primary" data-tip="{% trans 'Category' %}">
+          <a href="{% url 'ui:category' article.get_parent.slug %}"
+            class="join-item badge badge-soft badge-primary lg:badge-xl w-full font-bold">
             {{ article.get_parent.title }}
           </a>
         </div>
 
         {% if article.is_breaking %}
-        <div
-          class="tooltip tooltip-right rtl:tooltip-left tooltip-error"
-          data-tip="{% trans 'Breaking' %}"
-        >
-          <a
-            href="{% url 'ui:articles' %}?is_breaking=True"
-            class="join-item badge badge-soft badge-error w-full animate-pulse lg:badge-lg"
-          >
+        <div class="tooltip tooltip-right rtl:tooltip-left tooltip-error" data-tip="{% trans 'Breaking' %}">
+          <a href="{% url 'ui:articles' %}?is_breaking=True"
+            class="join-item badge badge-soft badge-error w-full animate-pulse lg:badge-lg">
             {% trans 'Breaking' %}
           </a>
         </div>
         {% endif %}
 
-        <div
-          class="tooltip tooltip-right rtl:tooltip-left tooltip-info"
-          data-tip="{{ article.created_at|timesince }}"
-        >
-          <a
-            class="join-item badge badge-soft badge-info w-full"
-            href="{% url 'ui:articles-d' article.created_at|date:'Y' article.created_at|date:'m' article.created_at|date:'d' %}"
-          >
-            <time class="text-xs" datetime="{{ article.created_at }}"
-              >{{ article.created_at|date }}</time
-            >
+        <div class="tooltip tooltip-right rtl:tooltip-left tooltip-info" data-tip="{{ article.created_at|timesince }}">
+          <a class="join-item badge badge-soft badge-info w-full"
+            href="{% url 'ui:articles-d' article.created_at|date:'Y'|default:'2025' article.created_at|date:'m'|default:'01' article.created_at|date:'d'|default:'01' %}">
+            <time datetime="{{ article.created_at }}">
+              {{ article.created_at|date }}
+            </time>
           </a>
         </div>
       </div>
 
       <div class="join divide-base-100 items-center divide-x-2">
         {% if request.user.is_authenticated %}
-        <form
-          method="post"
-          data-tip="{% trans 'Save' %}"
-          class="tooltip tooltip-bottom tooltip-error"
-          action="/api/articles/{{ article.id }}/save?redirect=1"
-        >
+        <form method="post" data-tip="{% trans 'Save' %}" class="tooltip tooltip-bottom tooltip-error"
+          action="/api/articles/{{ article.id }}/save?redirect=1">
           {% csrf_token %}
-          <button
-            type="submit"
-            class="btn join-item btn-square btn-soft btn-error"
-          >
+          <button type="submit" class="btn join-item btn-square btn-soft btn-error">
             <i data-lucide="bookmark" class="size-4 lg:size-6"></i>
             <span class="sr-only">{% trans 'Save' %}</span>
           </button>
         </form>
         {% endif %}
-        <div
-          class="tooltip tooltip-bottom tooltip-success"
-          data-tip="{% trans 'Copy Link' %}"
-        >
-          <button
-            data-clipboard-text="{{ request.build_absolute_uri }}"
-            class="btn btn-copy join-item btn-square btn-soft btn-success"
-          >
+        <div class="tooltip tooltip-bottom tooltip-success" data-tip="{% trans 'Copy Link' %}">
+          <button data-clipboard-text="{{ request.build_absolute_uri }}"
+            class="btn btn-copy join-item btn-square btn-soft btn-success">
             <i data-lucide="link-2" class="size-4 lg:size-6"></i>
             <span class="sr-only">{% trans 'Copy Link' %}</span>
           </button>
         </div>
-        <div
-          class="tooltip tooltip-bottom tooltip-info"
-          data-tip="{% trans 'Share' %}"
-        >
+        <div class="tooltip tooltip-bottom tooltip-info" data-tip="{% trans 'Share' %}">
           <div class="dropdown dropdown-left dropdown-bottom">
-            <button
-              tabindex="0"
-              class="btn join-item btn-square btn-soft btn-info"
-            >
+            <button tabindex="0" class="btn join-item btn-square btn-soft btn-info">
               <i data-lucide="share-2" class="size-4 lg:size-6"></i>
               <span class="sr-only">{% trans 'Share' %}</span>
             </button>
-            <ul
-              tabindex="0"
-              class="dropdown-content menu gap-4 bg-base-100 rounded-box shadow-sm"
-            >
+            <ul tabindex="0" class="dropdown-content menu gap-4 bg-base-100 rounded-box shadow-sm">
               <li>
-                <a
-                  href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}"
-                  class="btn btn-ghost btn-sm justify-start gap-4 lg:btn-md"
-                >
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}"
+                  class="btn btn-ghost btn-sm justify-start gap-4 lg:btn-md">
                   <i data-lucide="facebook" class="size-4 lg:size-6"></i>
                   {% trans 'Facebook' %}
                 </a>
               </li>
               <li>
-                <a
-                  href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}&text={{ article.title }}"
-                  class="btn btn-ghost btn-sm justify-start gap-4 lg:btn-md"
-                >
+                <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}&text={{ article.title }}"
+                  class="btn btn-ghost btn-sm justify-start gap-4 lg:btn-md">
                   <i data-lucide="twitter" class="size-4 lg:size-6"></i>
                   {% trans 'X' %}
                 </a>
@@ -151,31 +124,23 @@
     </div>
   </section>
 
-  <section
-    id="article-content"
-    class="col-span-12 lg:col-span-8 lg:col-start-4 lg:col-end-10"
-  >
+  <section id="article-content" class="col-span-12 lg:col-span-8 lg:col-start-4 lg:col-end-10">
     <div
-      class="prose prose-neutral max-w-none prose-video:rounded-box xl:prose-lg 2xl:prose-xl prose-headings:text-primary prose-headings:font-serif rtl:prose-headings:font-kufi prose-img:rounded-box prose-img:w-full"
-    >
+      class="prose prose-neutral max-w-none prose-video:rounded-box xl:prose-lg 2xl:prose-xl prose-headings:text-primary prose-headings:font-serif rtl:prose-headings:font-kufi prose-img:rounded-box prose-img:w-full">
       <h1>{{ article.title }}</h1>
       <h2>{{ article.headline }}</h2>
       {% include_block article.content %}
     </div>
   </section>
 
-  <section
-    id="article-tags"
-    class="col-span-12 lg:col-span-8 lg:col-start-4 lg:col-end-10"
-  >
+  <section id="article-tags" class="col-span-12 lg:col-span-8 lg:col-start-4 lg:col-end-10">
     <div class="grid gap-4 lg:gap-6">
       <h1 class="text-primary lg:text-2xl">{% trans 'Tags' %}</h1>
 
       <ul class="flex items-center gap-4 flex-wrap">
         {% for tag in article.tags.all %}
         <li
-          class="badge {% cycle 'badge-primary' 'badge-secondary' 'badge-success' 'badge-accent' 'badge-warnig' 'badge-error' 'badge-neutral' %}"
-        >
+          class="badge {% cycle 'badge-primary' 'badge-secondary' 'badge-success' 'badge-accent' 'badge-warnig' 'badge-error' 'badge-neutral' %}">
           {{ tag }}
         </li>
         {% endfor %}

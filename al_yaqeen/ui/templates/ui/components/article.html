@@ -20,22 +20,22 @@
       >
         <a
           class="badge badge-sm badge-info lg:badge-lg"
-          href="{% url 'ui:articles-d' article.created_at|date:'Y' article.created_at|date:'m' article.created_at|date:'d' %}"
+          href="{% url 'ui:articles-d' article.created_at|date:'Y'|default:'2025' article.created_at|date:'m'|default:'01' article.created_at|date:'d'|default:'01' %}"
         >
-          <time class="text-xs" datetime="{{ article.created_at }}"
-            >{{ article.created_at|date }}</time
-          >
+          <time datetime="{{ article.created_at }}">
+            {{ article.created_at|date }}
+          </time>
         </a>
       </div>
 
-      <div class="join items-center divide-x-2 divide-base-100">
+      <div class="flex items-center gap-2 lg:gap-4">
         <div
           class="tooltip tooltip-top flex tooltip-error"
           data-tip="{% trans 'Breaking' %}"
         >
           <a
             href="{% url 'ui:articles' %}?is_breaking=True"
-            class="relative join-item badge badge-sm badge-error lg:badge-lg"
+            class="relative badge badge-sm badge-error lg:badge-lg"
           >
             <i data-lucide="podcast" class="size-4 lg:size-6"></i>
 
@@ -52,9 +52,9 @@
         >
           <a
             href="{% url 'ui:category' article.get_parent.slug %}"
-            class="join-item badge badge-sm badge-primary text-shadow-lg lg:badge-lg"
+            class="badge badge-sm badge-primary text-shadow-lg lg:badge-lg"
           >
-            <span class="text-xs"> {{ article.get_parent.title }} </span>
+            {{ article.get_parent.title }}
           </a>
         </div>
       </div>

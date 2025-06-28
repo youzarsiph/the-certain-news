@@ -10,41 +10,48 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %}{% trans 'Al-Yaqeen' %}{% endblock %}</title>
+    {% block meta %}
     <meta
       name="description"
-      content="OpenGraph.Dev: Generate and preview Open Graph meta tags for images, titles, and more, ensuring optimal display on Facebook, Twitter, LinkedIn, WhatsApp..."
+      content="{% trans 'Al-Yaqeen - Journalism with Certainty' %}"
     />
-
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:url" content="https://opengraph.dev" />
+    <meta property="og:url" content="https://alyaqeen.pythonanywhere.com" />
     <meta property="og:type" content="website" />
     <meta
       property="og:title"
-      content="OpenGraph - Preview Images and Generate Open Graph Meta Tags"
+      content="{% trans 'Al-Yaqeen - Journalism with Certainty' %}"
     />
     <meta
       property="og:description"
-      content="OpenGraph.Dev: Generate and preview Open Graph meta tags for images, titles, and more, ensuring optimal display on Facebook, Twitter, LinkedIn, WhatsApp..."
+      content="{% trans 'Al-Yaqeen - Journalism with Certainty' %}"
     />
-    <meta property="og:image" content="https://opengraph.dev/banner.png" />
+    <meta
+      property="og:image"
+      content="https://alyaqeen.pythonanywhere.com/banner.png"
+    />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
 
-    <!-- Twitter Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta property="twitter:domain" content="opengraph.dev" />
-    <meta property="twitter:url" content="https://opengraph.dev" />
+    <meta property="twitter:domain" content="alyaqeen.pythonanywhere.com" />
+    <meta
+      property="twitter:url"
+      content="https://alyaqeen.pythonanywhere.com"
+    />
     <meta
       name="twitter:title"
-      content="OpenGraph - Preview Images and Generate Open Graph Meta Tags"
+      content="{% trans 'Al-Yaqeen - Journalism with Certainty' %}"
     />
     <meta
       name="twitter:description"
-      content="OpenGraph.Dev: Generate and preview Open Graph meta tags for images, titles, and more, ensuring optimal display on Facebook, Twitter, LinkedIn, WhatsApp..."
+      content="{% trans 'Al-Yaqeen - Journalism with Certainty' %}"
     />
-    <meta name="twitter:image" content="https://opengraph.dev/banner.png" />
+    <meta
+      name="twitter:image"
+      content="https://alyaqeen.pythonanywhere.com/banner.png"
+    />
+    {% endblock %}
 
-    <!-- Meta Tags Generated via https://opengraph.dev -->
     <link
       href="{% static 'ui/css/styles.css' %}"
       rel="stylesheet"
@@ -456,94 +463,32 @@
               {% endif %}
               <li>
                 <a
-                  href="{% url 'ui:category' 'economy' %}"
-                  class="btn gap-4 w-full justify-start btn-soft btn-primary"
+                  href="{% url 'ui:articles' %}?is_breaking=True"
+                  class="relative btn gap-4 w-full justify-start btn-soft btn-error"
                 >
-                  <i data-lucide="hand-coins" class="size-4 lg:size-6"></i>
-                  {% trans 'Economy' %}
+                  <i data-lucide="podcast" class="size-4 lg:size-6"></i>
+                  <span
+                    class="absolute badge badge-sm aspect-square animate-ping rounded-full badge-lg badge-error"
+                  ></span>
+                  <span>{% trans 'Breaking' %}</span>
                 </a>
               </li>
               <li>
                 <a
-                  href="{% url 'ui:category' 'politics' %}"
+                  href="{% url 'ui:articles' %}"
                   class="btn gap-4 w-full justify-start btn-soft btn-primary"
                 >
-                  <i data-lucide="vote" class="size-4 lg:size-6"></i>
-                  {% trans 'Politics' %}
+                  <i data-lucide="newspaper" class="size-4 lg:size-6"></i>
+                  {% trans 'Latest news' %}
                 </a>
               </li>
               <li>
                 <a
-                  href="{% url 'ui:category' 'technology' %}"
+                  href="{% url 'ui:categories' %}"
                   class="btn gap-4 w-full justify-start btn-soft btn-primary"
                 >
-                  <i data-lucide="cpu" class="size-4 lg:size-6"></i>
-                  {% trans 'Technology' %}
-                </a>
-              </li>
-              <li>
-                <a
-                  href="{% url 'ui:category' 'entertainment' %}"
-                  class="btn gap-4 w-full justify-start btn-soft btn-primary"
-                >
-                  <i data-lucide="clapperboard" class="size-4 lg:size-6"></i>
-                  {% trans 'Entertainment' %}
-                </a>
-              </li>
-              <li>
-                <a
-                  href="{% url 'ui:category' 'health' %}"
-                  class="btn gap-4 w-full justify-start btn-soft btn-primary"
-                >
-                  <i data-lucide="heart-pulse" class="size-4 lg:size-6"></i>
-                  {% trans 'Health' %}
-                </a>
-              </li>
-              <li>
-                <a
-                  href="{% url 'ui:category' 'sports' %}"
-                  class="btn gap-4 w-full justify-start btn-soft btn-primary"
-                >
-                  <i data-lucide="medal" class="size-4 lg:size-6"></i>
-                  {% trans 'Sports' %}
-                </a>
-              </li>
-              <li>
-                <a
-                  href="{% url 'ui:category' 'tourism' %}"
-                  class="btn gap-4 w-full justify-start btn-soft btn-primary"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="lucide lucide-palmtree-island-sun-icon lucide-palmtree-island-sun size-4 lg:size-6"
-                  >
-                    <circle cx="6" cy="7" r="3" />
-                    <path d="M16 14s1-3 1-8V4s-1-2-3-2c-1 0-2 .5-2 .5" />
-                    <path d="M13 8a4 4 0 0 1 8 0" />
-                    <path d="M17 4s1-2 3-2c1 0 2 .5 2 .5" />
-                    <path d="M19.75 19A8 8 0 0 0 4 21" />
-                    <path
-                      d="M2 20c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"
-                    />
-                  </svg>
-                  {% trans 'Tourism' %}
-                </a>
-              </li>
-              <li>
-                <a
-                  href="{% url 'ui:category' 'culture' %}"
-                  class="btn gap-4 w-full justify-start btn-soft btn-primary"
-                >
-                  <i data-lucide="castle" class="size-4 lg:size-6"></i>
-                  {% trans 'Culture' %}
+                  <i data-lucide="group" class="size-4 lg:size-6"></i>
+                  {% trans 'Categories' %}
                 </a>
               </li>
             </ol>
