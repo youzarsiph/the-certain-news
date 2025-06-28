@@ -1,7 +1,7 @@
 {% extends 'rest_framework/base.html' %}{% load i18n %}
 
 <!---->
-{% block title %}{% trans 'Al Yaqeen' %} | API | {{ name }}{% endblock %}
+{% block title %}{% trans 'The Certain News' %} | API | {{ name }}{% endblock %}
 
 <!---->
 {% block theme %}luxury{% endblock %}
@@ -14,7 +14,7 @@
 {% block branding %}
 <li
   class="tooltip tooltip-right rtl:tooltip-left tooltip-primary tooltip-open"
-  data-tip="{% trans 'Al Yaqeen' %} - API"
+  data-tip="{% trans 'The Certain News' %} - API"
 >
   <a href="/api/" class="btn btn-square btn-primary lg:btn-lg">
     <svg
@@ -37,7 +37,7 @@
       />
       <path d="M14 17h8" />
     </svg>
-    <span class="sr-only"> {% trans 'Al Yaqeen' %} - API </span>
+    <span class="sr-only"> {% trans 'The Certain News' %} - API </span>
   </a>
 </li>
 {% endblock %}

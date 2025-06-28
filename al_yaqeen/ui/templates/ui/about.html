@@ -1,7 +1,7 @@
 {% extends 'ui/base.html' %}{% load i18n wagtailimages_tags %}
 
 <!---->
-{% block title %}{% trans 'Al Yaqeen' %}{% endblock %}
+{% block title %}{{ block.super }} | {% trans 'About us' %}{% endblock %}
 
 <!---->
 {% block content %}

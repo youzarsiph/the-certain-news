@@ -9,21 +9,21 @@
     {% block head %}
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{% block title %}{% trans 'Al-Yaqeen' %}{% endblock %}</title>
+    <title>{% block title %}{% trans 'The Certain News' %}{% endblock %}</title>
     {% block meta %}
     <meta
       name="description"
-      content="{% trans 'Al-Yaqeen - Journalism with Certainty' %}"
+      content="{% trans 'The Certain News - Journalism with Certainty' %}"
     />
     <meta property="og:url" content="https://alyaqeen.pythonanywhere.com" />
     <meta property="og:type" content="website" />
     <meta
       property="og:title"
-      content="{% trans 'Al-Yaqeen - Journalism with Certainty' %}"
+      content="{% trans 'The Certain News - Journalism with Certainty' %}"
     />
     <meta
       property="og:description"
-      content="{% trans 'Al-Yaqeen - Journalism with Certainty' %}"
+      content="{% trans 'The Certain News - Journalism with Certainty' %}"
     />
     <meta
       property="og:image"
@@ -40,11 +40,11 @@
     />
     <meta
       name="twitter:title"
-      content="{% trans 'Al-Yaqeen - Journalism with Certainty' %}"
+      content="{% trans 'The Certain News - Journalism with Certainty' %}"
     />
     <meta
       name="twitter:description"
-      content="{% trans 'Al-Yaqeen - Journalism with Certainty' %}"
+      content="{% trans 'The Certain News - Journalism with Certainty' %}"
     />
     <meta
       name="twitter:image"
@@ -74,10 +74,10 @@
       <section id="content" class="drawer-content">
         <div class="relative h-dvh overflow-hidden bg-base-300 p-1 lg:p-2">
           <header
-            class="absolute inset-x-1 top-1 z-20 rounded-t-box backdrop-blur-3xl lg:inset-x-2 lg:top-2"
+            class="absolute inset-x-1 top-1 z-20 rounded-t-box p-2 lg:inset-x-2 lg:top-2"
           >
-            <nav class="navbar px-3 py-2 lg:px-6 lg:py-4">
-              <div class="navbar-start join divide-x divide-base-100">
+            <nav class="navbar items-center justify-evenly p-0">
+              <div class="navbar-start shadow-sm w-auto join divide-x divide-base-100 p-2 rounded-box backdrop-blur-3xl">
                 <div
                   class="tooltip tooltip-right rtl:tooltip-left tooltip-primary"
                   data-tip="{% trans 'Open drawer' %}"
@@ -172,7 +172,7 @@
                 </div>
               </div>
 
-              <div class="navbar-center">
+              <div class="navbar-center shadow-sm w-auto p-2 rounded-box backdrop-blur-3xl lg:p-4">
                 <div class="join items-center">
                   <div
                     class="tooltip tooltip-bottom tooltip-success"
@@ -188,7 +188,7 @@
                   </div>
                   <div
                     class="tooltip tooltip-bottom tooltip-primary"
-                    data-tip="{% trans 'Al Yaqeen' %}"
+                    data-tip="{% trans 'The Certain News' %}"
                   >
                     <a
                       href="{% url 'ui:home' %}"
@@ -216,7 +216,7 @@
                         />
                         <path d="M14 17h8" />
                       </svg>
-                      <span class="sr-only">{% trans 'Al Yaqeen' %}</span>
+                      <span class="sr-only">{% trans 'The Certain News' %}</span>
                     </a>
                   </div>
                   <div
@@ -234,7 +234,7 @@
                 </div>
               </div>
 
-              <div class="navbar-end join divide-x divide-base-100">
+              <div class="navbar-end shadow-sm w-auto join divide-x divide-base-100 p-2 rounded-box backdrop-blur-3xl">
                 {% if request.user.is_authenticated %}
                 <div
                   class="tooltip tooltip-left rtl:tooltip-right tooltip-success"
@@ -333,7 +333,7 @@
           </header>
 
           <section
-            class="m-auto flex size-full max-h-[calc(100dvh-0.5rem)] max-w-[calc(100dvw-0.5rem)] flex-col gap-16 overflow-y-auto rounded-box bg-base-100 p-4 pt-20 lg:max-h-[calc(100dvh-1rem)] lg:max-w-[calc(100dvw-1rem)]"
+            class="m-auto flex size-full max-h-[calc(100dvh-0.5rem)] max-w-[calc(100dvw-0.5rem)] flex-col gap-16 overflow-y-auto rounded-box bg-base-100 p-4 pt-24 lg:max-h-[calc(100dvh-1rem)] lg:max-w-[calc(100dvw-1rem)]"
           >
             {% include 'ui/components/messages.html' %}
             <!---->
@@ -385,7 +385,7 @@
             <header class="flex items-center justify-between gap-4 p-4">
               <div
                 class="tooltip tooltip-right rtl:tooltip-left tooltip-primary tooltip-open"
-                data-tip="{% trans 'Al Yaqeen' %}"
+                data-tip="{% trans 'The Certain News' %}"
               >
                 <a
                   href="{% url 'ui:home' %}"
@@ -411,7 +411,7 @@
                     />
                     <path d="M14 17h8" />
                   </svg>
-                  <span class="sr-only">{% trans 'Al Yaqeen' %}</span>
+                  <span class="sr-only">{% trans 'The Certain News' %}</span>
                 </a>
               </div>
 
@@ -464,12 +464,15 @@
               <li>
                 <a
                   href="{% url 'ui:articles' %}?is_breaking=True"
-                  class="relative btn gap-4 w-full justify-start btn-soft btn-error"
+                  class="group btn gap-4 w-full justify-start btn-soft btn-error"
                 >
-                  <i data-lucide="podcast" class="size-4 lg:size-6"></i>
-                  <span
-                    class="absolute badge badge-sm aspect-square animate-ping rounded-full badge-lg badge-error"
-                  ></span>
+                  <div class="relative flex items-center justify-center size-4 lg:size-6">
+                    <i data-lucide="podcast" class="size-4 lg:size-6"></i>
+                    <span
+                      class="absolute badge badge-sm animate-ping rounded-full badge-lg badge-error group-hover:badge-soft"
+                    >
+                    </span>
+                  </div>
                   <span>{% trans 'Breaking' %}</span>
                 </a>
               </li>
