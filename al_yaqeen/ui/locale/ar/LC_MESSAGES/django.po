@@ -1,0 +1,732 @@
+# Al-Yaqeen Arabic translations.
+# Copyright (C) 2025 Yousuf Abu Shanab
+# This file is distributed under the same license as the al-yaqeen package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: al-yaqeen 0.1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-06-27 07:34+0000\n"
+"PO-Revision-Date: 2025-6-20 HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: Arabic\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: al_yaqeen/ai/serializers.py:14
+msgid "HuggingFace model name"
+msgstr "اسم نموذج HuggingFace"
+
+#: al_yaqeen/ai/serializers.py:23
+msgid "Question"
+msgstr "سؤال"
+
+#: al_yaqeen/ai/serializers.py:32
+msgid "Prompt"
+msgstr "الموجه"
+
+#: al_yaqeen/ai/serializers.py:41
+msgid "Source language for example en_XX"
+msgstr "لغة المصدر على سبيل المثال en_XX"
+
+#: al_yaqeen/ai/serializers.py:45
+msgid "Target language for example ar_XX"
+msgstr "لغة الهدف على سبيل المثال ar_XX"
+
+#: al_yaqeen/articles/models.py:46
+msgid "Article image"
+msgstr "صورة المقال"
+
+#: al_yaqeen/articles/models.py:51
+msgid "Article headline"
+msgstr "عنوان المقال"
+
+#: al_yaqeen/articles/models.py:55
+msgid "Article content"
+msgstr "محتوى المقال"
+
+#: al_yaqeen/articles/models.py:59
+msgid "Designates if the Article is in breaking news"
+msgstr "يشير إلى ما إذا كان المقال خبرًا عاجلًا"
+
+#: al_yaqeen/articles/models.py:68
+msgid "Similar articles"
+msgstr "مقالات ذات صلة"
+
+#: al_yaqeen/articles/models.py:74
+msgid "News Articles"
+msgstr "مقالات إخبارية"
+
+#: al_yaqeen/articles/views.py:366
+msgid "Reaction removed"
+msgstr "تمت إزالة التفاعل"
+
+#: al_yaqeen/articles/views.py:371 al_yaqeen/articles/views.py:375
+#, python-brace-format
+msgid "You reacted to '{article}' with '{emoji}'"
+msgstr "لقد تفاعلت مع '{article}' باستخدام '{emoji}'"
+
+#: al_yaqeen/articles/views.py:403
+#, python-brace-format
+msgid "Article '{article}' removed form saved articles"
+msgstr "تمت إزالة المقال '{article}' من المقالات المحفوظة"
+
+#: al_yaqeen/articles/views.py:407
+#, python-brace-format
+msgid "Article '{article}' added to saved articles"
+msgstr "تمت إضافة المقال '{article}' إلى المقالات المحفوظة"
+
+#: al_yaqeen/categories/models.py:20
+msgid "Category description"
+msgstr "وصف الفئة"
+
+#: al_yaqeen/categories/models.py:29
+msgid ""
+"Categories help organize articles into thematic or subject-related "
+"groupings, making it easier for users to explore and filter available "
+"articles."
+msgstr ""
+"تساعد الفئات في تنظيم المقالات ضمن مجموعات موضوعية أو متعلقة بالموضوع، "
+"مما يسهل على المستخدمين استكشاف المقالات وفرزها."
+
+#: al_yaqeen/comments/models.py:31
+msgid "Comment Owner"
+msgstr "مالك التعليق"
+
+#: al_yaqeen/comments/models.py:36
+msgid "Commented Article"
+msgstr "المقال المعلق عليه"
+
+#: al_yaqeen/comments/models.py:40
+msgid "Comment Content"
+msgstr "محتوى التعليق"
+
+#: al_yaqeen/comments/models.py:45
+msgid "Comment Replies"
+msgstr "ردود التعليق"
+
+#: al_yaqeen/mixins/models.py:13
+msgid "Last update"
+msgstr "آخر تحديث"
+
+#: al_yaqeen/mixins/models.py:17
+msgid "Date created"
+msgstr "تاريخ الإنشاء"
+
+#: al_yaqeen/reactions/models.py:28
+msgid "User"
+msgstr "المستخدم"
+
+#: al_yaqeen/reactions/models.py:34
+msgid "Article"
+msgstr "المقال"
+
+#: al_yaqeen/reactions/models.py:39
+msgid "Reaction"
+msgstr "التفاعل"
+
+#: al_yaqeen/users/models.py:37
+msgid "User photo"
+msgstr "صورة المستخدم"
+
+#: al_yaqeen/users/models.py:44
+msgid "User bio"
+msgstr "نبذة عن المستخدم"
+
+#: al_yaqeen/users/models.py:49
+msgid "Saved news articles"
+msgstr "المقالات الإخبارية المحفوظة"
+
+#: al_yaqeen/ui/cms/blocks.py:16
+msgid "Quote"
+msgstr "اقتباس"
+
+#: al_yaqeen/ui/cms/blocks.py:17
+msgid "Paragraph"
+msgstr "فقرة"
+
+#: al_yaqeen/ui/cms/blocks.py:18
+msgid "Table"
+msgstr "جدول"
+
+#: al_yaqeen/ui/cms/blocks.py:45
+msgid "Image"
+msgstr "صورة"
+
+#: al_yaqeen/ui/cms/blocks.py:46
+msgid "Video Embed URL"
+msgstr "رابط تضمين الفيديو"
+
+#: al_yaqeen/ui/cms/blocks.py:47
+msgid "Document"
+msgstr "مستند"
+
+#: al_yaqeen/ui/templates/registration/base.html:4
+#: al_yaqeen/ui/templates/registration/base.html:36
+#: al_yaqeen/ui/templates/registration/base.html:62
+#: al_yaqeen/ui/templates/registration/base.html:115
+#: al_yaqeen/ui/templates/rest_framework/api.html:92
+#: al_yaqeen/ui/templates/ui/base.html:241
+#: al_yaqeen/ui/templates/ui/base.html:248
+#: al_yaqeen/ui/templates/ui/base.html:577
+#: al_yaqeen/ui/templates/ui/base.html:584
+msgid "Profile"
+msgstr "الملف الشخصي"
+
+#: al_yaqeen/ui/templates/registration/base.html:22
+#: al_yaqeen/ui/templates/registration/base.html:26
+#: al_yaqeen/ui/templates/registration/base.html:30
+#: al_yaqeen/ui/templates/ui/base.html:83
+#: al_yaqeen/ui/templates/ui/base.html:91
+msgid "Open drawer"
+msgstr "افتح القائمة"
+
+#: al_yaqeen/ui/templates/registration/base.html:52
+#: al_yaqeen/ui/templates/registration/base.html:98
+#: al_yaqeen/ui/templates/ui/base.html:87
+#: al_yaqeen/ui/templates/ui/base.html:377
+#: al_yaqeen/ui/templates/ui/base.html:424
+msgid "Close drawer"
+msgstr "أغلق القائمة"
+
+#: al_yaqeen/ui/templates/registration/base.html:88
+msgid "Al-Yaqeen | Profile"
+msgstr "اليقين | الملف الشخصي"
+
+#: al_yaqeen/ui/templates/registration/base.html:94
+#: al_yaqeen/ui/templates/registration/base.html:102
+#: al_yaqeen/ui/templates/ui/base.html:420
+#: al_yaqeen/ui/templates/ui/base.html:428
+#: al_yaqeen/ui/templates/ui/base.html:615
+#: al_yaqeen/ui/templates/ui/base.html:623
+#: al_yaqeen/ui/templates/ui/base.html:657
+msgid "Close"
+msgstr "إغلاق"
+
+#: al_yaqeen/ui/templates/registration/base.html:126
+#: al_yaqeen/ui/templates/registration/profile.html:45
+#: al_yaqeen/ui/templates/registration/profile.html:52
+#: al_yaqeen/ui/templates/ui/base.html:454
+msgid "Dashboard"
+msgstr "لوحة التحكم"
+
+#: al_yaqeen/ui/templates/registration/base.html:142
+#: al_yaqeen/ui/templates/registration/edit.html:4
+#: al_yaqeen/ui/templates/registration/edit.html:9
+#: al_yaqeen/ui/templates/registration/profile.html:33
+#: al_yaqeen/ui/templates/registration/profile.html:40
+msgid "Settings"
+msgstr "الإعدادات"
+
+#: al_yaqeen/ui/templates/registration/base.html:151
+msgid "Change Password"
+msgstr "تغيير كلمة المرور"
+
+#: al_yaqeen/ui/templates/registration/base.html:163
+#: al_yaqeen/ui/templates/registration/delete.html:4
+#: al_yaqeen/ui/templates/registration/delete.html:8
+#: al_yaqeen/ui/templates/registration/delete.html:14
+#: al_yaqeen/ui/templates/registration/profile.html:64
+msgid "Delete account"
+msgstr "حذف الحساب"
+
+#: al_yaqeen/ui/templates/registration/base.html:173
+#: al_yaqeen/ui/templates/registration/profile.html:20
+#: al_yaqeen/ui/templates/registration/profile.html:28
+#: al_yaqeen/ui/templates/ui/base.html:272
+#: al_yaqeen/ui/templates/ui/base.html:280
+#: al_yaqeen/ui/templates/ui/base.html:501
+#: al_yaqeen/ui/templates/ui/base.html:509
+msgid "Log out"
+msgstr "تسجيل الخروج"
+
+#: al_yaqeen/ui/templates/registration/delete.html:18
+msgid "Are your sure that you want to delete your account?"
+msgstr "هل أنت متأكد أنك تريد حذف حسابك؟"
+
+#: al_yaqeen/ui/templates/registration/delete.html:23
+msgid "This action is destructive!"
+msgstr "هذا الإجراء مدمر!"
+
+#: al_yaqeen/ui/templates/registration/logged_out.html:4
+msgid "Logged out"
+msgstr "تم تسجيل الخروج"
+
+#: al_yaqeen/ui/templates/registration/logged_out.html:16
+#: al_yaqeen/ui/templates/registration/logged_out.html:39
+#: al_yaqeen/ui/templates/registration/login.html:16
+#: al_yaqeen/ui/templates/registration/login.html:39
+#: al_yaqeen/ui/templates/registration/signup.html:17
+#: al_yaqeen/ui/templates/ui/articles/id.html:11
+#: al_yaqeen/ui/templates/ui/articles/id.html:20
+#: al_yaqeen/ui/templates/ui/base.html:12
+msgid "Al-Yaqeen"
+msgstr "اليقين"
+
+#: al_yaqeen/ui/templates/registration/logged_out.html:45
+msgid "Logged Out"
+msgstr "تم تسجيل الخروج"
+
+#: al_yaqeen/ui/templates/registration/logged_out.html:48
+msgid "Thanks for spending some quality time with us today."
+msgstr "شكرًا لقضاء بعض الوقت الثمين معنا اليوم."
+
+#: al_yaqeen/ui/templates/registration/logged_out.html:56
+#: al_yaqeen/ui/templates/registration/login.html:4
+#: al_yaqeen/ui/templates/registration/login.html:45
+#: al_yaqeen/ui/templates/registration/password_reset_complete.html:23
+#: al_yaqeen/ui/templates/registration/signup.html:60
+#: al_yaqeen/ui/templates/ui/base.html:320
+#: al_yaqeen/ui/templates/ui/base.html:327
+#: al_yaqeen/ui/templates/ui/base.html:515
+#: al_yaqeen/ui/templates/ui/base.html:522
+msgid "Log in"
+msgstr "تسجيل الدخول"
+
+#: al_yaqeen/ui/templates/registration/logged_out.html:62
+#: al_yaqeen/ui/templates/registration/login.html:78
+#: al_yaqeen/ui/templates/registration/signup.html:4
+#: al_yaqeen/ui/templates/registration/signup.html:46
+msgid "Sign up"
+msgstr "إنشاء حساب"
+
+#: al_yaqeen/ui/templates/registration/login.html:48
+msgid "Welcome, please login to continue."
+msgstr "مرحبًا، يرجى تسجيل الدخول للمتابعة."
+
+#: al_yaqeen/ui/templates/registration/login.html:58
+msgid ""
+"Your account doesn't have access to this page. To proceed, please login with "
+"an account that has access. <!---->"
+msgstr ""
+"ليس لدى حسابك صلاحية الوصول إلى هذه الصفحة. للمتابعة، يرجى تسجيل الدخول "
+"بحساب لديه الصلاحية."
+
+#: al_yaqeen/ui/templates/registration/login.html:84
+#: al_yaqeen/ui/templates/registration/signup.html:66
+msgid "Forgot password?"
+msgstr "نسيت كلمة المرور؟"
+
+#: al_yaqeen/ui/templates/registration/password_change_done.html:4
+msgid "Password Changed"
+msgstr "تم تغيير كلمة المرور"
+
+#: al_yaqeen/ui/templates/registration/password_change_done.html:8
+#: al_yaqeen/ui/templates/registration/password_change_form.html:8
+msgid "Password"
+msgstr "كلمة المرور"
+
+#: al_yaqeen/ui/templates/registration/password_change_done.html:10
+#: al_yaqeen/ui/templates/registration/password_change_form.html:9
+msgid "Change"
+msgstr "تغيير"
+
+#: al_yaqeen/ui/templates/registration/password_change_done.html:12
+msgid "Done"
+msgstr "تم"
+
+#: al_yaqeen/ui/templates/registration/password_change_done.html:19
+msgid "Congrats"
+msgstr "تهانينا"
+
+#: al_yaqeen/ui/templates/registration/password_change_done.html:22
+msgid "Your password was changed."
+msgstr "تم تغيير كلمة المرور بنجاح."
+
+#: al_yaqeen/ui/templates/registration/password_change_form.html:4
+msgid "Password Change"
+msgstr "تغيير كلمة المرور"
+
+#: al_yaqeen/ui/templates/registration/password_change_form.html:16
+msgid "Change password"
+msgstr "تغيير كلمة المرور"
+
+#: al_yaqeen/ui/templates/registration/password_change_form.html:20
+msgid ""
+"Please enter your old password, for security's sake, and then enter your new "
+"password twice so we can verify you typed it in correctly."
+msgstr ""
+"يرجى إدخال كلمة المرور القديمة حفاظًا على الأمان، ثم إدخال كلمة المرور الجديدة "
+"مرتين للتأكد من صحتها."
+
+#: al_yaqeen/ui/templates/registration/password_reset_complete.html:4
+#: al_yaqeen/ui/templates/registration/password_reset_form.html:4
+msgid "Password Reset"
+msgstr "إعادة تعيين كلمة المرور"
+
+#: al_yaqeen/ui/templates/registration/password_reset_complete.html:15
+#: al_yaqeen/ui/templates/registration/password_reset_form.html:15
+msgid "Reset Password"
+msgstr "إعادة تعيين كلمة المرور"
+
+#: al_yaqeen/ui/templates/registration/password_reset_complete.html:19
+msgid "Your password has been set. You may go ahead and log in now."
+msgstr "تم تعيين كلمة المرور. يمكنك الآن تسجيل الدخول."
+
+#: al_yaqeen/ui/templates/registration/password_reset_confirm.html:4
+msgid "Password Reset Confirm"
+msgstr "تأكيد إعادة التعيين"
+
+#: al_yaqeen/ui/templates/registration/password_reset_confirm.html:15
+msgid "Password Reset Confirmation"
+msgstr "تأكيد إعادة تعيين كلمة المرور"
+
+#: al_yaqeen/ui/templates/registration/password_reset_confirm.html:20
+msgid ""
+"Please enter your new password twice so we can verify you typed it in "
+"correctly."
+msgstr ""
+"يرجى إدخال كلمة المرور الجديدة مرتين للتأكد من صحتها."
+
+#: al_yaqeen/ui/templates/registration/password_reset_confirm.html:27
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used. Please request a new password reset. <!---->"
+msgstr ""
+"رابط إعادة التعيين غير صالح، ربما لأنه استُخدم مسبقًا. يرجى طلب إعادة تعيين جديدة."
+
+#: al_yaqeen/ui/templates/registration/password_reset_done.html:4
+#: al_yaqeen/ui/templates/registration/password_reset_done.html:15
+msgid "Password Reset Done"
+msgstr "تمت إعادة التعيين"
+
+#: al_yaqeen/ui/templates/registration/password_reset_done.html:19
+msgid ""
+"We've emailed you instructions for setting your password, if an account "
+"exists with the email you entered. You should receive them shortly."
+msgstr ""
+"أرسلنا لك تعليمات لإعادة تعيين كلمة المرور في حال وجود حساب مرتبط بالبريد "
+"الإلكتروني الذي أدخلته. ستصله قريبًا."
+
+#: al_yaqeen/ui/templates/registration/password_reset_done.html:24
+msgid ""
+"If you don't receive an email, please make sure you've entered the address "
+"you registered with, and check your spam folder."
+msgstr ""
+"إذا لم تتلقَ البريد، فتأكد من إدخال العنوان المسجل وتحقق من مجلد الرسائل "
+"العشوائية."
+
+#: al_yaqeen/ui/templates/registration/password_reset_done.html:30
+#: al_yaqeen/ui/templates/rest_framework/api.html:54
+#: al_yaqeen/ui/templates/rest_framework/api.html:61
+#: al_yaqeen/ui/templates/ui/base.html:440
+msgid "Home"
+msgstr "الرئيسية"
+
+#: al_yaqeen/ui/templates/registration/password_reset_email.html:6
+#, python-format
+msgid ""
+"You're receiving this email because you requested a password reset for your "
+"user account at %(site_name)s."
+msgstr ""
+"لقد تلقيت هذا البريد لأنك طلبت إعادة تعيين كلمة المرور لحسابك في %(site_name)s."
+
+#: al_yaqeen/ui/templates/registration/password_reset_email.html:10
+msgid "Please go to the following page and choose a new password:"
+msgstr "يرجى الانتقال إلى الصفحة التالية واختيار كلمة مرور جديدة:"
+
+#: al_yaqeen/ui/templates/registration/password_reset_email.html:16
+msgid "Your username, in case you've forgotten:"
+msgstr "اسم المستخدم الخاص بك في حال نسيانه:"
+
+#: al_yaqeen/ui/templates/registration/password_reset_email.html:18
+msgid "Thanks for using our site!"
+msgstr "شكرًا لاستخدامك موقعنا!"
+
+#: al_yaqeen/ui/templates/registration/password_reset_email.html:20
+#, python-format
+msgid "The %(site_name)s team"
+msgstr "فريق %(site_name)s"
+
+#: al_yaqeen/ui/templates/registration/password_reset_form.html:19
+msgid ""
+"Forgotten your password? Enter your email address below, and we'll email "
+"instructions for setting a new one."
+msgstr ""
+"نسيت كلمة المرور؟ أدخل بريدك الإلكتروني أدناه وسنرسل تعليمات لإعادة التعيين."
+
+#: al_yaqeen/ui/templates/registration/profile.html:15
+msgid "Welcome to your Profile"
+msgstr "مرحبًا بك في ملفك الشخصي"
+
+#: al_yaqeen/ui/templates/registration/profile.html:57
+msgid "Delete"
+msgstr "حذف"
+
+#: al_yaqeen/ui/templates/registration/profile.html:72
+msgid "Saved articles"
+msgstr "المقالات المحفوظة"
+
+#: al_yaqeen/ui/templates/registration/signup.html:49
+msgid "Welcome, please signup to continue."
+msgstr "مرحبًا، يرجى إنشاء حساب للمتابعة."
+
+#: al_yaqeen/ui/templates/rest_framework/api.html:4
+#: al_yaqeen/ui/templates/rest_framework/api.html:17
+#: al_yaqeen/ui/templates/rest_framework/api.html:40
+#: al_yaqeen/ui/templates/ui/about.html:4
+#: al_yaqeen/ui/templates/ui/base.html:191
+#: al_yaqeen/ui/templates/ui/base.html:219
+#: al_yaqeen/ui/templates/ui/base.html:388
+#: al_yaqeen/ui/templates/ui/base.html:414
+#: al_yaqeen/ui/templates/ui/contact.html:4
+#: al_yaqeen/ui/templates/ui/index.html:4
+msgid "Al Yaqeen"
+msgstr "اليقين"
+
+#: al_yaqeen/ui/templates/rest_framework/api.html:66
+#: al_yaqeen/ui/templates/rest_framework/api.html:70
+#: al_yaqeen/ui/templates/ui/base.html:224
+#: al_yaqeen/ui/templates/ui/base.html:231
+#: al_yaqeen/ui/templates/ui/base.html:491
+#: al_yaqeen/ui/templates/ui/categories/list.html:4
+#: al_yaqeen/ui/templates/ui/categories/list.html:12
+#: al_yaqeen/ui/templates/ui/index.html:164
+msgid "Categories"
+msgstr "الفئات"
+
+#: al_yaqeen/ui/templates/rest_framework/api.html:75
+#: al_yaqeen/ui/templates/rest_framework/api.html:79
+msgid "Articles"
+msgstr "مقالات"
+
+#: al_yaqeen/ui/templates/ui/articles/archive/base.html:9
+msgid "News for"
+msgstr "الأخبار الخاصة بـ"
+
+#: al_yaqeen/ui/templates/ui/articles/id.html:11
+#: al_yaqeen/ui/templates/ui/articles/id.html:20
+#: al_yaqeen/ui/templates/ui/base.html:12
+msgid "Copied"
+msgstr "تم النسخ"
+
+#: al_yaqeen/ui/templates/ui/articles/id.html:46
+#: al_yaqeen/ui/templates/ui/components/article.html:51
+#: al_yaqeen/ui/templates/ui/index.html:72
+msgid "Category"
+msgstr "الفئة"
+
+#: al_yaqeen/ui/templates/ui/articles/id.html:54
+#: al_yaqeen/ui/templates/ui/articles/id.html:57
+#: al_yaqeen/ui/templates/ui/base.html:473
+#: al_yaqeen/ui/templates/ui/components/article.html:34
+#: al_yaqeen/ui/templates/ui/components/article.html:45
+#: al_yaqeen/ui/templates/ui/index.html:55
+#: al_yaqeen/ui/templates/ui/index.html:66
+msgid "Breaking"
+msgstr "عاجل"
+
+#: al_yaqeen/ui/templates/ui/articles/id.html:74
+#: al_yaqeen/ui/templates/ui/articles/id.html:79
+msgid "Save"
+msgstr "حفظ"
+
+#: al_yaqeen/ui/templates/ui/articles/id.html:83
+#: al_yaqeen/ui/templates/ui/articles/id.html:87
+msgid "Copy Link"
+msgstr "نسخ الرابط"
+
+#: al_yaqeen/ui/templates/ui/articles/id.html:90
+#: al_yaqeen/ui/templates/ui/articles/id.html:94
+msgid "Share"
+msgstr "مشاركة"
+
+#: al_yaqeen/ui/templates/ui/articles/id.html:101
+#: al_yaqeen/ui/templates/ui/base.html:528
+#: al_yaqeen/ui/templates/ui/base.html:535
+msgid "Facebook"
+msgstr "فيسبوك"
+
+#: al_yaqeen/ui/templates/ui/articles/id.html:108
+#: al_yaqeen/ui/templates/ui/base.html:552
+msgid "X"
+msgstr "X"
+
+#: al_yaqeen/ui/templates/ui/articles/id.html:116
+#: al_yaqeen/ui/templates/ui/articles/id.html:120
+msgid "Options"
+msgstr "خيارات"
+
+#: al_yaqeen/ui/templates/ui/articles/id.html:138
+msgid "Tags"
+msgstr "وسوم"
+
+#: al_yaqeen/ui/templates/ui/articles/list.html:4
+#: al_yaqeen/ui/templates/ui/base.html:350
+msgid "News"
+msgstr "الأخبار"
+
+#: al_yaqeen/ui/templates/ui/articles/list.html:13
+msgid "Breaking News"
+msgstr "أخبار عاجلة"
+
+#: al_yaqeen/ui/templates/ui/articles/list.html:17
+#: al_yaqeen/ui/templates/ui/base.html:179
+#: al_yaqeen/ui/templates/ui/base.html:186
+#: al_yaqeen/ui/templates/ui/index.html:131
+msgid "Latest News"
+msgstr "أحدث الأخبار"
+
+#: al_yaqeen/ui/templates/ui/base.html:16
+#: al_yaqeen/ui/templates/ui/base.html:22
+#: al_yaqeen/ui/templates/ui/base.html:26
+#: al_yaqeen/ui/templates/ui/base.html:43
+#: al_yaqeen/ui/templates/ui/base.html:47
+msgid "Al-Yaqeen - Journalism with Certainty"
+msgstr "اليقين - صحافة باليقين"
+
+#: al_yaqeen/ui/templates/ui/base.html:97
+#: al_yaqeen/ui/templates/ui/base.html:106
+#: al_yaqeen/ui/templates/ui/base.html:115
+msgid "Language"
+msgstr "اللغة"
+
+#: al_yaqeen/ui/templates/ui/base.html:162
+#: al_yaqeen/ui/templates/ui/base.html:170
+#: al_yaqeen/ui/templates/ui/base.html:610
+#: al_yaqeen/ui/templates/ui/base.html:638
+#: al_yaqeen/ui/templates/ui/base.html:651
+msgid "Search"
+msgstr "بحث"
+
+#: al_yaqeen/ui/templates/ui/base.html:253
+#: al_yaqeen/ui/templates/ui/base.html:301
+msgid "Toggle theme"
+msgstr "تبديل النمط"
+
+#: al_yaqeen/ui/templates/ui/base.html:286
+#: al_yaqeen/ui/templates/ui/base.html:296
+#: al_yaqeen/ui/templates/ui/base.html:590
+#: al_yaqeen/ui/templates/ui/base.html:597
+msgid "Subscribe"
+msgstr "اشترك"
+
+#: al_yaqeen/ui/templates/ui/base.html:348
+msgid "Services"
+msgstr "الخدمات"
+
+#: al_yaqeen/ui/templates/ui/base.html:352
+msgid "Advertisement"
+msgstr "إعلان"
+
+#: al_yaqeen/ui/templates/ui/base.html:355
+msgid "Company"
+msgstr "الشركة"
+
+#: al_yaqeen/ui/templates/ui/base.html:357
+msgid "About us"
+msgstr "من نحن"
+
+#: al_yaqeen/ui/templates/ui/base.html:360
+msgid "Contact"
+msgstr "اتصل بنا"
+
+#: al_yaqeen/ui/templates/ui/base.html:364
+msgid "Legal"
+msgstr "القانونية"
+
+#: al_yaqeen/ui/templates/ui/base.html:365
+msgid "Terms of use"
+msgstr "شروط الاستخدام"
+
+#: al_yaqeen/ui/templates/ui/base.html:366
+msgid "Privacy policy"
+msgstr "سياسة الخصوصية"
+
+#: al_yaqeen/ui/templates/ui/base.html:482
+msgid "Latest news"
+msgstr "أحدث الأخبار"
+
+#: al_yaqeen/ui/templates/ui/base.html:540
+#: al_yaqeen/ui/templates/ui/base.html:547
+msgid "Instagram"
+msgstr "إنستغرام"
+
+#: al_yaqeen/ui/templates/ui/base.html:559
+msgid "C"
+msgstr "يوتيوب"
+
+#: al_yaqeen/ui/templates/ui/base.html:564
+#: al_yaqeen/ui/templates/ui/base.html:571
+msgid "Linkedin"
+msgstr "لينكدإن"
+
+#: al_yaqeen/ui/templates/ui/categories/list.html:28
+#: al_yaqeen/ui/templates/ui/categories/list.html:38
+msgid "See All"
+msgstr "عرض الكل"
+
+#: al_yaqeen/ui/templates/ui/components/article.html:66
+msgid "Continue reading"
+msgstr "تابع القراءة"
+
+#: al_yaqeen/ui/templates/ui/components/form.html:6
+msgid "Submit"
+msgstr "إرسال"
+
+#: al_yaqeen/ui/templates/ui/components/pagination.html:8
+#: al_yaqeen/ui/templates/ui/components/pagination.html:15
+msgid "Previous"
+msgstr "السابق"
+
+#: al_yaqeen/ui/templates/ui/components/pagination.html:21
+#: al_yaqeen/ui/templates/ui/components/pagination.html:24
+msgid "First"
+msgstr "الأول"
+
+#: al_yaqeen/ui/templates/ui/components/pagination.html:31
+msgid "Current"
+msgstr "الحالي"
+
+#: al_yaqeen/ui/templates/ui/components/pagination.html:41
+#: al_yaqeen/ui/templates/ui/components/pagination.html:47
+msgid "Last"
+msgstr "الأخير"
+
+#: al_yaqeen/ui/templates/ui/components/pagination.html:53
+#: al_yaqeen/ui/templates/ui/components/pagination.html:63
+msgid "Next"
+msgstr "التالي"
+
+#: al_yaqeen/ui/templates/ui/index.html:18
+#: al_yaqeen/ui/templates/ui/index.html:29
+msgid "Read"
+msgstr "اقرأ"
+
+#: al_yaqeen/ui/templates/ui/index.html:86
+msgid "Swipe left"
+msgstr "اسحب لليسار"
+
+#: al_yaqeen/ui/templates/ui/index.html:97
+msgid "Swipe left to view previous"
+msgstr "اسحب لليسار لعرض السابق"
+
+#: al_yaqeen/ui/templates/ui/index.html:104
+msgid "Swipe right"
+msgstr "اسحب لليمين"
+
+#: al_yaqeen/ui/templates/ui/index.html:115
+msgid "Swipe right to view the next"
+msgstr "اسحب لليمين لعرض التالي"
+
+#: al_yaqeen/ui/templates/ui/index.html:136
+#: al_yaqeen/ui/templates/ui/index.html:142
+#: al_yaqeen/ui/templates/ui/index.html:169
+#: al_yaqeen/ui/templates/ui/index.html:175
+#: al_yaqeen/ui/templates/ui/index.html:214
+msgid "See all"
+msgstr "عرض الكل"
+
+#: al_yaqeen/ui/templates/ui/index.html:197
+msgid "Article count"
+msgstr "عدد المقالات"
+
+#: al_yaqeen/ui/templates/ui/index.html:200
+msgid "articles"
+msgstr "مقالات"
