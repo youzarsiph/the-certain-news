@@ -368,11 +368,11 @@ class ArticleViewSet(ActionSerializersMixin, ActionPermissionsMixin, ModelViewSe
             else:
                 reaction.emoji = emoji
                 reaction.save()
-                message = _("You reacted to '%s' with '%s'") % article, emoji
+                message = _(f"You reacted to '{article}' with '{emoji}'")
 
         else:
             article.reactions.create(user=self.request.user, emoji=emoji)
-            message = _("You reacted to '%s' with '%s'") % article, emoji
+            message = _(f"You reacted to '{article}' with '{emoji}'")
 
         if request.query_params["redirect"]:
             messages.success(request, message)
@@ -400,11 +400,11 @@ class ArticleViewSet(ActionSerializersMixin, ActionPermissionsMixin, ModelViewSe
 
         if request.user.saved.contains(article):
             request.user.saved.remove(article)
-            message = _("Article '%s' removed form saved articles") % article
+            message = _(f"Article '{article}' removed form saved articles")
 
         else:
             request.user.saved.add(article)
-            message = _("Article '%s' added to saved articles") % article
+            message = _(f"Article '{article}' added to saved articles")
 
         if request.query_params["redirect"]:
             messages.success(request, message)
