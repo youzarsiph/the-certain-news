@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: al-yaqeen 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-28 19:23+0000\n"
+"POT-Creation-Date: 2025-06-30 07:16+0000\n"
 "PO-Revision-Date: 2025-6-20 HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -470,6 +470,20 @@ msgstr "حذف"
 msgid "Saved articles"
 msgstr "المقالات المحفوظة"
 
+#: al_yaqeen/ui/templates/registration/profile.html:85
+#, fuzzy
+#| msgid "Saved articles"
+msgid "Saved articles will appear here"
+msgstr "المقالات المحفوظة"
+
+#: al_yaqeen/ui/templates/registration/profile.html:89
+#: al_yaqeen/ui/templates/ui/articles/list.html:17
+#: al_yaqeen/ui/templates/ui/base.html:179
+#: al_yaqeen/ui/templates/ui/base.html:186
+#: al_yaqeen/ui/templates/ui/index.html:146
+msgid "Latest News"
+msgstr "أحدث الأخبار"
+
 #: al_yaqeen/ui/templates/registration/signup.html:49
 msgid "Welcome, please signup to continue."
 msgstr "مرحبًا، يرجى إنشاء حساب للمتابعة."
@@ -481,7 +495,7 @@ msgstr "مرحبًا، يرجى إنشاء حساب للمتابعة."
 #: al_yaqeen/ui/templates/ui/base.html:494
 #: al_yaqeen/ui/templates/ui/categories/list.html:4
 #: al_yaqeen/ui/templates/ui/categories/list.html:12
-#: al_yaqeen/ui/templates/ui/index.html:161
+#: al_yaqeen/ui/templates/ui/index.html:185
 msgid "Categories"
 msgstr "الفئات"
 
@@ -498,6 +512,11 @@ msgstr "من نحن"
 #: al_yaqeen/ui/templates/ui/articles/archive/base.html:9
 msgid "News for"
 msgstr "الأخبار الخاصة بـ"
+
+#: al_yaqeen/ui/templates/ui/articles/archive/base.html:25
+#: al_yaqeen/ui/templates/ui/articles/list.html:34
+msgid "None published"
+msgstr ""
 
 #: al_yaqeen/ui/templates/ui/articles/id.html:30
 msgid "Copied"
@@ -554,6 +573,13 @@ msgstr "خيارات"
 msgid "Tags"
 msgstr "وسوم"
 
+#: al_yaqeen/ui/templates/ui/articles/id.html:148
+#: al_yaqeen/ui/templates/ui/index.html:132
+#: al_yaqeen/ui/templates/ui/index.html:175
+#: al_yaqeen/ui/templates/ui/index.html:247
+msgid "None"
+msgstr "لا شيء"
+
 #: al_yaqeen/ui/templates/ui/articles/list.html:4
 #: al_yaqeen/ui/templates/ui/base.html:350
 msgid "News"
@@ -562,13 +588,6 @@ msgstr "الأخبار"
 #: al_yaqeen/ui/templates/ui/articles/list.html:13
 msgid "Breaking News"
 msgstr "أخبار عاجلة"
-
-#: al_yaqeen/ui/templates/ui/articles/list.html:17
-#: al_yaqeen/ui/templates/ui/base.html:179
-#: al_yaqeen/ui/templates/ui/base.html:186
-#: al_yaqeen/ui/templates/ui/index.html:128
-msgid "Latest News"
-msgstr "أحدث الأخبار"
 
 #: al_yaqeen/ui/templates/ui/base.html:16
 #: al_yaqeen/ui/templates/ui/base.html:22
@@ -653,10 +672,19 @@ msgstr "يوتيوب"
 msgid "Linkedin"
 msgstr "لينكدإن"
 
+#: al_yaqeen/ui/templates/ui/categories/id.html:33
+#: al_yaqeen/ui/templates/ui/categories/list.html:57
+msgid "No news published in this category"
+msgstr "لا توجد أخبار في هذه الفئة"
+
 #: al_yaqeen/ui/templates/ui/categories/list.html:28
 #: al_yaqeen/ui/templates/ui/categories/list.html:38
 msgid "See All"
 msgstr "عرض الكل"
+
+#: al_yaqeen/ui/templates/ui/categories/list.html:71
+msgid "No published categories"
+msgstr "لا توجد فئات"
 
 #: al_yaqeen/ui/templates/ui/components/article.html:66
 msgid "Continue reading"
@@ -711,19 +739,19 @@ msgstr "اسحب لليمين"
 msgid "Swipe right to view the next"
 msgstr "اسحب لليمين لعرض التالي"
 
-#: al_yaqeen/ui/templates/ui/index.html:133
-#: al_yaqeen/ui/templates/ui/index.html:139
-#: al_yaqeen/ui/templates/ui/index.html:166
-#: al_yaqeen/ui/templates/ui/index.html:172
-#: al_yaqeen/ui/templates/ui/index.html:211
+#: al_yaqeen/ui/templates/ui/index.html:151
+#: al_yaqeen/ui/templates/ui/index.html:157
+#: al_yaqeen/ui/templates/ui/index.html:190
+#: al_yaqeen/ui/templates/ui/index.html:196
+#: al_yaqeen/ui/templates/ui/index.html:235
 msgid "See all"
 msgstr "عرض الكل"
 
-#: al_yaqeen/ui/templates/ui/index.html:194
+#: al_yaqeen/ui/templates/ui/index.html:218
 msgid "Article count"
 msgstr "عدد المقالات"
 
-#: al_yaqeen/ui/templates/ui/index.html:197
+#: al_yaqeen/ui/templates/ui/index.html:221
 msgid "articles"
 msgstr "مقالات"
 
