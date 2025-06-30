@@ -143,6 +143,10 @@
           class="badge {% cycle 'badge-primary' 'badge-secondary' 'badge-success' 'badge-accent' 'badge-warnig' 'badge-error' 'badge-neutral' %}">
           {{ tag }}
         </li>
+        {% empty %}
+        <li class="badge badge-primary">
+          {% trans 'None' %}
+        </li>
         {% endfor %}
       </ul>
     </div>

@@ -24,6 +24,17 @@
     >
       {% include 'ui/components/article.html' %}
     </div>
+    {% empty %}
+    <div class="col-span-12 flex items-center justify-center">
+      <div class="card bg-base-200">
+        <div class="card-body items-center gap-8">
+          <i data-lucide="circle-alert"class="text-primary size-1/3"></i>
+          <h3 class="text-primary lg:text-xl">
+            {% trans 'No news published in this category' %}
+          </h3>
+        </div>
+      </div>
+    </div>
     {% endfor %}
   </div>
 </section>

@@ -66,7 +66,7 @@
       </div>
     </div>
   </div>
-
+  
   <section class="grid gap-6 mb-8">
     <h1 class="text-primary text-xl font-semibold lg:text-4xl">
       {% trans 'Saved articles' %}
@@ -76,6 +76,22 @@
       <li id="{{ article.slug }}">
         {% include 'ui/components/article.html' %}
       </li>
+      {% empty %}
+      <div class="flex items-center justify-center">
+        <div class="card bg-base-200">
+          <div class="card-body items-center gap-8">
+            <i data-lucide="bookmark"class="text-primary size-1/3"></i>
+            <h3 class="text-primary lg:text-xl">
+              {% trans 'Saved articles will appear here' %}
+            </h3>
+            
+            <a href="{% url 'ui:articles' %}" class="btn btn-primary gap-4">
+              {% trans 'Latest News' %}
+              <i data-lucide="chevron-right" class="size-4 lg:size-6 rtl:rotate-180"></i>
+            </a>
+          </div>
+        </div>
+      </div>
       {% endfor %}
     </ol>
   </section>

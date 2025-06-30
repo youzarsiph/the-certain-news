@@ -131,6 +131,8 @@ class BaseArticleListView:
 
     model = Article
     paginate_by = 25
+    allow_empty = True
+    allow_future = True
     ordering = "-created_at"
     date_field = "created_at"
     context_object_name = "articles"
