@@ -93,13 +93,27 @@
                 </div>
 
                 <div
-                  class="tooltip tooltip-right rtl:tooltip-left tooltip-info"
+                  class="tooltip tooltip-right rtl:tooltip-left tooltip-info hidden lg:block"
+                  data-tip="{% trans 'Search' %}"
+                >
+                  <button
+                    onclick="modal.showModal()"
+                    class="btn join-item btn-square btn-soft btn-sm btn-info lg:btn-md"
+                  >
+                    <i data-lucide="search" class="size-4 lg:size-6"></i>
+
+                    <span class="sr-only">{% trans 'Search' %}</span>
+                  </button>
+                </div>
+
+                <div
+                  class="tooltip tooltip-right rtl:tooltip-left tooltip-success"
                   data-tip="{% translate 'Language' %}"
                 >
                   <button
                     popovertarget="language"
                     style="anchor-name: --language"
-                    class="btn btn-sm btn-square btn-soft btn-info lg:btn-md"
+                    class="btn join-item btn-sm btn-square btn-soft btn-success lg:btn-md"
                   >
                     <i data-lucide="languages" class="size-4 lg:size-6"></i>
 
@@ -156,20 +170,6 @@
                     {% endfor %}
                   </ul>
                 </div>
-
-                <div
-                  class="tooltip tooltip-right rtl:tooltip-left tooltip-success"
-                  data-tip="{% trans 'Search' %}"
-                >
-                  <button
-                    onclick="modal.showModal()"
-                    class="btn join-item btn-square btn-soft btn-sm btn-success lg:btn-md"
-                  >
-                    <i data-lucide="search" class="size-4 lg:size-6"></i>
-
-                    <span class="sr-only">{% trans 'Search' %}</span>
-                  </button>
-                </div>
               </div>
 
               <div class="navbar-center shadow-sm w-auto p-2 rounded-box backdrop-blur-3xl lg:p-4">
@@ -204,7 +204,7 @@
                         stroke-width="2"
                         stroke-linecap="round"
                         stroke-linejoin="round"
-                        class="lucide lucide-feather-text-icon lucide-feather-text size-8"
+                        class="lucide lucide-feather-text-icon lucide-feather-text lg:size-8"
                       >
                         <path d="M17.9 8H9.2" />
                         <path
@@ -249,7 +249,7 @@
                   </a>
                 </div>
                 <div
-                  class="tooltip tooltip-left tooltip-info rtl:tooltip-right"
+                  class="tooltip tooltip-left tooltip-info hidden rtl:tooltip-right lg:block"
                   data-tip="{% trans 'Toggle theme' %}"
                 >
                   <label
@@ -297,7 +297,7 @@
                   </a>
                 </div>
                 <div
-                  class="tooltip tooltip-left tooltip-info rtl:tooltip-right"
+                  class="tooltip tooltip-left tooltip-info hidden rtl:tooltip-right lg:block"
                   data-tip="{% trans 'Toggle theme' %}"
                 >
                   <label
