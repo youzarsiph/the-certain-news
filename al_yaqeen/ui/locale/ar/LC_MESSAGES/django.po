@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: al-yaqeen 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-30 07:16+0000\n"
+"POT-Creation-Date: 2025-06-30 13:27+0000\n"
 "PO-Revision-Date: 2025-6-20 HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -505,9 +505,150 @@ msgid "Articles"
 msgstr "مقالات"
 
 #: al_yaqeen/ui/templates/ui/about.html:4
+#: al_yaqeen/ui/templates/ui/about.html:12
 #: al_yaqeen/ui/templates/ui/base.html:357
 msgid "About us"
 msgstr "من نحن"
+
+#: al_yaqeen/ui/templates/ui/about.html:14
+msgid ""
+"Welcome to <strong>The Certain News</strong> a platform dedicated to "
+"delivering reliable, insightful, and engaging news from around the world. At "
+"the heart of our mission is a deep commitment to building trust and "
+"promoting transparency in todayÆs rapidly changing information landscape."
+msgstr "مرحبًا بكم في النبأ اليقين – منصة مكرسة لتقديم أخبار موثوقة، ذات رؤى معمقة، وجذابة من جميع أنحاء العالم. في صميم مهمتنا التزام راسخ ببناء الثقة وتعزيز الشفافية في ظل مشهد المعلومات سريع التغير اليوم."
+
+#: al_yaqeen/ui/templates/ui/about.html:20
+msgid "Our Mission"
+msgstr "مهمتنا"
+
+#: al_yaqeen/ui/templates/ui/about.html:22
+msgid ""
+"In a time when information is abundant yet trust is scarce, our mission is "
+"clear:<br /> <strong> To empower our readers with authentic, well-researched "
+"news so that every voice is heard and every story matters. </strong>"
+msgstr "في زمن تنبسط فيه المعلومات ويقل فيه الثقة، تتضح مهمتنا كالتالي: تمكين قرائنا من خلال أخبار أصيلة ومدروسة بعناية، بحيث يُسمع كل صوت وتُعطى كل قصة حقها."
+
+#: al_yaqeen/ui/templates/ui/about.html:31
+msgid ""
+"We believe that by creating a space for verified and balanced reporting, we "
+"can help individuals make informed decisions and feel confident in the news "
+"they consume."
+msgstr "نؤمن بأن إنشاء مساحة للتغطية المتوازنة والمتحققة يساعد الأفراد على اتخاذ قرارات واعية ويمنحهم الثقة في الأخبار التي يتابعونها."
+
+#: al_yaqeen/ui/templates/ui/about.html:35
+msgid "Our Vision"
+msgstr "رؤيتنا"
+
+#: al_yaqeen/ui/templates/ui/about.html:37
+msgid ""
+"We envision a world where the truth is accessible to all. <strong>The "
+"Certain News</strong> strives to be more than just a news website a "
+"commitment to excellence in journalism. We aim to lead the way in digital "
+"storytelling by embracing innovative technology, ethical reporting, and a "
+"community-driven approach."
+msgstr "نتطلع إلى عالم تُتاح فيه الحقيقة للجميع. تسعى النبأ اليقين   لأن تكون أكثر من مجرد موقع إخباري؛ إنها التزام بالتميز في الصحافة. نهدف إلى ريادة التحول الرقمي في السرد القصصي من خلال تبني التكنولوجيا المبتكرة، والتغطية الأخلاقية، ونهج تشاركي مع المجتمع."
+
+#: al_yaqeen/ui/templates/ui/about.html:44
+msgid "Our Story"
+msgstr "قصتنا"
+
+#: al_yaqeen/ui/templates/ui/about.html:46
+msgid ""
+"Founded on the principles of trust and certainty, <strong>The Certain News</"
+"strong> was born out of the need for a platform that goes beyond quick "
+"headlines. Our name, which means &quot;certainty&quot; in Arabic, reflects "
+"our promise to deliver news that you can rely on. Drawing from a passion for "
+"deep investigation and a relentless search for the truth, our team is at the "
+"forefront of modern journalism, merging traditional reporting with cutting-"
+"edge technology. <!---->"
+msgstr "انطلقت النبأ اليقين   من مبادئ الثقة واليقين، استجابةً للحاجة إلى منصة تتجاوز العناوين العاجلة السريعة. يعكس اسمنا—الذي يعني "اليقين"—وعدنا بتقديم أخبار يمكنك الاعتماد عليها. مدفوعين بشغف التحقيق العميق والبحث الدؤوب عن الحقيقة، يقف فريقنا في طليعة الصحافة الحديثة، جامعًا بين التقارير التقليدية والتقنيات المتطورة."
+
+#: al_yaqeen/ui/templates/ui/about.html:56
+msgid "What We Do"
+msgstr "ماذا نفعل"
+
+#: al_yaqeen/ui/templates/ui/about.html:59
+msgid ""
+"<strong>In-Depth Reporting:</strong> We cover local, regional, and "
+"international news with thorough research and expert analysis. <!---->"
+msgstr "تغطية معمقة:   نقدم تقارير محلية وإقليمية ودولية بابتكار بحثي وتحليل خبراء."
+
+#: al_yaqeen/ui/templates/ui/about.html:66
+msgid ""
+"<strong>Timely Updates:</strong> With our real-time news feeds and live "
+"updates, youÆre always in the know."
+msgstr "تحديثات فورية:   بفضل خلاصة الأخبار في الوقت الحقيقي والتحديثات المباشرة، ستظل على اطلاع دائم."
+
+#: al_yaqeen/ui/templates/ui/about.html:71
+msgid ""
+"<strong>Community Engagement:</strong> We believe that meaningful "
+"conversations are a catalyst for change. ThatÆs why we encourage our readers "
+"to share opinions, provide feedback, and become active participants in our "
+"news community."
+msgstr "تفاعل مجتمعي:   نؤمن بأن الحوار البنّاء محرك للتغيير، لذا نشجع قراءنا على مشاركة آرائهم وتقديم ملاحظاتهم والمشاركة الفعّالة في مجتمعنا الإخباري."
+
+#: al_yaqeen/ui/templates/ui/about.html:78
+msgid ""
+"<strong>Innovative Technology:</strong> Leveraging modern frameworks and "
+"intuitive design, we ensure that our platform is easy to navigate, fast, and "
+"secure."
+msgstr "تكنولوجيا مبتكرة:   نعتمد أطر عمل حديثة وتصميمًا بديهيًا لضمان أن تكون منصتنا سهلة التصفح وسريعة وآمنة."
+
+#: al_yaqeen/ui/templates/ui/about.html:84
+msgid "Our Values"
+msgstr "قيمنا"
+
+#: al_yaqeen/ui/templates/ui/about.html:87
+msgid ""
+"<strong>Integrity:</strong> We adhere to the highest ethical standards, "
+"ensuring that our reports are accurate, fair, and impartial. <!---->"
+msgstr "النزاهة:   نلتزم بأعلى المعايير الأخلاقية لضمان أن تكون تقاريرنا دقيقة وعادلة وغير متحيزة."
+
+#: al_yaqeen/ui/templates/ui/about.html:94
+msgid ""
+"<strong>Transparency:</strong> Every piece of news is the product of "
+"rigorous fact-checking and a commitment to openness."
+msgstr "الشفافية:   كل خبر ننشره خضع للتحقق الدقيق انطلاقًا من التزامنا بالانفتاح."
+
+#: al_yaqeen/ui/templates/ui/about.html:99
+msgid ""
+"<strong>Inclusivity:</strong> All voices matter. We strive to reflect "
+"diverse perspectives and give space to underrepresented communities. <!---->"
+msgstr "الشمول:   لكل صوت قيمته، ونسعى لنعكس وجهات نظر متنوعة ونُتيح المجال للمجتمعات الأقل تمثيلاً."
+
+#: al_yaqeen/ui/templates/ui/about.html:106
+msgid ""
+"<strong>Innovation:</strong> Embracing modern technology is key to evolving "
+"the news industry. We continuously refine our processes and approach to "
+"bring you news in a dynamic, user-friendly format. <!---->"
+msgstr "الابتكار:   نؤمن بأن تبني التكنولوجيا الحديثة هو المفتاح لتطوير الصناعة الإخبارية، لذا نواصل تحسين عملياتنا ومنهجيتنا لتقديم الأخبار بشكل ديناميكي وسهل الاستخدام."
+
+#: al_yaqeen/ui/templates/ui/about.html:114
+msgid "Join Our Community"
+msgstr "انضم إلى مجتمعنا"
+
+#: al_yaqeen/ui/templates/ui/about.html:116
+msgid ""
+"We invite you to explore our articles, share your thoughts, and join us in "
+"celebrating journalism that upholds the values of truth and transparency. At "
+"<strong>The Certain News</strong>, your trust fuels our work, and your voice "
+"shapes our future."
+msgstr "ندعوك لاستكشاف مقالاتنا ومشاركة آرائك والاحتفاء معنا بصحافة ترتكز على قيم الحقيقة والشفافية. في النبأ اليقين  ، تغذينا ثقتك، ويصوغ صوتك مستقبلنا."
+
+#: al_yaqeen/ui/templates/ui/about.html:123
+msgid ""
+"Thank you for choosing <strong>The Certain News</strong> û where certainty "
+"meets in-depth journalism. If you have any questions or feedback, please "
+"feel free to contact us through our"
+msgstr "شكرًا لاختيارك النبأ اليقين   – حيث يلتقي اليقين بالصحافة المعمقة. إذا كانت لديك أي أسئلة أو ملاحظات، لا تتردد في التواصل معنا عبر"
+
+#: al_yaqeen/ui/templates/ui/about.html:127
+#: al_yaqeen/ui/templates/ui/base.html:360
+#: al_yaqeen/ui/templates/ui/contact.html:4
+#: al_yaqeen/ui/templates/ui/contact.html:12
+msgid "Contact"
+msgstr "اتصل بنا"
 
 #: al_yaqeen/ui/templates/ui/articles/archive/base.html:9
 msgid "News for"
@@ -516,7 +657,7 @@ msgstr "الأخبار الخاصة بـ"
 #: al_yaqeen/ui/templates/ui/articles/archive/base.html:25
 #: al_yaqeen/ui/templates/ui/articles/list.html:34
 msgid "None published"
-msgstr ""
+msgstr "لم يتم نشر شيء"
 
 #: al_yaqeen/ui/templates/ui/articles/id.html:30
 msgid "Copied"
@@ -556,6 +697,7 @@ msgstr "مشاركة"
 #: al_yaqeen/ui/templates/ui/articles/id.html:101
 #: al_yaqeen/ui/templates/ui/base.html:531
 #: al_yaqeen/ui/templates/ui/base.html:538
+#: al_yaqeen/ui/templates/ui/contact.html:51
 msgid "Facebook"
 msgstr "فيسبوك"
 
@@ -569,11 +711,11 @@ msgstr "X"
 msgid "Options"
 msgstr "خيارات"
 
-#: al_yaqeen/ui/templates/ui/articles/id.html:138
+#: al_yaqeen/ui/templates/ui/articles/id.html:139
 msgid "Tags"
 msgstr "وسوم"
 
-#: al_yaqeen/ui/templates/ui/articles/id.html:148
+#: al_yaqeen/ui/templates/ui/articles/id.html:149
 #: al_yaqeen/ui/templates/ui/index.html:132
 #: al_yaqeen/ui/templates/ui/index.html:175
 #: al_yaqeen/ui/templates/ui/index.html:247
@@ -600,18 +742,18 @@ msgid "The Certain News - Journalism with Certainty"
 msgstr "النبأ اليقين - صحافة باليقين"
 
 #: al_yaqeen/ui/templates/ui/base.html:97
-#: al_yaqeen/ui/templates/ui/base.html:106
-#: al_yaqeen/ui/templates/ui/base.html:115
-msgid "Language"
-msgstr "اللغة"
-
-#: al_yaqeen/ui/templates/ui/base.html:162
-#: al_yaqeen/ui/templates/ui/base.html:170
+#: al_yaqeen/ui/templates/ui/base.html:105
 #: al_yaqeen/ui/templates/ui/base.html:613
 #: al_yaqeen/ui/templates/ui/base.html:641
 #: al_yaqeen/ui/templates/ui/base.html:654
 msgid "Search"
 msgstr "بحث"
+
+#: al_yaqeen/ui/templates/ui/base.html:111
+#: al_yaqeen/ui/templates/ui/base.html:120
+#: al_yaqeen/ui/templates/ui/base.html:129
+msgid "Language"
+msgstr "اللغة"
 
 #: al_yaqeen/ui/templates/ui/base.html:253
 #: al_yaqeen/ui/templates/ui/base.html:301
@@ -636,11 +778,6 @@ msgstr "إعلان"
 #: al_yaqeen/ui/templates/ui/base.html:355
 msgid "Company"
 msgstr "الشركة"
-
-#: al_yaqeen/ui/templates/ui/base.html:360
-#: al_yaqeen/ui/templates/ui/contact.html:4
-msgid "Contact"
-msgstr "اتصل بنا"
 
 #: al_yaqeen/ui/templates/ui/base.html:364
 msgid "Legal"
@@ -717,6 +854,99 @@ msgstr "الأخير"
 #: al_yaqeen/ui/templates/ui/components/pagination.html:63
 msgid "Next"
 msgstr "التالي"
+
+#: al_yaqeen/ui/templates/ui/contact.html:14
+msgid ""
+"Thank you for your interest in <strong>The Certain News</strong>. We value "
+"your feedback, news tips, and inquiries. Please use any of the methods below "
+"to get in touch with our team."
+msgstr "شكرًا لاهتمامك بـ النبأ اليقين  . نثمّن ملاحظاتك واقتراحاتك وأخبارك العاجلة. يمكنك التواصل معنا من خلال الوسائل التالية:"
+
+#: al_yaqeen/ui/templates/ui/contact.html:19
+msgid "General Inquiries"
+msgstr "الاستفسارات العامة"
+
+#: al_yaqeen/ui/templates/ui/contact.html:21
+msgid ""
+"For general questions or comments, please email us at:<br /> <strong>Email:</"
+"strong>"
+msgstr "للاستفسارات أو التعليقات العامة، راسلنا عبر البريد الإلكتروني:"
+
+#: al_yaqeen/ui/templates/ui/contact.html:27
+msgid "News Tips &amp; Editorial Submissions"
+msgstr "أخبار عاجلة واقتراحات تحريرية"
+
+#: al_yaqeen/ui/templates/ui/contact.html:29
+msgid ""
+"If you have a news tip, a suggestion for a story, or would like to share "
+"important information with our editorial team, please send your message to:"
+"<br /> <strong>Email:</strong>"
+msgstr "إذا كان لديك خبر عاجل أو اقتراح لتغطية قصة أو معلومات مهمة تريد مشاركتها مع فريقنا التحريري، أرسل رسالتك إلى:"
+
+#: al_yaqeen/ui/templates/ui/contact.html:36
+msgid "Advertising &amp; Partnerships"
+msgstr "الإعلانات والشراكات"
+
+#: al_yaqeen/ui/templates/ui/contact.html:38
+msgid ""
+"For advertising, sponsorship, or partnership opportunities, reach out to our "
+"Business Development Team:<br /> <strong>Email:</strong>"
+msgstr "للاستفسارات الخاصة بالإعلان أو الرعاية أو فرص الشراكة، تواصل مع فريق تطوير الأعمال لدينا:"
+
+#: al_yaqeen/ui/templates/ui/contact.html:44
+msgid "Social Media"
+msgstr "وسائل التواصل الاجتماعي"
+
+#: al_yaqeen/ui/templates/ui/contact.html:46
+msgid "Stay connected and join the conversation on our social channels:"
+msgstr "تابعنا وشاركنا النقاش على قنواتنا الاجتماعية:"
+
+#: al_yaqeen/ui/templates/ui/contact.html:53
+msgid "The Certain News on Facebook"
+msgstr "النبأ اليقين على فيسبوك"
+
+#: al_yaqeen/ui/templates/ui/contact.html:57
+msgid "Whatsapp"
+msgstr "واتساب"
+
+#: al_yaqeen/ui/templates/ui/contact.html:59
+msgid "The Certain News on Whatsapp"
+msgstr "النبأ اليقين على واتساب"
+
+#: al_yaqeen/ui/templates/ui/contact.html:63
+msgid "Telegram"
+msgstr "تلغرلم"
+
+#: al_yaqeen/ui/templates/ui/contact.html:65
+msgid "The Certain News on Telegram"
+msgstr "النبأ اليقين على تلغرلم"
+
+#: al_yaqeen/ui/templates/ui/contact.html:69
+msgid "Office Address"
+msgstr "عنوان المكتب"
+
+#: al_yaqeen/ui/templates/ui/contact.html:71
+msgid ""
+"If you prefer to visit or send mail, our office is located at:<br /> The "
+"Certain News<br /> Burj Islam<br /> Latakia, Syria"
+msgstr "إذا كنت تفضل الزيارة أو إرسال المراسلات، يقع مكتبنا في: النبأ اليقين برج إسلام اللاذقية، سوريا"
+
+#: al_yaqeen/ui/templates/ui/contact.html:77
+msgid "Feedback"
+msgstr "الملاحظات"
+
+#: al_yaqeen/ui/templates/ui/contact.html:79
+msgid ""
+"We are always eager to hear from you. Your feedback helps us improve our "
+"news coverage and services. Please share your thoughts or suggestions via "
+"email."
+msgstr "نحن حريصون دائمًا على سماع آرائك. تساعدنا ملاحظاتك على تحسين تغطيتنا الإخبارية وخدماتنا. لا تتردد في إرسال أفكارك واقتراحاتك عبر البريد الإلكتروني."
+
+#: al_yaqeen/ui/templates/ui/contact.html:85
+msgid ""
+"Thank you for connecting with <strong>The Certain News</strong>. We strive "
+"to respond to all inquiries promptly and look forward to hearing from you!"
+msgstr "شكرًا لتواصلك مع النبأ اليقين. نسعى للرد على جميع الاستفسارات بسرعة ونتطلع لسماعك!"
 
 #: al_yaqeen/ui/templates/ui/index.html:15
 #: al_yaqeen/ui/templates/ui/index.html:26
