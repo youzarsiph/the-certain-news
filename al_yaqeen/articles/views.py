@@ -412,9 +412,9 @@ class ArticleViewSet(ActionSerializersMixin, ActionPermissionsMixin, ModelViewSe
                 reverse_lazy(
                     "ui:article",
                     args=[
-                        str(article.created_at.year),
-                        str(article.created_at.month),
-                        str(article.created_at.day),
+                        article.created_at.year,
+                        article.created_at.month,
+                        article.created_at.day,
                         article.slug,
                     ],
                 )

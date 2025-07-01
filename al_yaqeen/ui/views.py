@@ -1,12 +1,9 @@
 """Views for al_yaqeen.ui"""
 
-from typing import Any, Dict
-
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
-from django.utils.translation import get_language_from_request
 from django.views import generic
 from django_filters.views import FilterView
 
@@ -23,26 +20,14 @@ class HomeView(generic.TemplateView):
 
     template_name = "ui/index.html"
 
-    def get_context_data(self, **kwargs) -> Dict[str, Any]:
-        """Filter context data by language"""
-
-        lang = get_language_from_request(self.request).lower()
-
-        return {
-            **super().get_context_data(**kwargs),
-            "breaking_news": Article.objects.live()
-            .public()
-            .filter(is_breaking=True, locale__language_code=lang)
-            .order_by("-created_at")[:6],
-            "latest_news": Article.objects.live()
-            .public()
-            .filter(locale__language_code=lang)
-            .order_by("-created_at")[:6],
-            "categories": Category.objects.live()
-            .public()
-            .filter(locale__language_code=lang)
-            .order_by("-created_at")[:3],
-        }
+    extra_context = {
+        "breaking_news": Article.objects.live()
+        .public()
+        .filter(is_breaking=True)
+        .order_by("-created_at")[:6],
+        "latest_news": Article.objects.live().public().order_by("-created_at")[:6],
+        "categories": Category.objects.live().public().order_by("-created_at")[:3],
+    }
 
 
 class AboutView(generic.TemplateView):
@@ -107,7 +92,7 @@ class UserDeleteView(
 
 
 # Categories
-class CategoryListView(mixins.LanguageFilterMixin, generic.ListView):
+class CategoryListView(generic.ListView):
     """Category list"""
 
     paginate_by = 25
@@ -116,7 +101,7 @@ class CategoryListView(mixins.LanguageFilterMixin, generic.ListView):
     queryset = Category.objects.live().public()
 
 
-class CategoryDetailView(mixins.LanguageFilterMixin, generic.DetailView):
+class CategoryDetailView(generic.DetailView):
     """Category list"""
 
     slug_field = "slug"
@@ -169,7 +154,7 @@ class ArticleDayView(BaseArticleListView, generic.DayArchiveView):
     template_name = "ui/articles/archive/day.html"
 
 
-class ArticleDetailView(mixins.LanguageFilterMixin, generic.DateDetailView):
+class ArticleDetailView(generic.DateDetailView):
     """Article details"""
 
     month_format = "%m"

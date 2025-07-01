@@ -1,4 +1,4 @@
-{% load i18n wagtailimages_tags %}
+{% load i18n wagtailcore_tags wagtailimages_tags %}
 
 <article
   class="card relative size-full bg-base-200 p-4 hover:shadow lg:card-lg xl:card-xl"
@@ -61,7 +61,7 @@
     </div>
     <a
       class="btn btn-primary lg:btn-lg"
-      href="{% url 'ui:article' article.created_at|date:'Y' article.created_at|date:'m' article.created_at|date:'d' article.slug %}"
+      href="{% pageurl article %}"
     >
       {% trans 'Continue reading' %}
       <i

@@ -36,7 +36,7 @@ class Category(DateTimeMixin, Page):
     # API fields
     api_fields = [APIField("description")]
 
-    parent_page_types = ["wagtailcore.Page"]
+    parent_page_types = ["home.Home"]
     subpage_types = ["articles.Article"]
 
     class Meta:
