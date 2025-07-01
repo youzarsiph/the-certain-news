@@ -69,7 +69,7 @@
                 data-tip="{% trans 'Category' %}"
               >
                 <a
-                  href="{% url 'ui:category' article.get_parent.slug %}"
+                  href="{% pageurl article.get_parent.slug %}"
                   class="badge badge-sm badge-primary text-shadow-lg lg:badge-lg"
                 >
                   {{ article.get_parent.title }}
@@ -171,9 +171,7 @@
     </div>
     {% empty %}
     <div class="carousel-item size-full">
-      <h3 class="font-serif lg:text-xl rtl:font-kufi">
-        {% trans 'None' %}
-      </h3>
+      <h3 class="font-serif lg:text-xl rtl:font-kufi">{% trans 'None' %}</h3>
     </div>
     {% endfor %}
   </div>
@@ -228,10 +226,7 @@
 
           <div>{{ category.description }}</div>
 
-          <a
-            href="{% url 'ui:category' category.slug %}"
-            class="btn btn-primary lg:btn-lg"
-          >
+          <a href="{% pageurl category %}" class="btn btn-primary lg:btn-lg">
             {% trans 'See all' %}
             <i
               data-lucide="chevron-right"
@@ -243,9 +238,7 @@
     </div>
     {% empty %}
     <div class="carousel-item size-full">
-      <h3 class="font-serif lg:text-xl rtl:font-kufi">
-        {% trans 'None' %}
-      </h3>
+      <h3 class="font-serif lg:text-xl rtl:font-kufi">{% trans 'None' %}</h3>
     </div>
     {% endfor %}
   </div>

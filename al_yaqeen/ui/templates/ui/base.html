@@ -77,7 +77,9 @@
             class="absolute inset-x-1 top-1 z-20 rounded-t-box p-2 lg:inset-x-2 lg:top-2"
           >
             <nav class="navbar items-center justify-evenly p-0">
-              <div class="navbar-start shadow-sm w-auto join divide-x divide-base-100 p-2 rounded-box backdrop-blur-3xl">
+              <div
+                class="navbar-start shadow-sm w-auto join divide-x divide-base-100 p-2 rounded-box backdrop-blur-3xl"
+              >
                 <div
                   class="tooltip tooltip-right rtl:tooltip-left tooltip-primary"
                   data-tip="{% trans 'Open drawer' %}"
@@ -172,7 +174,9 @@
                 </div>
               </div>
 
-              <div class="navbar-center shadow-sm w-auto p-2 rounded-box backdrop-blur-3xl lg:p-4">
+              <div
+                class="navbar-center shadow-sm w-auto p-2 rounded-box backdrop-blur-3xl lg:p-4"
+              >
                 <div class="join items-center">
                   <div
                     class="tooltip tooltip-bottom tooltip-success"
@@ -216,7 +220,9 @@
                         />
                         <path d="M14 17h8" />
                       </svg>
-                      <span class="sr-only">{% trans 'The Certain News' %}</span>
+                      <span class="sr-only"
+                        >{% trans 'The Certain News' %}</span
+                      >
                     </a>
                   </div>
                   <div
@@ -234,7 +240,9 @@
                 </div>
               </div>
 
-              <div class="navbar-end shadow-sm w-auto join divide-x divide-base-100 p-2 rounded-box backdrop-blur-3xl">
+              <div
+                class="navbar-end shadow-sm w-auto join divide-x divide-base-100 p-2 rounded-box backdrop-blur-3xl"
+              >
                 {% if request.user.is_authenticated %}
                 <div
                   class="tooltip tooltip-left rtl:tooltip-right tooltip-success"
@@ -466,7 +474,9 @@
                   href="{% url 'ui:articles' %}?is_breaking=True"
                   class="group btn gap-4 w-full justify-start btn-soft btn-error"
                 >
-                  <div class="relative flex items-center justify-center size-4 lg:size-6">
+                  <div
+                    class="relative flex items-center justify-center size-4 lg:size-6"
+                  >
                     <i data-lucide="podcast" class="size-4 lg:size-6"></i>
                     <span
                       class="absolute badge badge-sm animate-ping rounded-full badge-lg badge-error group-hover:badge-soft"
@@ -531,7 +541,7 @@
               data-tip="{% trans 'Facebook' %}"
             >
               <a
-                href="https://facebook.com/"
+                href="https://www.facebook.com/profile.php?id=61577662873028"
                 class="btn btn-square btn-lg join-item btn-info btn-soft"
               >
                 <i data-lucide="facebook" class="size-4 lg:size-6"></i>
@@ -543,7 +553,7 @@
               data-tip="{% trans 'Instagram' %}"
             >
               <a
-                href="https://instagram.com/"
+                href="#"
                 class="btn btn-square btn-lg join-item btn-error btn-soft"
               >
                 <i data-lucide="instagram" class="size-4 lg:size-6"></i>
@@ -555,7 +565,7 @@
               data-tip="{% trans 'X' %}"
             >
               <a
-                href="https://x.com/"
+                href="#"
                 class="btn btn-square btn-lg join-item btn-primary btn-soft"
               >
                 <i data-lucide="twitter" class="size-4 lg:size-6"></i>
@@ -567,7 +577,7 @@
               data-tip="{% trans 'Linkedin' %}"
             >
               <a
-                href="https://linkedin.com/"
+                href="#"
                 class="btn btn-square btn-lg join-item btn-accent btn-soft"
               >
                 <i data-lucide="linkedin" class="size-4 lg:size-6"></i>

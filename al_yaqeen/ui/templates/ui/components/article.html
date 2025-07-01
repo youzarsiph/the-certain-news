@@ -51,7 +51,7 @@
           data-tip="{% trans 'Category' %}"
         >
           <a
-            href="{% url 'ui:category' article.get_parent.slug %}"
+            href="{% pageurl article.get_parent %}"
             class="badge badge-sm badge-primary text-shadow-lg lg:badge-lg"
           >
             {{ article.get_parent.title }}
@@ -59,10 +59,7 @@
         </div>
       </div>
     </div>
-    <a
-      class="btn btn-primary lg:btn-lg"
-      href="{% pageurl article %}"
-    >
+    <a class="btn btn-primary lg:btn-lg" href="{% pageurl article %}">
       {% trans 'Continue reading' %}
       <i
         data-lucide="chevron-right"
