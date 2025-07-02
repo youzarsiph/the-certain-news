@@ -101,6 +101,7 @@ class Article(DateTimeMixin, Page):
     ]
 
     parent_page_types = ["categories.Category"]
+    subpage_types = []
 
     def __str__(self) -> str:
         return self.title

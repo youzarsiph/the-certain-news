@@ -15,7 +15,7 @@
       class="tooltip tooltip-bottom tooltip-primary tooltip-open mt-4 mx-auto"
       data-tip="{% trans 'The Certain News' %}"
     >
-      <a href="{% url 'ui:home' %}" class="btn btn-square btn-xl btn-primary">
+      <a href="/" class="btn btn-square btn-xl btn-primary">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -56,10 +56,10 @@
         {% trans 'Log in' %}
       </a>
       <a
-        href="{% url 'ui:signup' %}"
+        href="{% url 'ui:subscribe' %}"
         class="btn rounded-none btn-soft btn-primary"
       >
-        {% trans 'Sign up' %}
+        {% trans 'Subscribe' %}
       </a>
     </footer>
   </section>

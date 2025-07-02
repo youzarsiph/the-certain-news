@@ -20,7 +20,7 @@
 
 
 @plugin "daisyui" {
-  themes: silk --default, luxury --prefers-dark, caramellatte;
+  themes: caramellatte --default, luxury --prefersdark;
 }
 
 @layer base {

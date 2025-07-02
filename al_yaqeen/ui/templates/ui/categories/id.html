@@ -17,7 +17,7 @@
   </div>
 
   <div class="grid grid-cols-12 gap-4 lg:gap-6">
-    {% for article in category.get_children.specific %}
+    {% for article in articles %}
     <div
       id="{{ article.slug }}"
       class="col-span-12 md:col-span-6 lg:col-span-4"
@@ -37,5 +37,7 @@
     </div>
     {% endfor %}
   </div>
+
+  {% include 'ui/components/pagination.html' %}
 </section>
 {% endblock %}

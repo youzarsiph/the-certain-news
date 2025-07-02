@@ -53,26 +53,27 @@
               >
                 <a
                   href="{% url 'ui:articles' %}?is_breaking=True"
-                  class="relative badge badge-sm badge-error lg:badge-lg"
+                  class="relative badge badge-sm badge-primary lg:badge-lg"
                 >
                   <i data-lucide="podcast" class="size-4 lg:size-6"></i>
 
-                  <span
-                    class="absolute badge badge-sm aspect-square animate-ping rounded-full badge-xl badge-error"
-                  ></span>
+                  <div
+                    aria-label="error"
+                    class="status status-xl status-error absolute animate-ping"
+                  ></div>
                   <span class="sr-only">{% trans 'Breaking' %}</span>
                 </a>
               </div>
 
               <div
-                class="tooltip tooltip-right rtl:tooltip-left flex tooltip-primary"
+                class="tooltip tooltip-right rtl:tooltip-left flex tooltip-accent"
                 data-tip="{% trans 'Category' %}"
               >
                 <a
-                  href="{% pageurl article.get_parent.slug %}"
-                  class="badge badge-sm badge-primary text-shadow-lg lg:badge-lg"
+                  href="{% pageurl article.get_parent %}"
+                  class="badge badge-sm badge-accent text-shadow-lg lg:badge-lg"
                 >
-                  {{ article.get_parent.title }}
+                  {{ article.get_parent }}
                 </a>
               </div>
             </div>
@@ -164,83 +165,21 @@
     </div>
   </div>
 
-  <div class="carousel gap-2">
+  <ol class="grid grid-cols-12 gap-4 lg:gap-6">
     {% for article in latest_news %}
-    <div id="{{ article.slug }}" class="carousel-item w-full md:w-1/2 lg:w-1/3">
+    <li id="{{ article.slug }}" class="col-span-12 md:col-span-6 lg:col-span-4">
       {% include 'ui/components/article.html' %}
-    </div>
+    </li>
     {% empty %}
-    <div class="carousel-item size-full">
-      <h3 class="font-serif lg:text-xl rtl:font-kufi">{% trans 'None' %}</h3>
-    </div>
+    <li class="col-span-12 flex items-center justify-center">
+      <div class="card bg-base-200">
+        <div class="card-body items-center gap-8">
+          <i data-lucide="circle-alert" class="text-primary size-1/3"></i>
+          <h3 class="text-primary lg:text-xl">{% trans 'None published' %}</h3>
+        </div>
+      </div>
+    </li>
     {% endfor %}
-  </div>
-</section>
-
-<section id="categories" class="grid gap-6">
-  <div class="flex items-center justify-between gap-4">
-    <h2 class="text-xl font-black text-primary lg:text-2xl">
-      {% trans 'Categories' %}
-    </h2>
-
-    <div
-      class="tooltip tooltip-left rtl:tooltip-right tooltip-info"
-      data-tip="{% trans 'See all' %}"
-    >
-      <a
-        href="{% url 'ui:categories' %}"
-        class="btn btn-circle btn-soft btn-info lg:btn-lg"
-      >
-        <span class="sr-only">{% trans 'See all' %}</span>
-
-        <i
-          data-lucide="chevron-right"
-          class="size-4 lg:size-6 rtl:rotate-180"
-        ></i>
-      </a>
-    </div>
-  </div>
-
-  <div class="carousel gap-2">
-    {% for category in categories %}
-    <div
-      id="{{ category.slug }}"
-      class="carousel-item w-full md:w-1/2 lg:w-1/3"
-    >
-      <article
-        class="card relative size-full bg-base-200 p-4 hover:shadow lg:card-lg xl:card-xl"
-      >
-        <main class="card-body gap-4 lg:gap-6">
-          <div
-            class="tooltip tooltip-left tooltip-info absolute top-4 right-4 rtl:left-4"
-            data-tip="{% trans 'Article count' %}"
-          >
-            <span class="badge badge-sm badge-info lg:badge-lg">
-              {{ category.get_children.count }} {% trans 'articles' %}
-            </span>
-          </div>
-
-          <h1 class="card-title font-serif text-primary rtl:font-kufi">
-            {{ category.title }}
-          </h1>
-
-          <div>{{ category.description }}</div>
-
-          <a href="{% pageurl category %}" class="btn btn-primary lg:btn-lg">
-            {% trans 'See all' %}
-            <i
-              data-lucide="chevron-right"
-              class="size-4 lg:size-6 rtl:rotate-180"
-            ></i>
-          </a>
-        </main>
-      </article>
-    </div>
-    {% empty %}
-    <div class="carousel-item size-full">
-      <h3 class="font-serif lg:text-xl rtl:font-kufi">{% trans 'None' %}</h3>
-    </div>
-    {% endfor %}
-  </div>
+  </ol>
 </section>
 {% endblock %}

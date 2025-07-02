@@ -12,9 +12,9 @@ app_name = "ui"
 auth_urls = [
     path("accounts/login/", auth.LoginView.as_view(), name="login"),
     path("accounts/logout/", auth.LogoutView.as_view(), name="logout"),
-    path("accounts/signup/", views.SignupView.as_view(), name="signup"),
+    path("accounts/subscribe/", views.SignupView.as_view(), name="subscribe"),
     path("accounts/profile/", views.ProfileView.as_view(), name="profile"),
-    path("accounts/<int:pk>/update/", views.UserUpdateView.as_view(), name="u-user"),
+    path("accounts/<int:pk>/settings/", views.UserUpdateView.as_view(), name="u-user"),
     path("accounts/<int:pk>/delete/", views.UserDeleteView.as_view(), name="d-user"),
     path(
         "accounts/password/change/",
@@ -51,13 +51,8 @@ auth_urls = [
 
 urlpatterns = [
     *auth_urls,
-    path("", views.HomeView.as_view(), name="home"),
     path("about/", views.AboutView.as_view(), name="about"),
     path("contact/", views.ContactView.as_view(), name="contact"),
-    path("categories/", views.CategoryListView.as_view(), name="categories"),
-    path(
-        "categories/<slug:slug>/", views.CategoryDetailView.as_view(), name="category"
-    ),
     path("articles/", views.ArticleListView.as_view(), name="articles"),
     path("articles/<int:year>/", views.ArticleYearView.as_view(), name="articles-y"),
     path(

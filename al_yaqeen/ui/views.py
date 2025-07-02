@@ -8,28 +8,12 @@ from django.views import generic
 from django_filters.views import FilterView
 
 from al_yaqeen.articles.models import Article
-from al_yaqeen.categories.models import Category
 from al_yaqeen.comments.models import Comment
 from al_yaqeen.ui import mixins
 from al_yaqeen.ui.forms import UserCreateForm
 
 
 # Create your views here.
-class HomeView(generic.TemplateView):
-    """Home page"""
-
-    template_name = "ui/index.html"
-
-    extra_context = {
-        "breaking_news": Article.objects.live()
-        .public()
-        .filter(is_breaking=True)
-        .order_by("-created_at")[:6],
-        "latest_news": Article.objects.live().public().order_by("-created_at")[:6],
-        "categories": Category.objects.live().public().order_by("-created_at")[:3],
-    }
-
-
 class AboutView(generic.TemplateView):
     """About page"""
 
@@ -91,25 +75,6 @@ class UserDeleteView(
     success_message = "Your account was deleted successfully!"
 
 
-# Categories
-class CategoryListView(generic.ListView):
-    """Category list"""
-
-    paginate_by = 25
-    ordering = "-created_at"
-    template_name = "ui/categories/list.html"
-    queryset = Category.objects.live().public()
-
-
-class CategoryDetailView(generic.DetailView):
-    """Category list"""
-
-    slug_field = "slug"
-    slug_url_kwarg = "slug"
-    template_name = "ui/categories/id.html"
-    queryset = Category.objects.live().public()
-
-
 # Articles
 class BaseArticleListView:
     """Base class for article list views"""
@@ -164,14 +129,7 @@ class ArticleDetailView(generic.DateDetailView):
 
 
 # Comments
-class BaseCommentView(mixins.OwnerMixin):
-    """Base view for overriding methods"""
-
-    def get_success_url(self) -> str:
-        return reverse_lazy("ui:article", [self.object.id])
-
-
-class CommentCreateView(LoginRequiredMixin, BaseCommentView, generic.CreateView):
+class CommentCreateView(LoginRequiredMixin, mixins.OwnerMixin, generic.CreateView):
     """Create a new comment"""
 
     model = Comment
@@ -179,7 +137,7 @@ class CommentCreateView(LoginRequiredMixin, BaseCommentView, generic.CreateView)
     template_name = "ui/comments/new.html"
 
 
-class CommentUpdateView(LoginRequiredMixin, BaseCommentView, generic.UpdateView):
+class CommentUpdateView(LoginRequiredMixin, mixins.OwnerMixin, generic.UpdateView):
     """Update a comment"""
 
     model = Comment
@@ -187,7 +145,7 @@ class CommentUpdateView(LoginRequiredMixin, BaseCommentView, generic.UpdateView)
     template_name = "ui/comments/new.html"
 
 
-class CommentDeleteView(LoginRequiredMixin, BaseCommentView, generic.DeleteView):
+class CommentDeleteView(LoginRequiredMixin, mixins.OwnerMixin, generic.DeleteView):
     """Delete a comment"""
 
     model = Comment

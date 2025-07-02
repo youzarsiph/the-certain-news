@@ -1,9 +1,8 @@
-{% load i18n static wagtailuserbar %}
+{% load i18n static wagtailcore_tags wagtailuserbar %}
 <!doctype html>
 <html
   lang="{{ LANGUAGE_CODE }}"
   dir="{% if LANGUAGE_CODE == 'ar' %}rtl{% else %}ltr{% endif %}"
-  data-theme="luxury"
 >
   <head>
     {% block head %}
@@ -74,128 +73,119 @@
       <section id="content" class="drawer-content">
         <div class="relative h-dvh overflow-hidden bg-base-300 p-1 lg:p-2">
           <header
-            class="absolute inset-x-1 top-1 z-20 rounded-t-box p-2 lg:inset-x-2 lg:top-2"
+            class="absolute inset-x-1 top-1 z-20 flex items-center justify-center lg:inset-x-2 lg:top-2"
           >
-            <nav class="navbar items-center justify-evenly p-0">
+            <nav
+              class="navbar join items-center justify-evenly p-0 lg:max-w-2xl xl:max-w-3xl 2xl:max-w-4xl"
+            >
               <div
-                class="navbar-start shadow-sm w-auto join divide-x divide-base-100 p-2 rounded-box backdrop-blur-3xl"
+                class="navbar-start join-item p-2 backdrop-blur-3xl bg-base-100/50 shadow-sm"
               >
-                <div
-                  class="tooltip tooltip-right rtl:tooltip-left tooltip-primary"
-                  data-tip="{% trans 'Open drawer' %}"
-                >
-                  <label
-                    for="nav-drawer"
-                    aria-label="{% trans 'Close drawer' %}"
-                    class="btn join-item btn-square btn-soft btn-sm btn-primary lg:btn-md"
+                <div class="flex items-center gap-1">
+                  <div
+                    class="tooltip tooltip-right tooltip-primary lg:tooltip-bottom rtl:tooltip-left lg:rtl:tooltip-bottom"
+                    data-tip="{% trans 'Open drawer' %}"
                   >
-                    <i data-lucide="menu" class="size-4 lg:size-6"></i>
-                    <span class="sr-only">{% trans 'Open drawer' %}</span>
-                  </label>
-                </div>
-
-                <div
-                  class="tooltip tooltip-right rtl:tooltip-left tooltip-info hidden lg:block"
-                  data-tip="{% trans 'Search' %}"
-                >
-                  <button
-                    onclick="modal.showModal()"
-                    class="btn join-item btn-square btn-soft btn-sm btn-info lg:btn-md"
-                  >
-                    <i data-lucide="search" class="size-4 lg:size-6"></i>
-
-                    <span class="sr-only">{% trans 'Search' %}</span>
-                  </button>
-                </div>
-
-                <div
-                  class="tooltip tooltip-right rtl:tooltip-left tooltip-success"
-                  data-tip="{% translate 'Language' %}"
-                >
-                  <button
-                    popovertarget="language"
-                    style="anchor-name: --language"
-                    class="btn join-item btn-sm btn-square btn-soft btn-success lg:btn-md"
-                  >
-                    <i data-lucide="languages" class="size-4 lg:size-6"></i>
-
-                    <span class="sr-only">{% translate 'Language' %}</span>
-                  </button>
-
-                  <ul
-                    id="language"
-                    popover
-                    style="position-anchor: --language"
-                    class="menu dropdown rounded-box bg-base-100 text-base-content shadow-sm rtl:dropdown-left"
-                  >
-                    <li class="menu-title">{% translate 'Language' %}</li>
-                    <form
-                      id="lang-form"
-                      class="hidden"
-                      action="{% url 'set_language' %}"
-                      method="post"
+                    <label
+                      for="nav-drawer"
+                      aria-label="{% trans 'Close drawer' %}"
+                      class="btn btn-square btn-soft btn-sm btn-primary lg:btn-md"
                     >
-                      {% csrf_token %}
-                      <input
-                        name="next"
-                        type="hidden"
-                        value="{{ redirect_to }}"
-                      />
-                    </form>
-                    <!---->
-                    {% get_available_languages as LANGUAGES %}
-                    <!---->
-                    {% get_language_info_list for LANGUAGES as languages %}
-                    <!---->
-                    {% for language in languages %}
-                    <li>
-                      <label
-                        class="flex flex-row items-center justify-between gap-6"
+                      <i data-lucide="menu" class="size-4 lg:size-6"></i>
+                      <span class="sr-only">{% trans 'Open drawer' %}</span>
+                    </label>
+                  </div>
+
+                  <div
+                    class="tooltip tooltip-right tooltip-success lg:tooltip-bottom rtl:tooltip-left lg:rtl:tooltip-bottom"
+                    data-tip="{% translate 'Language' %}"
+                  >
+                    <button
+                      popovertarget="language"
+                      style="anchor-name: --language"
+                      class="btn btn-sm btn-square btn-soft btn-success lg:btn-md"
+                    >
+                      <i data-lucide="languages" class="size-4 lg:size-6"></i>
+
+                      <span class="sr-only">{% translate 'Language' %}</span>
+                    </button>
+
+                    <ul
+                      id="language"
+                      popover
+                      style="position-anchor: --language"
+                      class="menu dropdown rounded-box bg-base-100 text-base-content shadow-sm rtl:dropdown-left"
+                    >
+                      <li class="menu-title">{% translate 'Language' %}</li>
+                      <form
+                        id="lang-form"
+                        class="hidden"
+                        action="{% url 'set_language' %}"
+                        method="post"
                       >
-                        <div class="flex flex-row items-center gap-2">
-                          <input
-                            form="lang-form"
-                            type="submit"
-                            name="language"
-                            value="{{ language.code|upper }}"
-                            aria-label="{{ language.name_local }} ({{ language.code }})"
-                          />
-                          <span>
-                            {{ language.name_local }} ({{ language.code }})
-                          </span>
-                        </div>
-                        {% if language.code == LANGUAGE_CODE %}
-                        <i data-lucide="check" class="size-4 lg:size-6"></i>
-                        {% endif %}
-                      </label>
-                    </li>
-                    {% endfor %}
-                  </ul>
+                        {% csrf_token %}
+                        <input
+                          name="next"
+                          type="hidden"
+                          value="{{ redirect_to }}"
+                        />
+                      </form>
+                      <!---->
+                      {% get_available_languages as LANGUAGES %}
+                      <!---->
+                      {% get_language_info_list for LANGUAGES as languages %}
+                      <!---->
+                      {% for language in languages %}
+                      <li>
+                        <label
+                          class="flex flex-row items-center justify-between gap-6"
+                        >
+                          <div class="flex flex-row items-center gap-2">
+                            <input
+                              form="lang-form"
+                              type="submit"
+                              name="language"
+                              value="{{ language.code|upper }}"
+                              aria-label="{{ language.name_local }} ({{ language.code }})"
+                            />
+                            <span>
+                              {{ language.name_local }} ({{ language.code }})
+                            </span>
+                          </div>
+                          {% if language.code == LANGUAGE_CODE %}
+                          <i data-lucide="check" class="size-4 lg:size-6"></i>
+                          {% endif %}
+                        </label>
+                      </li>
+                      {% endfor %}
+                    </ul>
+                  </div>
                 </div>
               </div>
 
               <div
-                class="navbar-center shadow-sm w-auto p-2 rounded-box backdrop-blur-3xl lg:p-4"
+                class="navbar-center join-item rounded-lg p-2 backdrop-blur-3xl bg-base-100/50 shadow-sm lg:p-4"
               >
                 <div class="join items-center">
                   <div
-                    class="tooltip tooltip-bottom tooltip-success"
+                    class="tooltip tooltip-bottom tooltip-error"
                     data-tip="{% trans 'Latest News' %}"
                   >
                     <a
                       href="{% url 'ui:articles' %}"
-                      class="btn btn-square btn-sm join-item btn-success lg:btn-md"
+                      class="btn btn-square btn-sm join-item btn-error lg:btn-md"
                     >
                       <i data-lucide="newspaper" class="size-4 lg:size-6"></i>
                       <span class="sr-only">{% trans 'Latest News' %}</span>
                     </a>
                   </div>
+
                   <div
                     class="tooltip tooltip-bottom tooltip-primary"
                     data-tip="{% trans 'The Certain News' %}"
                   >
                     <a
-                      href="{% url 'ui:home' %}"
+                      href="/"
                       class="btn btn-square rounded-sm join-item btn-primary lg:btn-lg"
                     >
                       <svg
@@ -225,117 +215,84 @@
                       >
                     </a>
                   </div>
+
                   <div
-                    class="tooltip tooltip-bottom tooltip-success"
-                    data-tip="{% trans 'Categories' %}"
+                    class="tooltip tooltip-bottom tooltip-error"
+                    data-tip="{% trans 'Breaking' %}"
                   >
                     <a
-                      href="{% url 'ui:categories' %}"
-                      class="btn btn-square btn-sm join-item btn-success lg:btn-md"
+                      href="{% url 'ui:articles' %}?is_breaking=True"
+                      class="btn btn-square btn-sm join-item btn-error lg:btn-md"
                     >
                       <i data-lucide="group" class="size-4 lg:size-6"></i>
-                      <span class="sr-only">{% trans 'Categories' %}</span>
+                      <span class="sr-only">{% trans 'Breaking' %}</span>
                     </a>
                   </div>
                 </div>
               </div>
 
               <div
-                class="navbar-end shadow-sm w-auto join divide-x divide-base-100 p-2 rounded-box backdrop-blur-3xl"
+                class="navbar-end join-item p-2 backdrop-blur-3xl bg-base-100/50 shadow-sm"
               >
-                {% if request.user.is_authenticated %}
-                <div
-                  class="tooltip tooltip-left rtl:tooltip-right tooltip-success"
-                  data-tip="{% trans 'Profile' %}"
-                >
-                  <a
-                    href="{% url 'ui:profile' %}"
-                    class="btn join-item btn-square btn-soft btn-sm btn-success lg:btn-md"
+                <div class="flex items-center gap-1">
+                  {% if request.user.is_authenticated %}
+                  <div
+                    class="tooltip tooltip-left tooltip-success lg:tooltip-bottom rtl:tooltip-right lg:rtl:tooltip-bottom"
+                    data-tip="{% trans 'Profile' %}"
                   >
-                    <i data-lucide="user" class="size-4 lg:size-6"></i>
-                    <span class="sr-only">{% trans 'Profile' %}</span>
-                  </a>
-                </div>
-                <div
-                  class="tooltip tooltip-left tooltip-info hidden rtl:tooltip-right lg:block"
-                  data-tip="{% trans 'Toggle theme' %}"
-                >
-                  <label
-                    class="swap swap-rotate btn join-item btn-square btn-soft btn-sm btn-info lg:btn-md"
+                    <a
+                      href="{% url 'ui:profile' %}"
+                      class="btn btn-square btn-soft btn-sm btn-success lg:btn-md"
+                    >
+                      <i data-lucide="user" class="size-4 lg:size-6"></i>
+                      <span class="sr-only">{% trans 'Profile' %}</span>
+                    </a>
+                  </div>
+
+                  <div
+                    class="tooltip tooltip-left tooltip-primary lg:tooltip-bottom rtl:tooltip-right lg:rtl:tooltip-bottom"
+                    data-tip="{% trans 'Log out' %}"
                   >
-                    <input
-                      type="checkbox"
-                      class="theme-controller"
-                      value="silk"
-                    />
-                    <i data-lucide="sun" class="swap-off size-4 lg:size-6"></i>
-                    <i
-                      data-lucide="moon-star"
-                      class="swap-on size-4 lg:size-6"
-                    ></i>
-                  </label>
-                </div>
-                <div
-                  class="tooltip tooltip-left rtl:tooltip-right tooltip-primary"
-                  data-tip="{% trans 'Log out' %}"
-                >
-                  <button
-                    type="submit"
-                    form="logout"
-                    class="btn join-item btn-square btn-soft btn-sm btn-primary lg:btn-md"
+                    <button
+                      type="submit"
+                      form="logout"
+                      class="btn btn-square btn-soft btn-sm btn-primary lg:btn-md"
+                    >
+                      <i data-lucide="log-out" class="size-4 lg:size-6"></i>
+                      <span class="sr-only">{% trans 'Log out' %}</span>
+                    </button>
+                  </div>
+                  {% else %}
+                  <div
+                    class="tooltip tooltip-left tooltip-success rtl:tooltip-right lg:rtl:tooltip-bottom"
+                    data-tip="{% trans 'Subscribe' %}"
                   >
-                    <i data-lucide="log-out" class="size-4 lg:size-6"></i>
-                    <span class="sr-only">{% trans 'Log out' %}</span>
-                  </button>
-                </div>
-                {% else %}
-                <div
-                  class="tooltip tooltip-left rtl:tooltip-right tooltip-success"
-                  data-tip="{% trans 'Subscribe' %}"
-                >
-                  <a
-                    href="{% url 'ui:signup' %}"
-                    class="btn join-item btn-square btn-soft btn-sm btn-success lg:btn-md"
+                    <a
+                      href="{% url 'ui:subscribe' %}"
+                      class="btn btn-square btn-soft btn-sm btn-success lg:btn-md"
+                    >
+                      <i
+                        data-lucide="heart-handshake"
+                        class="size-4 lg:size-6"
+                      ></i>
+                      <span class="sr-only">{% trans 'Subscribe' %}</span>
+                    </a>
+                  </div>
+
+                  <div
+                    class="tooltip tooltip-left tooltip-primary rtl:tooltip-right lg:rtl:tooltip-bottom"
+                    data-tip="{% trans 'Log in' %}"
                   >
-                    <i
-                      data-lucide="heart-handshake"
-                      class="size-4 lg:size-6"
-                    ></i>
-                    <span class="sr-only">{% trans 'Subscribe' %}</span>
-                  </a>
+                    <a
+                      href="{% url 'ui:login' %}"
+                      class="btn btn-square btn-soft btn-sm btn-primary lg:btn-md"
+                    >
+                      <i data-lucide="log-in" class="size-4 lg:size-6"></i>
+                      <span class="sr-only">{% trans 'Log in' %}</span>
+                    </a>
+                  </div>
+                  {% endif %}
                 </div>
-                <div
-                  class="tooltip tooltip-left tooltip-info hidden rtl:tooltip-right lg:block"
-                  data-tip="{% trans 'Toggle theme' %}"
-                >
-                  <label
-                    class="swap swap-rotate btn join-item btn-square btn-soft btn-sm btn-info lg:btn-md"
-                  >
-                    <input
-                      type="checkbox"
-                      class="theme-controller"
-                      value="silk"
-                    />
-                    <i data-lucide="sun" class="swap-off size-4 lg:size-6"></i>
-                    <i
-                      data-lucide="moon-star"
-                      class="swap-on size-4 lg:size-6"
-                    ></i>
-                  </label>
-                </div>
-                <div
-                  class="tooltip tooltip-left rtl:tooltip-right tooltip-primary"
-                  data-tip="{% trans 'Log in' %}"
-                >
-                  <a
-                    href="{% url 'ui:login' %}"
-                    class="btn join-item btn-square btn-soft btn-sm btn-primary lg:btn-md"
-                  >
-                    <i data-lucide="log-in" class="size-4 lg:size-6"></i>
-                    <span class="sr-only">{% trans 'Log in' %}</span>
-                  </a>
-                </div>
-                {% endif %}
               </div>
             </nav>
           </header>
@@ -389,16 +346,13 @@
         <section
           class="m-1 flex h-full max-h-[calc(100dvh-0.5rem)] w-full max-w-[calc(100dvw-0.5rem)] flex-col justify-between overflow-hidden rounded-box bg-base-100/50 backdrop-blur-3xl sm:w-10/12 md:w-8/12 lg:m-2 lg:max-h-[calc(100dvh-1rem)] lg:w-1/3 lg:max-w-[calc(100dvw-1rem)] lg:rounded-r-box xl:w-1/4"
         >
-          <div class="grid gap-4">
+          <div class="grid gap-4 overflow-y-auto">
             <header class="flex items-center justify-between gap-4 p-4">
               <div
                 class="tooltip tooltip-right rtl:tooltip-left tooltip-primary tooltip-open"
                 data-tip="{% trans 'The Certain News' %}"
               >
-                <a
-                  href="{% url 'ui:home' %}"
-                  class="btn btn-square btn-lg btn-primary"
-                >
+                <a href="/" class="btn btn-square btn-lg btn-primary">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -441,7 +395,7 @@
             <ol class="grid gap-4 size-full p-4">
               <li>
                 <a
-                  href="{% url 'ui:home' %}"
+                  href="/"
                   class="btn gap-4 w-full justify-start btn-soft btn-primary"
                 >
                   <i data-lucide="home" class="size-4 lg:size-6"></i>
@@ -471,23 +425,6 @@
               {% endif %}
               <li>
                 <a
-                  href="{% url 'ui:articles' %}?is_breaking=True"
-                  class="group btn gap-4 w-full justify-start btn-soft btn-error"
-                >
-                  <div
-                    class="relative flex items-center justify-center size-4 lg:size-6"
-                  >
-                    <i data-lucide="podcast" class="size-4 lg:size-6"></i>
-                    <span
-                      class="absolute badge badge-sm animate-ping rounded-full badge-lg badge-error group-hover:badge-soft"
-                    >
-                    </span>
-                  </div>
-                  <span>{% trans 'Breaking' %}</span>
-                </a>
-              </li>
-              <li>
-                <a
                   href="{% url 'ui:articles' %}"
                   class="btn gap-4 w-full justify-start btn-soft btn-primary"
                 >
@@ -497,13 +434,44 @@
               </li>
               <li>
                 <a
-                  href="{% url 'ui:categories' %}"
+                  href="{% url 'ui:articles' %}?is_breaking=True"
                   class="btn gap-4 w-full justify-start btn-soft btn-primary"
+                >
+                  <div
+                    class="relative flex items-center justify-center size-4 lg:size-6"
+                  >
+                    <i data-lucide="podcast" class="size-4 lg:size-6"></i>
+                    <div
+                      aria-label="error"
+                      class="status status-xl status-error absolute animate-ping"
+                    ></div>
+                  </div>
+                  <span>{% trans 'Breaking' %}</span>
+                </a>
+              </li>
+              {% if page.get_parent.is_root %}
+              <li class="collapse collpase-arrow">
+                <input type="checkbox" id="collapse" />
+                <button
+                  class="collapse-title btn gap-4 w-full justify-start btn-soft btn-primary"
                 >
                   <i data-lucide="group" class="size-4 lg:size-6"></i>
                   {% trans 'Categories' %}
-                </a>
+                </button>
+                <div class="collapse-content">
+                  <div class="join join-vertical w-full">
+                    {% for category in page.get_children.specific %}
+                    <a
+                      href="{% pageurl category %}"
+                      class="btn join-item btn-soft btn-info justify-start w-full"
+                    >
+                      {{ category }}
+                    </a>
+                    {% endfor %}
+                  </div>
+                </div>
               </li>
+              {% endif %}
             </ol>
           </div>
 
@@ -603,7 +571,7 @@
               data-tip="{% trans 'Subscribe' %}"
             >
               <a
-                href="{% url 'ui:signup' %}"
+                href="{% url 'ui:subscribe' %}"
                 class="btn btn-square btn-lg join-item btn-primary btn-soft w-full rounded-none"
               >
                 <i data-lucide="heart-handshake" class="size-4 lg:size-6"></i>

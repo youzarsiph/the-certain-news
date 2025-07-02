@@ -376,7 +376,17 @@ class ArticleViewSet(ActionSerializersMixin, ActionPermissionsMixin, ModelViewSe
 
         if request.query_params["redirect"]:
             messages.success(request, message)
-            return redirect(reverse_lazy("ui:article", args=[article.slug]))
+            return redirect(
+                reverse_lazy(
+                    "ui:article",
+                    args=[
+                        article.created_at.year,
+                        article.created_at.month,
+                        article.created_at.day,
+                        article.slug,
+                    ],
+                )
+            )
 
         return Response({"details": message}, status=status.HTTP_200_OK)
 

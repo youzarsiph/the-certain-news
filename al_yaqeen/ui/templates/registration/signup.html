@@ -1,7 +1,7 @@
 {% extends "registration/base.html" %}{% load i18n %}
 
 <!---->
-{% block title %}{{ block.super }} | {% trans 'Sign up' %}{% endblock %}
+{% block title %}{{ block.super }} | {% trans 'Subscribe' %}{% endblock %}
 
 <!---->
 {% block content %}
@@ -16,7 +16,7 @@
       class="tooltip tooltip-bottom tooltip-primary tooltip-open mt-4 mx-auto"
       data-tip="{% trans 'The Certain News' %}"
     >
-      <a href="{% url 'ui:home' %}" class="btn btn-square btn-xl btn-primary">
+      <a href="/" class="btn btn-square btn-xl btn-primary">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -43,7 +43,7 @@
 
     <main class="card-body gap-6">
       <h2 class="text-xl font-bold text-primary lg:text-3xl">
-        {% trans 'Sign up' %}
+        {% trans 'Subscribe' %}
       </h2>
 
       <p>{% trans 'Welcome, please signup to continue.' %}</p>

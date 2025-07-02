@@ -35,26 +35,27 @@
         >
           <a
             href="{% url 'ui:articles' %}?is_breaking=True"
-            class="relative badge badge-sm badge-error lg:badge-lg"
+            class="relative badge badge-sm badge-primary lg:badge-lg"
           >
             <i data-lucide="podcast" class="size-4 lg:size-6"></i>
 
-            <span
-              class="absolute badge badge-sm aspect-square animate-ping rounded-full badge-xl badge-error"
-            ></span>
+            <div
+              aria-label="error"
+              class="status status-xl status-error absolute animate-ping"
+            ></div>
             <span class="sr-only">{% trans 'Breaking' %}</span>
           </a>
         </div>
 
         <div
-          class="tooltip tooltip-top flex tooltip-primary"
+          class="tooltip tooltip-top flex tooltip-accent"
           data-tip="{% trans 'Category' %}"
         >
           <a
             href="{% pageurl article.get_parent %}"
-            class="badge badge-sm badge-primary text-shadow-lg lg:badge-lg"
+            class="badge badge-sm badge-accent text-shadow-lg lg:badge-lg"
           >
-            {{ article.get_parent.title }}
+            {{ article.get_parent }}
           </a>
         </div>
       </div>

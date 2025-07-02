@@ -12,6 +12,7 @@ class Home(Page):
     # Dashboard UI
     template = "ui/index.html"
     content_panels = Page.content_panels + []
+    parent_page_types = ["wagtailcore.Page"]
     subpage_types = ["categories.Category"]
 
     def get_context(self, request):

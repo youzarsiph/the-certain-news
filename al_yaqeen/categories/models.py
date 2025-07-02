@@ -1,5 +1,7 @@
 """Data Models for al_yaqeen.categories"""
 
+from django.core.paginator import InvalidPage, Paginator
+from django.http import Http404
 from django.utils.translation import gettext_lazy as _
 from wagtail.admin.panels import FieldPanel
 from wagtail.api import APIField
@@ -46,3 +48,48 @@ class Category(DateTimeMixin, Page):
 
     def __str__(self) -> str:
         return self.title
+
+    def get_context(self, request):
+        """Update context to order and paginate the articles"""
+
+        page_size = 25
+        queryset = (
+            self.get_children()
+            .live()
+            .public()
+            .specific()
+            .order_by("-article__created_at")
+        )
+        paginator = Paginator(queryset, page_size, 10, True)
+
+        page = request.GET.get("page") or 1
+
+        try:
+            page_number = int(page)
+
+        except ValueError:
+            if page == "last":
+                page_number = paginator.num_pages
+
+            else:
+                raise Http404(
+                    _("Page is not “last”, nor can it be converted to an int.")
+                )
+        try:
+            page = paginator.page(page_number)
+
+            is_paginated = page.has_other_pages()
+
+            return {
+                **super().get_context(request),
+                "paginator": paginator,
+                "page_obj": page,
+                "is_paginated": is_paginated,
+                "articles": queryset,
+            }
+
+        except InvalidPage as e:
+            raise Http404(
+                _("Invalid page (%(page_number)s): %(message)s")
+                % {"page_number": page_number, "message": str(e)}
+            )
