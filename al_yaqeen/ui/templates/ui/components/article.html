@@ -29,6 +29,7 @@
       </div>
 
       <div class="flex items-center gap-2 lg:gap-4">
+        {% if article.is_breaking %}
         <div
           class="tooltip tooltip-top flex tooltip-error"
           data-tip="{% trans 'Breaking' %}"
@@ -46,6 +47,7 @@
             <span class="sr-only">{% trans 'Breaking' %}</span>
           </a>
         </div>
+        {% endif %}
 
         <div
           class="tooltip tooltip-top flex tooltip-accent"
