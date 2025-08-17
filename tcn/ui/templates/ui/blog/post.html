@@ -1,0 +1,80 @@
+{% extends 'ui/base.html' %}{% load i18n wagtailcore_tags wagtailimages_tags %}
+
+<!---->
+{% block title %}{{ block.super }} | {{ post.get_parent }} | {{ article }}{% endblock %}
+
+<!---->
+{% block meta %}
+<meta
+  name="description"
+  content="{% trans 'The Certain News' %} | {% trans 'Blog' %} | {{ post.title }}"
+/>
+<meta property="og:url" content="{{ request.build_absolute_uri }}" />
+<meta property="og:type" content="website" />
+<meta
+  property="og:title"
+  content="{% trans 'The Certain News' %} | {% trans 'Blog' %} | {{ post.title }}"
+/>
+<meta
+  property="og:description"
+  content="{% trans 'The Certain News' %} | {% trans 'Blog' %} | {{ post.title }}"
+/>
+<meta property="og:image" content="{{ post.image.file.url }}" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:domain" content="{{ request.build_absolute_uri }}" />
+<meta property="twitter:url" content="{{ request.build_absolute_uri }}" />
+<meta
+  name="twitter:title"
+  content="{% trans 'The Certain News' %} | {% trans 'Blog' %} | {{ post.title }}"
+/>
+<meta
+  name="twitter:description"
+  content="{% trans 'The Certain News' %} | {% trans 'Blog' %} | {{ post.title }}"
+/>
+<meta name="twitter:image" content="{{ post.image.file.url }}" />
+{% endblock %}
+
+<div class="hidden badge-secondary badge-error"></div>
+
+<!---->
+{% block content %}
+<div class="container grid gap-8 mx-auto px-4 py-20">
+  <nav class="breadcrumbs text-xs text-primary lg:text-sm">
+    <ol>
+      <li>
+        <a href="{% pageurl page.get_parent.get_parent %}">
+          {{ page.get_parent.get_parent }}
+        </a>
+      </li>
+      <li>
+        <a href="{% pageurl page.get_parent %}">{{ page.get_parent }}</a>
+      </li>
+      <li>{{ page }}</li>
+    </ol>
+  </nav>
+
+  <div
+    class="prose mx-auto prose-sm prose-video:rounded-box xl:prose-lg 2xl:prose-xl prose-headings:text-primary prose-headings:font-serif rtl:prose-headings:font-kufi prose-img:rounded-box prose-img:w-full prose-pre:bg-base-200 prose-pre:border prose-pre:border-base-300"
+  >
+    <h1>{{ article.title }}</h1>
+
+    {% image post.image scale-100 %}
+
+    <p class="lead">{{ post.headline }}</p>
+    {{ post.content }}
+  </div>
+
+  <div class="flex mx-auto flex-wrap items-center gap-4">
+    {% for tag in post.tags.all %}
+    <span
+      class="badge {% cycle 'badge-primary' 'badge-secondary' 'badge-success' 'badge-info' 'badge-warning' 'badge-error' %}"
+    >
+      {{ tag }}
+    </span>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

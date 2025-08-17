@@ -1,0 +1,16 @@
+{% extends 'ui/base.html' %}{% load i18n wagtailimages_tags %}
+
+<!---->
+{% block title %}{{ block.super }} | {{ about.title }}{% endblock %}
+
+<!---->
+{% block content %}
+<section class="container mx-auto px-4 py-20">
+  <div
+    class="max-w-none prose prose-sm md:processes-md prose-video:rounded-box xl:prose-lg 2xl:prose-xl prose-headings:text-primary prose-headings:font-serif rtl:prose-headings:font-kufi prose-img:rounded-box prose-img:w-full"
+  >
+    <h1>{{ about.title }}</h1>
+    {{ about.content }}
+  </div>
+</section>
+{% endblock %}

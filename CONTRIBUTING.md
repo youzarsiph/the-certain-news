@@ -1,6 +1,6 @@
 # Contribution Guidelines
 
-Thank you for considering contributing to the `al-yaqeen`! We appreciate your interest in helping us make this project better. Please take a moment to review these guidelines before submitting your contributions.
+Thank you for considering contributing to the `the-certain-news`! We appreciate your interest in helping us make this project better. Please take a moment to review these guidelines before submitting your contributions.
 
 ## Code of Conduct
 
@@ -13,8 +13,8 @@ Before you can contribute, you’ll need to set up your development environment:
 1. **Clone the Repository**:
 
    ```bash
-   git clone https://github.com/youzarsiph/al-yaqeen.git
-   cd al-yaqeen
+   git clone https://github.com/youzarsiph/the-certain-news.git
+   cd the-certain-news
    ```
 
 2. **Set Up the Environment**:
@@ -54,7 +54,7 @@ Before you can contribute, you’ll need to set up your development environment:
 
 ### Reporting Issues
 
-If you encounter a bug or have a feature request, please [open an issue](https://github.com/youzarsiph/al-yaqeen/issues/new). When reporting:
+If you encounter a bug or have a feature request, please [open an issue](https://github.com/youzarsiph/the-certain-news/issues/new). When reporting:
 
 - Provide a clear and detailed description of the issue.
 - Include steps to reproduce the problem if applicable.
@@ -119,14 +119,14 @@ Once a pull request is opened, it will be reviewed by one or more maintainers. P
 
 ## License
 
-By contributing to the `al-yaqeen`, you agree that your contributions will be licensed under the [MIT License](LICENSE).
+By contributing to the `the-certain-news`, you agree that your contributions will be licensed under the [MIT License](LICENSE).
 
 ## Support
 
 For any questions or assistance, you can:
 
-- Visit the [GitHub Discussions](https://github.com/youzarsiph/al-yaqeen/discussions).
-- Open an issue in the [Issues](https://github.com/youzarsiph/al-yaqeen/issues) section.
+- Visit the [GitHub Discussions](https://github.com/youzarsiph/the-certain-news/discussions).
+- Open an issue in the [Issues](https://github.com/youzarsiph/the-certain-news/issues) section.
 - Reach out to the maintainers directly if necessary.
 
 Thank you for your contributions! We look forward to working with you.

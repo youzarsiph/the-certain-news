@@ -1,0 +1,42 @@
+{% load i18n wagtailcore_tags wagtailimages_tags %}
+
+<article
+  class="card relative size-full card-sm lg:card-md xl:card-lg 2xl:card-xl bg-base-200 size-full shadow-sm hover:bg-base-300"
+>
+  <a href="{% pageurl article %}" class="absolute inset-0">
+    <span class="sr-only">{% trans 'Read' %}</span>
+  </a>
+
+  <figure class="skeleton overflow-clip">
+    {% image article.image fill-1920x1080 %}
+  </figure>
+
+  <div class="card-body gap-4">
+    <h2 class="card-title text-primary">{{ article.title }}</h2>
+
+    <div class="card-actions items-center gap-4">
+      {% if article.is_breaking %}
+      <div class="tooltip flex tooltip-error" data-tip="{% trans 'Breaking' %}">
+        <div class="inline-grid *:[grid-area:1/1]">
+          <span class="sr-only">{% trans 'Breaking' %}</span>
+          <div class="status lg:status-xl status-error animate-ping"></div>
+          <div class="status lg:status-xl status-error"></div>
+        </div>
+      </div>
+      {% endif %}
+      <a
+        href="{% pageurl article.get_parent %}"
+        class="tooltip tooltip-success"
+        data-tip="{% trans 'Category' %}"
+      >
+        <span
+          class="badge badge-sm md:badge-md xl:badge-lg 2xl:badge-xl badge-success font-semibold"
+        >
+          {{ article.get_parent.title }}
+        </span>
+      </a>
+    </div>
+
+    <p>{{ article.headline }}</p>
+  </div>
+</article>

@@ -1,0 +1,209 @@
+{% extends 'ui/base.html' %}{% load i18n wagtailcore_tags wagtailimages_tags %}
+
+<!---->
+{% block styles %}{{ block.super }}
+<style>
+  figure > img {
+    height: 100%;
+    width: 100%;
+  }
+</style>
+{% endblock %}
+
+<!---->
+{% block content %}
+<div class="container grid gap-12 mx-auto px-4 py-20">
+  <div class="carousel carousel-center gap-4">
+    {% for article in random_news %}
+    <div
+      id="item-{{ forloop.counter }}"
+      class="carousel-item relative w-full lg:w-1/2"
+    >
+      <article
+        class="card relative size-full image-full card-sm lg:card-md xl:card-lg 2xl:card-xl bg-base-200 size-full shadow-sm hover:bg-base-300"
+      >
+        <figure class="skeleton overflow-clip">
+          {% image article.image fill-1920x1080 %}
+        </figure>
+
+        <div class="card-body gap-4">
+          <h2 class="card-title grow mt-auto text-primary">
+            {{ article.title }}
+          </h2>
+
+          <p class="grow-0">{{ article.headline }}</p>
+
+          <a
+            href="{% pageurl article %}"
+            class="btn z-10 btn-sm btn-primary md:btn-md xl:btn-lg 2xl:btn-xl"
+          >
+            {% if article.is_breaking %}
+            <div
+              class="tooltip flex tooltip-error"
+              data-tip="{% trans 'Breaking' %}"
+            >
+              <div class="inline-grid *:[grid-area:1/1]">
+                <span class="sr-only">{% trans 'Breaking' %}</span>
+                <div
+                  class="status lg:status-xl status-error animate-ping"
+                ></div>
+                <div class="status lg:status-xl status-error"></div>
+              </div>
+            </div>
+            {% endif %}
+            <span>{% trans 'Read' %}</span>
+            <i
+              data-lucide="arrow-right"
+              class="size-4 lg:size-6 rtl:rotate-180"
+            ></i>
+          </a>
+        </div>
+      </article>
+
+      <div
+        class="absolute z-10 inset-x-4 top-4 flex items-center justify-between gap-4"
+      >
+        {% if not forloop.first %}
+        <div
+          class="tooltip mr-auto tooltip-right tooltip-primary rtl:tooltip-left rtl:ml-auto rtl:mr-0"
+          data-tip="{% trans 'Swipe left' %}"
+        >
+          <button
+            class="btn btn-sm btn-circle btn-primary md:btn-md xl:btn-lg 2xl:btn-xl"
+          >
+            <i
+              data-lucide="arrow-left"
+              class="size-4 lg:size-6 rtl:rotate-180"
+            ></i>
+            <span class="sr-only">{% trans 'Swipe left' %}</span>
+          </button>
+        </div>
+        {% endif %}
+        <!---->
+        {% if not forloop.last %}
+        <div
+          class="tooltip ml-auto tooltip-left tooltip-primary rtl:tooltip-right rtl:mr-auto rtl:ml-0"
+          data-tip="{% trans 'Swipe right' %}"
+        >
+          <button
+            class="btn btn-sm btn-circle btn-primary md:btn-md xl:btn-lg 2xl:btn-xl"
+          >
+            <i
+              data-lucide="arrow-right"
+              class="size-4 lg:size-6 rtl:rotate-180"
+            ></i>
+            <span class="sr-only">{% trans 'Swipe right' %}</span>
+          </button>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <section class="grid gap-8">
+    <h1 class="text-3xl text-primary font-black lg:text-5xl">
+      {% trans 'Breaking' %}
+    </h1>
+
+    <ol class="grid gap-4 grid-cols-12 grid-rows-12">
+      <li class="col-span-12 row-span-12 md:col-span-6 lg:row-span-6">
+        {% with article=breaking_news.first %}
+        <article
+          class="card relative size-full image-full card-sm lg:card-md xl:card-lg 2xl:card-xl bg-base-200 size-full shadow-sm hover:bg-base-300"
+        >
+          <a href="{% pageurl article %}" class="absolute inset-0 z-10">
+            <span class="sr-only">{% trans 'Read' %}</span>
+          </a>
+          <figure class="skeleton overflow-clip">
+            {% image article.image fill-1920x1080 %}
+          </figure>
+
+          <div class="card-body gap-4">
+            <h2 class="card-title grow mt-auto text-primary">
+              {{ article.title }}
+            </h2>
+
+            <p class="grow-0">{{ article.headline }}</p>
+          </div>
+        </article>
+        {% endwith %}
+      </li>
+
+      {% for article in breaking_news|slice:'1:' %}
+      <li
+        class="col-span-12 row-span-12 md:col-span-6 lg:col-span-3 lg:row-span-3"
+      >
+        <article
+          class="card relative image-full size-full card-sm lg:card-md xl:card-lg 2xl:card-xl bg-base-200 size-full shadow-sm hover:bg-base-300"
+        >
+          <a href="{% pageurl article %}" class="absolute inset-0 z-10">
+            <span class="sr-only">{% trans 'Read' %}</span>
+          </a>
+
+          <figure class="skeleton overflow-clip">
+            {% image article.image fill-1920x1080 %}
+          </figure>
+
+          <div class="card-body gap-4">
+            <h2 class="card-title grid mt-auto text-primary">
+              {{ article.title }}
+            </h2>
+          </div>
+        </article>
+      </li>
+      {% endfor %}
+    </ol>
+  </section>
+
+  <section class="grid gap-8">
+    <h1 class="text-3xl text-primary font-black lg:text-5xl">
+      {% trans 'Latest News' %}
+    </h1>
+
+    <ol class="grid gap-4 grid-cols-12">
+      {% for article in latest_news %}
+      <li class="col-span-12 md:col-span-6 lg:col-span-4 2xl:col-span-3">
+        {% include 'ui/components/article.html' %}
+      </li>
+      {% endfor %}
+    </ol>
+  </section>
+
+  <div class="grid gap-12">
+    {% for category in categories %}
+    <section class="grid gap-8">
+      <div class="flex items-center justify-between gap-4">
+        <h1 class="text-3xl text-primary font-black lg:text-5xl">
+          {{ category.title }}
+        </h1>
+
+        <div
+          class="tooltip tooltip-left tooltip-primary rtl:tooltip-right"
+          data-tip="{% trans 'View more' %}"
+        >
+          <a
+            href="{% pageurl category %}"
+            class="btn btn-sm btn-circle btn-primary md:btn-md xl:btn-lg 2xl:btn-xl"
+          >
+            <i
+              data-lucide="chevron-right"
+              class="size-4 lg:size-6 rtl:rotate-180"
+            ></i>
+            <span class="sr-only">{% trans 'View more' %}</span>
+          </a>
+        </div>
+      </div>
+
+      <ol class="grid gap-4 grid-cols-12">
+        {% for article in category.get_children.specific|slice:':6' %}
+        <li class="col-span-12 md:col-span-6 lg:col-span-4 2xl:col-span-3">
+          {% include 'ui/components/article.html' %}
+        </li>
+        {% endfor %}
+      </ol>
+    </section>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

@@ -24,19 +24,19 @@ jobs:
         run: |
           source .venv/bin/activate
           poetry run django-admin startproject core
-          mv al_yaqeen core
+          mv tcn core
 
           # Configure settings
           echo "AUTH_USER_MODEL = 'users.User'" >> core/settings.py
           echo "INSTALLED_APPS += [" >> core/settings.py
-          echo "    'al_yaqeen'," >> core/settings.py
-          echo "    'al_yaqeen.ai'," >> core/settings.py
-          echo "    'al_yaqeen.articles'," >> core/settings.py
-          echo "    'al_yaqeen.categories'," >> core/settings.py
-          echo "    'al_yaqeen.comments'," >> core/settings.py
-          echo "    'al_yaqeen.reactions'," >> core/settings.py
-          echo "    'al_yaqeen.ui'," >> core/settings.py
-          echo "    'al_yaqeen.users'," >> core/settings.py
+          echo "    'tcn'," >> core/settings.py
+          echo "    'tcn.ai'," >> core/settings.py
+          echo "    'tcn.apps.articles'," >> core/settings.py
+          echo "    'tcn.categories'," >> core/settings.py
+          echo "    'tcn.apps.comments'," >> core/settings.py
+          echo "    'tcn.apps.reactions'," >> core/settings.py
+          echo "    'tcn.ui'," >> core/settings.py
+          echo "    'tcn.users'," >> core/settings.py
           echo "    'rest_wind'," >> core/settings.py
           echo "    'django_filters'," >> core/settings.py
           echo "    'corsheaders'" >> core/settings.py
@@ -45,7 +45,7 @@ jobs:
 
           # Setup URLConf
           echo "from django.urls import include" >> core/urls.py
-          echo "urlpatterns += [path('', include('al_yaqeen.urls'))]" >> core/urls.py
+          echo "urlpatterns += [path('', include('tcn.urls'))]" >> core/urls.py
 
       - name: Run tests
         run: |

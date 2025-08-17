@@ -1,0 +1,39 @@
+{% extends 'ui/base.html' %}{% load i18n wagtailcore_tags wagtailimages_tags %}
+
+<!---->
+{% block title %}{{ block.super }} | {{ category.title }}{% endblock %}
+
+<!---->
+{% block content %}
+<div class="container mx-auto px-4 py-20">
+  <section class="grid gap-8">
+    <div
+      class="hero bg-gradient-to-r from-emerald-500 to-sky-400 rounded-box md:aspect-video"
+    >
+      <div class="hero-content grid gap-8">
+        <h1 class="text-3xl text-primary font-black lg:text-7xl">
+          {{ category.title }}
+        </h1>
+      </div>
+    </div>
+
+    <section class="grid gap-8">
+      <div
+        class="prose mx-auto prose-sm prose-video:rounded-box xl:prose-lg 2xl:prose-xl prose-headings:text-primary prose-headings:font-serif rtl:prose-headings:font-kufi prose-img:rounded-box prose-img:w-full prose-pre:bg-base-200 prose-pre:border prose-pre:border-base-300"
+      >
+        {{ category.description|richtext }}
+      </div>
+
+      <ol class="grid grid-cols-12 gap-4">
+        {% for article in articles %}
+        <li class="col-span-12 md:col-span-6 lg:col-span-4 2xl:col-span-3">
+          {% include 'ui/components/article.html' %}
+        </li>
+        {% endfor %}
+      </ol>
+
+      {% include 'ui/components/pagination.html' %}
+    </section>
+  </section>
+</div>
+{% endblock %}

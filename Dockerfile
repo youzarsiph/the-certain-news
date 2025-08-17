@@ -15,19 +15,19 @@ RUN pip install -r requirements.txt
 
 # Create new Django project and configure the settings
 RUN django-admin startproject core
-RUN cp -r al_yaqeen core
+RUN cp -r tcn core
 
 # Configure settings
 RUN echo "AUTH_USER_MODEL = 'users.User'" >> core/settings.py
 RUN echo "INSTALLED_APPS += [" >> core/settings.py
-RUN echo "    'al_yaqeen'," >> core/settings.py
-RUN echo "    'al_yaqeen.ai'," >> core/settings.py
-RUN echo "    'al_yaqeen.articles'," >> core/settings.py
-RUN echo "    'al_yaqeen.categories'," >> core/settings.py
-RUN echo "    'al_yaqeen.comments'," >> core/settings.py
-RUN echo "    'al_yaqeen.reactions'," >> core/settings.py
-RUN echo "    'al_yaqeen.ui'," >> core/settings.py
-RUN echo "    'al_yaqeen.users'," >> core/settings.py
+RUN echo "    'tcn'," >> core/settings.py
+RUN echo "    'tcn.ai'," >> core/settings.py
+RUN echo "    'tcn.apps.articles'," >> core/settings.py
+RUN echo "    'tcn.categories'," >> core/settings.py
+RUN echo "    'tcn.apps.comments'," >> core/settings.py
+RUN echo "    'tcn.apps.reactions'," >> core/settings.py
+RUN echo "    'tcn.ui'," >> core/settings.py
+RUN echo "    'tcn.users'," >> core/settings.py
 RUN echo "    'corsheaders'" >> core/settings.py
 RUN echo "    'rest_wind'," >> core/settings.py
 RUN echo "    'django_filters'," >> core/settings.py
@@ -36,7 +36,7 @@ RUN echo "]" >> core/settings.py
 
 # Setup URLConf
 RUN echo "from django.urls import include" >> core/urls.py
-RUN echo "urlpatterns += [path('', include('al_yaqeen.urls'))]" >> core/urls.py
+RUN echo "urlpatterns += [path('', include('tcn.urls'))]" >> core/urls.py
 
 # Run migrations
 RUN cd core && python manage.py migrate
