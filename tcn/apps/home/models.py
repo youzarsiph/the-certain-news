@@ -20,9 +20,9 @@ class Home(Page):
     subpage_types = [
         "home.About",
         "home.Contact",
-        # "blog.BlogIndex",
-        # "categories.CategoryIndex",
-        # "categories.Category",
+        "blog.BlogIndex",
+        "categories.CategoryIndex",
+        "categories.Category",
     ]
 
     def get_context(self, request, *args, **kwargs):

@@ -3,6 +3,7 @@
 from django import template
 from django.shortcuts import resolve_url
 from wagtail.models import Locale, Page, Site
+from wagtail.templatetags.wagtailcore_tags import pageurl, slugurl
 
 register = template.Library()
 
@@ -22,12 +23,16 @@ def page_url(context, page, language_code, fallback=None):
     if not isinstance(page, Page):
         raise ValueError("pageurl tag expected a Page object, got %r" % page)
 
-    trans = page.get_translation_or_none(
-        Locale.objects.get(language_code=language_code)
-    )
+    try:
+        trans = page.get_translation_or_none(
+            Locale.objects.get(language_code=language_code)
+        )
 
-    if trans:
-        return trans.get_url(request=context.get("request"))
+        if trans:
+            return trans.get_url(request=context.get("request"))
+
+    except Locale.DoesNotExist:
+        return pageurl(context, page, fallback)
 
     return page.get_url(request=context.get("request"))
 
@@ -69,6 +74,9 @@ def slug_url(context, slug, language_code):
     if page:
         # call page_url() instead of page.relative_url() here so we get the ``accepts_kwarg`` logic
         return page_url(context, page, language_code)
+
+    else:
+        return slugurl(context, slug)
 
 
 @register.simple_tag(takes_context=True)

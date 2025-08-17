@@ -101,7 +101,9 @@
     {% endfor %}
   </div>
 
+
   <section class="grid gap-8">
+    {% if breaking_news %}
     <h1 class="text-3xl text-primary font-black lg:text-5xl">
       {% trans 'Breaking' %}
     </h1>
@@ -154,9 +156,11 @@
       </li>
       {% endfor %}
     </ol>
+    {% endif %}
   </section>
 
   <section class="grid gap-8">
+    {% if latest_news %}
     <h1 class="text-3xl text-primary font-black lg:text-5xl">
       {% trans 'Latest News' %}
     </h1>
@@ -168,6 +172,7 @@
       </li>
       {% endfor %}
     </ol>
+    {% endif %}
   </section>
 
   <div class="grid gap-12">
