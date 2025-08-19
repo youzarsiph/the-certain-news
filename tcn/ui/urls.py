@@ -50,6 +50,7 @@ auth_urls = [
 
 
 urlpatterns = [
+    path("l/<slug:slug>/", views.LinkRedirectView.as_view(), name="redirect"),
     *auth_urls,
     path("search/", views.SearchView.as_view(), name="search"),
     path("articles/", views.ArticleListView.as_view(), name="articles"),
@@ -70,5 +71,4 @@ urlpatterns = [
         views.ArticleDetailView.as_view(),
         name="article",
     ),
-    path("<slug:slug>/", views.LinkRedirectView.as_view(), name="redirect"),
 ]

@@ -1,7 +1,7 @@
 {% extends 'ui/base.html' %}{% load i18n wagtailcore_tags wagtailimages_tags %}
 
 <!---->
-{% block title %}{{ block.super }} | {{ post.get_parent }} | {{ article }}{% endblock %}
+{% block title %}{{ block.super }} | {{ post.get_parent }} | {{ post }}{% endblock %}
 
 <!---->
 {% block meta %}
@@ -42,26 +42,68 @@
 <!---->
 {% block content %}
 <div class="container grid gap-8 mx-auto px-4 py-20">
-  <nav class="breadcrumbs text-xs text-primary lg:text-sm">
-    <ol>
-      <li>
-        <a href="{% pageurl page.get_parent.get_parent %}">
-          {{ page.get_parent.get_parent }}
-        </a>
-      </li>
-      <li>
-        <a href="{% pageurl page.get_parent %}">{{ page.get_parent }}</a>
-      </li>
-      <li>{{ page }}</li>
-    </ol>
-  </nav>
+  {% include 'ui/components/breadcrumbs.html' %}
 
   <div
     class="prose mx-auto prose-sm prose-video:rounded-box xl:prose-lg 2xl:prose-xl prose-headings:text-primary prose-headings:font-serif rtl:prose-headings:font-kufi prose-img:rounded-box prose-img:w-full prose-pre:bg-base-200 prose-pre:border prose-pre:border-base-300"
   >
-    <h1>{{ article.title }}</h1>
+    <div class="grid gap-4">
+      <div>
+        <div
+          class="not-prose tooltip tooltip-right tooltip-primary rtl:tooltip-left"
+          data-tip="{% translate 'Translations' %}"
+        >
+          <button
+            popovertarget="translations"
+            style="anchor-name: --translations"
+            class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
+          >
+            <i data-lucide="languages" class="size-4 lg:size-6"></i>
+  
+            <span class="sr-only">{% translate 'Language' %}</span>
+          </button>
+  
+          <ul
+            id="translations"
+            popover
+            style="position-anchor: --translations"
+            class="menu dropdown dropdown-bottom dropdown-right rounded-box bg-base-100/50 backdrop-blur-3xl text-base-content shadow-sm rtl:dropdown-left"
+          >
+            <li class="menu-title">{% translate 'Available in' %}</li>
+  
+            {% for translation in post.get_translations.live %}
+            <li>
+              <a
+                href="{% pageurl translation %}"
+                rel="alternate"
+                hreflang="{{ translation.locale.language_code }}"
+              >
+                {{ translation.locale.language_name_local }}
+                <!---->
+                ({{ translation.locale.language_code }})
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
 
-    {% image post.image scale-100 %}
+      {% image post.image fill-1920x1080 %}
+
+      <div class="not-prose flex text-xs sm:text-sm items-center gap-4">
+        <a
+          href="{% url 'ui:articles-d' post.created_at.year post.created_at.month post.created_at.day %}"
+          class="flex items-center gap-2 link link-primary link-hover"
+        >
+          <span class="status status-xl status-primary"></span>
+          {{ post.created_at|date }}
+        </a>
+        <span class="status status-xl status-info"></span>
+        <span>{% trans 'Last update' %}: {{ post.updated_at }}</span>
+      </div>
+    </div>
+
+    <h1>{{ post.title }}</h1>
 
     <p class="lead">{{ post.headline }}</p>
     {{ post.content }}

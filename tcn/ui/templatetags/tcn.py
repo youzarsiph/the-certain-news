@@ -2,6 +2,7 @@
 
 from django import template
 from django.shortcuts import resolve_url
+from django.urls import reverse_lazy
 from wagtail.models import Locale, Page, Site
 from wagtail.templatetags.wagtailcore_tags import pageurl, slugurl
 
@@ -13,7 +14,9 @@ register = template.Library()
 def copy_link(context, slug):
     """Generates the copy link for an article"""
 
-    return context["request"].build_absolute_uri(f"/{slug}/")
+    url = reverse_lazy("ui:redirect", args=[slug])
+
+    return context["request"].build_absolute_uri(url)
 
 
 @register.simple_tag(takes_context=True)
