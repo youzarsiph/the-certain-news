@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: the-certain-news 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-30 13:27+0000\n"
+"POT-Creation-Date: 2025-08-19 08:06+0000\n"
 "PO-Revision-Date: 2025-6-20 HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,247 +19,484 @@ msgstr ""
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: tcn/ai/serializers.py:14
-msgid "HuggingFace model name"
-msgstr "اسم نموذج HuggingFace"
+#: tcn/apps/articles/models.py:24 tcn/apps/blog/models.py:46
+#: tcn/apps/users/models.py:29
+#, fuzzy
+#| msgid "Image"
+msgid "image"
+msgstr "صورة"
 
-#: tcn/ai/serializers.py:23
-msgid "Question"
-msgstr "سؤال"
-
-#: tcn/ai/serializers.py:32
-msgid "Prompt"
-msgstr "الموجه"
-
-#: tcn/ai/serializers.py:41
-msgid "Source language for example en_XX"
-msgstr "لغة المصدر على سبيل المثال en_XX"
-
-#: tcn/ai/serializers.py:45
-msgid "Target language for example ar_XX"
-msgstr "لغة الهدف على سبيل المثال ar_XX"
-
-#: tcn/articles/models.py:46
+#: tcn/apps/articles/models.py:25
 msgid "Article image"
 msgstr "صورة المقال"
 
-#: tcn/articles/models.py:51
+#: tcn/apps/articles/models.py:30 tcn/apps/blog/models.py:52
+#, fuzzy
+#| msgid "Article headline"
+msgid "headline"
+msgstr "عنوان المقال"
+
+#: tcn/apps/articles/models.py:31
 msgid "Article headline"
 msgstr "عنوان المقال"
 
-#: tcn/articles/models.py:55
+#: tcn/apps/articles/models.py:35 tcn/apps/blog/models.py:57
+#: tcn/apps/home/models.py:64 tcn/apps/home/models.py:89
+#, fuzzy
+#| msgid "Article content"
+msgid "content"
+msgstr "محتوى المقال"
+
+#: tcn/apps/articles/models.py:36
 msgid "Article content"
 msgstr "محتوى المقال"
 
-#: tcn/articles/models.py:59
+#: tcn/apps/articles/models.py:40
+#, fuzzy
+#| msgid "Breaking"
+msgid "is breaking"
+msgstr "عاجل"
+
+#: tcn/apps/articles/models.py:41
 msgid "Designates if the Article is in breaking news"
 msgstr "يشير إلى ما إذا كان المقال خبرًا عاجلًا"
 
-#: tcn/articles/models.py:68
+#: tcn/apps/articles/models.py:46 tcn/apps/blog/models.py:63
+msgid "tags"
+msgstr "وسوم"
+
+#: tcn/apps/articles/models.py:47 tcn/cms/wagtail_hooks.py:21
+msgid "Tags"
+msgstr "وسوم"
+
+#: tcn/apps/articles/models.py:52
+msgid "recommendations"
+msgstr "الاقتراحات"
+
+#: tcn/apps/articles/models.py:53
 msgid "Similar articles"
 msgstr "مقالات ذات صلة"
 
-#: tcn/articles/models.py:74
+#: tcn/apps/articles/models.py:58
 msgid "News Articles"
 msgstr "مقالات إخبارية"
 
-#: tcn/articles/views.py:366
-msgid "Reaction removed"
-msgstr "تمت إزالة التفاعل"
+#: tcn/apps/articles/models.py:91
+#, fuzzy
+#| msgid "News Articles"
+msgid "News article"
+msgstr "مقالات إخبارية"
 
-#: tcn/articles/views.py:371 tcn/articles/views.py:375
-#, python-brace-format
-msgid "You reacted to '{article}' with '{emoji}'"
-msgstr "لقد تفاعلت مع '{article}' باستخدام '{emoji}'"
+#: tcn/apps/articles/models.py:92
+#: tcn/ui/templates/ui/components/category.html:15
+#, fuzzy
+#| msgid "News Articles"
+msgid "News articles"
+msgstr "مقالات إخبارية"
 
-#: tcn/articles/views.py:403
-#, python-brace-format
-msgid "Article '{article}' removed form saved articles"
-msgstr "تمت إزالة المقال '{article}' من المقالات المحفوظة"
+#: tcn/apps/blog/models.py:22 tcn/apps/blog/models.py:30
+msgid "Blog index page"
+msgstr "المدونة"
 
-#: tcn/articles/views.py:407
-#, python-brace-format
-msgid "Article '{article}' added to saved articles"
-msgstr "تمت إضافة المقال '{article}' إلى المقالات المحفوظة"
+#: tcn/apps/blog/models.py:47
+#, fuzzy
+#| msgid "Article image"
+msgid "Post image"
+msgstr "صورة المقال"
 
-#: tcn/categories/models.py:20
+#: tcn/apps/blog/models.py:53
+#, fuzzy
+#| msgid "Article headline"
+msgid "Post headline"
+msgstr "عنوان المقال"
+
+#: tcn/apps/blog/models.py:58
+#, fuzzy
+#| msgid "Article content"
+msgid "Post content"
+msgstr "محتوى المقال"
+
+#: tcn/apps/blog/models.py:64
+msgid "Post tags"
+msgstr "وسوم المقال"
+
+#: tcn/apps/blog/models.py:75
+msgid "Blog Posts"
+msgstr "مقالات المدونة"
+
+#: tcn/apps/blog/models.py:90
+msgid "Blog post"
+msgstr "مقال المدونة"
+
+#: tcn/apps/blog/models.py:91
+msgid "Blog posts"
+msgstr "مقالات المدونة"
+
+#: tcn/apps/categories/models.py:23 tcn/apps/categories/models.py:48
+#, fuzzy
+#| msgid "Category description"
+msgid "description"
+msgstr "وصف الفئة"
+
+#: tcn/apps/categories/models.py:24
+#, fuzzy
+#| msgid "Category description"
+msgid "Page description"
+msgstr "وصف الفئة"
+
+#: tcn/apps/categories/models.py:30 tcn/apps/categories/models.py:38
+#, fuzzy
+#| msgid "Categories"
+msgid "Category index page"
+msgstr "الفئات"
+
+#: tcn/apps/categories/models.py:39
+#, fuzzy
+#| msgid "Categories"
+msgid "Category index pages"
+msgstr "الفئات"
+
+#: tcn/apps/categories/models.py:49
 msgid "Category description"
 msgstr "وصف الفئة"
 
-#: tcn/categories/models.py:29
+#: tcn/apps/categories/models.py:53
+msgid "show owner"
+msgstr "عرض الكاتب"
+
+#: tcn/apps/categories/models.py:54
+msgid "Wether to display the name of the owner of news article"
+msgstr "يحدد فيما إن كنت تريد عرض اسم الكاتب مع المقال"
+
+#: tcn/apps/categories/models.py:65
+#, fuzzy
+#| msgid ""
+#| "Categories help organize articles into thematic or subject-related "
+#| "groupings, making it easier for users to explore and filter available "
+#| "articles."
 msgid ""
-"Categories help organize articles into thematic or subject-related "
-"groupings, making it easier for users to explore and filter available "
-"articles."
+"Categories help organize news article into thematic or subject-related "
+"groupings, making it easier for users to explore and filter available news "
+"article."
 msgstr ""
 "تساعد الفئات في تنظيم المقالات ضمن مجموعات موضوعية أو متعلقة بالموضوع، مما "
 "يسهل على المستخدمين استكشاف المقالات وفرزها."
 
-#: tcn/comments/models.py:31
-msgid "Comment Owner"
-msgstr "مالك التعليق"
+#: tcn/apps/categories/models.py:82
+#, fuzzy
+#| msgid "Category"
+msgid "category"
+msgstr "الفئة"
 
-#: tcn/comments/models.py:36
-msgid "Commented Article"
-msgstr "المقال المعلق عليه"
+#: tcn/apps/categories/models.py:83
+#, fuzzy
+#| msgid "Categories"
+msgid "categories"
+msgstr "الفئات"
 
-#: tcn/comments/models.py:40
-msgid "Comment Content"
-msgstr "محتوى التعليق"
+#: tcn/apps/categories/models.py:155 tcn/apps/mixins.py:57
+msgid "Page is not “last”, nor can it be converted to an int."
+msgstr "خطأ"
 
-#: tcn/comments/models.py:45
-msgid "Comment Replies"
-msgstr "ردود التعليق"
+#: tcn/apps/categories/models.py:163 tcn/apps/mixins.py:74
+#, python-format
+msgid "Invalid page (%(page_number)s): %(message)s"
+msgstr "خطأ"
 
-#: tcn/mixins/models.py:13
+#: tcn/apps/home/models.py:31
+#, fuzzy
+#| msgid "Home"
+msgid "Home page"
+msgstr "الرئيسية"
+
+#: tcn/apps/home/models.py:32
+msgid "Home pages"
+msgstr "الصفحات الرئيسية"
+
+#: tcn/apps/home/models.py:65 tcn/apps/home/models.py:90
+#, fuzzy
+#| msgid "Article content"
+msgid "Page content"
+msgstr "محتوى المقال"
+
+#: tcn/apps/home/models.py:70
+#, fuzzy
+#| msgid "About us"
+msgid "About us page"
+msgstr "من نحن"
+
+#: tcn/apps/home/models.py:78
+#, fuzzy
+#| msgid "About us"
+msgid "About page"
+msgstr "من نحن"
+
+#: tcn/apps/home/models.py:79
+#, fuzzy
+#| msgid "About us"
+msgid "About pages"
+msgstr "من نحن"
+
+#: tcn/apps/home/models.py:95
+#, fuzzy
+#| msgid "Contact"
+msgid "Contact us page"
+msgstr "اتصل بنا"
+
+#: tcn/apps/home/models.py:103
+#, fuzzy
+#| msgid "Contact"
+msgid "Contact page"
+msgstr "اتصل بنا"
+
+#: tcn/apps/home/models.py:104
+#, fuzzy
+#| msgid "Contact"
+msgid "Contact pages"
+msgstr "اتصل بنا"
+
+#: tcn/apps/links/models.py:25
+#, fuzzy
+#| msgid "articles"
+msgid "article"
+msgstr "مقالات"
+
+#: tcn/apps/links/models.py:26
+#, fuzzy
+#| msgid "Saved articles"
+msgid "Related article"
+msgstr "المقالات المحفوظة"
+
+#: tcn/apps/links/models.py:33
+msgid "slug"
+msgstr "رابط"
+
+#: tcn/apps/links/models.py:34
+msgid "Link url"
+msgstr "رابط"
+
+#: tcn/apps/links/models.py:39
+msgid "views"
+msgstr "المشاهدات"
+
+#: tcn/apps/links/models.py:40
+#, fuzzy
+#| msgid "Article image"
+msgid "Article views"
+msgstr "صورة المقال"
+
+#: tcn/apps/links/models.py:46
+#, fuzzy
+#| msgid "Linkedin"
+msgid "Link"
+msgstr "لينكدإن"
+
+#: tcn/apps/links/models.py:47
+#, fuzzy
+#| msgid "Linkedin"
+msgid "Links"
+msgstr "لينكدإن"
+
+#: tcn/apps/mixins.py:15 tcn/apps/mixins.py:16
+#: tcn/ui/templates/ui/articles/id.html:200
 msgid "Last update"
 msgstr "آخر تحديث"
 
-#: tcn/mixins/models.py:17
+#: tcn/apps/mixins.py:20 tcn/apps/mixins.py:21
 msgid "Date created"
 msgstr "تاريخ الإنشاء"
 
-#: tcn/reactions/models.py:28
-msgid "User"
-msgstr "المستخدم"
+#: tcn/apps/users/models.py:17
+msgid "country"
+msgstr "الدولة"
 
-#: tcn/reactions/models.py:34
-msgid "Article"
-msgstr "المقال"
-
-#: tcn/reactions/models.py:39
-msgid "Reaction"
-msgstr "التفاعل"
-
-#: tcn/users/models.py:37
-msgid "User photo"
+#: tcn/apps/users/models.py:18
+#, fuzzy
+#| msgid "User photo"
+msgid "User country"
 msgstr "صورة المستخدم"
 
-#: tcn/users/models.py:44
-msgid "User bio"
-msgstr "نبذة عن المستخدم"
+#: tcn/apps/users/models.py:23
+msgid "phone number"
+msgstr "رقم الهاتف"
 
-#: tcn/users/models.py:49
-msgid "Saved news articles"
-msgstr "المقالات الإخبارية المحفوظة"
+#: tcn/apps/users/models.py:24
+msgid "User phone number"
+msgstr "رقم هاتف المستخدم"
 
-#: tcn/ui/cms/blocks.py:16
+#: tcn/apps/users/models.py:31
+#, fuzzy
+#| msgid "Article image"
+msgid "Profile image"
+msgstr "صورة المقال"
+
+#: tcn/apps/users/models.py:37
+msgid "bio"
+msgstr "معلومات عامة"
+
+#: tcn/apps/users/models.py:38
+msgid "Tell us about yourself"
+msgstr "أخبرنا عن حولك"
+
+#: tcn/cms/blocks.py:14
 msgid "Quote"
 msgstr "اقتباس"
 
-#: tcn/ui/cms/blocks.py:17
-msgid "Paragraph"
-msgstr "فقرة"
+#: tcn/cms/blocks.py:15
+msgid "Rich Text"
+msgstr "النص"
 
-#: tcn/ui/cms/blocks.py:18
-msgid "Table"
-msgstr "جدول"
+#: tcn/cms/blocks.py:21
+msgid "Video"
+msgstr "فيديو"
 
-#: tcn/ui/cms/blocks.py:45
+#: tcn/cms/blocks.py:22
 msgid "Image"
 msgstr "صورة"
 
-#: tcn/ui/cms/blocks.py:46
-msgid "Video Embed URL"
-msgstr "رابط تضمين الفيديو"
-
-#: tcn/ui/cms/blocks.py:47
+#: tcn/cms/blocks.py:23
 msgid "Document"
 msgstr "مستند"
 
 #: tcn/ui/templates/registration/base.html:4
-#: tcn/ui/templates/registration/base.html:36
-#: tcn/ui/templates/registration/base.html:62
-#: tcn/ui/templates/registration/base.html:89
-#: tcn/ui/templates/registration/base.html:117
-#: tcn/ui/templates/rest_framework/api.html:92
-#: tcn/ui/templates/ui/base.html:241
-#: tcn/ui/templates/ui/base.html:248
-#: tcn/ui/templates/ui/base.html:580
-#: tcn/ui/templates/ui/base.html:587
+#: tcn/ui/templates/registration/base.html:69
+#: tcn/ui/templates/registration/base.html:76
+#: tcn/ui/templates/registration/base.html:169
+#: tcn/ui/templates/registration/base.html:196
+#: tcn/ui/templates/registration/base.html:236
+#: tcn/ui/templates/rest_framework/api.html:96
+#: tcn/ui/templates/ui/base.html:316 tcn/ui/templates/ui/base.html:323
+#: tcn/ui/templates/ui/base.html:456 tcn/ui/templates/ui/base.html:463
+#: tcn/ui/templates/ui/base.html:925
 msgid "Profile"
 msgstr "الملف الشخصي"
 
-#: tcn/ui/templates/registration/base.html:22
 #: tcn/ui/templates/registration/base.html:26
-#: tcn/ui/templates/registration/base.html:30
-#: tcn/ui/templates/ui/base.html:83
-#: tcn/ui/templates/ui/base.html:91
+#: tcn/ui/templates/registration/base.html:34
+#: tcn/ui/templates/registration/base.html:155
+#: tcn/ui/templates/registration/base.html:159
+#: tcn/ui/templates/registration/base.html:163
+#: tcn/ui/templates/ui/base.html:122 tcn/ui/templates/ui/base.html:130
+#: tcn/ui/templates/ui/base.html:387 tcn/ui/templates/ui/base.html:396
 msgid "Open drawer"
 msgstr "افتح القائمة"
 
-#: tcn/ui/templates/registration/base.html:52
-#: tcn/ui/templates/registration/base.html:100
-#: tcn/ui/templates/ui/base.html:87
-#: tcn/ui/templates/ui/base.html:377
-#: tcn/ui/templates/ui/base.html:424
-msgid "Close drawer"
+#: tcn/ui/templates/registration/base.html:30 tcn/ui/templates/ui/base.html:126
+#: tcn/ui/templates/ui/base.html:391 tcn/ui/templates/ui/base.html:685
+#: tcn/ui/templates/ui/base.html:722
+#, fuzzy
+#| msgid "Close drawer"
+msgid "close sidebar"
 msgstr "أغلق القائمة"
 
-#: tcn/ui/templates/registration/base.html:89
-#: tcn/ui/templates/registration/logged_out.html:16
-#: tcn/ui/templates/registration/logged_out.html:39
-#: tcn/ui/templates/registration/login.html:16
-#: tcn/ui/templates/registration/login.html:39
-#: tcn/ui/templates/registration/signup.html:17
-#: tcn/ui/templates/registration/signup.html:40
+#: tcn/ui/templates/registration/base.html:41
+#: tcn/ui/templates/registration/base.html:57
+#: tcn/ui/templates/registration/base.html:208
+#: tcn/ui/templates/registration/logged_out.html:15
+#: tcn/ui/templates/registration/logged_out.html:27
+#: tcn/ui/templates/registration/login.html:15
+#: tcn/ui/templates/registration/login.html:27
+#: tcn/ui/templates/registration/password_reset_complete.html:15
+#: tcn/ui/templates/registration/password_reset_complete.html:27
+#: tcn/ui/templates/registration/password_reset_confirm.html:15
+#: tcn/ui/templates/registration/password_reset_confirm.html:27
+#: tcn/ui/templates/registration/password_reset_done.html:15
+#: tcn/ui/templates/registration/password_reset_done.html:27
+#: tcn/ui/templates/registration/password_reset_form.html:15
+#: tcn/ui/templates/registration/password_reset_form.html:27
+#: tcn/ui/templates/registration/signup.html:15
+#: tcn/ui/templates/registration/signup.html:27
 #: tcn/ui/templates/rest_framework/api.html:4
-#: tcn/ui/templates/rest_framework/api.html:17
-#: tcn/ui/templates/rest_framework/api.html:40
-#: tcn/ui/templates/ui/articles/id.html:11
-#: tcn/ui/templates/ui/articles/id.html:20
-#: tcn/ui/templates/ui/base.html:12
-#: tcn/ui/templates/ui/base.html:191
-#: tcn/ui/templates/ui/base.html:219
-#: tcn/ui/templates/ui/base.html:388
-#: tcn/ui/templates/ui/base.html:414
+#: tcn/ui/templates/ui/articles/id.html:12
+#: tcn/ui/templates/ui/articles/id.html:18
+#: tcn/ui/templates/ui/articles/id.html:22
+#: tcn/ui/templates/ui/articles/id.html:33
+#: tcn/ui/templates/ui/articles/id.html:37 tcn/ui/templates/ui/base.html:11
+#: tcn/ui/templates/ui/base.html:97 tcn/ui/templates/ui/base.html:114
+#: tcn/ui/templates/ui/base.html:403 tcn/ui/templates/ui/base.html:419
+#: tcn/ui/templates/ui/base.html:636 tcn/ui/templates/ui/base.html:642
+#: tcn/ui/templates/ui/base.html:670 tcn/ui/templates/ui/base.html:696
+#: tcn/ui/templates/ui/base.html:711 tcn/ui/templates/ui/blog/post.html:10
+#: tcn/ui/templates/ui/blog/post.html:16 tcn/ui/templates/ui/blog/post.html:20
+#: tcn/ui/templates/ui/blog/post.html:31 tcn/ui/templates/ui/blog/post.html:35
 msgid "The Certain News"
 msgstr "النبأ اليقين"
 
-#: tcn/ui/templates/registration/base.html:96
-#: tcn/ui/templates/registration/base.html:104
-#: tcn/ui/templates/ui/base.html:420
-#: tcn/ui/templates/ui/base.html:428
-#: tcn/ui/templates/ui/base.html:618
-#: tcn/ui/templates/ui/base.html:626
-#: tcn/ui/templates/ui/base.html:660
+#: tcn/ui/templates/registration/base.html:82
+#: tcn/ui/templates/registration/base.html:89
+#: tcn/ui/templates/registration/logged_out.html:40
+#: tcn/ui/templates/registration/login.html:4
+#: tcn/ui/templates/registration/login.html:34
+#: tcn/ui/templates/registration/password_reset_complete.html:43
+#: tcn/ui/templates/registration/password_reset_done.html:48
+#: tcn/ui/templates/registration/signup.html:43
+#: tcn/ui/templates/ui/base.html:357 tcn/ui/templates/ui/base.html:364
+#: tcn/ui/templates/ui/base.html:469 tcn/ui/templates/ui/base.html:476
+#: tcn/ui/templates/ui/base.html:945
+msgid "Log in"
+msgstr "تسجيل الدخول"
+
+#: tcn/ui/templates/registration/base.html:94
+#: tcn/ui/templates/registration/base.html:101
+#: tcn/ui/templates/registration/logged_out.html:43
+#: tcn/ui/templates/registration/login.html:62
+#: tcn/ui/templates/registration/signup.html:4
+#: tcn/ui/templates/registration/signup.html:34
+#: tcn/ui/templates/ui/base.html:342 tcn/ui/templates/ui/base.html:352
+#: tcn/ui/templates/ui/base.html:481 tcn/ui/templates/ui/base.html:491
+#: tcn/ui/templates/ui/base.html:954
+msgid "Sign up"
+msgstr "إنشاء حساب"
+
+#: tcn/ui/templates/registration/base.html:123
+#: tcn/ui/templates/registration/base.html:131
+#: tcn/ui/templates/registration/base.html:138
+#: tcn/ui/templates/registration/base.html:145
+#: tcn/ui/templates/ui/base.html:513 tcn/ui/templates/ui/base.html:524
+#: tcn/ui/templates/ui/base.html:531 tcn/ui/templates/ui/base.html:538
+#: tcn/ui/templates/ui/base.html:746 tcn/ui/templates/ui/base.html:757
+#: tcn/ui/templates/ui/search.html:6 tcn/ui/templates/ui/search.html:12
+#: tcn/ui/templates/ui/search.html:29
+msgid "Search"
+msgstr "بحث"
+
+#: tcn/ui/templates/registration/base.html:186
+#: tcn/ui/templates/registration/base.html:219
+msgid "Close drawer"
+msgstr "أغلق القائمة"
+
+#: tcn/ui/templates/registration/base.html:215
+#: tcn/ui/templates/registration/base.html:223
+#: tcn/ui/templates/ui/base.html:718 tcn/ui/templates/ui/base.html:726
 msgid "Close"
 msgstr "إغلاق"
 
-#: tcn/ui/templates/registration/base.html:128
-#: tcn/ui/templates/registration/profile.html:45
-#: tcn/ui/templates/registration/profile.html:52
-#: tcn/ui/templates/ui/base.html:454
+#: tcn/ui/templates/registration/base.html:247
+#: tcn/ui/templates/ui/base.html:150 tcn/ui/templates/ui/base.html:160
+#: tcn/ui/templates/ui/base.html:784
 msgid "Dashboard"
 msgstr "لوحة التحكم"
 
-#: tcn/ui/templates/registration/base.html:144
+#: tcn/ui/templates/registration/base.html:263
 #: tcn/ui/templates/registration/edit.html:4
 #: tcn/ui/templates/registration/edit.html:9
-#: tcn/ui/templates/registration/profile.html:33
-#: tcn/ui/templates/registration/profile.html:40
 msgid "Settings"
 msgstr "الإعدادات"
 
-#: tcn/ui/templates/registration/base.html:153
+#: tcn/ui/templates/registration/base.html:272
 msgid "Change Password"
 msgstr "تغيير كلمة المرور"
 
-#: tcn/ui/templates/registration/base.html:165
+#: tcn/ui/templates/registration/base.html:284
 #: tcn/ui/templates/registration/delete.html:4
 #: tcn/ui/templates/registration/delete.html:8
 #: tcn/ui/templates/registration/delete.html:14
-#: tcn/ui/templates/registration/profile.html:64
 msgid "Delete account"
 msgstr "حذف الحساب"
 
-#: tcn/ui/templates/registration/base.html:175
-#: tcn/ui/templates/registration/profile.html:20
-#: tcn/ui/templates/registration/profile.html:28
-#: tcn/ui/templates/ui/base.html:272
-#: tcn/ui/templates/ui/base.html:280
-#: tcn/ui/templates/ui/base.html:504
-#: tcn/ui/templates/ui/base.html:512
+#: tcn/ui/templates/registration/base.html:294
+#: tcn/ui/templates/ui/base.html:328 tcn/ui/templates/ui/base.html:336
+#: tcn/ui/templates/ui/base.html:935
 msgid "Log out"
 msgstr "تسجيل الخروج"
 
@@ -275,38 +512,19 @@ msgstr "هذا الإجراء مدمر!"
 msgid "Logged out"
 msgstr "تم تسجيل الخروج"
 
-#: tcn/ui/templates/registration/logged_out.html:45
+#: tcn/ui/templates/registration/logged_out.html:34
 msgid "Logged Out"
 msgstr "تم تسجيل الخروج"
 
-#: tcn/ui/templates/registration/logged_out.html:48
+#: tcn/ui/templates/registration/logged_out.html:36
 msgid "Thanks for spending some quality time with us today."
 msgstr "شكرًا لقضاء بعض الوقت الثمين معنا اليوم."
 
-#: tcn/ui/templates/registration/logged_out.html:56
-#: tcn/ui/templates/registration/login.html:4
-#: tcn/ui/templates/registration/login.html:45
-#: tcn/ui/templates/registration/password_reset_complete.html:23
-#: tcn/ui/templates/registration/signup.html:60
-#: tcn/ui/templates/ui/base.html:320
-#: tcn/ui/templates/ui/base.html:327
-#: tcn/ui/templates/ui/base.html:518
-#: tcn/ui/templates/ui/base.html:525
-msgid "Log in"
-msgstr "تسجيل الدخول"
-
-#: tcn/ui/templates/registration/logged_out.html:62
-#: tcn/ui/templates/registration/login.html:78
-#: tcn/ui/templates/registration/signup.html:4
-#: tcn/ui/templates/registration/signup.html:46
-msgid "Sign up"
-msgstr "إنشاء حساب"
-
-#: tcn/ui/templates/registration/login.html:48
+#: tcn/ui/templates/registration/login.html:36
 msgid "Welcome, please login to continue."
 msgstr "مرحبًا، يرجى تسجيل الدخول للمتابعة."
 
-#: tcn/ui/templates/registration/login.html:58
+#: tcn/ui/templates/registration/login.html:46
 msgid ""
 "Your account doesn't have access to this page. To proceed, please login with "
 "an account that has access. <!---->"
@@ -314,8 +532,8 @@ msgstr ""
 "ليس لدى حسابك صلاحية الوصول إلى هذه الصفحة. للمتابعة، يرجى تسجيل الدخول "
 "بحساب لديه الصلاحية."
 
-#: tcn/ui/templates/registration/login.html:84
-#: tcn/ui/templates/registration/signup.html:66
+#: tcn/ui/templates/registration/login.html:68
+#: tcn/ui/templates/registration/signup.html:49
 msgid "Forgot password?"
 msgstr "نسيت كلمة المرور؟"
 
@@ -362,34 +580,26 @@ msgstr ""
 "الجديدة مرتين للتأكد من صحتها."
 
 #: tcn/ui/templates/registration/password_reset_complete.html:4
-#: tcn/ui/templates/registration/password_reset_form.html:4
 msgid "Password Reset"
 msgstr "إعادة تعيين كلمة المرور"
 
-#: tcn/ui/templates/registration/password_reset_complete.html:15
-#: tcn/ui/templates/registration/password_reset_form.html:15
-msgid "Reset Password"
-msgstr "إعادة تعيين كلمة المرور"
-
-#: tcn/ui/templates/registration/password_reset_complete.html:19
-msgid "Your password has been set. You may go ahead and log in now."
-msgstr "تم تعيين كلمة المرور. يمكنك الآن تسجيل الدخول."
-
+#: tcn/ui/templates/registration/password_reset_complete.html:35
 #: tcn/ui/templates/registration/password_reset_confirm.html:4
+#: tcn/ui/templates/registration/password_reset_confirm.html:35
 msgid "Password Reset Confirm"
 msgstr "تأكيد إعادة التعيين"
 
-#: tcn/ui/templates/registration/password_reset_confirm.html:15
-msgid "Password Reset Confirmation"
-msgstr "تأكيد إعادة تعيين كلمة المرور"
+#: tcn/ui/templates/registration/password_reset_complete.html:39
+msgid "Your password has been set. You may go ahead and log in now."
+msgstr "تم تعيين كلمة المرور. يمكنك الآن تسجيل الدخول."
 
-#: tcn/ui/templates/registration/password_reset_confirm.html:20
+#: tcn/ui/templates/registration/password_reset_confirm.html:40
 msgid ""
 "Please enter your new password twice so we can verify you typed it in "
 "correctly."
 msgstr "يرجى إدخال كلمة المرور الجديدة مرتين للتأكد من صحتها."
 
-#: tcn/ui/templates/registration/password_reset_confirm.html:27
+#: tcn/ui/templates/registration/password_reset_confirm.html:47
 msgid ""
 "The password reset link was invalid, possibly because it has already been "
 "used. Please request a new password reset. <!---->"
@@ -398,11 +608,11 @@ msgstr ""
 "جديدة."
 
 #: tcn/ui/templates/registration/password_reset_done.html:4
-#: tcn/ui/templates/registration/password_reset_done.html:15
+#: tcn/ui/templates/registration/password_reset_done.html:34
 msgid "Password Reset Done"
 msgstr "تمت إعادة التعيين"
 
-#: tcn/ui/templates/registration/password_reset_done.html:19
+#: tcn/ui/templates/registration/password_reset_done.html:37
 msgid ""
 "We've emailed you instructions for setting your password, if an account "
 "exists with the email you entered. You should receive them shortly."
@@ -410,20 +620,13 @@ msgstr ""
 "أرسلنا لك تعليمات لإعادة تعيين كلمة المرور في حال وجود حساب مرتبط بالبريد "
 "الإلكتروني الذي أدخلته. ستصله قريبًا."
 
-#: tcn/ui/templates/registration/password_reset_done.html:24
+#: tcn/ui/templates/registration/password_reset_done.html:42
 msgid ""
 "If you don't receive an email, please make sure you've entered the address "
 "you registered with, and check your spam folder."
 msgstr ""
 "إذا لم تتلقَ البريد، فتأكد من إدخال العنوان المسجل وتحقق من مجلد الرسائل "
 "العشوائية."
-
-#: tcn/ui/templates/registration/password_reset_done.html:30
-#: tcn/ui/templates/rest_framework/api.html:54
-#: tcn/ui/templates/rest_framework/api.html:61
-#: tcn/ui/templates/ui/base.html:440
-msgid "Home"
-msgstr "الرئيسية"
 
 #: tcn/ui/templates/registration/password_reset_email.html:6
 #, python-format
@@ -439,7 +642,9 @@ msgid "Please go to the following page and choose a new password:"
 msgstr "يرجى الانتقال إلى الصفحة التالية واختيار كلمة مرور جديدة:"
 
 #: tcn/ui/templates/registration/password_reset_email.html:16
-msgid "Your username, in case you've forgotten:"
+#, fuzzy
+#| msgid "Your username, in case you've forgotten:"
+msgid "Your username, in case you"
 msgstr "اسم المستخدم الخاص بك في حال نسيانه:"
 
 #: tcn/ui/templates/registration/password_reset_email.html:18
@@ -451,383 +656,297 @@ msgstr "شكرًا لاستخدامك موقعنا!"
 msgid "The %(site_name)s team"
 msgstr "فريق %(site_name)s"
 
-#: tcn/ui/templates/registration/password_reset_form.html:19
+#: tcn/ui/templates/registration/password_reset_form.html:4
+#: tcn/ui/templates/registration/password_reset_form.html:34
+#, fuzzy
+#| msgid "Reset Password"
+msgid "Reset password"
+msgstr "إعادة تعيين كلمة المرور"
+
+#: tcn/ui/templates/registration/password_reset_form.html:37
+#, fuzzy
+#| msgid ""
+#| "Forgotten your password? Enter your email address below, and we'll email "
+#| "instructions for setting a new one."
 msgid ""
 "Forgotten your password? Enter your email address below, and we'll email "
-"instructions for setting a new one."
+"instructions for setting a new one. <!---->"
 msgstr ""
 "نسيت كلمة المرور؟ أدخل بريدك الإلكتروني أدناه وسنرسل تعليمات لإعادة التعيين."
 
-#: tcn/ui/templates/registration/profile.html:15
+#: tcn/ui/templates/registration/profile.html:17
 msgid "Welcome to your Profile"
 msgstr "مرحبًا بك في ملفك الشخصي"
 
-#: tcn/ui/templates/registration/profile.html:57
-msgid "Delete"
-msgstr "حذف"
-
-#: tcn/ui/templates/registration/profile.html:72
-msgid "Saved articles"
-msgstr "المقالات المحفوظة"
-
-#: tcn/ui/templates/registration/profile.html:85
-#, fuzzy
-#| msgid "Saved articles"
-msgid "Saved articles will appear here"
-msgstr "المقالات المحفوظة"
-
-#: tcn/ui/templates/registration/profile.html:89
-#: tcn/ui/templates/ui/articles/list.html:17
-#: tcn/ui/templates/ui/base.html:179
-#: tcn/ui/templates/ui/base.html:186
-#: tcn/ui/templates/ui/index.html:146
-msgid "Latest News"
-msgstr "أحدث الأخبار"
-
-#: tcn/ui/templates/registration/signup.html:49
+#: tcn/ui/templates/registration/signup.html:36
 msgid "Welcome, please signup to continue."
 msgstr "مرحبًا، يرجى إنشاء حساب للمتابعة."
 
-#: tcn/ui/templates/rest_framework/api.html:66
+#: tcn/ui/templates/rest_framework/api.html:31
+#: tcn/ui/templates/rest_framework/api.html:46
+#, fuzzy
+#| msgid "The Certain News"
+msgid "The Certain News | API"
+msgstr "النبأ اليقين"
+
+#: tcn/ui/templates/rest_framework/api.html:61
+#: tcn/ui/templates/rest_framework/api.html:65
+#: tcn/ui/templates/ui/base.html:136 tcn/ui/templates/ui/base.html:143
+#: tcn/ui/templates/ui/base.html:769
+msgid "Home"
+msgstr "الرئيسية"
+
 #: tcn/ui/templates/rest_framework/api.html:70
-#: tcn/ui/templates/ui/base.html:224
-#: tcn/ui/templates/ui/base.html:231
-#: tcn/ui/templates/ui/base.html:494
-#: tcn/ui/templates/ui/categories/list.html:4
-#: tcn/ui/templates/ui/categories/list.html:12
-#: tcn/ui/templates/ui/index.html:185
+#: tcn/ui/templates/rest_framework/api.html:74
+#: tcn/ui/templates/ui/base.html:195 tcn/ui/templates/ui/base.html:202
+#: tcn/ui/templates/ui/base.html:208 tcn/ui/templates/ui/base.html:215
+#: tcn/ui/templates/ui/base.html:822 tcn/ui/templates/ui/base.html:832
 msgid "Categories"
 msgstr "الفئات"
 
-#: tcn/ui/templates/rest_framework/api.html:75
 #: tcn/ui/templates/rest_framework/api.html:79
+#: tcn/ui/templates/rest_framework/api.html:83
 msgid "Articles"
 msgstr "مقالات"
 
-#: tcn/ui/templates/ui/about.html:4
-#: tcn/ui/templates/ui/about.html:12
-#: tcn/ui/templates/ui/base.html:357
-msgid "About us"
-msgstr "من نحن"
-
-#: tcn/ui/templates/ui/about.html:14
-msgid ""
-"Welcome to <strong>The Certain News</strong> a platform dedicated to "
-"delivering reliable, insightful, and engaging news from around the world. At "
-"the heart of our mission is a deep commitment to building trust and "
-"promoting transparency in todayÆs rapidly changing information landscape."
-msgstr "مرحبًا بكم في النبأ اليقين – منصة مكرسة لتقديم أخبار موثوقة، ذات رؤى معمقة، وجذابة من جميع أنحاء العالم. في صميم مهمتنا التزام راسخ ببناء الثقة وتعزيز الشفافية في ظل مشهد المعلومات سريع التغير اليوم."
-
-#: tcn/ui/templates/ui/about.html:20
-msgid "Our Mission"
-msgstr "مهمتنا"
-
-#: tcn/ui/templates/ui/about.html:22
-msgid ""
-"In a time when information is abundant yet trust is scarce, our mission is "
-"clear:<br /> <strong> To empower our readers with authentic, well-researched "
-"news so that every voice is heard and every story matters. </strong>"
-msgstr "في زمن تنبسط فيه المعلومات ويقل فيه الثقة، تتضح مهمتنا كالتالي: تمكين قرائنا من خلال أخبار أصيلة ومدروسة بعناية، بحيث يُسمع كل صوت وتُعطى كل قصة حقها."
-
-#: tcn/ui/templates/ui/about.html:31
-msgid ""
-"We believe that by creating a space for verified and balanced reporting, we "
-"can help individuals make informed decisions and feel confident in the news "
-"they consume."
-msgstr "نؤمن بأن إنشاء مساحة للتغطية المتوازنة والمتحققة يساعد الأفراد على اتخاذ قرارات واعية ويمنحهم الثقة في الأخبار التي يتابعونها."
-
-#: tcn/ui/templates/ui/about.html:35
-msgid "Our Vision"
-msgstr "رؤيتنا"
-
-#: tcn/ui/templates/ui/about.html:37
-msgid ""
-"We envision a world where the truth is accessible to all. <strong>The "
-"Certain News</strong> strives to be more than just a news website a "
-"commitment to excellence in journalism. We aim to lead the way in digital "
-"storytelling by embracing innovative technology, ethical reporting, and a "
-"community-driven approach."
-msgstr "نتطلع إلى عالم تُتاح فيه الحقيقة للجميع. تسعى النبأ اليقين   لأن تكون أكثر من مجرد موقع إخباري؛ إنها التزام بالتميز في الصحافة. نهدف إلى ريادة التحول الرقمي في السرد القصصي من خلال تبني التكنولوجيا المبتكرة، والتغطية الأخلاقية، ونهج تشاركي مع المجتمع."
-
-#: tcn/ui/templates/ui/about.html:44
-msgid "Our Story"
-msgstr "قصتنا"
-
-#: tcn/ui/templates/ui/about.html:46
-msgid ""
-"Founded on the principles of trust and certainty, <strong>The Certain News</"
-"strong> was born out of the need for a platform that goes beyond quick "
-"headlines. Our name, which means <strong>certainty</strong> in Arabic, reflects "
-"our promise to deliver news that you can rely on. Drawing from a passion for "
-"deep investigation and a relentless search for the truth, our team is at the "
-"forefront of modern journalism, merging traditional reporting with cutting-"
-"edge technology. <!---->"
-msgstr "انطلقت النبأ اليقين   من مبادئ الثقة واليقين، استجابةً للحاجة إلى منصة تتجاوز العناوين العاجلة السريعة. يعكس اسمنا—الذي يعني اليقين—وعدنا بتقديم أخبار يمكنك الاعتماد عليها. مدفوعين بشغف التحقيق العميق والبحث الدؤوب عن الحقيقة، يقف فريقنا في طليعة الصحافة الحديثة، جامعًا بين التقارير التقليدية والتقنيات المتطورة."
-
-#: tcn/ui/templates/ui/about.html:56
-msgid "What We Do"
-msgstr "ماذا نفعل"
-
-#: tcn/ui/templates/ui/about.html:59
-msgid ""
-"<strong>In-Depth Reporting:</strong> We cover local, regional, and "
-"international news with thorough research and expert analysis. <!---->"
-msgstr "تغطية معمقة:   نقدم تقارير محلية وإقليمية ودولية بابتكار بحثي وتحليل خبراء."
-
-#: tcn/ui/templates/ui/about.html:66
-msgid ""
-"<strong>Timely Updates:</strong> With our real-time news feeds and live "
-"updates, youÆre always in the know."
-msgstr "تحديثات فورية:   بفضل خلاصة الأخبار في الوقت الحقيقي والتحديثات المباشرة، ستظل على اطلاع دائم."
-
-#: tcn/ui/templates/ui/about.html:71
-msgid ""
-"<strong>Community Engagement:</strong> We believe that meaningful "
-"conversations are a catalyst for change. ThatÆs why we encourage our readers "
-"to share opinions, provide feedback, and become active participants in our "
-"news community."
-msgstr "تفاعل مجتمعي:   نؤمن بأن الحوار البنّاء محرك للتغيير، لذا نشجع قراءنا على مشاركة آرائهم وتقديم ملاحظاتهم والمشاركة الفعّالة في مجتمعنا الإخباري."
-
-#: tcn/ui/templates/ui/about.html:78
-msgid ""
-"<strong>Innovative Technology:</strong> Leveraging modern frameworks and "
-"intuitive design, we ensure that our platform is easy to navigate, fast, and "
-"secure."
-msgstr "تكنولوجيا مبتكرة:   نعتمد أطر عمل حديثة وتصميمًا بديهيًا لضمان أن تكون منصتنا سهلة التصفح وسريعة وآمنة."
-
-#: tcn/ui/templates/ui/about.html:84
-msgid "Our Values"
-msgstr "قيمنا"
-
-#: tcn/ui/templates/ui/about.html:87
-msgid ""
-"<strong>Integrity:</strong> We adhere to the highest ethical standards, "
-"ensuring that our reports are accurate, fair, and impartial. <!---->"
-msgstr "النزاهة:   نلتزم بأعلى المعايير الأخلاقية لضمان أن تكون تقاريرنا دقيقة وعادلة وغير متحيزة."
-
-#: tcn/ui/templates/ui/about.html:94
-msgid ""
-"<strong>Transparency:</strong> Every piece of news is the product of "
-"rigorous fact-checking and a commitment to openness."
-msgstr "الشفافية:   كل خبر ننشره خضع للتحقق الدقيق انطلاقًا من التزامنا بالانفتاح."
-
-#: tcn/ui/templates/ui/about.html:99
-msgid ""
-"<strong>Inclusivity:</strong> All voices matter. We strive to reflect "
-"diverse perspectives and give space to underrepresented communities. <!---->"
-msgstr "الشمول:   لكل صوت قيمته، ونسعى لنعكس وجهات نظر متنوعة ونُتيح المجال للمجتمعات الأقل تمثيلاً."
-
-#: tcn/ui/templates/ui/about.html:106
-msgid ""
-"<strong>Innovation:</strong> Embracing modern technology is key to evolving "
-"the news industry. We continuously refine our processes and approach to "
-"bring you news in a dynamic, user-friendly format. <!---->"
-msgstr "الابتكار:   نؤمن بأن تبني التكنولوجيا الحديثة هو المفتاح لتطوير الصناعة الإخبارية، لذا نواصل تحسين عملياتنا ومنهجيتنا لتقديم الأخبار بشكل ديناميكي وسهل الاستخدام."
-
-#: tcn/ui/templates/ui/about.html:114
-msgid "Join Our Community"
-msgstr "انضم إلى مجتمعنا"
-
-#: tcn/ui/templates/ui/about.html:116
-msgid ""
-"We invite you to explore our articles, share your thoughts, and join us in "
-"celebrating journalism that upholds the values of truth and transparency. At "
-"<strong>The Certain News</strong>, your trust fuels our work, and your voice "
-"shapes our future."
-msgstr "ندعوك لاستكشاف مقالاتنا ومشاركة آرائك والاحتفاء معنا بصحافة ترتكز على قيم الحقيقة والشفافية. في النبأ اليقين  ، تغذينا ثقتك، ويصوغ صوتك مستقبلنا."
-
-#: tcn/ui/templates/ui/about.html:123
-msgid ""
-"Thank you for choosing <strong>The Certain News</strong> û where certainty "
-"meets in-depth journalism. If you have any questions or feedback, please "
-"feel free to contact us through our"
-msgstr "شكرًا لاختيارك النبأ اليقين   – حيث يلتقي اليقين بالصحافة المعمقة. إذا كانت لديك أي أسئلة أو ملاحظات، لا تتردد في التواصل معنا عبر"
-
-#: tcn/ui/templates/ui/about.html:127
-#: tcn/ui/templates/ui/base.html:360
-#: tcn/ui/templates/ui/contact.html:4
-#: tcn/ui/templates/ui/contact.html:12
-msgid "Contact"
-msgstr "اتصل بنا"
-
-#: tcn/ui/templates/ui/articles/archive/base.html:9
-msgid "News for"
-msgstr "الأخبار الخاصة بـ"
-
-#: tcn/ui/templates/ui/articles/archive/base.html:25
-#: tcn/ui/templates/ui/articles/list.html:34
-msgid "None published"
-msgstr "لم يتم نشر شيء"
-
-#: tcn/ui/templates/ui/articles/id.html:30
-msgid "Copied"
-msgstr "تم النسخ"
-
-#: tcn/ui/templates/ui/articles/id.html:46
-#: tcn/ui/templates/ui/components/article.html:51
-#: tcn/ui/templates/ui/index.html:69
-msgid "Category"
-msgstr "الفئة"
-
-#: tcn/ui/templates/ui/articles/id.html:54
-#: tcn/ui/templates/ui/articles/id.html:57
-#: tcn/ui/templates/ui/base.html:476
-#: tcn/ui/templates/ui/components/article.html:34
-#: tcn/ui/templates/ui/components/article.html:45
-#: tcn/ui/templates/ui/index.html:52
-#: tcn/ui/templates/ui/index.html:63
-msgid "Breaking"
-msgstr "عاجل"
-
-#: tcn/ui/templates/ui/articles/id.html:74
-#: tcn/ui/templates/ui/articles/id.html:79
-msgid "Save"
-msgstr "حفظ"
-
-#: tcn/ui/templates/ui/articles/id.html:83
-#: tcn/ui/templates/ui/articles/id.html:87
-msgid "Copy Link"
-msgstr "نسخ الرابط"
-
-#: tcn/ui/templates/ui/articles/id.html:90
-#: tcn/ui/templates/ui/articles/id.html:94
-msgid "Share"
-msgstr "مشاركة"
-
-#: tcn/ui/templates/ui/articles/id.html:101
-#: tcn/ui/templates/ui/base.html:531
-#: tcn/ui/templates/ui/base.html:538
-#: tcn/ui/templates/ui/contact.html:51
-msgid "Facebook"
-msgstr "فيسبوك"
-
-#: tcn/ui/templates/ui/articles/id.html:108
-#: tcn/ui/templates/ui/base.html:555
-msgid "X"
-msgstr "X"
-
-#: tcn/ui/templates/ui/articles/id.html:116
-#: tcn/ui/templates/ui/articles/id.html:120
-msgid "Options"
-msgstr "خيارات"
-
-#: tcn/ui/templates/ui/articles/id.html:139
-msgid "Tags"
-msgstr "وسوم"
-
-#: tcn/ui/templates/ui/articles/id.html:149
-#: tcn/ui/templates/ui/index.html:132
-#: tcn/ui/templates/ui/index.html:175
-#: tcn/ui/templates/ui/index.html:247
-msgid "None"
-msgstr "لا شيء"
-
-#: tcn/ui/templates/ui/articles/list.html:4
-#: tcn/ui/templates/ui/base.html:350
+#: tcn/ui/templates/ui/articles/archive/day.html:11
+#: tcn/ui/templates/ui/articles/archive/index.html:11
+#: tcn/ui/templates/ui/articles/archive/month.html:11
+#: tcn/ui/templates/ui/articles/archive/year.html:11
+#: tcn/ui/templates/ui/articles/id.html:12
+#: tcn/ui/templates/ui/articles/id.html:18
+#: tcn/ui/templates/ui/articles/id.html:22
+#: tcn/ui/templates/ui/articles/id.html:33
+#: tcn/ui/templates/ui/articles/id.html:37 tcn/ui/templates/ui/base.html:559
 msgid "News"
 msgstr "الأخبار"
 
-#: tcn/ui/templates/ui/articles/list.html:13
-msgid "Breaking News"
+#: tcn/ui/templates/ui/articles/archive/day.html:18
+#: tcn/ui/templates/ui/articles/archive/day.html:28
+#: tcn/ui/templates/ui/articles/archive/index.html:18
+#: tcn/ui/templates/ui/articles/archive/index.html:28
+#: tcn/ui/templates/ui/articles/archive/month.html:18
+#: tcn/ui/templates/ui/articles/archive/month.html:28
+#: tcn/ui/templates/ui/articles/archive/year.html:18
+#: tcn/ui/templates/ui/articles/archive/year.html:28
+#, fuzzy
+#| msgid "Previous"
+msgid "Prev"
+msgstr "السابق"
+
+#: tcn/ui/templates/ui/articles/archive/day.html:36
+#: tcn/ui/templates/ui/articles/archive/day.html:46
+#: tcn/ui/templates/ui/articles/archive/index.html:36
+#: tcn/ui/templates/ui/articles/archive/index.html:46
+#: tcn/ui/templates/ui/articles/archive/month.html:36
+#: tcn/ui/templates/ui/articles/archive/month.html:46
+#: tcn/ui/templates/ui/articles/archive/year.html:36
+#: tcn/ui/templates/ui/articles/archive/year.html:46
+#: tcn/ui/templates/ui/components/pagination.html:53
+#: tcn/ui/templates/ui/components/pagination.html:63
+msgid "Next"
+msgstr "التالي"
+
+#: tcn/ui/templates/ui/articles/archive/day.html:65
+#: tcn/ui/templates/ui/articles/archive/month.html:65
+#: tcn/ui/templates/ui/articles/list.html:31
+#: tcn/ui/templates/ui/blog/index.html:46
+#, fuzzy
+#| msgid "articles"
+msgid "No articles"
+msgstr "مقالات"
+
+#: tcn/ui/templates/ui/articles/archive/day.html:66
+#: tcn/ui/templates/ui/articles/archive/month.html:66
+#, fuzzy
+#| msgid "None published"
+msgid "No articles published on"
+msgstr "لم يتم نشر شيء"
+
+#: tcn/ui/templates/ui/articles/archive/index.html:4
+#: tcn/ui/templates/ui/articles/archive/index.html:11
+#: tcn/ui/templates/ui/base.html:843
+msgid "Archive"
+msgstr "الأرشيف"
+
+#: tcn/ui/templates/ui/articles/archive/index.html:62
+#: tcn/ui/templates/ui/articles/archive/year.html:65
+#: tcn/ui/templates/ui/components/article.html:7
+#: tcn/ui/templates/ui/index.html:54 tcn/ui/templates/ui/index.html:117
+#: tcn/ui/templates/ui/index.html:142
+msgid "Read"
+msgstr "اقرأ"
+
+#: tcn/ui/templates/ui/articles/archive/index.html:76
+#: tcn/ui/templates/ui/articles/archive/year.html:79
+msgid "None available"
+msgstr "لا توجد"
+
+#: tcn/ui/templates/ui/articles/id.html:57
+#: tcn/ui/templates/ui/components/article.html:30
+msgid "Category"
+msgstr "الفئة"
+
+#: tcn/ui/templates/ui/articles/id.html:69 tcn/ui/templates/ui/base.html:174
+#: tcn/ui/templates/ui/base.html:434 tcn/ui/templates/ui/base.html:801
+#, fuzzy
+#| msgid "Breaking News"
+msgid "Breaking news"
 msgstr "أخبار عاجلة"
 
-#: tcn/ui/templates/ui/base.html:16
-#: tcn/ui/templates/ui/base.html:22
-#: tcn/ui/templates/ui/base.html:26
-#: tcn/ui/templates/ui/base.html:43
-#: tcn/ui/templates/ui/base.html:47
-#, fuzzy
-#| msgid "the-certain-news - Journalism with Certainty"
-msgid "The Certain News - Journalism with Certainty"
-msgstr "النبأ اليقين - صحافة باليقين"
+#: tcn/ui/templates/ui/articles/id.html:75 tcn/ui/templates/ui/base.html:167
+#: tcn/ui/templates/ui/base.html:427
+#: tcn/ui/templates/ui/components/article.html:19
+#: tcn/ui/templates/ui/components/article.html:21
+#: tcn/ui/templates/ui/index.html:43 tcn/ui/templates/ui/index.html:46
+#: tcn/ui/templates/ui/index.html:107
+msgid "Breaking"
+msgstr "عاجل"
 
-#: tcn/ui/templates/ui/base.html:97
-#: tcn/ui/templates/ui/base.html:105
-#: tcn/ui/templates/ui/base.html:613
-#: tcn/ui/templates/ui/base.html:641
-#: tcn/ui/templates/ui/base.html:654
-msgid "Search"
-msgstr "بحث"
+#: tcn/ui/templates/ui/articles/id.html:126
+msgid "Translations"
+msgstr "الترجمات"
 
-#: tcn/ui/templates/ui/base.html:111
-#: tcn/ui/templates/ui/base.html:120
-#: tcn/ui/templates/ui/base.html:129
+#: tcn/ui/templates/ui/articles/id.html:135 tcn/ui/templates/ui/base.html:224
+#: tcn/ui/templates/ui/base.html:233 tcn/ui/templates/ui/base.html:242
 msgid "Language"
 msgstr "اللغة"
 
-#: tcn/ui/templates/ui/base.html:253
-#: tcn/ui/templates/ui/base.html:301
-msgid "Toggle theme"
-msgstr "تبديل النمط"
+#: tcn/ui/templates/ui/articles/id.html:144
+msgid "Available in"
+msgstr "متاح في"
 
-#: tcn/ui/templates/ui/base.html:286
-#: tcn/ui/templates/ui/base.html:296
-#: tcn/ui/templates/ui/base.html:593
-#: tcn/ui/templates/ui/base.html:600
-msgid "Subscribe"
-msgstr "اشترك"
+#: tcn/ui/templates/ui/articles/id.html:165
+#: tcn/ui/templates/ui/articles/id.html:172
+#: tcn/ui/templates/ui/articles/id.html:246
+#, fuzzy
+#| msgid "Copy Link"
+msgid "Copy URL"
+msgstr "نسخ الرابط"
 
-#: tcn/ui/templates/ui/base.html:348
-msgid "Services"
-msgstr "الخدمات"
+#: tcn/ui/templates/ui/articles/id.html:178
+#: tcn/ui/templates/ui/articles/id.html:185
+msgid "Facebook"
+msgstr "فيسبوك"
 
-#: tcn/ui/templates/ui/base.html:352
-msgid "Advertisement"
-msgstr "إعلان"
+#: tcn/ui/templates/ui/articles/id.html:224
+#, fuzzy
+#| msgid "Reaction"
+msgid "Recommendations"
+msgstr "التفاعل"
 
-#: tcn/ui/templates/ui/base.html:355
-msgid "Company"
-msgstr "الشركة"
+#: tcn/ui/templates/ui/articles/id.html:242
+#, fuzzy
+#| msgid "Copied"
+msgid "Copied!"
+msgstr "تم النسخ"
 
-#: tcn/ui/templates/ui/base.html:364
-msgid "Legal"
-msgstr "القانونية"
+#: tcn/ui/templates/ui/articles/list.html:4
+#: tcn/ui/templates/ui/articles/list.html:15 tcn/ui/templates/ui/index.html:164
+msgid "Latest News"
+msgstr "أحدث الأخبار"
 
-#: tcn/ui/templates/ui/base.html:365
-msgid "Terms of use"
-msgstr "شروط الاستخدام"
+#: tcn/ui/templates/ui/articles/list.html:11
+msgid "Breaking News"
+msgstr "أخبار عاجلة"
 
-#: tcn/ui/templates/ui/base.html:366
-msgid "Privacy policy"
-msgstr "سياسة الخصوصية"
+#: tcn/ui/templates/ui/articles/list.html:32
+#, fuzzy
+#| msgid "Saved articles"
+msgid "Published news articles will appear here"
+msgstr "المقالات المحفوظة"
 
-#: tcn/ui/templates/ui/base.html:485
+#: tcn/ui/templates/ui/base.html:15 tcn/ui/templates/ui/base.html:24
+#: tcn/ui/templates/ui/base.html:28 tcn/ui/templates/ui/base.html:48
+#: tcn/ui/templates/ui/base.html:52
+#, fuzzy
+#| msgid "the-certain-news - Journalism with Certainty"
+msgid "The Certain News - Journalism with Certainty."
+msgstr "النبأ اليقين - صحافة باليقين"
+
+#: tcn/ui/templates/ui/base.html:180 tcn/ui/templates/ui/base.html:187
+#: tcn/ui/templates/ui/base.html:440 tcn/ui/templates/ui/base.html:447
+#: tcn/ui/templates/ui/base.html:811
 msgid "Latest news"
 msgstr "أحدث الأخبار"
 
-#: tcn/ui/templates/ui/base.html:543
-#: tcn/ui/templates/ui/base.html:550
-msgid "Instagram"
-msgstr "إنستغرام"
+#: tcn/ui/templates/ui/base.html:296 tcn/ui/templates/ui/base.html:306
+#, fuzzy
+#| msgid "Article count"
+msgid "Account"
+msgstr "عدد المقالات"
+
+#: tcn/ui/templates/ui/base.html:557
+msgid "Services"
+msgstr "الخدمات"
+
+#: tcn/ui/templates/ui/base.html:558
+msgid "Ads"
+msgstr "الإعلانات"
 
 #: tcn/ui/templates/ui/base.html:562
-msgid "C"
-msgstr "يوتيوب"
+msgid "Company"
+msgstr "الشركة"
 
-#: tcn/ui/templates/ui/base.html:567
-#: tcn/ui/templates/ui/base.html:574
-msgid "Linkedin"
-msgstr "لينكدإن"
+#: tcn/ui/templates/ui/base.html:568 tcn/ui/templates/ui/base.html:575
+#: tcn/ui/templates/ui/base.html:854 tcn/ui/templates/ui/base.html:864
+#: tcn/ui/templates/ui/blog/post.html:10 tcn/ui/templates/ui/blog/post.html:16
+#: tcn/ui/templates/ui/blog/post.html:20 tcn/ui/templates/ui/blog/post.html:31
+#: tcn/ui/templates/ui/blog/post.html:35
+msgid "Blog"
+msgstr "المدونة"
 
-#: tcn/ui/templates/ui/categories/id.html:33
-#: tcn/ui/templates/ui/categories/list.html:57
-msgid "No news published in this category"
-msgstr "لا توجد أخبار في هذه الفئة"
+#: tcn/ui/templates/ui/base.html:581 tcn/ui/templates/ui/base.html:588
+#: tcn/ui/templates/ui/base.html:877 tcn/ui/templates/ui/base.html:887
+msgid "About us"
+msgstr "من نحن"
 
-#: tcn/ui/templates/ui/categories/list.html:28
-#: tcn/ui/templates/ui/categories/list.html:38
-msgid "See All"
-msgstr "عرض الكل"
+#: tcn/ui/templates/ui/base.html:594 tcn/ui/templates/ui/base.html:601
+#: tcn/ui/templates/ui/base.html:900 tcn/ui/templates/ui/base.html:910
+#, fuzzy
+#| msgid "Contact"
+msgid "Contact us"
+msgstr "اتصل بنا"
 
-#: tcn/ui/templates/ui/categories/list.html:71
-msgid "No published categories"
-msgstr "لا توجد فئات"
+#: tcn/ui/templates/ui/base.html:606
+msgid "Legal"
+msgstr "القانونية"
 
-#: tcn/ui/templates/ui/components/article.html:66
-msgid "Continue reading"
-msgstr "تابع القراءة"
+#: tcn/ui/templates/ui/base.html:608
+msgid "Terms of use"
+msgstr "شروط الاستخدام"
 
-#: tcn/ui/templates/ui/components/form.html:6
+#: tcn/ui/templates/ui/base.html:611
+msgid "Privacy policy"
+msgstr "سياسة الخصوصية"
+
+#: tcn/ui/templates/ui/base.html:614
+msgid "Cookie policy"
+msgstr "سياسة ملفات تعريف الارتباط"
+
+#: tcn/ui/templates/ui/base.html:644
+#, fuzzy
+#| msgid "the-certain-news - Journalism with Certainty"
+msgid "Journalism with Certainty"
+msgstr "النبأ اليقين - صحافة باليقين"
+
+#: tcn/ui/templates/ui/blog/index.html:30
+msgid "Learn more"
+msgstr "المزيد"
+
+#: tcn/ui/templates/ui/blog/index.html:47
+#, fuzzy
+#| msgid "Saved articles"
+msgid "Published blog articles will appear here"
+msgstr "المقالات المحفوظة"
+
+#: tcn/ui/templates/ui/components/article.html:45
+#, fuzzy
+#| msgid "None published"
+msgid "Date published"
+msgstr "لم يتم نشر شيء"
+
+#: tcn/ui/templates/ui/components/form.html:28
 msgid "Submit"
 msgstr "إرسال"
 
@@ -850,140 +969,393 @@ msgstr "الحالي"
 msgid "Last"
 msgstr "الأخير"
 
-#: tcn/ui/templates/ui/components/pagination.html:53
-#: tcn/ui/templates/ui/components/pagination.html:63
-msgid "Next"
-msgstr "التالي"
-
-#: tcn/ui/templates/ui/contact.html:14
-msgid ""
-"Thank you for your interest in <strong>The Certain News</strong>. We value "
-"your feedback, news tips, and inquiries. Please use any of the methods below "
-"to get in touch with our team."
-msgstr "شكرًا لاهتمامك بـ النبأ اليقين  . نثمّن ملاحظاتك واقتراحاتك وأخبارك العاجلة. يمكنك التواصل معنا من خلال الوسائل التالية:"
-
-#: tcn/ui/templates/ui/contact.html:19
-msgid "General Inquiries"
-msgstr "الاستفسارات العامة"
-
-#: tcn/ui/templates/ui/contact.html:21
-msgid ""
-"For general questions or comments, please email us at:<br /> <strong>Email:</"
-"strong>"
-msgstr "للاستفسارات أو التعليقات العامة، راسلنا عبر البريد الإلكتروني:"
-
-#: tcn/ui/templates/ui/contact.html:27
-msgid "News Tips &amp; Editorial Submissions"
-msgstr "أخبار عاجلة واقتراحات تحريرية"
-
-#: tcn/ui/templates/ui/contact.html:29
-msgid ""
-"If you have a news tip, a suggestion for a story, or would like to share "
-"important information with our editorial team, please send your message to:"
-"<br /> <strong>Email:</strong>"
-msgstr "إذا كان لديك خبر عاجل أو اقتراح لتغطية قصة أو معلومات مهمة تريد مشاركتها مع فريقنا التحريري، أرسل رسالتك إلى:"
-
-#: tcn/ui/templates/ui/contact.html:36
-msgid "Advertising &amp; Partnerships"
-msgstr "الإعلانات والشراكات"
-
-#: tcn/ui/templates/ui/contact.html:38
-msgid ""
-"For advertising, sponsorship, or partnership opportunities, reach out to our "
-"Business Development Team:<br /> <strong>Email:</strong>"
-msgstr "للاستفسارات الخاصة بالإعلان أو الرعاية أو فرص الشراكة، تواصل مع فريق تطوير الأعمال لدينا:"
-
-#: tcn/ui/templates/ui/contact.html:44
-msgid "Social Media"
-msgstr "وسائل التواصل الاجتماعي"
-
-#: tcn/ui/templates/ui/contact.html:46
-msgid "Stay connected and join the conversation on our social channels:"
-msgstr "تابعنا وشاركنا النقاش على قنواتنا الاجتماعية:"
-
-#: tcn/ui/templates/ui/contact.html:53
-msgid "The Certain News on Facebook"
-msgstr "النبأ اليقين على فيسبوك"
-
-#: tcn/ui/templates/ui/contact.html:57
-msgid "Whatsapp"
-msgstr "واتساب"
-
-#: tcn/ui/templates/ui/contact.html:59
-msgid "The Certain News on Whatsapp"
-msgstr "النبأ اليقين على واتساب"
-
-#: tcn/ui/templates/ui/contact.html:63
-msgid "Telegram"
-msgstr "تلغرلم"
-
-#: tcn/ui/templates/ui/contact.html:65
-msgid "The Certain News on Telegram"
-msgstr "النبأ اليقين على تلغرلم"
-
-#: tcn/ui/templates/ui/contact.html:69
-msgid "Office Address"
-msgstr "عنوان المكتب"
-
-#: tcn/ui/templates/ui/contact.html:71
-msgid ""
-"If you prefer to visit or send mail, our office is located at:<br /> The "
-"Certain News<br /> Burj Islam<br /> Latakia, Syria"
-msgstr "إذا كنت تفضل الزيارة أو إرسال المراسلات، يقع مكتبنا في: النبأ اليقين برج إسلام اللاذقية، سوريا"
-
-#: tcn/ui/templates/ui/contact.html:77
-msgid "Feedback"
-msgstr "الملاحظات"
-
-#: tcn/ui/templates/ui/contact.html:79
-msgid ""
-"We are always eager to hear from you. Your feedback helps us improve our "
-"news coverage and services. Please share your thoughts or suggestions via "
-"email."
-msgstr "نحن حريصون دائمًا على سماع آرائك. تساعدنا ملاحظاتك على تحسين تغطيتنا الإخبارية وخدماتنا. لا تتردد في إرسال أفكارك واقتراحاتك عبر البريد الإلكتروني."
-
-#: tcn/ui/templates/ui/contact.html:85
-msgid ""
-"Thank you for connecting with <strong>The Certain News</strong>. We strive "
-"to respond to all inquiries promptly and look forward to hearing from you!"
-msgstr "شكرًا لتواصلك مع النبأ اليقين. نسعى للرد على جميع الاستفسارات بسرعة ونتطلع لسماعك!"
-
-#: tcn/ui/templates/ui/index.html:15
-#: tcn/ui/templates/ui/index.html:26
-msgid "Read"
-msgstr "اقرأ"
-
-#: tcn/ui/templates/ui/index.html:83
+#: tcn/ui/templates/ui/index.html:69 tcn/ui/templates/ui/index.html:78
 msgid "Swipe left"
 msgstr "اسحب لليسار"
 
-#: tcn/ui/templates/ui/index.html:94
-msgid "Swipe left to view previous"
-msgstr "اسحب لليسار لعرض السابق"
-
-#: tcn/ui/templates/ui/index.html:101
+#: tcn/ui/templates/ui/index.html:86 tcn/ui/templates/ui/index.html:95
 msgid "Swipe right"
 msgstr "اسحب لليمين"
 
-#: tcn/ui/templates/ui/index.html:112
-msgid "Swipe right to view the next"
-msgstr "اسحب لليمين لعرض التالي"
+#: tcn/ui/templates/ui/index.html:187 tcn/ui/templates/ui/index.html:197
+msgid "View more"
+msgstr "عرض المزيد"
 
-#: tcn/ui/templates/ui/index.html:151
-#: tcn/ui/templates/ui/index.html:157
-#: tcn/ui/templates/ui/index.html:190
-#: tcn/ui/templates/ui/index.html:196
-#: tcn/ui/templates/ui/index.html:235
-msgid "See all"
-msgstr "عرض الكل"
+#: tcn/ui/templates/ui/search.html:33
+msgid "Go"
+msgstr "اذهب"
 
-#: tcn/ui/templates/ui/index.html:218
-msgid "Article count"
-msgstr "عدد المقالات"
+#: tcn/ui/templates/ui/search.html:40
+#, fuzzy
+#| msgid "Search"
+msgid "Search results"
+msgstr "بحث"
 
-#: tcn/ui/templates/ui/index.html:221
-msgid "articles"
-msgstr "مقالات"
+#: tcn/ui/templates/ui/search.html:49
+msgid "No results found"
+msgstr "لا توجد نتائج"
+
+#~ msgid "HuggingFace model name"
+#~ msgstr "اسم نموذج HuggingFace"
+
+#~ msgid "Question"
+#~ msgstr "سؤال"
+
+#~ msgid "Prompt"
+#~ msgstr "الموجه"
+
+#~ msgid "Source language for example en_XX"
+#~ msgstr "لغة المصدر على سبيل المثال en_XX"
+
+#~ msgid "Target language for example ar_XX"
+#~ msgstr "لغة الهدف على سبيل المثال ar_XX"
+
+#~ msgid "Reaction removed"
+#~ msgstr "تمت إزالة التفاعل"
+
+#, python-brace-format
+#~ msgid "You reacted to '{article}' with '{emoji}'"
+#~ msgstr "لقد تفاعلت مع '{article}' باستخدام '{emoji}'"
+
+#, python-brace-format
+#~ msgid "Article '{article}' removed form saved articles"
+#~ msgstr "تمت إزالة المقال '{article}' من المقالات المحفوظة"
+
+#, python-brace-format
+#~ msgid "Article '{article}' added to saved articles"
+#~ msgstr "تمت إضافة المقال '{article}' إلى المقالات المحفوظة"
+
+#~ msgid "Comment Owner"
+#~ msgstr "مالك التعليق"
+
+#~ msgid "Commented Article"
+#~ msgstr "المقال المعلق عليه"
+
+#~ msgid "Comment Content"
+#~ msgstr "محتوى التعليق"
+
+#~ msgid "Comment Replies"
+#~ msgstr "ردود التعليق"
+
+#~ msgid "User"
+#~ msgstr "المستخدم"
+
+#~ msgid "Article"
+#~ msgstr "المقال"
+
+#~ msgid "User bio"
+#~ msgstr "نبذة عن المستخدم"
+
+#~ msgid "Saved news articles"
+#~ msgstr "المقالات الإخبارية المحفوظة"
+
+#~ msgid "Paragraph"
+#~ msgstr "فقرة"
+
+#~ msgid "Table"
+#~ msgstr "جدول"
+
+#~ msgid "Video Embed URL"
+#~ msgstr "رابط تضمين الفيديو"
+
+#~ msgid "Password Reset Confirmation"
+#~ msgstr "تأكيد إعادة تعيين كلمة المرور"
+
+#~ msgid "Delete"
+#~ msgstr "حذف"
+
+#~ msgid ""
+#~ "Welcome to <strong>The Certain News</strong> a platform dedicated to "
+#~ "delivering reliable, insightful, and engaging news from around the world. "
+#~ "At the heart of our mission is a deep commitment to building trust and "
+#~ "promoting transparency in todayÆs rapidly changing information landscape."
+#~ msgstr ""
+#~ "مرحبًا بكم في النبأ اليقين – منصة مكرسة لتقديم أخبار موثوقة، ذات رؤى "
+#~ "معمقة، وجذابة من جميع أنحاء العالم. في صميم مهمتنا التزام راسخ ببناء "
+#~ "الثقة وتعزيز الشفافية في ظل مشهد المعلومات سريع التغير اليوم."
+
+#~ msgid "Our Mission"
+#~ msgstr "مهمتنا"
+
+#~ msgid ""
+#~ "In a time when information is abundant yet trust is scarce, our mission "
+#~ "is clear:<br /> <strong> To empower our readers with authentic, well-"
+#~ "researched news so that every voice is heard and every story matters. </"
+#~ "strong>"
+#~ msgstr ""
+#~ "في زمن تنبسط فيه المعلومات ويقل فيه الثقة، تتضح مهمتنا كالتالي: تمكين "
+#~ "قرائنا من خلال أخبار أصيلة ومدروسة بعناية، بحيث يُسمع كل صوت وتُعطى كل قصة "
+#~ "حقها."
+
+#~ msgid ""
+#~ "We believe that by creating a space for verified and balanced reporting, "
+#~ "we can help individuals make informed decisions and feel confident in the "
+#~ "news they consume."
+#~ msgstr ""
+#~ "نؤمن بأن إنشاء مساحة للتغطية المتوازنة والمتحققة يساعد الأفراد على اتخاذ "
+#~ "قرارات واعية ويمنحهم الثقة في الأخبار التي يتابعونها."
+
+#~ msgid "Our Vision"
+#~ msgstr "رؤيتنا"
+
+#~ msgid ""
+#~ "We envision a world where the truth is accessible to all. <strong>The "
+#~ "Certain News</strong> strives to be more than just a news website a "
+#~ "commitment to excellence in journalism. We aim to lead the way in digital "
+#~ "storytelling by embracing innovative technology, ethical reporting, and a "
+#~ "community-driven approach."
+#~ msgstr ""
+#~ "نتطلع إلى عالم تُتاح فيه الحقيقة للجميع. تسعى النبأ اليقين   لأن تكون أكثر "
+#~ "من مجرد موقع إخباري؛ إنها التزام بالتميز في الصحافة. نهدف إلى ريادة "
+#~ "التحول الرقمي في السرد القصصي من خلال تبني التكنولوجيا المبتكرة، والتغطية "
+#~ "الأخلاقية، ونهج تشاركي مع المجتمع."
+
+#~ msgid "Our Story"
+#~ msgstr "قصتنا"
+
+#~ msgid ""
+#~ "Founded on the principles of trust and certainty, <strong>The Certain "
+#~ "News</strong> was born out of the need for a platform that goes beyond "
+#~ "quick headlines. Our name, which means <strong>certainty</strong> in "
+#~ "Arabic, reflects our promise to deliver news that you can rely on. "
+#~ "Drawing from a passion for deep investigation and a relentless search for "
+#~ "the truth, our team is at the forefront of modern journalism, merging "
+#~ "traditional reporting with cutting-edge technology. <!---->"
+#~ msgstr ""
+#~ "انطلقت النبأ اليقين   من مبادئ الثقة واليقين، استجابةً للحاجة إلى منصة "
+#~ "تتجاوز العناوين العاجلة السريعة. يعكس اسمنا—الذي يعني اليقين—وعدنا بتقديم "
+#~ "أخبار يمكنك الاعتماد عليها. مدفوعين بشغف التحقيق العميق والبحث الدؤوب عن "
+#~ "الحقيقة، يقف فريقنا في طليعة الصحافة الحديثة، جامعًا بين التقارير "
+#~ "التقليدية والتقنيات المتطورة."
+
+#~ msgid "What We Do"
+#~ msgstr "ماذا نفعل"
+
+#~ msgid ""
+#~ "<strong>In-Depth Reporting:</strong> We cover local, regional, and "
+#~ "international news with thorough research and expert analysis. <!---->"
+#~ msgstr ""
+#~ "تغطية معمقة:   نقدم تقارير محلية وإقليمية ودولية بابتكار بحثي وتحليل "
+#~ "خبراء."
+
+#~ msgid ""
+#~ "<strong>Timely Updates:</strong> With our real-time news feeds and live "
+#~ "updates, youÆre always in the know."
+#~ msgstr ""
+#~ "تحديثات فورية:   بفضل خلاصة الأخبار في الوقت الحقيقي والتحديثات المباشرة، "
+#~ "ستظل على اطلاع دائم."
+
+#~ msgid ""
+#~ "<strong>Community Engagement:</strong> We believe that meaningful "
+#~ "conversations are a catalyst for change. ThatÆs why we encourage our "
+#~ "readers to share opinions, provide feedback, and become active "
+#~ "participants in our news community."
+#~ msgstr ""
+#~ "تفاعل مجتمعي:   نؤمن بأن الحوار البنّاء محرك للتغيير، لذا نشجع قراءنا على "
+#~ "مشاركة آرائهم وتقديم ملاحظاتهم والمشاركة الفعّالة في مجتمعنا الإخباري."
+
+#~ msgid ""
+#~ "<strong>Innovative Technology:</strong> Leveraging modern frameworks and "
+#~ "intuitive design, we ensure that our platform is easy to navigate, fast, "
+#~ "and secure."
+#~ msgstr ""
+#~ "تكنولوجيا مبتكرة:   نعتمد أطر عمل حديثة وتصميمًا بديهيًا لضمان أن تكون "
+#~ "منصتنا سهلة التصفح وسريعة وآمنة."
+
+#~ msgid "Our Values"
+#~ msgstr "قيمنا"
+
+#~ msgid ""
+#~ "<strong>Integrity:</strong> We adhere to the highest ethical standards, "
+#~ "ensuring that our reports are accurate, fair, and impartial. <!---->"
+#~ msgstr ""
+#~ "النزاهة:   نلتزم بأعلى المعايير الأخلاقية لضمان أن تكون تقاريرنا دقيقة "
+#~ "وعادلة وغير متحيزة."
+
+#~ msgid ""
+#~ "<strong>Transparency:</strong> Every piece of news is the product of "
+#~ "rigorous fact-checking and a commitment to openness."
+#~ msgstr ""
+#~ "الشفافية:   كل خبر ننشره خضع للتحقق الدقيق انطلاقًا من التزامنا بالانفتاح."
+
+#~ msgid ""
+#~ "<strong>Inclusivity:</strong> All voices matter. We strive to reflect "
+#~ "diverse perspectives and give space to underrepresented communities. "
+#~ "<!---->"
+#~ msgstr ""
+#~ "الشمول:   لكل صوت قيمته، ونسعى لنعكس وجهات نظر متنوعة ونُتيح المجال "
+#~ "للمجتمعات الأقل تمثيلاً."
+
+#~ msgid ""
+#~ "<strong>Innovation:</strong> Embracing modern technology is key to "
+#~ "evolving the news industry. We continuously refine our processes and "
+#~ "approach to bring you news in a dynamic, user-friendly format. <!---->"
+#~ msgstr ""
+#~ "الابتكار:   نؤمن بأن تبني التكنولوجيا الحديثة هو المفتاح لتطوير الصناعة "
+#~ "الإخبارية، لذا نواصل تحسين عملياتنا ومنهجيتنا لتقديم الأخبار بشكل "
+#~ "ديناميكي وسهل الاستخدام."
+
+#~ msgid "Join Our Community"
+#~ msgstr "انضم إلى مجتمعنا"
+
+#~ msgid ""
+#~ "We invite you to explore our articles, share your thoughts, and join us "
+#~ "in celebrating journalism that upholds the values of truth and "
+#~ "transparency. At <strong>The Certain News</strong>, your trust fuels our "
+#~ "work, and your voice shapes our future."
+#~ msgstr ""
+#~ "ندعوك لاستكشاف مقالاتنا ومشاركة آرائك والاحتفاء معنا بصحافة ترتكز على قيم "
+#~ "الحقيقة والشفافية. في النبأ اليقين  ، تغذينا ثقتك، ويصوغ صوتك مستقبلنا."
+
+#~ msgid ""
+#~ "Thank you for choosing <strong>The Certain News</strong> û where "
+#~ "certainty meets in-depth journalism. If you have any questions or "
+#~ "feedback, please feel free to contact us through our"
+#~ msgstr ""
+#~ "شكرًا لاختيارك النبأ اليقين   – حيث يلتقي اليقين بالصحافة المعمقة. إذا "
+#~ "كانت لديك أي أسئلة أو ملاحظات، لا تتردد في التواصل معنا عبر"
+
+#~ msgid "News for"
+#~ msgstr "الأخبار الخاصة بـ"
+
+#~ msgid "Save"
+#~ msgstr "حفظ"
+
+#~ msgid "Share"
+#~ msgstr "مشاركة"
+
+#~ msgid "X"
+#~ msgstr "X"
+
+#~ msgid "Options"
+#~ msgstr "خيارات"
+
+#~ msgid "None"
+#~ msgstr "لا شيء"
+
+#~ msgid "Toggle theme"
+#~ msgstr "تبديل النمط"
+
+#~ msgid "Subscribe"
+#~ msgstr "اشترك"
+
+#~ msgid "Advertisement"
+#~ msgstr "إعلان"
+
+#~ msgid "Instagram"
+#~ msgstr "إنستغرام"
+
+#~ msgid "C"
+#~ msgstr "يوتيوب"
+
+#~ msgid "No news published in this category"
+#~ msgstr "لا توجد أخبار في هذه الفئة"
+
+#~ msgid "See All"
+#~ msgstr "عرض الكل"
+
+#~ msgid "No published categories"
+#~ msgstr "لا توجد فئات"
+
+#~ msgid "Continue reading"
+#~ msgstr "تابع القراءة"
+
+#~ msgid ""
+#~ "Thank you for your interest in <strong>The Certain News</strong>. We "
+#~ "value your feedback, news tips, and inquiries. Please use any of the "
+#~ "methods below to get in touch with our team."
+#~ msgstr ""
+#~ "شكرًا لاهتمامك بـ النبأ اليقين  . نثمّن ملاحظاتك واقتراحاتك وأخبارك "
+#~ "العاجلة. يمكنك التواصل معنا من خلال الوسائل التالية:"
+
+#~ msgid "General Inquiries"
+#~ msgstr "الاستفسارات العامة"
+
+#~ msgid ""
+#~ "For general questions or comments, please email us at:<br /> "
+#~ "<strong>Email:</strong>"
+#~ msgstr "للاستفسارات أو التعليقات العامة، راسلنا عبر البريد الإلكتروني:"
+
+#~ msgid "News Tips &amp; Editorial Submissions"
+#~ msgstr "أخبار عاجلة واقتراحات تحريرية"
+
+#~ msgid ""
+#~ "If you have a news tip, a suggestion for a story, or would like to share "
+#~ "important information with our editorial team, please send your message "
+#~ "to:<br /> <strong>Email:</strong>"
+#~ msgstr ""
+#~ "إذا كان لديك خبر عاجل أو اقتراح لتغطية قصة أو معلومات مهمة تريد مشاركتها "
+#~ "مع فريقنا التحريري، أرسل رسالتك إلى:"
+
+#~ msgid "Advertising &amp; Partnerships"
+#~ msgstr "الإعلانات والشراكات"
+
+#~ msgid ""
+#~ "For advertising, sponsorship, or partnership opportunities, reach out to "
+#~ "our Business Development Team:<br /> <strong>Email:</strong>"
+#~ msgstr ""
+#~ "للاستفسارات الخاصة بالإعلان أو الرعاية أو فرص الشراكة، تواصل مع فريق "
+#~ "تطوير الأعمال لدينا:"
+
+#~ msgid "Social Media"
+#~ msgstr "وسائل التواصل الاجتماعي"
+
+#~ msgid "Stay connected and join the conversation on our social channels:"
+#~ msgstr "تابعنا وشاركنا النقاش على قنواتنا الاجتماعية:"
+
+#~ msgid "The Certain News on Facebook"
+#~ msgstr "النبأ اليقين على فيسبوك"
+
+#~ msgid "Whatsapp"
+#~ msgstr "واتساب"
+
+#~ msgid "The Certain News on Whatsapp"
+#~ msgstr "النبأ اليقين على واتساب"
+
+#~ msgid "Telegram"
+#~ msgstr "تلغرلم"
+
+#~ msgid "The Certain News on Telegram"
+#~ msgstr "النبأ اليقين على تلغرلم"
+
+#~ msgid "Office Address"
+#~ msgstr "عنوان المكتب"
+
+#~ msgid ""
+#~ "If you prefer to visit or send mail, our office is located at:<br /> The "
+#~ "Certain News<br /> Burj Islam<br /> Latakia, Syria"
+#~ msgstr ""
+#~ "إذا كنت تفضل الزيارة أو إرسال المراسلات، يقع مكتبنا في: النبأ اليقين برج "
+#~ "إسلام اللاذقية، سوريا"
+
+#~ msgid "Feedback"
+#~ msgstr "الملاحظات"
+
+#~ msgid ""
+#~ "We are always eager to hear from you. Your feedback helps us improve our "
+#~ "news coverage and services. Please share your thoughts or suggestions via "
+#~ "email."
+#~ msgstr ""
+#~ "نحن حريصون دائمًا على سماع آرائك. تساعدنا ملاحظاتك على تحسين تغطيتنا "
+#~ "الإخبارية وخدماتنا. لا تتردد في إرسال أفكارك واقتراحاتك عبر البريد "
+#~ "الإلكتروني."
+
+#~ msgid ""
+#~ "Thank you for connecting with <strong>The Certain News</strong>. We "
+#~ "strive to respond to all inquiries promptly and look forward to hearing "
+#~ "from you!"
+#~ msgstr ""
+#~ "شكرًا لتواصلك مع النبأ اليقين. نسعى للرد على جميع الاستفسارات بسرعة ونتطلع "
+#~ "لسماعك!"
+
+#~ msgid "Swipe left to view previous"
+#~ msgstr "اسحب لليسار لعرض السابق"
+
+#~ msgid "Swipe right to view the next"
+#~ msgstr "اسحب لليمين لعرض التالي"
+
+#~ msgid "See all"
+#~ msgstr "عرض الكل"
 
 #~ msgid "the-certain-news | Profile"
 #~ msgstr "اليقين | الملف الشخصي"
