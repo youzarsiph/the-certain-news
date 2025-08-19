@@ -14,22 +14,26 @@ class User(AbstractUser):
     country = CountryField(
         null=True,
         blank=True,
+        verbose_name=_("country"),
         help_text=_("User country"),
     )
     phone = PhoneNumberField(
         null=True,
         blank=True,
+        verbose_name=_("phone number"),
         help_text=_("User phone number"),
     )
     photo = models.ImageField(
         null=True,
         blank=True,
-        help_text=_("Profile image"),
+        verbose_name=_("image"),
         upload_to="images/users/",
+        help_text=_("Profile image"),
     )
     bio = models.CharField(
         max_length=256,
         null=True,
         blank=True,
+        verbose_name=_("bio"),
         help_text=_("Tell us about yourself"),
     )

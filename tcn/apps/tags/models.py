@@ -4,9 +4,8 @@ from django.db import models
 from modelcluster.fields import ParentalKey
 from taggit.models import TaggedItemBase
 
+
 # Create your models here.
-
-
 class ArticleTag(TaggedItemBase):
     """Through model for defining m2m rel between Articles and Tags"""
 

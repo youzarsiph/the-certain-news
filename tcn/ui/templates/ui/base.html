@@ -106,7 +106,7 @@
                           class="bg-primary rounded-field text-primary-content absolute inset-0 size-full flex rotate-45 items-center justify-center"
                         >
                           <i
-                            data-lucide="feather"
+                            data-lucide="scroll-text"
                             class="-rotate-45 lg:size-8 2xl:size-10"
                           ></i>
                         </div>
@@ -167,11 +167,11 @@
                     data-tip="{% trans 'Breaking' %}"
                   >
                     <a
-                      href="{% url 'ui:articles' %}?is_breaking=True&locale__language_code={{ LANGUAGE_CODE }}"
+                      href="{% url 'ui:articles' %}?is_breaking=True"
                       class="btn btn-square btn-soft btn-sm btn-error md:btn-md 2xl:btn-lg"
                     >
-                      <i data-lucide="clock-alert" class="size-4 md:size-6"></i>
-                      <span class="sr-only">{% trans 'Breaking' %}</span>
+                      <i data-lucide="alert-circle" class="size-4 md:size-6"></i>
+                      <span class="sr-only">{% trans 'Breaking news' %}</span>
                     </a>
                   </li>
 
@@ -180,10 +180,10 @@
                     data-tip="{% trans 'Now' %}"
                   >
                     <a
-                      href="{% url 'ui:articles' %}?locale__language_code={{ LANGUAGE_CODE }}"
+                      href="{% url 'ui:articles' %}"
                       class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
                     >
-                      <i data-lucide="timer" class="size-4 md:size-6"></i>
+                      <i data-lucide="clock-fading" class="size-4 md:size-6"></i>
                       <span class="sr-only">{% trans 'Now' %}</span>
                     </a>
                   </li>
@@ -378,7 +378,7 @@
                 <!-- Navbar -->
                 {% block navbar %}
                 <header
-                  class="rounded-field absolute inset-x-0 top-0 z-40 px-2 backdrop-blur-3xl lg:px-4"
+                  class="absolute inset-x-0 top-0 z-40 px-2 backdrop-blur-3xl lg:px-4"
                 >
                   <nav class="navbar p-0">
                     <div class="navbar-start gap-4">
@@ -398,7 +398,6 @@
                         </label>
                       </div>
 
-                      {% block brand %}
                       <div
                         class="tooltip tooltip-right rtl:tooltip-left tooltip-primary sm:hidden"
                         data-tip="{% trans 'The Certain News' %}"
@@ -412,7 +411,7 @@
                               class="bg-primary rounded-field text-primary-content absolute inset-0 size-full flex rotate-45 items-center justify-center"
                             >
                               <i
-                                data-lucide="feather"
+                                data-lucide="scroll-text"
                                 class="-rotate-45 lg:size-8 2xl:size-10"
                               ></i>
                             </div>
@@ -422,7 +421,32 @@
                           </a>
                         </h1>
                       </div>
-                      {% endblock %}
+
+                      <div
+                        class="tooltip tooltip-right rtl:tooltip-left tooltip-error"
+                        data-tip="{% trans 'Breaking' %}"
+                      >
+                        <a
+                          href="{% url 'ui:articles' %}?is_breaking=True"
+                          class="btn btn-square btn-soft btn-sm btn-error animate-pulse md:btn-md 2xl:btn-lg"
+                        >
+                          <i data-lucide="alert-circle" class="size-4 md:size-6"></i>
+                          <span class="sr-only">{% trans 'Breaking news' %}</span>
+                        </a>
+                      </div>
+
+                      <div
+                        class="tooltip tooltip-right rtl:tooltip-left tooltip-primary"
+                        data-tip="{% trans 'Latest news' %}"
+                      >
+                        <a
+                          href="{% url 'ui:articles' %}"
+                          class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
+                        >
+                          <i data-lucide="clock-fading" class="size-4 md:size-6"></i>
+                          <span class="sr-only">{% trans 'Latest news' %}</span>
+                        </a>
+                      </div>
                     </div>
 
                     <div class="navbar-end gap-2">
@@ -537,33 +561,38 @@
                     <nav>
                       <h6 class="footer-title">{% trans 'Company' %}</h6>
                       {% if blog_index %}
-                      <a href="{% pageurl blog_index %}" class="link link-hover"
-                        >{% trans 'Blog' %}</a
+                      <a
+                        href="{% pageurl blog_index %}"
+                        class="link link-hover"
                       >
+                        {% trans 'Blog' %}
+                      </a>
                       {% else %}
                       <a
                         href="{% slug_url 'blog' LANGUAGE_CODE %}"
                         class="link link-hover"
-                        >{% trans 'Blog' %}</a
                       >
+                        {% trans 'Blog' %}
+                      </a>
                       {% endif %}
                       <!---->
                       {% if about %}
-                      <a href="{% pageurl about %}" class="link link-hover"
-                        >{% trans 'About us' %}</a
-                      >
+                      <a href="{% pageurl about %}" class="link link-hover">
+                        {% trans 'About us' %}
+                      </a>
                       {% else %}
                       <a
                         href="{% slug_url 'about-us' LANGUAGE_CODE %}"
                         class="link link-hover"
-                        >{% trans 'About us' %}</a
                       >
+                        {% trans 'About us' %}
+                      </a>
                       {% endif %}
                       <!---->
                       {% if contact %}
-                      <a href="{% pageurl contact %}" class="link link-hover"
-                        >{% trans 'Contact us' %}</a
-                      >
+                      <a href="{% pageurl contact %}" class="link link-hover">
+                        {% trans 'Contact us' %}
+                      </a>
                       {% else %}
                       <a
                         href="{% slug_url 'contact-us' LANGUAGE_CODE %}"
@@ -575,15 +604,15 @@
                     </nav>
                     <nav>
                       <h6 class="footer-title">{% trans 'Legal' %}</h6>
-                      <a href="#" class="link link-hover"
-                        >{% trans 'Terms of use' %}</a
-                      >
-                      <a href="#" class="link link-hover"
-                        >{% trans 'Privacy policy' %}</a
-                      >
-                      <a href="#" class="link link-hover"
-                        >{% trans 'Cookie policy' %}</a
-                      >
+                      <a href="#" class="link link-hover">
+                        {% trans 'Terms of use' %}
+                      </a>
+                      <a href="#" class="link link-hover">
+                        {% trans 'Privacy policy' %}
+                      </a>
+                      <a href="#" class="link link-hover">
+                        {% trans 'Cookie policy' %}
+                      </a>
                     </nav>
                   </footer>
                   <footer
@@ -599,13 +628,13 @@
                             class="bg-primary rounded-field text-primary-content absolute inset-0 size-full flex rotate-45 items-center justify-center"
                           >
                             <i
-                              data-lucide="feather"
+                              data-lucide="scroll-text"
                               class="-rotate-45 lg:size-8 2xl:size-10"
                             ></i>
                           </div>
-                          <span class="sr-only"
-                            >{% trans 'The Certain News' %}</span
-                          >
+                          <span class="sr-only">
+                            {% trans 'The Certain News' %}
+                          </span>
                         </a>
                       </h1>
 
@@ -615,7 +644,7 @@
                         {% trans 'Journalism with Certainty' %}
                       </p>
                     </aside>
-                    <nav>
+                    <nav class="grid gap-4">
                       <div class="grid grid-flow-col gap-4">
                         <a class="btn btn-sm btn-square lg:btn-md btn-primary">
                           <i
@@ -635,10 +664,11 @@
                             class="size-4 md:size-6"
                           ></i>
                         </a>
-                        <a class="btn btn-sm btn-square lg:btn-md btn-primary">
-                          <i data-lucide="twitter" class="size-4 md:size-6"></i>
-                        </a>
                       </div>
+                      <span class="flex items-center gap-2 text-primary">
+                        <i data-lucide="copyright" class="size-4 md:size-6"></i>
+                        {% trans 'The Certain News' %}
+                      </span>
                     </nav>
                   </footer>
                 </div>
@@ -674,7 +704,7 @@
                       class="bg-primary rounded-field text-primary-content absolute inset-0 size-full flex rotate-45 items-center justify-center"
                     >
                       <i
-                        data-lucide="feather"
+                        data-lucide="scroll-text"
                         class="-rotate-45 lg:size-8 2xl:size-10"
                       ></i>
                     </div>
@@ -764,17 +794,17 @@
 
               <li class="sm:hidden">
                 <a
-                  href="{% url 'ui:articles' %}?is_breaking=True&locale__language_code={{ LANGUAGE_CODE }}"
+                  href="{% url 'ui:articles' %}?is_breaking=True"
                   class="btn btn-sm btn-ghost btn-error md:btn-md btn-block 2xl:btn-xl justify-start"
                 >
-                  <i data-lucide="clock-alert" class="size-4 md:size-6"></i>
-                  <span>{% trans 'Breaking' %}</span>
+                  <i data-lucide="alert-circle" class="size-4 md:size-6"></i>
+                  <span>{% trans 'Breaking news' %}</span>
                 </a>
               </li>
 
               <li class="sm:hidden">
                 <a
-                  href="{% url 'ui:articles' %}?locale__language_code={{ LANGUAGE_CODE }}"
+                  href="{% url 'ui:articles' %}"
                   class="btn btn-sm btn-ghost btn-primary md:btn-md btn-block 2xl:btn-xl justify-start"
                 >
                   <i data-lucide="timer" class="size-4 md:size-6"></i>
@@ -804,14 +834,23 @@
               </li>
               {% endif %}
 
-              <!---->
+              <li>
+                <a
+                  href="{% url 'ui:archive' %}"
+                  class="btn btn-sm btn-ghost btn-primary md:btn-md btn-block 2xl:btn-xl justify-start"
+                >
+                  <i data-lucide="folder-archive" class="size-4 md:size-6"></i>
+                  <span>{% trans 'Archive' %}</span>
+                </a>
+              </li>
+
               {% if blog_index %}
               <li>
                 <a
                   href="{% pageurl blog_index %}"
                   class="btn btn-sm btn-ghost btn-primary md:btn-md btn-block 2xl:btn-xl justify-start"
                 >
-                  <i data-lucide="scroll-text" class="size-4 md:size-6"></i>
+                  <i data-lucide="newspaper" class="size-4 md:size-6"></i>
                   <span>{% trans 'Blog' %}</span>
                 </a>
               </li>
@@ -821,7 +860,7 @@
                   href="{% slug_url 'blog' LANGUAGE_CODE %}"
                   class="btn btn-sm btn-ghost btn-primary md:btn-md btn-block 2xl:btn-xl justify-start"
                 >
-                  <i data-lucide="scroll-text" class="size-4 md:size-6"></i>
+                  <i data-lucide="newspaper" class="size-4 md:size-6"></i>
                   <span>{% trans 'Blog' %}</span>
                 </a>
               </li>

@@ -17,7 +17,12 @@ from tcn.apps.mixins import DateTimeMixin
 class CategoryIndex(DateTimeMixin, Page):
     """Category index page"""
 
-    description = RichTextField(help_text=_("Page description"))
+    description = RichTextField(
+        null=True,
+        blank=True,
+        verbose_name=_("description"),
+        help_text=_("Page description"),
+    )
 
     context_object_name = "index"
     template = "ui/categories/index.html"
@@ -31,14 +36,21 @@ class CategoryIndex(DateTimeMixin, Page):
         """Meta data"""
 
         verbose_name = _("Category index page")
+        verbose_name_plural = _("Category index pages")
 
 
 class Category(DateTimeMixin, Page):
     """Categories"""
 
-    description = RichTextField(help_text=_("Category description"))
+    description = RichTextField(
+        null=True,
+        blank=True,
+        verbose_name=_("description"),
+        help_text=_("Category description"),
+    )
     display_owner = models.BooleanField(
         default=False,
+        verbose_name=_("show owner"),
         help_text=_("Wether to display the name of the owner of news article"),
     )
 
@@ -64,12 +76,23 @@ class Category(DateTimeMixin, Page):
     parent_page_types = ["categories.CategoryIndex"]
     subpage_types = ["articles.Article"]
 
+    class Meta:
+        """Meta data"""
+
+        verbose_name = _("category")
+        verbose_name_plural = _("categories")
+
+    def get_ordered_children(self):
+        """Order the children of category"""
+
+        return self.get_children().order_by("-article__created_at")
+
     def get_context(self, request, *args, **kwargs):
         """Sort news articles"""
 
         context = super().get_context(request, *args, **kwargs)
 
-        queryset = self.get_children().specific().order_by("-article__created_at")
+        queryset = self.get_ordered_children()
         page_size = self.get_paginate_by(queryset)
 
         if page_size:
@@ -83,6 +106,7 @@ class Category(DateTimeMixin, Page):
                 "is_paginated": is_paginated,
                 "object_list": queryset,
             }
+
         else:
             context = {
                 **context,
@@ -96,11 +120,6 @@ class Category(DateTimeMixin, Page):
         context.update(kwargs)
 
         return context
-
-    class Meta:
-        """Meta data"""
-
-        verbose_name_plural = "categories"
 
     allow_empty = True
     paginate_by = 25

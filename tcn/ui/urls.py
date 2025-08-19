@@ -53,6 +53,7 @@ urlpatterns = [
     *auth_urls,
     path("search/", views.SearchView.as_view(), name="search"),
     path("articles/", views.ArticleListView.as_view(), name="articles"),
+    path("articles/archive/", views.ArticleArchiveView.as_view(), name="archive"),
     path("articles/<int:year>/", views.ArticleYearView.as_view(), name="articles-y"),
     path(
         "articles/<int:year>/<int:month>/",
@@ -69,4 +70,5 @@ urlpatterns = [
         views.ArticleDetailView.as_view(),
         name="article",
     ),
+    path("<slug:slug>/", views.LinkRedirectView.as_view(), name="redirect"),
 ]

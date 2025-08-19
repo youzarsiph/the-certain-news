@@ -5,13 +5,16 @@ from typing import Any
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
+from django.http import HttpRequest
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views import generic
+from django.utils.translation import get_language_from_request
 from django_filters.views import FilterView
 from wagtail.contrib.search_promotions.models import Query
-from wagtail.models import Page
 
 from tcn.apps.articles.models import Article
+from tcn.apps.links.models import Link
 from tcn.ui import mixins
 from tcn.ui.forms import UserCreateForm
 
@@ -64,6 +67,24 @@ class UserDeleteView(
     success_message = "Your account was deleted successfully!"
 
 
+class LinkRedirectView(generic.DetailView):
+    """Redirect to news article"""
+
+    model = Link
+
+    def get(
+        self, request: HttpRequest, *args: Any, **kwargs: Any
+    ) -> mixins.HttpResponse:
+        """Redirect to news article"""
+
+        link = self.get_object()
+
+        if not link.views.contains(self.request.user):
+            link.views.add(self.request.user)
+
+        return redirect(link.article.get_url())
+
+
 # Articles
 class BaseArticleListView:
     """Base class for article list views"""
@@ -76,7 +97,18 @@ class BaseArticleListView:
     date_field = "created_at"
     context_object_name = "articles"
     queryset = Article.objects.live().public()
-    filterset_fields = ["is_breaking", "locale__language_code"]
+    filterset_fields = ["is_breaking"]
+
+    def get_queryset(self) -> mixins.QuerySet[Any]:
+        return (
+            super()
+            .get_queryset()
+            .filter(
+                locale__language_code=get_language_from_request(
+                    self.request, check_path=True
+                )
+            )
+        )
 
 
 class ArticleListView(BaseArticleListView, FilterView, generic.ListView):
@@ -117,24 +149,27 @@ class SearchView(ArticleListView):
         return search_results
 
 
-class ArticleYearView(BaseArticleListView, FilterView, generic.YearArchiveView):
+class ArticleArchiveView(BaseArticleListView, generic.ArchiveIndexView):
+    """Article archive index"""
+
+    template_name = "ui/articles/archive/index.html"
+
+
+class ArticleYearView(BaseArticleListView, generic.YearArchiveView):
     """Year archive for articles"""
 
-    allow_empty = True
-    allow_future = True
-    make_object_list = True
     template_name = "ui/articles/archive/year.html"
 
 
-class ArticleMonthView(BaseArticleListView, FilterView, generic.MonthArchiveView):
+class ArticleMonthView(BaseArticleListView, generic.MonthArchiveView):
     """Month archive for articles"""
 
     month_format = "%m"
     template_name = "ui/articles/archive/month.html"
 
 
-class ArticleDayView(BaseArticleListView, FilterView, generic.DayArchiveView):
-    """Week archive for articles"""
+class ArticleDayView(BaseArticleListView, generic.DayArchiveView):
+    """Day archive for articles"""
 
     month_format = "%m"
     template_name = "ui/articles/archive/day.html"

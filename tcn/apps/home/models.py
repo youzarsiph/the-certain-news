@@ -25,6 +25,12 @@ class Home(Page):
         "categories.Category",
     ]
 
+    class Meta(Page.Meta):
+        """Meta data"""
+
+        verbose_name = _("Home page")
+        verbose_name_plural = _("Home pages")
+
     def get_context(self, request, *args, **kwargs):
         """Add extra context"""
 
@@ -55,6 +61,7 @@ class About(Page):
         MediaBlock(),
         null=True,
         blank=True,
+        verbose_name=_("content"),
         help_text=_("Page content"),
     )
 
@@ -65,6 +72,12 @@ class About(Page):
     parent_page_types = ["home.Home"]
     subpage_types = []
 
+    class Meta(Page.Meta):
+        """Meta data"""
+
+        verbose_name = _("About page")
+        verbose_name_plural = _("About pages")
+
 
 class Contact(Page):
     """Contact page"""
@@ -73,6 +86,7 @@ class Contact(Page):
         MediaBlock(),
         null=True,
         blank=True,
+        verbose_name=_("content"),
         help_text=_("Page content"),
     )
 
@@ -82,3 +96,9 @@ class Contact(Page):
     content_panels = Page.content_panels + [FieldPanel("content")]
     parent_page_types = ["home.Home"]
     subpage_types = []
+
+    class Meta(Page.Meta):
+        """Meta data"""
+
+        verbose_name = _("Contact page")
+        verbose_name_plural = _("Contact pages")

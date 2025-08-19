@@ -21,29 +21,36 @@ class Article(DateTimeMixin, Page):
         "wagtailimages.Image",
         on_delete=models.PROTECT,
         related_name="+",
+        verbose_name=_("image"),
         help_text=_("Article image"),
     )
     headline = models.CharField(
         max_length=256,
         db_index=True,
+        verbose_name=_("headline"),
         help_text=_("Article headline"),
     )
     content = StreamField(
         MediaBlock(),
+        verbose_name=_("content"),
         help_text=_("Article content"),
     )
     is_breaking = models.BooleanField(
         default=False,
+        verbose_name=_("is breaking"),
         help_text=_("Designates if the Article is in breaking news"),
     )
     tags = ClusterTaggableManager(
         blank=True,
         through="tags.ArticleTag",
+        verbose_name=_("tags"),
+        help_text=_("Tags"),
     )
     recommendations = models.ManyToManyField(
         "self",
         symmetrical=True,
-        help_text=_("Similar articles"),
+        help_text=_("recommendations"),
+        verbose_name=_("Similar articles"),
     )
 
     context_object_name = "article"
@@ -57,7 +64,6 @@ class Article(DateTimeMixin, Page):
         FieldPanel("tags"),
     ]
 
-    # Search
     search_fields = Page.search_fields + [
         index.SearchField("title"),
         index.SearchField("headline"),
@@ -67,7 +73,6 @@ class Article(DateTimeMixin, Page):
         index.FilterField("created_at"),
     ]
 
-    # API fields
     api_fields = [
         APIField("image"),
         APIField("headline"),
@@ -79,6 +84,12 @@ class Article(DateTimeMixin, Page):
 
     parent_page_types = ["categories.Category"]
     subpage_types = []
+
+    class Meta:
+        """Meta data"""
+
+        verbose_name = _("News article")
+        verbose_name_plural = _("News articles")
 
     def get_context(self, request, *args, **kwargs):
         return {

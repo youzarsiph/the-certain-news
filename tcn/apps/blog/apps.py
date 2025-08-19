@@ -9,3 +9,10 @@ class BlogConfig(AppConfig):
 
     name = "tcn.apps.blog"
     default_auto_field = "django.db.models.BigAutoField"
+
+    def ready(self) -> None:
+        """Register signal receivers"""
+
+        from tcn.apps.signals import register_post_signal_receivers
+
+        register_post_signal_receivers()

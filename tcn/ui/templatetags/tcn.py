@@ -10,6 +10,13 @@ register = template.Library()
 
 # Create your tags here.
 @register.simple_tag(takes_context=True)
+def copy_link(context, slug):
+    """Generates the copy link for an article"""
+
+    return context["request"].build_absolute_uri(f"/{slug}/")
+
+
+@register.simple_tag(takes_context=True)
 def page_url(context, page, language_code, fallback=None):
     """
     Outputs a page's URL as relative (/foo/bar/) if it's within the same site as the

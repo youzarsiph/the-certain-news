@@ -19,30 +19,7 @@
   <ol class="grid grid-cols-12 gap-4">
     {% for article in articles %}
     <li class="col-span-12 md:col-span-6 lg:col-span-4 2xl:col-span-3">
-      <article
-        class="card card-sm lg:card-md xl:card-lg 2xl:card-xl bg-base-200 size-full shadow-sm"
-      >
-        <figure class="skeleton overflow-clip">
-          {% image article.image fill-1920x1080 %}
-        </figure>
-
-        <div class="card-body gap-8">
-          <h2 class="card-title text-primary">{{ article.title }}</h2>
-
-          <p class="lead">{{ article.headline }}</p>
-
-          <a
-            href="{% pageurl article %}"
-            class="btn btn-sm btn-primary lg:btn-md xl:btn-lg 2xl:btn-xl"
-          >
-            {% trans 'Learn more' %}
-            <i
-              data-lucide="chevron-right"
-              class="size-4 md:size-6 rtl:rotate-180"
-            ></i>
-          </a>
-        </div>
-      </article>
+      {% include 'ui/components/article.html' %}
     </li>
     {% empty %}
     <li class="col-span-12">

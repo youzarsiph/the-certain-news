@@ -38,5 +38,17 @@
     </div>
 
     <p>{{ article.headline }}</p>
+
+    <div>
+      <a
+        class="tooltip tooltip-warning"
+        data-tip="{% trans 'Date published' %}"
+        href="{% url 'ui:articles-d' article.created_at.year article.created_at.month article.created_at.day %}"
+      >
+        <span class="badge badge-soft badge-sm md:badge-md badge-warning">
+          {{ article.created_at|date }}
+        </span>
+      </a>
+    </div>
   </div>
 </article>

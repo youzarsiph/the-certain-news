@@ -1,4 +1,6 @@
-{% extends 'ui/base.html' %}{% load i18n wagtailcore_tags wagtailsearchpromotions_tags %}
+{% extends 'ui/base.html' %}
+<!---->
+{% load i18n wagtailcore_tags wagtailsearchpromotions_tags %}
 
 <!---->
 {% block title %}{{ block.super }} | {% trans 'Search' %}{% endblock %}
@@ -56,8 +58,9 @@
   {% get_search_promotions search_query as search_promotions %}
 
   <ul>
-    {% for search_promotion in search_promotions %} {% if search_promotion.page
-    %}
+    {% for search_promotion in search_promotions %}
+    <!---->
+    {% if search_promotion.page %}
     <li>
       <a href="{% pageurl search_promotion.page %}">
         <h2>{{ search_promotion.page.title }}</h2>
@@ -71,7 +74,9 @@
         <p>{{ search_promotion.description }}</p>
       </a>
     </li>
-    {% endif %} {% endfor %}
+    {% endif %}
+    <!---->
+    {% endfor %}
   </ul>
 </div>
 {% endblock %}

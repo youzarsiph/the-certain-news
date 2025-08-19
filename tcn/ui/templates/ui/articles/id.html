@@ -1,4 +1,6 @@
-{% extends 'ui/base.html' %}{% load i18n wagtailcore_tags wagtailimages_tags %}
+{% extends 'ui/base.html' %}
+<!---->
+{% load i18n tcn wagtailcore_tags wagtailimages_tags %}
 
 <!---->
 {% block title %}{{ block.super }} | {{ article.get_parent }} | {{ article }}{% endblock %}
@@ -38,11 +40,8 @@
 {% endblock %}
 
 <!---->
-{% block style %}{{ block.super }}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
-<script>
-  const x = new ClipboardJS(".btn-copy");
-</script>
+{% block styles %}{{ block.super }}
+<script src="https://unpkg.com/clipboard@2/dist/clipboard.min.js"></script>
 {% endblock %}
 
 <div class="hidden badge-secondary badge-error"></div>
@@ -57,18 +56,24 @@
       class="tooltip tooltip-primary tooltip-right rtl:tooltip-left"
       data-tip="{% trans 'Category' %}"
     >
-      <span class="badge badge-primary badge-xl">
+      <a
+        href="{% pageurl article.get_parent %}"
+        class="badge badge-primary badge-xl"
+      >
         {{ article.get_parent }}
-      </span>
+      </a>
     </div>
     {% if article.is_breaking %}
     <div
       class="tooltip tooltip-error tooltip-right rtl:tooltip-left"
       data-tip="{% trans 'Breaking news' %}"
     >
-      <span class="badge badge-error animate-pulse">
+      <a
+        href="{% url 'ui:articles' %}?is_breaking=True"
+        class="badge badge-error animate-pulse"
+      >
         {% trans 'Breaking' %}
-      </span>
+      </a>
     </div>
     {% endif %}
   </div>
@@ -79,57 +84,125 @@
     {{ article.title }}
   </h1>
 
-  <div class="flex items-center justify-between gap-4">
-    {% if article.get_parent.display_owner %}
-    <div class="flex items-center gap-2">
-      {% if article.owner.photo %}
-      <div class="avatar">
-        <div class="mask mask-squircle size-10 lg:size-20">
-          <img src="{{ article.owner.photo.url }}" alt="{{ article.owner }}" />
+  <div class="grid gap-4">
+    <div
+      class="flex flex-col md:flex-row md:items-center md:justify-between gap-4"
+    >
+      {% if article.get_parent.display_owner %}
+      <div class="flex items-center gap-2">
+        {% if article.owner.photo %}
+        <div class="avatar">
+          <div class="mask mask-squircle size-10 lg:size-16">
+            <img
+              src="{{ article.owner.photo.url }}"
+              alt="{{ article.owner }}"
+            />
+          </div>
         </div>
-      </div>
-      {% else %}
-      <div class="avatar avatar-placeholder">
-        <div
-          class="mask mask-squircle bg-primary text-primary-content size-10 lg:size-20"
-        >
-          <span class="text-xl uppercase lg:text-4xl">
-            {{ article.owner.username|slice:':1' }}
-          </span>
+        {% else %}
+        <div class="avatar avatar-placeholder">
+          <div
+            class="mask mask-squircle flex items-center justify-center bg-primary text-primary-content size-10 lg:size-16"
+          >
+            <span class="text-xl uppercase font-bold lg:text-4xl">
+              {{ article.owner.first_name|slice:':1' }}
+            </span>
+          </div>
+        </div>
+        {% endif %}
+
+        <div class="grid gap-1">
+          <h2 class="text-primary text-lg font-bold lg:text-xl">
+            {{ article.owner.get_full_name }}
+          </h2>
+          <p>{{ article.owner.bio }}</p>
         </div>
       </div>
       {% endif %}
 
-      <div class="grid gap-1">
-        <h2 class="text-primary text-lg font-bold lg:text-xl">
-          {{ article.owner.get_full_name }}
-        </h2>
-        <p>{{ article.owner.bio }}</p>
+      <div class="flex items-center justify-end gap-4">
+        <div
+          class="tooltip tooltip-left tooltip-primary rtl:tooltip-right"
+          data-tip="{% translate 'Translations' %}"
+        >
+          <button
+            popovertarget="translations"
+            style="anchor-name: --translations"
+            class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
+          >
+            <i data-lucide="languages" class="size-4 lg:size-6"></i>
+
+            <span class="sr-only">{% translate 'Language' %}</span>
+          </button>
+
+          <ul
+            id="translations"
+            popover
+            style="position-anchor: --translations"
+            class="menu dropdown dropdown-bottom dropdown-right rounded-box bg-base-100/50 backdrop-blur-3xl text-base-content shadow-sm rtl:dropdown-left"
+          >
+            <li class="menu-title">{% translate 'Available in' %}</li>
+
+            {% for translation in article.get_translations.live %}
+            <li>
+              <a
+                href="{% pageurl translation %}"
+                rel="alternate"
+                hreflang="{{ translation.locale.language_code }}"
+              >
+                {{ translation.locale.language_name_local }}
+                <!---->
+                ({{ translation.locale.language_code }})
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+
+        <div
+          id="btn-copy"
+          class="tooltip tooltip-left tooltip-primary rtl:tooltip-right"
+          data-tip="{% trans 'Copy URL' %}"
+        >
+          <button
+            class="btn btn-copy btn-square btn-sm btn-primary md:btn-md 2xl:btn-lg"
+            data-clipboard-text="{% copy_link article.link.slug %}"
+          >
+            <i data-lucide="clipboard" class="size-4 md:size-6"></i>
+            <span class="sr-only">{% trans 'Copy URL' %}</span>
+          </button>
+        </div>
+
+        <div
+          class="tooltip tooltip-left tooltip-info rtl:tooltip-right"
+          data-tip="{% trans 'Facebook' %}"
+        >
+          <a
+            class="btn btn-copy btn-square btn-sm btn-info md:btn-md 2xl:btn-lg"
+            href="https://www.facebook.com/sharer/sharer.php?u={% copy_link article.link.slug %}"
+          >
+            <i data-lucide="facebook" class="size-4 md:size-6"></i>
+            <span class="sr-only">{% trans 'Facebook' %}</span>
+          </a>
+        </div>
       </div>
     </div>
-    {% endif %}
 
-    <div class="flex items-center gap-4">
-      <div class="flex items-center gap-4">
+    <div class="flex text-xs sm:text-sm items-center gap-4">
+      <a
+        href="{% url 'ui:articles-d' article.created_at.year article.created_at.month article.created_at.day %}"
+        class="flex items-center gap-2 link link-primary link-hover"
+      >
         <span class="status status-xl status-primary"></span>
-        <span>{{ article.created_at|date }}</span>
-        <span>{% trans 'Last update' %}: {{ article.updated_at }}</span>
-      </div>
-
-      <div class="tooltip tooltip-primary" data-tip="{% trans 'Copy URL' %}">
-        <button
-          class="btn btn-copy btn-square btn-sm btn-primary md:btn-md 2xl:btn-lg"
-          data-clipboard-text="{{ request.build_absolute_uri }}"
-        >
-          <i data-lucide="clipboard" class="size-4 md:size-6"></i>
-          <span class="sr-only">{% trans 'Copy URL' %}</span>
-        </button>
-      </div>
+        {{ article.created_at|date }}
+      </a>
+      <span class="status status-xl status-info"></span>
+      <span>{% trans 'Last update' %}: {{ article.updated_at }}</span>
     </div>
   </div>
 
   <div
-    class="prose mx-auto prose-sm prose-video:rounded-box xl:prose-lg 2xl:prose-xl prose-headings:text-primary prose-headings:font-serif rtl:prose-headings:font-kufi prose-img:rounded-box prose-img:w-full prose-pre:bg-base-200 prose-pre:border prose-pre:border-base-300"
+    class="prose mx-auto max-w-none prose-sm prose-video:rounded-box xl:prose-lg 2xl:prose-xl prose-headings:text-primary prose-headings:font-serif rtl:prose-headings:font-kufi prose-img:rounded-box prose-img:w-full prose-pre:bg-base-200 prose-pre:border prose-pre:border-base-300"
   >
     {% image article.image scale-100 %}
     <p class="lead">{{ article.headline }}</p>
@@ -160,4 +233,19 @@
     </ol>
   </section>
 </div>
+
+<script>
+  var clipboard = new ClipboardJS(".btn-copy");
+
+  clipboard.on("success", function (e) {
+    const btn = document.getElementById('btn-copy');
+    btn.setAttribute('data-tip', "{% trans 'Copied!' %}")
+    btn.classList.toggle('tooltip-open')
+    
+    setTimeout(() => {
+      btn.setAttribute('data-tip', "{% trans 'Copy URL' %}")
+      btn.classList.toggle('tooltip-open')
+    }, 2000);
+  });
+</script>
 {% endblock %}

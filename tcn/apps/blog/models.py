@@ -3,8 +3,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from modelcluster.contrib.taggit import ClusterTaggableManager
-from modelcluster.fields import ParentalKey
-from taggit.models import TaggedItemBase
 from wagtail.admin.panels import FieldPanel
 from wagtail.api import APIField
 from wagtail.fields import StreamField
@@ -45,20 +43,24 @@ class Post(DateTimeMixin, Page):
     image = models.ForeignKey(
         "wagtailimages.Image",
         on_delete=models.PROTECT,
+        verbose_name=_("image"),
         help_text=_("Post image"),
     )
     headline = models.CharField(
         max_length=128,
         db_index=True,
+        verbose_name=_("headline"),
         help_text=_("Post headline"),
     )
     content = StreamField(
         MediaBlock(),
+        verbose_name=_("content"),
         help_text=_("Post content"),
     )
     tags = ClusterTaggableManager(
         blank=True,
         through="tags.PostTag",
+        verbose_name=_("tags"),
         help_text=_("Post tags"),
     )
 
@@ -81,3 +83,9 @@ class Post(DateTimeMixin, Page):
 
     parent_page_types = ["blog.BlogIndex"]
     subpage_types = []
+
+    class Meta:
+        """Meta data"""
+
+        verbose_name = _("Blog post")
+        verbose_name_plural = _("Blog posts")

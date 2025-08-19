@@ -101,7 +101,6 @@
     {% endfor %}
   </div>
 
-
   <section class="grid gap-8">
     {% if breaking_news %}
     <h1 class="text-3xl text-primary font-black lg:text-5xl">
@@ -201,7 +200,7 @@
       </div>
 
       <ol class="grid gap-4 grid-cols-12">
-        {% for article in category.get_children.specific|slice:':6' %}
+        {% for article in category.get_ordered_children.specific|slice:':6' %}
         <li class="col-span-12 md:col-span-6 lg:col-span-4 2xl:col-span-3">
           {% include 'ui/components/article.html' %}
         </li>
