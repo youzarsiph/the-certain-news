@@ -9,12 +9,12 @@ from wagtail.fields import StreamField
 from wagtail.models import Page
 from wagtail.search import index
 
-from tcn.apps.mixins import DateTimeMixin
+from tcn.apps.mixins import ChildPaginatorMixin, DateTimeMixin
 from tcn.cms.blocks import MediaBlock
 
 
 # Create your models here.
-class BlogIndex(DateTimeMixin, Page):
+class BlogIndex(DateTimeMixin, ChildPaginatorMixin, Page):
     """Blog index page"""
 
     context_object_name = "index"
@@ -29,12 +29,10 @@ class BlogIndex(DateTimeMixin, Page):
 
         verbose_name = _("Blog index page")
 
-    def get_context(self, request, *args, **kwargs):
-        """Sort blog posts and add to context"""
+    def get_ordered_children(self):
+        """Order the children of category"""
 
-        context = super().get_context(request, *args, **kwargs)
-
-        return {**context}
+        return self.get_children().order_by("-post__created_at")
 
 
 class Post(DateTimeMixin, Page):

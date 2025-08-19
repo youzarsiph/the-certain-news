@@ -9,7 +9,7 @@
   <h1 class="text-primary text-xl font-bold lg:text-5xl">{{ index }}</h1>
 
   <ol class="grid grid-cols-12 gap-4">
-    {% for article in index.get_children.specific %}
+    {% for article in children.specific %}
     <li class="col-span-12 md:col-span-6 lg:col-span-4 2xl:col-span-3">
       <article
         class="card card-sm lg:card-md xl:card-lg 2xl:card-xl bg-base-200 size-full shadow-sm"
@@ -50,5 +50,7 @@
     </li>
     {% endfor %}
   </ol>
+
+  {% include 'ui/components/pagination.html' %}
 </div>
 {% endblock %}

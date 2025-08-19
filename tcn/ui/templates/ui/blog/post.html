@@ -1,7 +1,9 @@
 {% extends 'ui/base.html' %}{% load i18n wagtailcore_tags wagtailimages_tags %}
 
 <!---->
-{% block title %}{{ block.super }} | {{ post.get_parent }} | {{ post }}{% endblock %}
+{% block title %}
+{{ block.super }} | {{ post.get_parent }} | {{ post }}
+{% endblock %}
 
 <!---->
 {% block meta %}
@@ -47,10 +49,40 @@
   <div
     class="prose mx-auto prose-sm prose-video:rounded-box xl:prose-lg 2xl:prose-xl prose-headings:text-primary prose-headings:font-serif rtl:prose-headings:font-kufi prose-img:rounded-box prose-img:w-full prose-pre:bg-base-200 prose-pre:border prose-pre:border-base-300"
   >
-    <div class="grid gap-4">
-      <div>
+    <div class="not-prose grid mb-12 gap-4">
+      <div class="flex items-center justify-between gap-4">
+        <a
+          href="{% url 'ui:author' post.owner.slug %}"
+          class="flex items-center gap-2"
+        >
+          {% if post.owner.photo %}
+          <div class="avatar">
+            <div class="mask mask-squircle size-10 lg:size-16">
+              <img src="{{ post.owner.photo.url }}" alt="{{ post.owner }}" />
+            </div>
+          </div>
+          {% else %}
+          <div class="avatar avatar-placeholder">
+            <div
+              class="mask mask-squircle flex items-center justify-center bg-primary text-primary-content size-10 lg:size-16"
+            >
+              <span class="text-xl uppercase font-bold lg:text-4xl">
+                {{ post.owner.first_name|slice:':1' }}
+              </span>
+            </div>
+          </div>
+          {% endif %}
+
+          <div class="grid gap-1">
+            <h2 class="text-primary text-lg font-bold lg:text-xl">
+              {{ post.owner.get_full_name }}
+            </h2>
+            <p>{{ post.owner.bio }}</p>
+          </div>
+        </a>
+
         <div
-          class="not-prose tooltip tooltip-right tooltip-primary rtl:tooltip-left"
+          class="tooltip tooltip-left tooltip-primary rtl:tooltip-right"
           data-tip="{% translate 'Translations' %}"
         >
           <button
@@ -59,18 +91,18 @@
             class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
           >
             <i data-lucide="languages" class="size-4 lg:size-6"></i>
-  
+
             <span class="sr-only">{% translate 'Language' %}</span>
           </button>
-  
+
           <ul
             id="translations"
             popover
             style="position-anchor: --translations"
-            class="menu dropdown dropdown-bottom dropdown-right rounded-box bg-base-100/50 backdrop-blur-3xl text-base-content shadow-sm rtl:dropdown-left"
+            class="menu dropdown dropdown-left rounded-box bg-base-100/50 backdrop-blur-3xl text-base-content shadow-sm rtl:dropdown-right"
           >
             <li class="menu-title">{% translate 'Available in' %}</li>
-  
+
             {% for translation in post.get_translations.live %}
             <li>
               <a
@@ -83,14 +115,14 @@
                 ({{ translation.locale.language_code }})
               </a>
             </li>
+            {% empty %}
+            <li>{% trans 'None' %}</li>
             {% endfor %}
           </ul>
         </div>
       </div>
 
-      {% image post.image fill-1920x1080 %}
-
-      <div class="not-prose flex text-xs sm:text-sm items-center gap-4">
+      <div class="flex text-xs sm:text-sm items-center gap-4">
         <a
           href="{% url 'ui:articles-d' post.created_at.year post.created_at.month post.created_at.day %}"
           class="flex items-center gap-2 link link-primary link-hover"
@@ -102,6 +134,8 @@
         <span>{% trans 'Last update' %}: {{ post.updated_at }}</span>
       </div>
     </div>
+
+    {% image post.image fill-1920x1080 %}
 
     <h1>{{ post.title }}</h1>
 

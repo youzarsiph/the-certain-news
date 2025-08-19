@@ -2,6 +2,7 @@
 
 from typing import Any
 
+from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
@@ -35,7 +36,27 @@ class SignupView(SuccessMessageMixin, generic.CreateView):
     form_class = UserCreateForm
     template_name = "registration/signup.html"
     success_url = reverse_lazy("ui:profile")
-    success_message = "Your account was created successfully!"
+    success_message = _("Your account was created successfully!")
+
+
+class UserDetailView(generic.DetailView):
+    """User detail view"""
+
+    model = User
+    template_name = "ui/authors/id.html"
+
+    def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
+        """Add articles to context"""
+
+        context = super().get_context_data(**kwargs)
+
+        return {
+            **context,
+            "articles": Article.objects.live()
+            .public()
+            .filter(owner=context["user"])
+            .order_by("-created_at"),
+        }
 
 
 class UserUpdateView(
@@ -47,10 +68,19 @@ class UserUpdateView(
     """Update a user"""
 
     model = User
-    template_name = "registration/edit.html"
-    fields = ["photo", "first_name", "last_name", "email", "bio", "country", "phone"]
     success_url = reverse_lazy("ui:profile")
-    success_message = "Your account was updated successfully!"
+    template_name = "registration/edit.html"
+    success_message = _("Your account was updated successfully!")
+    fields = [
+        "photo",
+        "username",
+        "first_name",
+        "last_name",
+        "email",
+        "bio",
+        "country",
+        "phone",
+    ]
 
 
 class UserDeleteView(
@@ -62,9 +92,9 @@ class UserDeleteView(
     """Delete a user"""
 
     model = User
+    success_url = reverse_lazy("ui:profile")
     template_name = "registration/delete.html"
-    success_url = reverse_lazy("ui:index")
-    success_message = "Your account was deleted successfully!"
+    success_message = _("Your account was deleted successfully!")
 
 
 class LinkRedirectView(generic.DetailView):

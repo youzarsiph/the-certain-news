@@ -15,3 +15,4 @@ class UserCreateForm(UserCreationForm):
         """Meta data"""
 
         model = User
+        fields = UserCreationForm.Meta.fields + ("first_name", "last_name")

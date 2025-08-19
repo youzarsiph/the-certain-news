@@ -69,6 +69,7 @@ class Article(DateTimeMixin, Page):
         index.SearchField("headline"),
         index.SearchField("content"),
         index.FilterField("is_breaking"),
+        index.FilterField("language_code"),
         index.FilterField("updated_at"),
         index.FilterField("created_at"),
     ]

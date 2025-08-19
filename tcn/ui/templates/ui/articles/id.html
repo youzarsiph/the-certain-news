@@ -1,9 +1,12 @@
 {% extends 'ui/base.html' %}
+
 <!---->
 {% load i18n tcn wagtailcore_tags wagtailimages_tags %}
 
 <!---->
-{% block title %}{{ block.super }} | {{ article.get_parent }} | {{ article }}{% endblock %}
+{% block title %}
+{{ block.super }} | {{ article.get_parent }} | {{ article }}
+{% endblock %}
 
 <!---->
 {% block meta %}
@@ -70,7 +73,7 @@
     >
       <a
         href="{% url 'ui:articles' %}?is_breaking=True"
-        class="badge badge-error animate-pulse"
+        class="badge badge-error badge-xl animate-pulse"
       >
         {% trans 'Breaking' %}
       </a>
@@ -89,7 +92,10 @@
       class="flex flex-col md:flex-row md:items-center md:justify-between gap-4"
     >
       {% if article.get_parent.display_owner %}
-      <div class="flex items-center gap-2">
+      <a
+        href="{% url 'ui:author' article.owner.slug %}"
+        class="flex items-center gap-2"
+      >
         {% if article.owner.photo %}
         <div class="avatar">
           <div class="mask mask-squircle size-10 lg:size-16">
@@ -117,7 +123,9 @@
           </h2>
           <p>{{ article.owner.bio }}</p>
         </div>
-      </div>
+      </a>
+      {% else %}
+      <div></div>
       {% endif %}
 
       <div class="flex items-center justify-end gap-4">
@@ -139,7 +147,7 @@
             id="translations"
             popover
             style="position-anchor: --translations"
-            class="menu dropdown dropdown-bottom dropdown-right rounded-box bg-base-100/50 backdrop-blur-3xl text-base-content shadow-sm rtl:dropdown-left"
+            class="menu dropdown dropdown-left rounded-box bg-base-100/50 backdrop-blur-3xl text-base-content shadow-sm rtl:dropdown-right"
           >
             <li class="menu-title">{% translate 'Available in' %}</li>
 
@@ -155,6 +163,8 @@
                 ({{ translation.locale.language_code }})
               </a>
             </li>
+            {% empty %}
+            <li>{% trans 'None' %}</li>
             {% endfor %}
           </ul>
         </div>
@@ -189,23 +199,32 @@
     </div>
 
     <div class="flex text-xs sm:text-sm items-center gap-4">
-      <a
-        href="{% url 'ui:articles-d' article.created_at.year article.created_at.month article.created_at.day %}"
-        class="flex items-center gap-2 link link-primary link-hover"
+      <div
+        class="tooltip tooltip-bottom tooltip-primary"
+        data-tip="{% trans 'Date published' %}"
       >
-        <span class="status status-xl status-primary"></span>
-        {{ article.created_at|date }}
-      </a>
-      <span class="status status-xl status-info"></span>
-      <span>{% trans 'Last update' %}: {{ article.updated_at }}</span>
+        <a
+          href="{% url 'ui:articles-d' article.created_at.year article.created_at.month article.created_at.day %}"
+          class="flex items-center gap-2 link link-primary link-hover"
+        >
+          <span class="status status-xl status-primary"></span>
+          {{ article.created_at|date }}
+        </a>
+      </div>
+      <span class="flex items-center gap-2 text-primary">
+        <span class="status status-xl status-info"></span>
+        <span>{% trans 'Last update' %}: {{ article.updated_at }}</span>
+      </span>
     </div>
   </div>
 
   <div
-    class="prose mx-auto max-w-none prose-sm prose-video:rounded-box xl:prose-lg 2xl:prose-xl prose-headings:text-primary prose-headings:font-serif rtl:prose-headings:font-kufi prose-img:rounded-box prose-img:w-full prose-pre:bg-base-200 prose-pre:border prose-pre:border-base-300"
+    class="prose mx-auto prose-sm prose-video:rounded-box xl:prose-lg 2xl:prose-xl prose-headings:text-primary prose-headings:font-serif rtl:prose-headings:font-kufi prose-img:rounded-box prose-img:w-full prose-pre:bg-base-200 prose-pre:border prose-pre:border-base-300"
   >
     {% image article.image fill-1920x1080 %}
+
     <p class="lead">{{ article.headline }}</p>
+
     {{ article.content }}
   </div>
 
@@ -238,13 +257,13 @@
   var clipboard = new ClipboardJS(".btn-copy");
 
   clipboard.on("success", function (e) {
-    const btn = document.getElementById('btn-copy');
-    btn.setAttribute('data-tip', "{% trans 'Copied!' %}")
-    btn.classList.toggle('tooltip-open')
-    
+    const btn = document.getElementById("btn-copy");
+    btn.setAttribute("data-tip", "{% trans 'Copied!' %}");
+    btn.classList.toggle("tooltip-open");
+
     setTimeout(() => {
-      btn.setAttribute('data-tip', "{% trans 'Copy URL' %}")
-      btn.classList.toggle('tooltip-open')
+      btn.setAttribute("data-tip", "{% trans 'Copy URL' %}");
+      btn.classList.toggle("tooltip-open");
     }, 2000);
   });
 </script>

@@ -256,7 +256,7 @@
           {% endif %}
           <li>
             <a
-              href="{% url 'ui:u-user' request.user.id %}"
+              href="{% url 'ui:u-user' request.user.slug %}"
               class="btn btn-ghost btn-primary justify-start gap-4 w-full"
             >
               <i data-lucide="user-cog" class="size-4 lg:size-6"></i>
@@ -277,7 +277,7 @@
         <ul class="mt-auto menu menu-vertical gap-2 w-full p-0">
           <li>
             <a
-              href="{% url 'ui:d-user' request.user.id %}"
+              href="{% url 'ui:d-user' request.user.slug %}"
               class="btn btn-soft btn-error justify-start gap-4 w-full"
             >
               <i data-lucide="user-x" class="size-4 lg:size-6"></i>

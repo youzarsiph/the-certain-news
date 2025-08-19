@@ -170,7 +170,10 @@
                       href="{% url 'ui:articles' %}?is_breaking=True"
                       class="btn btn-square btn-soft btn-sm btn-error md:btn-md 2xl:btn-lg"
                     >
-                      <i data-lucide="alert-circle" class="size-4 md:size-6"></i>
+                      <i
+                        data-lucide="alert-circle"
+                        class="size-4 md:size-6"
+                      ></i>
                       <span class="sr-only">{% trans 'Breaking news' %}</span>
                     </a>
                   </li>
@@ -183,7 +186,10 @@
                       href="{% url 'ui:articles' %}"
                       class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
                     >
-                      <i data-lucide="clock-fading" class="size-4 md:size-6"></i>
+                      <i
+                        data-lucide="clock-fading"
+                        class="size-4 md:size-6"
+                      ></i>
                       <span class="sr-only">{% trans 'Latest news' %}</span>
                     </a>
                   </li>
@@ -428,10 +434,15 @@
                       >
                         <a
                           href="{% url 'ui:articles' %}?is_breaking=True"
-                          class="btn btn-square btn-soft btn-sm btn-error animate-pulse md:btn-md 2xl:btn-lg"
+                          class="btn btn-square btn-sm btn-error animate-pulse md:btn-md 2xl:btn-lg"
                         >
-                          <i data-lucide="alert-circle" class="size-4 md:size-6"></i>
-                          <span class="sr-only">{% trans 'Breaking news' %}</span>
+                          <i
+                            data-lucide="alert-circle"
+                            class="size-4 md:size-6"
+                          ></i>
+                          <span class="sr-only">
+                            {% trans 'Breaking news' %}
+                          </span>
                         </a>
                       </div>
 
@@ -443,7 +454,10 @@
                           href="{% url 'ui:articles' %}"
                           class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
                         >
-                          <i data-lucide="clock-fading" class="size-4 md:size-6"></i>
+                          <i
+                            data-lucide="clock-fading"
+                            class="size-4 md:size-6"
+                          ></i>
                           <span class="sr-only">{% trans 'Latest news' %}</span>
                         </a>
                       </div>
@@ -477,12 +491,12 @@
                         </a>
                       </div>
                       <div
-                        class="tooltip tooltip-left rtl:tooltip-right tooltip-primary"
+                        class="tooltip tooltip-left rtl:tooltip-right tooltip-success"
                         data-tip="{% trans 'Sign up' %}"
                       >
                         <a
                           href="{% url 'ui:subscribe' %}"
-                          class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
+                          class="btn btn-square btn-soft btn-sm btn-success md:btn-md 2xl:btn-lg"
                         >
                           <i
                             data-lucide="heart-handshake"
@@ -554,12 +568,12 @@
                 <div class="grid gap-4 w-full">
                   <footer class="footer gap-4 w-full sm:footer-horizontal p-10">
                     <nav>
-                      <h6 class="footer-title">{% trans 'Services' %}</h6>
+                      <div class="footer-title">{% trans 'Services' %}</div>
                       <a href="#" class="link link-hover">{% trans 'Ads' %}</a>
                       <a href="#" class="link link-hover">{% trans 'News' %}</a>
                     </nav>
                     <nav>
-                      <h6 class="footer-title">{% trans 'Company' %}</h6>
+                      <div class="footer-title">{% trans 'Company' %}</div>
                       {% if blog_index %}
                       <a
                         href="{% pageurl blog_index %}"
@@ -603,7 +617,7 @@
                       {% endif %}
                     </nav>
                     <nav>
-                      <h6 class="footer-title">{% trans 'Legal' %}</h6>
+                      <div class="footer-title">{% trans 'Legal' %}</div>
                       <a href="#" class="link link-hover">
                         {% trans 'Terms of use' %}
                       </a>
