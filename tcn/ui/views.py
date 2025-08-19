@@ -79,7 +79,7 @@ class LinkRedirectView(generic.DetailView):
 
         link = self.get_object()
 
-        if not link.views.contains(self.request.user):
+        if request.user.is_authenticated and not link.views.contains(self.request.user):
             link.views.add(self.request.user)
 
         return redirect(link.article.get_url())

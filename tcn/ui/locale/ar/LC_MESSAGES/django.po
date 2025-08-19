@@ -194,15 +194,6 @@ msgstr "الفئة"
 msgid "categories"
 msgstr "الفئات"
 
-#: tcn/apps/categories/models.py:155 tcn/apps/mixins.py:57
-msgid "Page is not “last”, nor can it be converted to an int."
-msgstr "خطأ"
-
-#: tcn/apps/categories/models.py:163 tcn/apps/mixins.py:74
-#, python-format
-msgid "Invalid page (%(page_number)s): %(message)s"
-msgstr "خطأ"
-
 #: tcn/apps/home/models.py:31
 #, fuzzy
 #| msgid "Home"
