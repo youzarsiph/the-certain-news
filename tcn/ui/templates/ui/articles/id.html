@@ -258,7 +258,7 @@
 
   clipboard.on("success", function (e) {
     const btn = document.getElementById("btn-copy");
-    btn.setAttribute("data-tip", "{% trans 'Copied!' %}");
+    btn.setAttribute("data-tip", "{% trans 'Copied' %}");
     btn.classList.toggle("tooltip-open");
 
     setTimeout(() => {
