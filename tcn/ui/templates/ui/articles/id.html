@@ -178,7 +178,8 @@
             class="btn btn-copy btn-square btn-sm btn-primary md:btn-md 2xl:btn-lg"
             data-clipboard-text="{% copy_link article.link.slug %}"
           >
-            <i data-lucide="clipboard" class="size-4 md:size-6"></i>
+            <i id="clipboard" data-lucide="clipboard" class="size-4 md:size-6"></i>
+            <i id="clipboard-check" data-lucide="clipboard-check" class="hidden size-4 md:size-6"></i>
             <span class="sr-only">{% trans 'Copy URL' %}</span>
           </button>
         </div>
@@ -238,6 +239,7 @@
     {% endfor %}
   </div>
 
+  {% if recommendations %}
   <section class="grid gap-8">
     <h1 class="font-bold text-primary text-xl md:text-3xl lg:text-4xl">
       {% trans 'Recommendations' %}
@@ -251,6 +253,7 @@
       {% endfor %}
     </ol>
   </section>
+  {% endif %}
 </div>
 
 <script>
@@ -258,12 +261,20 @@
 
   clipboard.on("success", function (e) {
     const btn = document.getElementById("btn-copy");
+    const clipboard = document.getElementById("clipboard");
+    const clipboardCheck = document.getElementById("clipboard-check");
     btn.setAttribute("data-tip", "{% trans 'Copied' %}");
     btn.classList.toggle("tooltip-open");
+
+    clipboard.classList.toggle("hidden");
+    clipboardCheck.classList.toggle("hidden");
 
     setTimeout(() => {
       btn.setAttribute("data-tip", "{% trans 'Copy URL' %}");
       btn.classList.toggle("tooltip-open");
+
+      clipboard.classList.toggle("hidden");
+      clipboardCheck.classList.toggle("hidden");
     }, 2000);
   });
 </script>

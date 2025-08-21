@@ -1,5 +1,7 @@
 """Wagtail Hooks used to customize the view-level behavior of the Wagtail admin and front-end"""
 
+# from django.utils.html import format_html
+# from django.templatetags.static import static
 from django.utils.translation import gettext_lazy as _
 from taggit.models import Tag
 from wagtail import hooks
@@ -33,10 +35,20 @@ def show_my_pages_only(parent_page, pages, request):
     """Filter pages by user"""
 
     match parent_page.content_type.name:
-        case "category":
+        case "blogindex":
             return pages.filter(owner=request.user)
 
-        case _:
-            return pages
-
     return pages
+
+
+# @hooks.register("insert_global_admin_css")
+# def global_admin_css():
+#     return format_html(
+#         '<link rel="stylesheet" href="{}">',
+#         static("ui/css/admin.css"),
+#     )
+
+
+# @hooks.register("get_avatar_url")
+# def get_profile_avatar(user, size):
+#     return user.photo

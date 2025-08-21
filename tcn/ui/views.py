@@ -108,6 +108,8 @@ class LinkRedirectView(generic.DetailView):
         """Redirect to news article"""
 
         link = self.get_object()
+        link.view_count += 1
+        link.save()
 
         if request.user.is_authenticated and not link.views.contains(self.request.user):
             link.views.add(self.request.user)

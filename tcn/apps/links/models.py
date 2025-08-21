@@ -39,6 +39,11 @@ class Link(models.Model):
         help_text=_("views"),
         verbose_name=_("Article views"),
     )
+    view_count = models.PositiveIntegerField(
+        default=0,
+        help_text=_("views"),
+        verbose_name=_("Article views"),
+    )
 
     class Meta:
         """Meta data"""

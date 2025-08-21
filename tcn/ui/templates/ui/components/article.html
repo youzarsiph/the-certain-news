@@ -3,7 +3,7 @@
 <article
   class="card relative size-full card-sm lg:card-md xl:card-lg 2xl:card-xl bg-base-200 size-full shadow-sm hover:bg-base-300"
 >
-  <a href="{% pageurl article %}" class="absolute inset-0">
+  <a href="{% url 'ui:redirect' article.link.slug %}" class="absolute inset-0">
     <span class="sr-only">{% trans 'Read' %}</span>
   </a>
 

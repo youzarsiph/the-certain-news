@@ -17,7 +17,7 @@
     {% for article in random_news %}
     <div
       id="item-{{ forloop.counter }}"
-      class="carousel-item relative w-full lg:w-1/2"
+      class="carousel-item relative w-full"
     >
       <article
         class="card relative size-full image-full card-sm lg:card-md xl:card-lg 2xl:card-xl bg-base-200 size-full shadow-sm hover:bg-base-300"
@@ -33,30 +33,32 @@
 
           <p class="grow-0">{{ article.headline }}</p>
 
-          <a
-            href="{% pageurl article %}"
-            class="btn z-10 btn-sm btn-primary md:btn-md xl:btn-lg 2xl:btn-xl"
-          >
-            {% if article.is_breaking %}
-            <div
-              class="tooltip flex tooltip-error"
-              data-tip="{% trans 'Breaking' %}"
+          <div class="flex items-center justify-end">
+            <a
+              href="{% url 'ui:redirect' article.link.slug %}"
+              class="btn z-10 btn-sm btn-primary md:btn-md xl:btn-lg 2xl:btn-xl"
             >
-              <div class="inline-grid *:[grid-area:1/1]">
-                <span class="sr-only">{% trans 'Breaking' %}</span>
-                <div
-                  class="status lg:status-xl status-error animate-ping"
-                ></div>
-                <div class="status lg:status-xl status-error"></div>
+              {% if article.is_breaking %}
+              <div
+                class="tooltip flex tooltip-error"
+                data-tip="{% trans 'Breaking' %}"
+              >
+                <div class="inline-grid *:[grid-area:1/1]">
+                  <span class="sr-only">{% trans 'Breaking' %}</span>
+                  <div
+                    class="status lg:status-xl status-error animate-ping"
+                  ></div>
+                  <div class="status lg:status-xl status-error"></div>
+                </div>
               </div>
-            </div>
-            {% endif %}
-            <span>{% trans 'Read' %}</span>
-            <i
-              data-lucide="arrow-right"
-              class="size-4 lg:size-6 rtl:rotate-180"
-            ></i>
-          </a>
+              {% endif %}
+              <span>{% trans 'Read' %}</span>
+              <i
+                data-lucide="arrow-right"
+                class="size-4 lg:size-6 rtl:rotate-180"
+              ></i>
+            </a>
+          </div>
         </div>
       </article>
 
@@ -113,7 +115,7 @@
         <article
           class="card relative size-full image-full card-sm lg:card-md xl:card-lg 2xl:card-xl bg-base-200 size-full shadow-sm hover:bg-base-300"
         >
-          <a href="{% pageurl article %}" class="absolute inset-0 z-10">
+          <a href="{% url 'ui:redirect' article.link.slug %}" class="absolute inset-0 z-10">
             <span class="sr-only">{% trans 'Read' %}</span>
           </a>
           <figure class="skeleton overflow-clip">
@@ -138,7 +140,7 @@
         <article
           class="card relative image-full size-full card-sm lg:card-md xl:card-lg 2xl:card-xl bg-base-200 size-full shadow-sm hover:bg-base-300"
         >
-          <a href="{% pageurl article %}" class="absolute inset-0 z-10">
+          <a href="{% url 'ui:redirect' article.link.slug %}" class="absolute inset-0 z-10">
             <span class="sr-only">{% trans 'Read' %}</span>
           </a>
 
