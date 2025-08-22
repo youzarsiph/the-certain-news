@@ -43,11 +43,11 @@
       {% endif %}
       <a
         href="{% pageurl article.get_parent %}"
-        class="tooltip tooltip-success"
+        class="tooltip tooltip-primary"
         data-tip="{% trans 'Category' %}"
       >
         <span
-          class="badge badge-sm md:badge-md xl:badge-lg 2xl:badge-xl badge-success font-semibold"
+          class="badge badge-sm md:badge-md xl:badge-lg 2xl:badge-xl badge-primary font-semibold"
         >
           {{ article.get_parent.title }}
         </span>
