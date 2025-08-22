@@ -50,11 +50,11 @@
     </div>
   </div>
 
-  <ol class="grid grid-cols-12 gap-4">
+  <ol class="grid grid-cols-12 grid-rows-[auto] gap-4">
     {% for article in articles %}
-    <li class="col-span-12 md:col-span-6 lg:col-span-4 2xl:col-span-3">
-      {% include 'ui/components/article.html' %}
-    </li>
+    <!---->
+    {% include 'ui/components/article.html' %}
+    <!---->
     {% empty %}
     <li class="col-span-12">
       <article

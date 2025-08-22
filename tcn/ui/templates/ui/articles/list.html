@@ -16,11 +16,26 @@
   </h1>
   {% endif %}
 
-  <ol class="grid grid-cols-12 gap-4">
+  <div class="flex items-center justify-end">
+    <div
+      data-tip="{% trans 'Filters' %}"
+      class="tooltip tooltip-left rtl:tooltip-right tooltip-primary"
+    >
+      <button
+        onclick="filters.showModal()"
+        class="btn btn-square btn-primary lg:btn-lg"
+      >
+        <i data-lucide="list-filter" class="size-4 lg:size-6"></i>
+        <span class="sr-only">{% trans 'Filters' %}</span>
+      </button>
+    </div>
+  </div>
+
+  <ol class="grid grid-cols-12 grid-rows-[auto] gap-4">
     {% for article in articles %}
-    <li class="col-span-12 md:col-span-6 lg:col-span-4 2xl:col-span-3">
-      {% include 'ui/components/article.html' %}
-    </li>
+    <!---->
+    {% include 'ui/components/article-1.html' %}
+    <!---->
     {% empty %}
     <li class="col-span-12">
       <article
@@ -38,4 +53,40 @@
 
   {% include 'ui/components/pagination.html' %}
 </div>
+
+<dialog id="filters" class="modal">
+  <section class="relative modal-box grid max-w-xl gap-6 bg-base-100">
+    <header class="flex items-center justify-between gap-4 text-primary">
+      <h1 class="text-lg font-semibold lg:text-2xl">{% trans 'Filters' %}</h1>
+
+      <div
+        class="tooltip tooltip-left rtl:tooltip-right tooltip-error"
+        data-tip="{% trans 'Close' %}"
+      >
+        <button
+          onclick="filters.close()"
+          class="btn btn-square btn-soft btn-primary hover:btn-error"
+        >
+          <i data-lucide="x" class="size-4 lg:size-6"></i>
+
+          <span class="sr-only">{% trans 'Close' %}</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      {% include 'ui/components/form.html' with method='get' csrf=False
+      form=filter.form %}
+    </main>
+
+    <footer class="-mx-5 -mb-5 grid">
+      <button
+        onclick="filters.close()"
+        class="btn rounded-none rounded-t rounded-b-box btn-primary"
+      >
+        {% trans 'Close' %}
+      </button>
+    </footer>
+  </section>
+</dialog>
 {% endblock %}

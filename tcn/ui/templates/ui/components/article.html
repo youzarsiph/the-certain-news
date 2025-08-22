@@ -1,54 +1,60 @@
 {% load i18n wagtailcore_tags wagtailimages_tags %}
 
-<article
-  class="card relative size-full card-sm lg:card-md xl:card-lg 2xl:card-xl bg-base-200 size-full shadow-sm hover:bg-base-300"
+<li
+  role="article"
+  class="group col-span-12 row-span-12 md:col-span-6 md:row-span-3 first:md:col-span-6 first:md:row-span-6 lg:col-span-3"
 >
-  <a href="{% url 'ui:redirect' article.link.slug %}" class="absolute inset-0">
-    <span class="sr-only">{% trans 'Read' %}</span>
-  </a>
+  <div
+    class="card relative bg-base-300 hover:bg-base-200 card-side card-sm md:card-md lg:card-lg xl:card-xl size-full shadow-sm group-first:flex-col lg:flex-col"
+  >
+    <a
+      href="{% url 'ui:redirect' article.link.slug %}"
+      class="absolute inset-0"
+    >
+      <span class="sr-only">{% trans 'Read' %}</span>
+    </a>
 
-  <figure class="skeleton overflow-clip">
-    {% image article.image fill-1920x1080 %}
-  </figure>
+    <figure class="max-w-1/2 group-first:max-w-full lg:max-w-full">
+      {% image article.image fill-1920x1080 %}
+    </figure>
+    <div class="card-body justify-end">
+      <h2 class="card-title text-primary">{{ article.title }}</h2>
+      <p class="hidden grow-0 group-first:block">{{ article.headline }}</p>
 
-  <div class="card-body gap-4">
-    <h2 class="card-title text-primary">{{ article.title }}</h2>
-
-    <div class="card-actions items-center gap-4">
-      {% if article.is_breaking %}
-      <div class="tooltip flex tooltip-error" data-tip="{% trans 'Breaking' %}">
-        <div class="inline-grid *:[grid-area:1/1]">
-          <span class="sr-only">{% trans 'Breaking' %}</span>
-          <div class="status lg:status-xl status-error animate-ping"></div>
-          <div class="status lg:status-xl status-error"></div>
-        </div>
-      </div>
-      {% endif %}
-      <a
-        href="{% pageurl article.get_parent %}"
-        class="tooltip tooltip-success"
-        data-tip="{% trans 'Category' %}"
-      >
-        <span
-          class="badge badge-sm md:badge-md xl:badge-lg 2xl:badge-xl badge-success font-semibold"
+      <div class="card-actions items-center gap-2">
+        {% if article.is_breaking %}
+        <div
+          class="tooltip flex tooltip-error"
+          data-tip="{% trans 'Breaking' %}"
         >
-          {{ article.get_parent.title }}
-        </span>
-      </a>
-    </div>
-
-    <p>{{ article.headline }}</p>
-
-    <div>
-      <a
-        class="tooltip tooltip-warning"
-        data-tip="{% trans 'Date published' %}"
-        href="{% url 'ui:articles-d' article.created_at.year article.created_at.month article.created_at.day %}"
-      >
-        <span class="badge badge-soft badge-sm md:badge-md badge-warning">
-          {{ article.created_at|date }}
-        </span>
-      </a>
+          <div class="inline-grid *:[grid-area:1/1]">
+            <span class="sr-only">{% trans 'Breaking' %}</span>
+            <div class="status lg:status-xl status-error animate-ping"></div>
+            <div class="status lg:status-xl status-error"></div>
+          </div>
+        </div>
+        {% endif %}
+        <a
+          href="{% pageurl article.get_parent %}"
+          class="tooltip tooltip-success"
+          data-tip="{% trans 'Category' %}"
+        >
+          <span
+            class="badge badge-sm md:badge-md xl:badge-lg 2xl:badge-xl badge-success font-semibold"
+          >
+            {{ article.get_parent.title }}
+          </span>
+        </a>
+        <a
+          class="tooltip tooltip-primary"
+          data-tip="{% trans 'Date published' %}"
+          href="{% url 'ui:articles-d' article.created_at.year article.created_at.month article.created_at.day %}"
+        >
+          <span class="badge badge-soft badge-sm md:badge-md badge-primary">
+            {{ article.created_at|date }}
+          </span>
+        </a>
+      </div>
     </div>
   </div>
-</article>
+</li>

@@ -178,8 +178,16 @@
             class="btn btn-copy btn-square btn-sm btn-primary md:btn-md 2xl:btn-lg"
             data-clipboard-text="{% copy_link article.link.slug %}"
           >
-            <i id="clipboard" data-lucide="clipboard" class="size-4 md:size-6"></i>
-            <i id="clipboard-check" data-lucide="clipboard-check" class="hidden size-4 md:size-6"></i>
+            <i
+              id="clipboard"
+              data-lucide="clipboard"
+              class="size-4 md:size-6"
+            ></i>
+            <i
+              id="clipboard-check"
+              data-lucide="clipboard-check"
+              class="hidden size-4 md:size-6"
+            ></i>
             <span class="sr-only">{% trans 'Copy URL' %}</span>
           </button>
         </div>

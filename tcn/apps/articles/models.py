@@ -2,6 +2,7 @@
 
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django_countries.fields import CountryField
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from wagtail.admin.panels import FieldPanel
 from wagtail.api import APIField
@@ -17,6 +18,12 @@ from tcn.cms.blocks import MediaBlock
 class Article(DateTimeMixin, Page):
     """News Articles"""
 
+    country = CountryField(
+        null=True,
+        blank=True,
+        verbose_name=_("country"),
+        help_text=_("Country"),
+    )
     image = models.ForeignKey(
         "wagtailimages.Image",
         on_delete=models.PROTECT,
@@ -60,6 +67,7 @@ class Article(DateTimeMixin, Page):
         FieldPanel("image"),
         FieldPanel("headline"),
         FieldPanel("content"),
+        FieldPanel("country"),
         FieldPanel("is_breaking"),
         FieldPanel("tags"),
     ]
@@ -68,6 +76,7 @@ class Article(DateTimeMixin, Page):
         index.SearchField("title"),
         index.SearchField("headline"),
         index.SearchField("content"),
+        index.FilterField("country"),
         index.FilterField("is_breaking"),
         index.FilterField("language_code"),
         index.FilterField("updated_at"),

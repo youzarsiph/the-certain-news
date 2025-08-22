@@ -129,7 +129,7 @@ class BaseArticleListView:
     date_field = "created_at"
     context_object_name = "articles"
     queryset = Article.objects.live().public()
-    filterset_fields = ["is_breaking"]
+    filterset_fields = ["country", "is_breaking"]
 
     def get_queryset(self) -> mixins.QuerySet[Any]:
         return (

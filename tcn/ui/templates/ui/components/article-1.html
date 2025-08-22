@@ -1,0 +1,50 @@
+{% load i18n wagtailcore_tags wagtailimages_tags %}
+
+<li
+  role="article"
+  class="relative card bg-base-300 hover:bg-base-200 card-side card-sm md:card-md lg:card-lg xl:card-xl nth-[2]:lg:col-span-6 nth-[3]:lg:col-span-6 nth-[2]:lg:row-span-3 nth-[3]:lg:row-span-3 group col-span-12 row-span-12 size-full shadow-sm first:flex-col md:col-span-6 md:row-span-6 first:md:col-span-12 lg:col-span-6 lg:row-span-6 first:lg:col-span-6 first:lg:row-span-6"
+>
+  <a href="{% url 'ui:redirect' article.link.slug %}" class="absolute inset-0">
+    <span class="sr-only">{% trans 'Read' %}</span>
+  </a>
+
+  <figure class="max-w-1/2 group-first:max-w-full">
+    {% image article.image fill-1920x1080 %}
+  </figure>
+  <div class="card-body justify-end">
+    <h2 class="card-title text-primary">{{ article.title }}</h2>
+    <p class="hidden grow-0 group-first:block">{{ article.headline }}</p>
+
+    <div class="card-actions items-center gap-2">
+      {% if article.is_breaking %}
+      <div class="tooltip flex tooltip-error" data-tip="{% trans 'Breaking' %}">
+        <div class="inline-grid *:[grid-area:1/1]">
+          <span class="sr-only">{% trans 'Breaking' %}</span>
+          <div class="status lg:status-xl status-error animate-ping"></div>
+          <div class="status lg:status-xl status-error"></div>
+        </div>
+      </div>
+      {% endif %}
+      <a
+        href="{% pageurl article.get_parent %}"
+        class="tooltip tooltip-success"
+        data-tip="{% trans 'Category' %}"
+      >
+        <span
+          class="badge badge-sm md:badge-md xl:badge-lg 2xl:badge-xl badge-success font-semibold"
+        >
+          {{ article.get_parent.title }}
+        </span>
+      </a>
+      <a
+        class="tooltip tooltip-primary"
+        data-tip="{% trans 'Date published' %}"
+        href="{% url 'ui:articles-d' article.created_at.year article.created_at.month article.created_at.day %}"
+      >
+        <span class="badge badge-soft badge-sm md:badge-md badge-primary">
+          {{ article.created_at|date }}
+        </span>
+      </a>
+    </div>
+  </div>
+</li>
