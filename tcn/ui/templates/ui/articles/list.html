@@ -8,7 +8,7 @@
 <div class="container grid gap-8 mx-auto px-4 py-20">
   {% if request.GET.is_breaking %}
   <h1 class="text-primary text-xl font-bold lg:text-5xl">
-    {% trans 'Breaking News' %}
+    {% trans 'Breaking' %}
   </h1>
   {% else %}
   <h1 class="text-primary text-xl font-bold lg:text-5xl">
@@ -55,7 +55,7 @@
 </div>
 
 <dialog id="filters" class="modal">
-  <section class="relative modal-box grid max-w-xl gap-6 bg-base-100">
+  <section class="relative modal-box grid max-w-xl gap-6 bg-base-200">
     <header class="flex items-center justify-between gap-4 text-primary">
       <h1 class="text-lg font-semibold lg:text-2xl">{% trans 'Filters' %}</h1>
 
@@ -75,8 +75,7 @@
     </header>
 
     <main>
-      {% include 'ui/components/form.html' with method='get' csrf=False
-      form=filter.form %}
+      {% include 'ui/components/form.html' with method='get' csrf=False form=filter.form %}
     </main>
 
     <footer class="-mx-5 -mb-5 grid">

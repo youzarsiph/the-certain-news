@@ -54,7 +54,24 @@
 <div class="container grid gap-12 mx-auto px-4 py-20">
   {% include 'ui/components/breadcrumbs.html' %}
 
-  <div class="flex items-center gap-4">
+  <div class="flex items-center flex-wrap gap-4">
+    {% if article.country %}
+    <div>
+      <div
+        class="tooltip tooltip-success tooltip-right rtl:tooltip-left"
+        data-tip="{{ article.country.name }}"
+      >
+        <a
+          href="{% url 'ui:articles' %}?country={{ article.country }}"
+          class="badge badge-success badge-xl"
+        >
+          <i data-lucide="map-pin" class="size-4 lg:size-6"></i>
+          {{ article.country }}
+        </a>
+      </div>
+    </div>
+    {% endif %}
+
     <div
       class="tooltip tooltip-primary tooltip-right rtl:tooltip-left"
       data-tip="{% trans 'Category' %}"
@@ -66,10 +83,11 @@
         {{ article.get_parent }}
       </a>
     </div>
+
     {% if article.is_breaking %}
     <div
       class="tooltip tooltip-error tooltip-right rtl:tooltip-left"
-      data-tip="{% trans 'Breaking news' %}"
+      data-tip="{% trans 'Breaking' %}"
     >
       <a
         href="{% url 'ui:articles' %}?is_breaking=True"
@@ -253,11 +271,11 @@
       {% trans 'Recommendations' %}
     </h1>
 
-    <ol class="grid gap-4 grid-cols-12">
+    <ol class="grid grid-cols-12 grid-rows-[auto] gap-4">
       {% for recommendation in recommendations %}
-      <li class="col-span-12 md:col-span-6 lg:col-span-4 2xl:col-span-3">
-        {% include 'ui/components/article.html' with article=recommendation %}
-      </li>
+      <!---->
+      {% include 'ui/components/article-1.html' with article=recommendation %}
+      <!---->
       {% endfor %}
     </ol>
   </section>
