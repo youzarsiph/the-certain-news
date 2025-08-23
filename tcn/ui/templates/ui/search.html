@@ -40,15 +40,15 @@
     {% trans 'Search results' %} ({{ search_results.count }})
   </h1>
 
-  <ul class="grid grid-cols-12 gap-4">
+  <ol class="grid grid-cols-12 grid-rows-[auto] gap-4">
     {% for result in search_results %}
-    <li class="col-span-12 md:col-span-6 lg:col-span-4 2xl:col-span-3">
-      {% include 'ui/components/article.html' with article=result %}
-    </li>
+    <!---->
+    {% include 'ui/components/article.html' with article=result %}
+    <!---->
     {% empty %}
     <li>{% trans 'No results found' %}</li>
     {% endfor %}
-  </ul>
+  </ol>
 
   {% include 'ui/components/pagination.html' %}
   <!---->
