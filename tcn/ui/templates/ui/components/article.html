@@ -14,7 +14,7 @@
       <span class="sr-only">{% trans 'Read' %}</span>
     </a>
 
-    <figure class="max-w-1/2 group-first:max-w-full lg:max-w-full">
+    <figure class="skeleton overflow-clip max-w-1/2 group-first:max-w-full lg:max-w-full">
       {% image article.image fill-1920x1080 %}
     </figure>
     <div class="card-body justify-end">
@@ -27,7 +27,7 @@
         >
           <a
             href="{% url 'ui:articles' %}?country={{ article.country }}"
-            class="badge badge-success badge-xl"
+            class="badge badge-success badge-sm md:badge-md xl:badge-lg 2xl:badge-xl"
           >
             <i data-lucide="map-pin" class="size-4 lg:size-6"></i>
             {{ article.country }}

@@ -2,13 +2,15 @@
 
 <li
   role="article"
-  class="relative card bg-base-300 hover:bg-base-200 card-sm md:card-md lg:card-lg xl:card-xl lg:nth-[2]:col-span-8 lg:nth-[2]:row-span-8 xl:nth-[2]:col-span-6 xl:nth-[2]:row-span-6 col-span-12 row-span-12 size-full shadow-sm md:col-span-6 md:row-span-6 lg:col-span-4 lg:row-span-4 xl:col-span-3 xl:row-span-3"
+  class="relative card bg-base-300 hover:bg-base-200 card-sm md:card-md lg:card-lg xl:card-xl lg:nth-[2]:col-span-8 lg:nth-[2]:row-span-6 xl:nth-[2]:col-span-6 xl:nth-[2]:row-span-4 col-span-12 row-span-12 size-full shadow-sm md:col-span-6 md:row-span-6 lg:col-span-4 lg:row-span-4 xl:col-span-3 xl:row-span-3"
 >
   <a href="{% url 'ui:redirect' article.link.slug %}" class="absolute inset-0">
     <span class="sr-only">{% trans 'Read' %}</span>
   </a>
 
-  <figure>{% image article.image fill-1920x1080 %}</figure>
+  <figure class="skeleton overflow-clip">
+    {% image article.image fill-1920x1080 %}
+  </figure>
 
   <div class="card-body justify-end">
     <h2 class="card-title text-primary">{{ article.title }}</h2>
@@ -20,7 +22,7 @@
       >
         <a
           href="{% url 'ui:articles' %}?country={{ article.country }}"
-          class="badge badge-success badge-xl"
+          class="badge badge-success badge-sm md:badge-md xl:badge-lg 2xl:badge-xl"
         >
           <i data-lucide="map-pin" class="size-4 lg:size-6"></i>
           {{ article.country }}
