@@ -100,7 +100,7 @@
   </div>
 
   <h1
-    class="font-bold text-primary text-xl md:text-3xl lg:text-6xl xl:txet-7xl 2xl:text-8xl"
+    class="font-bold text-primary text-xl md:text-3xl lg:text-6xl/24 xl:txet-7xl/32 2xl:text-8xl/36"
   >
     {{ article.title }}
   </h1>
@@ -225,7 +225,7 @@
       </div>
     </div>
 
-    <div class="flex text-xs sm:text-sm items-center gap-4">
+    <div class="flex flex-col md:flex-row text-xs sm:text-sm items-center gap-4">
       <div
         class="tooltip tooltip-bottom tooltip-primary"
         data-tip="{% trans 'Date published' %}"

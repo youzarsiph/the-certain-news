@@ -6,6 +6,8 @@
 <!---->
 {% block content %}
 <div class="container grid gap-8 mx-auto px-4 py-20">
+  {% include 'ui/components/breadcrumbs.html' %}
+
   <h1 class="text-primary text-xl font-bold lg:text-5xl">{{ index }}</h1>
 
   <ol class="grid grid-cols-12 gap-4">
