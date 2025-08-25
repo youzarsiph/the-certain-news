@@ -1,9 +1,10 @@
 """Data Models for tcn.apps.users"""
 
 from secrets import token_urlsafe
-from django.utils.text import slugify
+
 from django.contrib.auth.models import AbstractUser
-from django.db import models, IntegrityError
+from django.db import IntegrityError, models
+from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 from django_countries.fields import CountryField
 from phonenumber_field.modelfields import PhoneNumberField

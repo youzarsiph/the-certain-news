@@ -2,15 +2,15 @@
 
 from typing import Any
 
-from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpRequest
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from django.views import generic
 from django.utils.translation import get_language_from_request
+from django.utils.translation import gettext_lazy as _
+from django.views import generic
 from django_filters.views import FilterView
 from wagtail.contrib.search_promotions.models import Query
 

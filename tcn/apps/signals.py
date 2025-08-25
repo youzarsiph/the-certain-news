@@ -1,8 +1,8 @@
 """Signals to invalidate index pages"""
 
 from django.db.models.signals import pre_delete
-from wagtail.signals import page_published
 from wagtail.contrib.frontend_cache.utils import PurgeBatch
+from wagtail.signals import page_published
 
 from tcn.apps.blog.models import Post
 from tcn.apps.categories.models import Category
