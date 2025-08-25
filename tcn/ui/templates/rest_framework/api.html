@@ -12,7 +12,7 @@
 {% endblock %}
 
 <!---->
-{% block toggle_theme %}{% endblock %}
+{% block toggle_theme %}silk{% endblock %}
 
 <!---->
 {% block theme %}luxury{% endblock %}
@@ -86,8 +86,44 @@
     href="/{{ LANGUAGE_CODE }}/api/documents/"
     class="btn btn-square btn-soft btn-primary"
   >
-    <i data-lucide="file-badge"></i>
+    <i data-lucide="book-text"></i>
     <span class="sr-only">{% trans 'Documents' %}</span>
+  </a>
+</li>
+<li
+  class="tooltip tooltip-right tooltip-primary"
+  data-tip="{% trans 'Articles' %}"
+>
+  <a
+    href="/{{ LANGUAGE_CODE }}/api/articles/"
+    class="btn btn-square btn-soft btn-primary"
+  >
+    <i data-lucide="newspaper"></i>
+    <span class="sr-only">{% trans 'Articles' %}</span>
+  </a>
+</li>
+<li
+  class="tooltip tooltip-right tooltip-primary"
+  data-tip="{% trans 'Categories' %}"
+>
+  <a
+    href="/{{ LANGUAGE_CODE }}/api/categories/"
+    class="btn btn-square btn-soft btn-primary"
+  >
+    <i data-lucide="layers"></i>
+    <span class="sr-only">{% trans 'Categories' %}</span>
+  </a>
+</li>
+<li
+  class="tooltip tooltip-right tooltip-primary"
+  data-tip="{% trans 'Users' %}"
+>
+  <a
+    href="/{{ LANGUAGE_CODE }}/api/users/"
+    class="btn btn-square btn-soft btn-primary"
+  >
+    <i data-lucide="users"></i>
+    <span class="sr-only">{% trans 'Users' %}</span>
   </a>
 </li>
 {% endblock %}

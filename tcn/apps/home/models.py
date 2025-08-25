@@ -50,7 +50,7 @@ class Home(Page):
             .live()
             .filter(is_breaking=True)
             .order_by("-created_at")[:10],
-            "categories": Category.objects.descendant_of(self).live()[:3],
+            "categories": Category.objects.descendant_of(self).live().order_by("?")[:5],
         }
 
 

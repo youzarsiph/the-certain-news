@@ -128,7 +128,7 @@ class BaseArticleListView:
     ordering = "-created_at"
     date_field = "created_at"
     context_object_name = "articles"
-    queryset = Article.objects.live().public()
+    queryset = Article.objects.live().public().prefetch_related("link")
     filterset_fields = ["country", "is_breaking"]
 
     def get_queryset(self) -> mixins.QuerySet[Any]:

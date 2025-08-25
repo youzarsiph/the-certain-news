@@ -14,6 +14,7 @@
 
   <div class="card-body justify-end">
     <h2 class="card-title text-primary">{{ article.title }}</h2>
+
     {% if article.country %}
     <div>
       <div
@@ -30,7 +31,14 @@
       </div>
     </div>
     {% endif %}
-    <p class="hidden grow-0 group-first:block">{{ article.headline }}</p>
+
+    <p 
+      data-order="{{ forloop.counter }}" 
+      class="hidden grow-0 [data-order=2]:block"
+    >
+      {{ article.headline }}
+    </p>
+
     <div class="card-actions items-center gap-2">
       {% if article.is_breaking %}
       <div class="tooltip flex tooltip-error" data-tip="{% trans 'Breaking' %}">
@@ -41,6 +49,7 @@
         </div>
       </div>
       {% endif %}
+
       <a
         href="{% pageurl article.get_parent %}"
         class="tooltip tooltip-primary"
@@ -52,6 +61,7 @@
           {{ article.get_parent.title }}
         </span>
       </a>
+
       <a
         class="tooltip tooltip-primary"
         data-tip="{% trans 'Date published' %}"

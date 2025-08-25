@@ -84,10 +84,13 @@ class Article(DateTimeMixin, Page):
     ]
 
     api_fields = [
+        APIField("country"),
         APIField("image"),
         APIField("headline"),
         APIField("content"),
         APIField("is_breaking"),
+        APIField("tags"),
+        APIField("recommendations"),
         APIField("updated_at"),
         APIField("created_at"),
     ]
@@ -108,6 +111,3 @@ class Article(DateTimeMixin, Page):
             .specific()
             .order_by("?")[:6],
         }
-
-    def __str__(self) -> str:
-        return self.title

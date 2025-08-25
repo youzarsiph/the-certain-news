@@ -27,6 +27,8 @@ class CategoryIndex(DateTimeMixin, Page):
     content_panels = Page.content_panels + [FieldPanel("description")]
     page_description = _("Category index page")
 
+    api_fields = [APIField("description", serializer=RichTextField())]
+
     parent_page_types = ["home.Home"]
     subpage_types = ["categories.Category"]
 
@@ -69,7 +71,10 @@ class Category(DateTimeMixin, ChildPaginatorMixin, Page):
         index.FilterField("display_owner"),
     ]
 
-    api_fields = [APIField("description")]
+    api_fields = [
+        APIField("display_owner"),
+        APIField("description", serializer=RichTextField()),
+    ]
 
     parent_page_types = ["categories.CategoryIndex"]
     subpage_types = ["articles.Article"]

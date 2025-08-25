@@ -11,8 +11,8 @@ register = template.Library()
 
 # Create your tags here.
 @register.simple_tag(takes_context=True)
-def copy_link(context, slug):
-    """Generates the copy link for an article"""
+def short_link(context, slug):
+    """Generates the short link for an article"""
 
     url = reverse_lazy("ui:redirect", args=[slug])
 

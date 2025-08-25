@@ -77,7 +77,14 @@ class Post(DateTimeMixin, Page):
         index.SearchField("content"),
     ]
 
-    api_fields = [APIField("headline"), APIField("content"), APIField("tags")]
+    api_fields = [
+        APIField("image"),
+        APIField("headline"),
+        APIField("content"),
+        APIField("tags"),
+        APIField("created_at"),
+        APIField("updated_at"),
+    ]
 
     parent_page_types = ["blog.BlogIndex"]
     subpage_types = []

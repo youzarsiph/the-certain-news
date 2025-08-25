@@ -9,12 +9,15 @@
 {% endblock %}
 
 <!---->
+{% short_link article.link.slug as link %}
+
+<!---->
 {% block meta %}
 <meta
   name="description"
   content="{% trans 'The Certain News' %} | {% trans 'News' %} | {{ article.title }}"
 />
-<meta property="og:url" content="{{ request.build_absolute_uri }}" />
+<meta property="og:url" content="{{ link }}" />
 <meta property="og:type" content="website" />
 <meta
   property="og:title"
@@ -24,13 +27,13 @@
   property="og:description"
   content="{% trans 'The Certain News' %} | {% trans 'News' %} | {{ article.title }}"
 />
-<meta property="og:image" content="{{ article.image.file.url }}" />
+<meta property="og:image" content="{% image_url article.image 'fill-1920x1080' %}" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta property="twitter:domain" content="{{ request.build_absolute_uri }}" />
-<meta property="twitter:url" content="{{ request.build_absolute_uri }}" />
+<meta property="twitter:domain" content="{{ link }}" />
+<meta property="twitter:url" content="{{ link }}" />
 <meta
   name="twitter:title"
   content="{% trans 'The Certain News' %} | {% trans 'News' %} | {{ article.title }}"
@@ -39,7 +42,7 @@
   name="twitter:description"
   content="{% trans 'The Certain News' %} | {% trans 'News' %} | {{ article.title }}"
 />
-<meta name="twitter:image" content="{{ article.image.file.url }}" />
+<meta name="twitter:image" content="{% image_url article.image 'fill-1920x1080' %}" />
 {% endblock %}
 
 <!---->
@@ -194,7 +197,7 @@
         >
           <button
             class="btn btn-copy btn-square btn-sm btn-primary md:btn-md 2xl:btn-lg"
-            data-clipboard-text="{% copy_link article.link.slug %}"
+            data-clipboard-text="{{ link }}"
           >
             <i
               id="clipboard"
@@ -216,7 +219,7 @@
         >
           <a
             class="btn btn-copy btn-square btn-sm btn-info md:btn-md 2xl:btn-lg"
-            href="https://www.facebook.com/sharer/sharer.php?u={% copy_link article.link.slug %}"
+            href="https://www.facebook.com/sharer/sharer.php?u={{ link }}"
           >
             <i data-lucide="facebook" class="size-4 md:size-6"></i>
             <span class="sr-only">{% trans 'Facebook' %}</span>
