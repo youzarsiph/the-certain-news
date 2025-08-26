@@ -43,22 +43,11 @@
   <div class="grid gap-12">
     {% for category in categories %}
     <section class="grid gap-8">
-      <div class="flex items-center justify-between gap-4">
-        <h1 class="text-3xl text-primary font-black lg:text-5xl">
+      <h1 class="text-3xl text-primary font-black lg:text-5xl">
+        <a href="{% pageurl category %}" class="link link-primary link-hover">
           {{ category.title }}
-        </h1>
-
-        <a
-          href="{% pageurl category %}"
-          class="btn btn-sm btn-primary md:btn-md xl:btn-lg 2xl:btn-xl"
-        >
-          <span>{% trans 'More' %}</span>
-          <i
-            data-lucide="arrow-right"
-            class="size-4 lg:size-6 rtl:rotate-180"
-          ></i>
         </a>
-      </div>
+      </h1>
 
       <ol class="grid grid-cols-12 grid-rows-[auto] gap-4">
         {% for article in category.get_ordered_children.specific|slice:':6' %}
