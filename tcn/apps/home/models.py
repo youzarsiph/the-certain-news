@@ -42,7 +42,10 @@ class Home(Page):
             "contact": self.get_children().type(Contact).last(),
             "blog_index": self.get_children().type(BlogIndex).last(),
             "categories_index": self.get_children().type(CategoryIndex).last(),
-            "random_news": Article.objects.descendant_of(self).live().order_by("?")[:3],
+            "trending_news": Article.objects.descendant_of(self)
+            .live()
+            .prefetch_related("link")
+            .order_by("link__view_count")[:10],
             "latest_news": Article.objects.descendant_of(self)
             .live()
             .order_by("-created_at")[:10],

@@ -50,8 +50,6 @@
 <script src="https://unpkg.com/clipboard@2/dist/clipboard.min.js"></script>
 {% endblock %}
 
-<div class="hidden badge-secondary badge-error"></div>
-
 <!---->
 {% block content %}
 <div class="container grid gap-12 mx-auto px-4 py-20">
@@ -273,7 +271,8 @@
   {% if recommendations %}
   <section class="grid gap-8">
     <h1 class="font-bold text-primary text-xl md:text-3xl lg:text-4xl">
-      {% trans 'Recommendations' %}
+      {% blocktrans trimmed %}More news from{% endblocktrans %}
+      {{ article.get_parent.title }}
     </h1>
 
     <ol class="grid grid-cols-12 grid-rows-[auto] gap-4">
