@@ -8,32 +8,21 @@
     <span class="sr-only">{% trans 'Read' %}</span>
   </a>
 
-  <figure class="skeleton overflow-clip max-w-1/2 group-first:max-w-full">
+  <figure class="skeleton overflow-clip w-full min-w-1/2 max-w-1/2 group-first:max-w-full">
     {% image article.image fill-1920x1080 %}
   </figure>
-  <div class="card-body justify-end">
+
+  <div class="card-body p-4 justify-end">
     <h2 class="card-title text-primary">{{ article.title }}</h2>
-    {% if article.country %}
-    <div>
-      <div
-        class="tooltip tooltip-success"
-        data-tip="{{ article.country.name }}"
-      >
-        <a
-          href="{% url 'ui:articles' %}?country={{ article.country }}"
-          class="badge badge-success badge-sm md:badge-md xl:badge-lg 2xl:badge-xl"
-        >
-          <i data-lucide="map-pin" class="size-4 lg:size-6"></i>
-          {{ article.country }}
-        </a>
-      </div>
-    </div>
-    {% endif %}
+    
     <p class="hidden grow-0 group-first:block">{{ article.headline }}</p>
 
-    <div class="card-actions items-center gap-2">
+    <div class="card-actions items-center gap-1">
       {% if article.is_breaking %}
-      <div class="tooltip flex tooltip-error" data-tip="{% trans 'Breaking' %}">
+      <div
+        class="tooltip flex tooltip-error"
+        data-tip="{% trans 'Breaking' %}"
+      >
         <div class="inline-grid *:[grid-area:1/1]">
           <span class="sr-only">{% trans 'Breaking' %}</span>
           <div class="status status-xl status-error animate-ping"></div>
@@ -42,23 +31,36 @@
       </div>
       {% endif %}
       <a
+        class="tooltip tooltip-primary"
+        data-tip="{% trans 'Date published' %}"
+        href="{% url 'ui:articles-d' article.created_at.year article.created_at.month article.created_at.day %}"
+      >
+        <span class="badge badge-soft badge-xs md:badge-sm badge-primary">
+          {{ article.created_at|date:'Y/m/d' }}
+        </span>
+      </a>
+      {% if article.country %}
+      <div
+        class="tooltip tooltip-success"
+        data-tip="{{ article.country.name }}"
+      >
+        <a
+          href="{% url 'ui:articles' %}?country={{ article.country }}"
+          class="badge badge-success badge-xs md:badge-sm"
+        >
+          {{ article.country }}
+        </a>
+      </div>
+      {% endif %}
+      <a
         href="{% pageurl article.get_parent %}"
         class="tooltip tooltip-primary"
         data-tip="{% trans 'Category' %}"
       >
         <span
-          class="badge badge-sm md:badge-md xl:badge-lg 2xl:badge-xl badge-primary font-semibold"
+          class="badge badge-sm badge-xs md:badge-sm badge-primary"
         >
           {{ article.get_parent.title }}
-        </span>
-      </a>
-      <a
-        class="tooltip tooltip-primary"
-        data-tip="{% trans 'Date published' %}"
-        href="{% url 'ui:articles-d' article.created_at.year article.created_at.month article.created_at.day %}"
-      >
-        <span class="badge badge-soft badge-sm md:badge-md badge-primary">
-          {{ article.created_at|date }}
         </span>
       </a>
     </div>
