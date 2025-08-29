@@ -41,7 +41,7 @@
         </div>
         {% endif %}
         <a
-          class="tooltip tooltip-primary"
+          class="tooltip tooltip-primary z-20"
           data-tip="{% trans 'Date published' %}"
           href="{% url 'ui:articles-d' article.created_at.year article.created_at.month article.created_at.day %}"
         >
@@ -51,7 +51,7 @@
         </a>
         {% if article.country %}
         <div
-          class="tooltip tooltip-success"
+          class="tooltip tooltip-success z-20"
           data-tip="{{ article.country.name }}"
         >
           <a
@@ -64,7 +64,7 @@
         {% endif %}
         <a
           href="{% pageurl article.get_parent %}"
-          class="tooltip tooltip-primary"
+          class="tooltip tooltip-primary z-20"
           data-tip="{% trans 'Category' %}"
         >
           <span
