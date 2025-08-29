@@ -162,38 +162,6 @@
                   </li>
                   {% endif %}
 
-                  <li
-                    class="tooltip tooltip-right rtl:tooltip-left tooltip-error aspect-square"
-                    data-tip="{% trans 'Breaking' %}"
-                  >
-                    <a
-                      href="{% url 'ui:articles' %}?is_breaking=True"
-                      class="btn btn-square btn-soft btn-sm btn-error md:btn-md 2xl:btn-lg"
-                    >
-                      <i
-                        data-lucide="alert-circle"
-                        class="size-4 md:size-6"
-                      ></i>
-                      <span class="sr-only">{% trans 'Breaking' %}</span>
-                    </a>
-                  </li>
-
-                  <li
-                    class="tooltip tooltip-right rtl:tooltip-left tooltip-primary aspect-square"
-                    data-tip="{% trans 'Latest news' %}"
-                  >
-                    <a
-                      href="{% url 'ui:articles' %}"
-                      class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
-                    >
-                      <i
-                        data-lucide="clock-fading"
-                        class="size-4 md:size-6"
-                      ></i>
-                      <span class="sr-only">{% trans 'Latest news' %}</span>
-                    </a>
-                  </li>
-
                   <!---->
                   {% if categories_index %}
                   <li
@@ -222,6 +190,22 @@
                     </a>
                   </li>
                   {% endif %}
+
+                  <li
+                    class="tooltip tooltip-right rtl:tooltip-left tooltip-primary aspect-square"
+                    data-tip="{% trans 'Archive' %}"
+                  >
+                    <a
+                      href="{% url 'ui:archive' %}"
+                      class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
+                    >
+                      <i
+                        data-lucide="folder-archive"
+                        class="size-4 md:size-6"
+                      ></i>
+                      <span class="sr-only">{% trans 'Archive' %}</span>
+                    </a>
+                  </li>
                 </ol>
 
                 <ol class="navbar-end w-full flex-col gap-2">
@@ -804,26 +788,7 @@
               </li>
               {% endif %}
 
-              <li class="sm:hidden">
-                <a
-                  href="{% url 'ui:articles' %}?is_breaking=True"
-                  class="btn btn-sm btn-ghost btn-error md:btn-md btn-block 2xl:btn-xl justify-start"
-                >
-                  <i data-lucide="alert-circle" class="size-4 md:size-6"></i>
-                  <span>{% trans 'Breaking' %}</span>
-                </a>
-              </li>
-
-              <li class="sm:hidden">
-                <a
-                  href="{% url 'ui:articles' %}"
-                  class="btn btn-sm btn-ghost btn-primary md:btn-md btn-block 2xl:btn-xl justify-start"
-                >
-                  <i data-lucide="clock-fading" class="size-4 md:size-6"></i>
-                  <span>{% trans 'Latest news' %}</span>
-                </a>
-              </li>
-
+              <!---->
               {% if categories_index %}
               <li class="sm:hidden">
                 <a
