@@ -7,14 +7,10 @@
 [![Code Testing](https://github.com/youzarsiph/the-certain-news/actions/workflows/tests.yml/badge.svg)](https://github.com/youzarsiph/the-certain-news/actions/workflows/tests.yml)
 [![Docker Image](https://github.com/youzarsiph/the-certain-news/actions/workflows/docker-image.yml/badge.svg)](https://github.com/youzarsiph/the-certain-news/actions/workflows/docker-image.yml)
 [![Docker Publish](https://github.com/youzarsiph/the-certain-news/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/youzarsiph/the-certain-news/actions/workflows/docker-publish.yml)
-[![PyPI - Version](https://img.shields.io/pypi/v/the-certain-news?logo=pypi&logoColor=white)](https://pypi.org/project/the-certain-news/)
-[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/the-certain-news?logo=python&logoColor=white)](https://pypi.org/project/the-certain-news/)
-[![PyPI - Downloads](https://img.shields.io/pypi/dm/the-certain-news?logo=pypi&logoColor=white)](https://pypi.org/project/the-certain-news/)
-[![PyPI - License](https://img.shields.io/pypi/l/the-certain-news?logo=pypi&logoColor=white)](https://pypi.org/project/the-certain-news/)
 
 ## Overview
 
-This repository serves as a comprehensive Python application template designed to facilitate robust development practices. Leveraging modern tools and methodologies, this template is tailored for developers aiming to build maintainable, scalable applications. It emphasizes dependency management, code quality, and seamless integration with DevOps pipelines.
+This repository is a comprehensive Python application designed to facilitate robust development practices. Leveraging modern tools and methodologies, tailored for developers aiming to build maintainable, scalable applications. It emphasizes dependency management, code quality, and seamless integration with DevOps pipelines.
 
 ## Key Features
 

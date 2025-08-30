@@ -61,18 +61,6 @@ class UserViewSet(BaseUVS):
 
     This viewset extends functionality beyond the standard endpoints with additional custom actions:
 
-    - **Join:**
-    Allows users to join our platform's instructor team.
-    `POST /api/users/{id}/join`
-    *Request:* No body is required.
-    *Response:* Returns a confirmation message.
-
-    - **Approve:**
-    Allows admins to approve join requests to our platform's instructor team.
-    `POST /api/users/{id}/approve`
-    *Request:* No body is required.
-    *Response:* Returns a confirmation message.
-
     ## Example API Requests
 
     **List Users:**
@@ -110,4 +98,4 @@ class UserViewSet(BaseUVS):
     lookup_field = "pk"
     search_fields = ["username", "first_name", "last_name"]
     ordering_fields = ["username", "date_joined", "last_login"]
-    filterset_fields = ["username", "is_instructor"]
+    filterset_fields = ["username"]

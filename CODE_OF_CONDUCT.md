@@ -1,6 +1,6 @@
 # Code of Conduct
 
-**`the-certain-news`** template values the participation of every member of our community and is dedicated to providing a welcoming, friendly, and respectful environment. To uphold this commitment, we have established the following code of conduct that all contributors, users, and participants must adhere to.
+**`the-certain-news`** values the participation of every member of our community and is dedicated to providing a welcoming, friendly, and respectful environment. To uphold this commitment, we have established the following code of conduct that all contributors, users, and participants must adhere to.
 
 ## Our Pledge
 
