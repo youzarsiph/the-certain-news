@@ -66,6 +66,7 @@ jobs:
           echo "    'wagtail.images'," >> core/settings.py
           echo "    'wagtail.search'," >> core/settings.py
           echo "    'wagtail.admin'," >> core/settings.py
+          echo "    'wagtail_ai'," >> core/settings.py
           echo "    'wagtail'," >> core/settings.py
           echo "    'modelcluster'," >> core/settings.py
           echo "    'taggit'," >> core/settings.py

@@ -1,5 +1,5 @@
 {% load i18n static tcn wagtailcore_tags wagtailimages_tags wagtailuserbar %}
-<!doctype html>
+<!DOCTYPE html>
 <html
   lang="{{ LANGUAGE_CODE }}"
   dir="{% if LANGUAGE_CODE == 'ar' %}rtl{% else %}ltr{% endif %}"
@@ -83,7 +83,7 @@
   </head>
 
   <body class="rtl:font-kufi font-sans antialiased">
-    {% if request.user.is_staff %}{% wagtailuserbar %}{% endif %}
+    {% wagtailuserbar %}
 
     <div class="drawer">
       <input id="nav-drawer" type="checkbox" class="drawer-toggle" />

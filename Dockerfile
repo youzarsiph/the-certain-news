@@ -52,6 +52,7 @@ RUN echo "    'wagtail.documents'," >> core/settings.py
 RUN echo "    'wagtail.images'," >> core/settings.py
 RUN echo "    'wagtail.search'," >> core/settings.py
 RUN echo "    'wagtail.admin'," >> core/settings.py
+RUN echo "    'wagtail_ai'," >> core/settings.py
 RUN echo "    'wagtail'," >> core/settings.py
 RUN echo "    'modelcluster'," >> core/settings.py
 RUN echo "    'taggit'," >> core/settings.py

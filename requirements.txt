@@ -15,4 +15,5 @@ pillow
 pygments
 python-dotenv
 wagtail
+wagtail-ai
 wagtail-localize

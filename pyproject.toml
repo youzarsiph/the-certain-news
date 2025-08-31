@@ -29,6 +29,7 @@ pygments = ">=2.19.1"
 pillow = ">=11.2.1"
 python-dotenv = ">=1.1.0"
 wagtail = ">=7.0"
+wagtail-ai = ">=2.1.2"
 wagtail-localize = ">=1.12.1"
 
 [tool.poetry.group.dev.dependencies]
