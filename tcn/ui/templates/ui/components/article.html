@@ -18,12 +18,18 @@
       {% image article.image fill-1920x1080 %}
     </figure>
 
-    <div class="card-body p-4 justify-end bg-gradient-to-t from-base-100 to-transparent to-75%">
-      <h2 class="card-title text-primary-content text-shadow-lg dark:text-primary">
+    <div
+      class="card-body p-4 justify-end bg-gradient-to-t from-primary dark:from-base-100 to-transparent to-75%"
+    >
+      <h2
+        class="card-title text-primary-content text-shadow-lg dark:text-primary"
+      >
         {{ article.title }}
       </h2>
 
-      <p class="hidden grow-0 text-primary-content text-shadow-lg dark:text-primary group-first:block">
+      <p
+        class="hidden grow-0 text-primary-content text-shadow-lg dark:text-primary group-first:block"
+      >
         {{ article.headline }}
       </p>
 
@@ -67,9 +73,7 @@
           class="tooltip tooltip-primary z-20"
           data-tip="{% trans 'Category' %}"
         >
-          <span
-            class="badge badge-sm badge-xs md:badge-sm badge-primary"
-          >
+          <span class="badge badge-xs md:badge-sm badge-primary">
             {{ article.get_parent.title }}
           </span>
         </a>
