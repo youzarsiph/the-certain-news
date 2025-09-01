@@ -1,4 +1,4 @@
-{% extends 'ui/base.html' %}{% load i18n wagtailcore_tags wagtailimages_tags %}
+{% extends 'ui/base.html' %}{% load i18n %}
 
 <!---->
 {% block title %}{{ block.super }} | {% trans 'Archive' %}{% endblock %}
@@ -56,7 +56,7 @@
       class="col-span-6 row-span-6 md:col-span-3 md:row-span-3 lg:col-span-2 lg:row-span-2 2xl:col-span-1 2xl:row-span-1"
     >
       <article
-        class="card relative size-full card-sm lg:card-md xl:card-lg 2xl:card-xl bg-base-200 size-full shadow-sm hover:bg-base-300"
+        class="card relative card-sm lg:card-md xl:card-lg 2xl:card-xl bg-base-200 size-full shadow-sm hover:bg-base-300"
       >
         <a href="{% url 'ui:articles-y' date.year %}" class="absolute inset-0">
           <span class="sr-only">{% trans 'Read' %}</span>

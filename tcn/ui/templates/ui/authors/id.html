@@ -1,12 +1,8 @@
-{% extends 'ui/base.html' %}
+{% extends 'ui/base.html' %}{% load i18n tcn %}
 
 <!---->
-{% load i18n tcn wagtailcore_tags wagtailimages_tags %}
-
-<!---->
-{% block title %}
-{{ block.super }} | {% trans 'Authors' %} | {{ user.get_full_name }}
-{% endblock %}
+{% block title %}{{ block.super }} | {% trans 'Authors' %} |
+{{ user.get_full_name }}{% endblock %}
 
 <!---->
 {% block content %}

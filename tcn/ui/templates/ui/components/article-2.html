@@ -15,8 +15,8 @@
   <div class="card-body p-4 justify-end">
     <h2 class="card-title text-primary">{{ article.title }}</h2>
 
-    <p 
-      data-order="{{ forloop.counter }}" 
+    <p
+      data-order="{{ forloop.counter }}"
       class="hidden grow-0 [data-order=2]:block"
     >
       {{ article.headline }}
@@ -24,10 +24,7 @@
 
     <div class="card-actions items-center gap-1">
       {% if article.is_breaking %}
-      <div
-        class="tooltip flex tooltip-error"
-        data-tip="{% trans 'Breaking' %}"
-      >
+      <div class="tooltip flex tooltip-error" data-tip="{% trans 'Breaking' %}">
         <div class="inline-grid *:[grid-area:1/1]">
           <span class="sr-only">{% trans 'Breaking' %}</span>
           <div class="status status-xl status-error animate-ping"></div>
@@ -62,9 +59,7 @@
         class="tooltip tooltip-primary"
         data-tip="{% trans 'Category' %}"
       >
-        <span
-          class="badge badge-sm badge-xs md:badge-sm badge-primary"
-        >
+        <span class="badge badge-xs md:badge-sm badge-primary">
           {{ article.get_parent.title }}
         </span>
       </a>
