@@ -1,9 +1,8 @@
-# the-certain-news Arabic translations.
+# the-certain-news Turkish translations.
 # Copyright (C) 2025 Yousuf Abu Shanab
 # This file is distributed under the same license as the the-certain-news package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: the-certain-news 0.1.0\n"
@@ -12,352 +11,285 @@ msgstr ""
 "PO-Revision-Date: 2025-6-20 HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: Arabic\n"
+"Language: Turkish\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: tcn/apps/articles/models.py:25 tcn/apps/users/models.py:27
 msgid "country"
-msgstr "الدولة"
+msgstr "ülke"
 
 #: tcn/apps/articles/models.py:26
-#, fuzzy
-#| msgid "country"
 msgid "Country"
-msgstr "الدولة"
+msgstr "Ülke"
 
 #: tcn/apps/articles/models.py:32 tcn/apps/blog/models.py:44
 #: tcn/apps/users/models.py:39
-#, fuzzy
-#| msgid "Image"
 msgid "image"
-msgstr "صورة"
+msgstr "görsel"
 
 #: tcn/apps/articles/models.py:33
 msgid "Article image"
-msgstr "صورة المقال"
+msgstr "Makale görseli"
 
 #: tcn/apps/articles/models.py:38 tcn/apps/blog/models.py:50
-#, fuzzy
-#| msgid "Article headline"
 msgid "headline"
-msgstr "عنوان المقال"
+msgstr "başlık"
 
 #: tcn/apps/articles/models.py:39
 msgid "Article headline"
-msgstr "عنوان المقال"
+msgstr "Makale başlığı"
 
 #: tcn/apps/articles/models.py:43 tcn/apps/blog/models.py:55
 #: tcn/apps/home/models.py:67 tcn/apps/home/models.py:92
-#, fuzzy
-#| msgid "Article content"
 msgid "content"
-msgstr "محتوى المقال"
+msgstr "içerik"
 
 #: tcn/apps/articles/models.py:44
 msgid "Article content"
-msgstr "محتوى المقال"
+msgstr "Makale içeriği"
 
 #: tcn/apps/articles/models.py:48
-#, fuzzy
-#| msgid "Breaking"
 msgid "is breaking"
-msgstr "عاجل"
+msgstr "son dakika"
 
 #: tcn/apps/articles/models.py:49
 msgid "Designates if the Article is in breaking news"
-msgstr "يشير إلى ما إذا كان المقال خبرًا عاجلًا"
+msgstr "Makalenin son dakika haberi olup olmadığını belirtir"
 
 #: tcn/apps/articles/models.py:54 tcn/apps/blog/models.py:61
 msgid "tags"
-msgstr "وسوم"
+msgstr "etiketler"
 
 #: tcn/apps/articles/models.py:55 tcn/cms/wagtail_hooks.py:23
 msgid "Tags"
-msgstr "وسوم"
+msgstr "Etiketler"
 
 #: tcn/apps/articles/models.py:60
 msgid "recommendations"
-msgstr "الاقتراحات"
+msgstr "öneriler"
 
 #: tcn/apps/articles/models.py:61
 msgid "Similar articles"
-msgstr "مقالات ذات صلة"
+msgstr "Benzer makaleler"
 
 #: tcn/apps/articles/models.py:66
 msgid "News Articles"
-msgstr "مقالات إخبارية"
+msgstr "Haber makaleleri"
 
 #: tcn/apps/articles/models.py:105
-#, fuzzy
-#| msgid "News Articles"
 msgid "News article"
-msgstr "مقالات إخبارية"
+msgstr "Haber makalesi"
 
 #: tcn/apps/articles/models.py:106
-#, fuzzy
-#| msgid "News Articles"
 msgid "News articles"
-msgstr "مقالات إخبارية"
+msgstr "Haber makaleleri"
 
 #: tcn/apps/blog/models.py:22 tcn/apps/blog/models.py:30
 msgid "Blog index page"
-msgstr "المدونة"
+msgstr "Blog dizin sayfası"
 
 #: tcn/apps/blog/models.py:45
-#, fuzzy
-#| msgid "Article image"
 msgid "Post image"
-msgstr "صورة المقال"
+msgstr "Yazı görseli"
 
 #: tcn/apps/blog/models.py:51
-#, fuzzy
-#| msgid "Article headline"
 msgid "Post headline"
-msgstr "عنوان المقال"
+msgstr "Yazı başlığı"
 
 #: tcn/apps/blog/models.py:56
-#, fuzzy
-#| msgid "Article content"
 msgid "Post content"
-msgstr "محتوى المقال"
+msgstr "Yazı içeriği"
 
 #: tcn/apps/blog/models.py:62
 msgid "Post tags"
-msgstr "وسوم المقال"
+msgstr "Yazı etiketleri"
 
 #: tcn/apps/blog/models.py:73
 msgid "Blog Posts"
-msgstr "مقالات المدونة"
+msgstr "Blog yazıları"
 
 #: tcn/apps/blog/models.py:95
 msgid "Blog post"
-msgstr "مقال المدونة"
+msgstr "Blog yazısı"
 
 #: tcn/apps/blog/models.py:96
 msgid "Blog posts"
-msgstr "مقالات المدونة"
+msgstr "Blog yazıları"
 
 #: tcn/apps/categories/models.py:21 tcn/apps/categories/models.py:48
-#, fuzzy
-#| msgid "Category description"
 msgid "description"
-msgstr "وصف الفئة"
+msgstr "açıklama"
 
 #: tcn/apps/categories/models.py:22
-#, fuzzy
-#| msgid "Category description"
 msgid "Page description"
-msgstr "وصف الفئة"
+msgstr "Sayfa açıklaması"
 
 #: tcn/apps/categories/models.py:28 tcn/apps/categories/models.py:38
-#, fuzzy
-#| msgid "Categories"
 msgid "Category index page"
-msgstr "الفئات"
+msgstr "Kategori dizin sayfası"
 
 #: tcn/apps/categories/models.py:39
-#, fuzzy
-#| msgid "Categories"
 msgid "Category index pages"
-msgstr "الفئات"
+msgstr "Kategori dizin sayfaları"
 
 #: tcn/apps/categories/models.py:49
 msgid "Category description"
-msgstr "وصف الفئة"
+msgstr "Kategori açıklaması"
 
 #: tcn/apps/categories/models.py:53
 msgid "show owner"
-msgstr "عرض الكاتب"
+msgstr "yazarı göster"
 
 #: tcn/apps/categories/models.py:54
 msgid "Wether to display the name of the owner of news article"
-msgstr "يحدد فيما إن كنت تريد عرض اسم الكاتب مع المقال"
+msgstr "Haber makalesinin sahibinin adının görüntülenip görüntülenmeyeceği"
 
 #: tcn/apps/categories/models.py:65
-#, fuzzy
-#| msgid ""
-#| "Categories help organize articles into thematic or subject-related "
-#| "groupings, making it easier for users to explore and filter available "
-#| "articles."
 msgid ""
 "Categories help organize news article into thematic or subject-related "
 "groupings, making it easier for users to explore and filter available news "
 "article."
 msgstr ""
-"تساعد الفئات في تنظيم المقالات ضمن مجموعات موضوعية أو متعلقة بالموضوع، مما "
-"يسهل على المستخدمين استكشاف المقالات وفرزها."
+"Kategoriler, haber makalelerini tematik veya konuya ilişkin gruplara ayırmaya "
+"yardımcı olur; böylece kullanıcıların mevcut haber makalelerini keşfetmesi ve "
+"filtrelemesi kolaylaşır."
 
 #: tcn/apps/categories/models.py:85
-#, fuzzy
-#| msgid "Category"
 msgid "category"
-msgstr "الفئة"
+msgstr "kategori"
 
 #: tcn/apps/categories/models.py:86
-#, fuzzy
-#| msgid "Categories"
 msgid "categories"
-msgstr "الفئات"
+msgstr "kategoriler"
 
 #: tcn/apps/home/models.py:31
-#, fuzzy
-#| msgid "Home"
 msgid "Home page"
-msgstr "الرئيسية"
+msgstr "Ana sayfa"
 
 #: tcn/apps/home/models.py:32
 msgid "Home pages"
-msgstr "الصفحات الرئيسية"
+msgstr "Ana sayfalar"
 
 #: tcn/apps/home/models.py:68 tcn/apps/home/models.py:93
-#, fuzzy
-#| msgid "Article content"
 msgid "Page content"
-msgstr "محتوى المقال"
+msgstr "Sayfa içeriği"
 
 #: tcn/apps/home/models.py:73
-#, fuzzy
-#| msgid "About us"
 msgid "About us page"
-msgstr "من نحن"
+msgstr "Hakkımızda sayfası"
 
 #: tcn/apps/home/models.py:81
-#, fuzzy
-#| msgid "About us"
 msgid "About page"
-msgstr "من نحن"
+msgstr "Hakkında sayfası"
 
 #: tcn/apps/home/models.py:82
-#, fuzzy
-#| msgid "About us"
 msgid "About pages"
-msgstr "من نحن"
+msgstr "Hakkında sayfaları"
 
 #: tcn/apps/home/models.py:98
-#, fuzzy
-#| msgid "Contact"
 msgid "Contact us page"
-msgstr "اتصل بنا"
+msgstr "Bize ulaşın sayfası"
 
 #: tcn/apps/home/models.py:106
-#, fuzzy
-#| msgid "Contact"
 msgid "Contact page"
-msgstr "اتصل بنا"
+msgstr "İletişim sayfası"
 
 #: tcn/apps/home/models.py:107
-#, fuzzy
-#| msgid "Contact"
 msgid "Contact pages"
-msgstr "اتصل بنا"
+msgstr "İletişim sayfaları"
 
 #: tcn/apps/links/models.py:25
-#, fuzzy
-#| msgid "articles"
 msgid "article"
-msgstr "مقالات"
+msgstr "makale"
 
 #: tcn/apps/links/models.py:26
-#, fuzzy
-#| msgid "Saved articles"
 msgid "Related article"
-msgstr "المقالات المحفوظة"
+msgstr "İlgili makale"
 
 #: tcn/apps/links/models.py:33 tcn/apps/users/models.py:21
 msgid "slug"
-msgstr "رابط"
+msgstr "kısa ad"
 
 #: tcn/apps/links/models.py:34
 msgid "Link url"
-msgstr "رابط"
+msgstr "Bağlantı URL'si"
 
 #: tcn/apps/links/models.py:39 tcn/apps/links/models.py:44
 msgid "views"
-msgstr "المشاهدات"
+msgstr "görüntülenme"
 
 #: tcn/apps/links/models.py:40 tcn/apps/links/models.py:45
-#, fuzzy
-#| msgid "Article image"
 msgid "Article views"
-msgstr "صورة المقال"
+msgstr "Makale görüntülemeleri"
 
 #: tcn/apps/links/models.py:51
-#, fuzzy
-#| msgid "Linkedin"
 msgid "Link"
-msgstr "لينكدإن"
+msgstr "Bağlantı"
 
 #: tcn/apps/links/models.py:52
-#, fuzzy
-#| msgid "Linkedin"
 msgid "Links"
-msgstr "لينكدإن"
+msgstr "Bağlantılar"
 
 #: tcn/apps/mixins.py:15 tcn/apps/mixins.py:16
 #: tcn/ui/templates/ui/articles/id.html:248
 #: tcn/ui/templates/ui/blog/post.html:134
 msgid "Last update"
-msgstr "آخر تحديث"
+msgstr "Son güncelleme"
 
 #: tcn/apps/mixins.py:20 tcn/apps/mixins.py:21
 msgid "Date created"
-msgstr "تاريخ الإنشاء"
+msgstr "Oluşturulma tarihi"
 
 #: tcn/apps/users/models.py:22
 msgid "Slug"
-msgstr "رابط قصير"
+msgstr "Kısa ad"
 
 #: tcn/apps/users/models.py:28
-#, fuzzy
-#| msgid "User photo"
 msgid "User country"
-msgstr "صورة المستخدم"
+msgstr "Kullanıcı ülkesi"
 
 #: tcn/apps/users/models.py:33
 msgid "phone number"
-msgstr "رقم الهاتف"
+msgstr "telefon numarası"
 
 #: tcn/apps/users/models.py:34
 msgid "User phone number"
-msgstr "رقم هاتف المستخدم"
+msgstr "Kullanıcı telefon numarası"
 
 #: tcn/apps/users/models.py:41
-#, fuzzy
-#| msgid "Article image"
 msgid "Profile image"
-msgstr "صورة المقال"
+msgstr "Profil resmi"
 
 #: tcn/apps/users/models.py:47
 msgid "bio"
-msgstr "معلومات عامة"
+msgstr "biyografi"
 
 #: tcn/apps/users/models.py:48
 msgid "Tell us about yourself"
-msgstr "أخبرنا عن حولك"
+msgstr "Bize kendinizden bahsedin"
 
 #: tcn/cms/blocks.py:14
 msgid "Quote"
-msgstr "اقتباس"
+msgstr "Alıntı"
 
 #: tcn/cms/blocks.py:15
 msgid "Rich Text"
-msgstr "النص"
+msgstr "Zengin Metin"
 
 #: tcn/cms/blocks.py:21
 msgid "Video"
-msgstr "فيديو"
+msgstr "Video"
 
 #: tcn/cms/blocks.py:22
 msgid "Image"
-msgstr "صورة"
+msgstr "Görsel"
 
 #: tcn/cms/blocks.py:23
 msgid "Document"
-msgstr "مستند"
+msgstr "Belge"
 
 #: tcn/ui/templates/registration/base.html:4
 #: tcn/ui/templates/registration/base.html:69
@@ -370,7 +302,7 @@ msgstr "مستند"
 #: tcn/ui/templates/ui/base.html:459 tcn/ui/templates/ui/base.html:466
 #: tcn/ui/templates/ui/base.html:909
 msgid "Profile"
-msgstr "الملف الشخصي"
+msgstr "Profil"
 
 #: tcn/ui/templates/registration/base.html:26
 #: tcn/ui/templates/registration/base.html:34
@@ -380,15 +312,14 @@ msgstr "الملف الشخصي"
 #: tcn/ui/templates/ui/base.html:129 tcn/ui/templates/ui/base.html:137
 #: tcn/ui/templates/ui/base.html:384 tcn/ui/templates/ui/base.html:393
 msgid "Open drawer"
-msgstr "افتح القائمة"
+msgstr "Menüyü aç"
 
-#: tcn/ui/templates/registration/base.html:30 tcn/ui/templates/ui/base.html:133
+#: tcn/ui/templates/registration/base.html:30
+#: tcn/ui/templates/ui/base.html:133
 #: tcn/ui/templates/ui/base.html:388 tcn/ui/templates/ui/base.html:688
 #: tcn/ui/templates/ui/base.html:725
-#, fuzzy
-#| msgid "Close drawer"
 msgid "close sidebar"
-msgstr "أغلق القائمة"
+msgstr "Kenar çubuğunu kapat"
 
 #: tcn/ui/templates/registration/base.html:41
 #: tcn/ui/templates/registration/base.html:57
@@ -412,7 +343,8 @@ msgstr "أغلق القائمة"
 #: tcn/ui/templates/ui/articles/id.html:20
 #: tcn/ui/templates/ui/articles/id.html:24
 #: tcn/ui/templates/ui/articles/id.html:38
-#: tcn/ui/templates/ui/articles/id.html:42 tcn/ui/templates/ui/base.html:11
+#: tcn/ui/templates/ui/articles/id.html:42
+#: tcn/ui/templates/ui/base.html:11
 #: tcn/ui/templates/ui/base.html:104 tcn/ui/templates/ui/base.html:121
 #: tcn/ui/templates/ui/base.html:400 tcn/ui/templates/ui/base.html:416
 #: tcn/ui/templates/ui/base.html:639 tcn/ui/templates/ui/base.html:645
@@ -421,7 +353,7 @@ msgstr "أغلق القائمة"
 #: tcn/ui/templates/ui/blog/post.html:18 tcn/ui/templates/ui/blog/post.html:22
 #: tcn/ui/templates/ui/blog/post.html:33 tcn/ui/templates/ui/blog/post.html:37
 msgid "The Certain News"
-msgstr "النبأ اليقين"
+msgstr "Kesin Haber"
 
 #: tcn/ui/templates/registration/base.html:82
 #: tcn/ui/templates/registration/base.html:89
@@ -435,7 +367,7 @@ msgstr "النبأ اليقين"
 #: tcn/ui/templates/ui/base.html:472 tcn/ui/templates/ui/base.html:479
 #: tcn/ui/templates/ui/base.html:929
 msgid "Log in"
-msgstr "تسجيل الدخول"
+msgstr "Giriş yap"
 
 #: tcn/ui/templates/registration/base.html:94
 #: tcn/ui/templates/registration/base.html:101
@@ -447,7 +379,7 @@ msgstr "تسجيل الدخول"
 #: tcn/ui/templates/ui/base.html:484 tcn/ui/templates/ui/base.html:494
 #: tcn/ui/templates/ui/base.html:938
 msgid "Sign up"
-msgstr "إنشاء حساب"
+msgstr "Kayıt ol"
 
 #: tcn/ui/templates/registration/base.html:123
 #: tcn/ui/templates/registration/base.html:131
@@ -459,272 +391,247 @@ msgstr "إنشاء حساب"
 #: tcn/ui/templates/ui/search.html:6 tcn/ui/templates/ui/search.html:12
 #: tcn/ui/templates/ui/search.html:29
 msgid "Search"
-msgstr "بحث"
+msgstr "Ara"
 
 #: tcn/ui/templates/registration/base.html:186
 #: tcn/ui/templates/registration/base.html:219
 msgid "Close drawer"
-msgstr "أغلق القائمة"
+msgstr "Menüyü kapat"
 
 #: tcn/ui/templates/registration/base.html:215
 #: tcn/ui/templates/registration/base.html:223
 #: tcn/ui/templates/ui/articles/list.html:64
 #: tcn/ui/templates/ui/articles/list.html:72
-#: tcn/ui/templates/ui/articles/list.html:87 tcn/ui/templates/ui/base.html:721
-#: tcn/ui/templates/ui/base.html:729
+#: tcn/ui/templates/ui/articles/list.html:87
+#: tcn/ui/templates/ui/base.html:721 tcn/ui/templates/ui/base.html:729
 msgid "Close"
-msgstr "إغلاق"
+msgstr "Kapat"
 
 #: tcn/ui/templates/registration/base.html:247
 #: tcn/ui/templates/ui/base.html:157 tcn/ui/templates/ui/base.html:167
 #: tcn/ui/templates/ui/base.html:787
 msgid "Dashboard"
-msgstr "لوحة التحكم"
+msgstr "Kontrol Paneli"
 
 #: tcn/ui/templates/registration/base.html:263
 #: tcn/ui/templates/registration/edit.html:4
 #: tcn/ui/templates/registration/edit.html:9
 msgid "Settings"
-msgstr "الإعدادات"
+msgstr "Ayarlar"
 
 #: tcn/ui/templates/registration/base.html:272
 msgid "Change Password"
-msgstr "تغيير كلمة المرور"
+msgstr "Şifreyi Değiştir"
 
 #: tcn/ui/templates/registration/base.html:284
 #: tcn/ui/templates/registration/delete.html:4
 #: tcn/ui/templates/registration/delete.html:8
 #: tcn/ui/templates/registration/delete.html:14
 msgid "Delete account"
-msgstr "حذف الحساب"
+msgstr "Hesabı sil"
 
 #: tcn/ui/templates/registration/base.html:294
 #: tcn/ui/templates/ui/base.html:325 tcn/ui/templates/ui/base.html:333
 #: tcn/ui/templates/ui/base.html:919
 msgid "Log out"
-msgstr "تسجيل الخروج"
+msgstr "Çıkış yap"
 
 #: tcn/ui/templates/registration/delete.html:18
 msgid "Are your sure that you want to delete your account?"
-msgstr "هل أنت متأكد أنك تريد حذف حسابك؟"
+msgstr "Hesabınızı silmek istediğinizden emin misiniz?"
 
 #: tcn/ui/templates/registration/delete.html:23
 msgid "This action is destructive!"
-msgstr "هذا الإجراء مدمر!"
+msgstr "Bu işlem geri alınamaz!"
 
 #: tcn/ui/templates/registration/logged_out.html:4
 msgid "Logged out"
-msgstr "تم تسجيل الخروج"
+msgstr "Oturum kapatıldı"
 
 #: tcn/ui/templates/registration/logged_out.html:34
 msgid "Logged Out"
-msgstr "تم تسجيل الخروج"
+msgstr "Oturum kapatıldı"
 
 #: tcn/ui/templates/registration/logged_out.html:36
 msgid "Thanks for spending some quality time with us today."
-msgstr "شكرًا لقضاء بعض الوقت الثمين معنا اليوم."
+msgstr "Bugün bizimle vakit geçirdiğiniz için teşekkürler."
 
 #: tcn/ui/templates/registration/login.html:36
 msgid "Welcome, please login to continue."
-msgstr "مرحبًا، يرجى تسجيل الدخول للمتابعة."
+msgstr "Hoş geldiniz, devam etmek için lütfen giriş yapın."
 
 #: tcn/ui/templates/registration/login.html:46
 msgid ""
 "Your account doesn't have access to this page. To proceed, please login with "
 "an account that has access. <!---->"
 msgstr ""
-"ليس لدى حسابك صلاحية الوصول إلى هذه الصفحة. للمتابعة، يرجى تسجيل الدخول "
-"بحساب لديه الصلاحية."
+"Hesabınızın bu sayfaya erişim yetkisi yok. Devam etmek için lütfen yetkili bir hesapla giriş yapın."
 
 #: tcn/ui/templates/registration/login.html:68
 #: tcn/ui/templates/registration/signup.html:49
 msgid "Forgot password?"
-msgstr "نسيت كلمة المرور؟"
+msgstr "Şifrenizi mi unuttunuz?"
 
 #: tcn/ui/templates/registration/password_change_done.html:4
 msgid "Password Changed"
-msgstr "تم تغيير كلمة المرور"
+msgstr "Şifre Değiştirildi"
 
 #: tcn/ui/templates/registration/password_change_done.html:8
 #: tcn/ui/templates/registration/password_change_form.html:8
 msgid "Password"
-msgstr "كلمة المرور"
+msgstr "Şifre"
 
 #: tcn/ui/templates/registration/password_change_done.html:10
 #: tcn/ui/templates/registration/password_change_form.html:9
 msgid "Change"
-msgstr "تغيير"
+msgstr "Değiştir"
 
 #: tcn/ui/templates/registration/password_change_done.html:12
 msgid "Done"
-msgstr "تم"
+msgstr "Tamamlandı"
 
 #: tcn/ui/templates/registration/password_change_done.html:19
 msgid "Congrats"
-msgstr "تهانينا"
+msgstr "Tebrikler"
 
 #: tcn/ui/templates/registration/password_change_done.html:22
 msgid "Your password was changed."
-msgstr "تم تغيير كلمة المرور بنجاح."
+msgstr "Şifreniz değiştirildi."
 
 #: tcn/ui/templates/registration/password_change_form.html:4
 msgid "Password Change"
-msgstr "تغيير كلمة المرور"
+msgstr "Şifre Değiştirme"
 
 #: tcn/ui/templates/registration/password_change_form.html:16
 msgid "Change password"
-msgstr "تغيير كلمة المرور"
+msgstr "Şifreyi değiştir"
 
 #: tcn/ui/templates/registration/password_change_form.html:20
 msgid ""
 "Please enter your old password, for security's sake, and then enter your new "
 "password twice so we can verify you typed it in correctly."
 msgstr ""
-"يرجى إدخال كلمة المرور القديمة حفاظًا على الأمان، ثم إدخال كلمة المرور "
-"الجديدة مرتين للتأكد من صحتها."
+"Lütfen güvenlik amacıyla eski şifrenizi girin ve ardından yeni şifrenizi doğrulamak için iki kez yazın."
 
 #: tcn/ui/templates/registration/password_reset_complete.html:4
 msgid "Password Reset"
-msgstr "إعادة تعيين كلمة المرور"
+msgstr "Şifre Sıfırlama"
 
 #: tcn/ui/templates/registration/password_reset_complete.html:35
 #: tcn/ui/templates/registration/password_reset_confirm.html:4
 #: tcn/ui/templates/registration/password_reset_confirm.html:35
 msgid "Password Reset Confirm"
-msgstr "تأكيد إعادة التعيين"
+msgstr "Şifre Sıfırlama Onayı"
 
 #: tcn/ui/templates/registration/password_reset_complete.html:39
 msgid "Your password has been set. You may go ahead and log in now."
-msgstr "تم تعيين كلمة المرور. يمكنك الآن تسجيل الدخول."
+msgstr "Şifreniz ayarlandı. Artık giriş yapabilirsiniz."
 
 #: tcn/ui/templates/registration/password_reset_confirm.html:40
 msgid ""
 "Please enter your new password twice so we can verify you typed it in "
 "correctly."
-msgstr "يرجى إدخال كلمة المرور الجديدة مرتين للتأكد من صحتها."
+msgstr "Lütfen yeni şifrenizi doğrulamak için iki kez girin."
 
 #: tcn/ui/templates/registration/password_reset_confirm.html:47
 msgid ""
 "The password reset link was invalid, possibly because it has already been "
 "used. Please request a new password reset. <!---->"
-msgstr ""
-"رابط إعادة التعيين غير صالح، ربما لأنه استُخدم مسبقًا. يرجى طلب إعادة تعيين "
-"جديدة."
+msgstr "Şifre sıfırlama bağlantısı geçersiz; muhtemelen daha önce kullanıldı. Lütfen yeni bir şifre sıfırlama isteğinde bulunun."
 
 #: tcn/ui/templates/registration/password_reset_done.html:4
 #: tcn/ui/templates/registration/password_reset_done.html:34
 msgid "Password Reset Done"
-msgstr "تمت إعادة التعيين"
+msgstr "Şifre Sıfırlama Tamamlandı"
 
 #: tcn/ui/templates/registration/password_reset_done.html:37
 msgid ""
 "We've emailed you instructions for setting your password, if an account "
 "exists with the email you entered. You should receive them shortly."
-msgstr ""
-"أرسلنا لك تعليمات لإعادة تعيين كلمة المرور في حال وجود حساب مرتبط بالبريد "
-"الإلكتروني الذي أدخلته. ستصله قريبًا."
+msgstr "Girdiğiniz e-posta adresine kayıtlı bir hesap varsa, şifrenizi ayarlamanız için talimatları e-posta ile gönderdik. Kısa süre içinde ulaşacaktır."
 
 #: tcn/ui/templates/registration/password_reset_done.html:42
 msgid ""
 "If you don't receive an email, please make sure you've entered the address "
 "you registered with, and check your spam folder."
-msgstr ""
-"إذا لم تتلقَ البريد، فتأكد من إدخال العنوان المسجل وتحقق من مجلد الرسائل "
-"العشوائية."
+msgstr "E-posta almadıysanız, kayıt olduğunuz adresi doğru girdiğinizden emin olun ve spam klasörünü kontrol edin."
 
 #: tcn/ui/templates/registration/password_reset_email.html:6
 #, python-format
 msgid ""
 "You're receiving this email because you requested a password reset for your "
 "user account at %(site_name)s."
-msgstr ""
-"لقد تلقيت هذا البريد لأنك طلبت إعادة تعيين كلمة المرور لحسابك في "
-"%(site_name)s."
+msgstr "%(site_name)s üzerindeki kullanıcı hesabınız için şifre sıfırlama talebinde bulunduğunuz için bu e-postayı alıyorsunuz."
 
 #: tcn/ui/templates/registration/password_reset_email.html:10
 msgid "Please go to the following page and choose a new password:"
-msgstr "يرجى الانتقال إلى الصفحة التالية واختيار كلمة مرور جديدة:"
+msgstr "Lütfen aşağıdaki sayfaya gidin ve yeni bir şifre seçin:"
 
 #: tcn/ui/templates/registration/password_reset_email.html:16
-#, fuzzy
-#| msgid "Your username, in case you've forgotten:"
 msgid "Your username, in case you"
-msgstr "اسم المستخدم الخاص بك في حال نسيانه:"
+msgstr "Kullanıcı adınız (unutmanız durumunda):"
 
 #: tcn/ui/templates/registration/password_reset_email.html:18
 msgid "Thanks for using our site!"
-msgstr "شكرًا لاستخدامك موقعنا!"
+msgstr "Sitemizi kullandığınız için teşekkürler!"
 
 #: tcn/ui/templates/registration/password_reset_email.html:20
 #, python-format
 msgid "The %(site_name)s team"
-msgstr "فريق %(site_name)s"
+msgstr "%(site_name)s ekibi"
 
 #: tcn/ui/templates/registration/password_reset_form.html:4
 #: tcn/ui/templates/registration/password_reset_form.html:34
-#, fuzzy
-#| msgid "Reset Password"
 msgid "Reset password"
-msgstr "إعادة تعيين كلمة المرور"
+msgstr "Şifreyi sıfırla"
 
 #: tcn/ui/templates/registration/password_reset_form.html:37
-#, fuzzy
-#| msgid ""
-#| "Forgotten your password? Enter your email address below, and we'll email "
-#| "instructions for setting a new one."
 msgid ""
 "Forgotten your password? Enter your email address below, and we'll email "
 "instructions for setting a new one. <!---->"
-msgstr ""
-"نسيت كلمة المرور؟ أدخل بريدك الإلكتروني أدناه وسنرسل تعليمات لإعادة التعيين."
+msgstr "Şifrenizi mi unuttunuz? Aşağıya e-posta adresinizi girin, size yeni bir şifre oluşturmanız için talimat göndereceğiz."
 
 #: tcn/ui/templates/registration/profile.html:33
 msgid "Welcome to your Profile"
-msgstr "مرحبًا بك في ملفك الشخصي"
+msgstr "Profilinize hoş geldiniz"
 
 #: tcn/ui/templates/registration/signup.html:36
 msgid "Welcome, please signup to continue."
-msgstr "مرحبًا، يرجى إنشاء حساب للمتابعة."
+msgstr "Hoş geldiniz, devam etmek için lütfen kayıt olun."
 
 #: tcn/ui/templates/rest_framework/api.html:24
 #: tcn/ui/templates/rest_framework/api.html:32
-#, fuzzy
-#| msgid "The Certain News"
 msgid "The Certain News | API"
-msgstr "النبأ اليقين"
+msgstr "The Certain News | API"
 
 #: tcn/ui/templates/rest_framework/api.html:47
 #: tcn/ui/templates/rest_framework/api.html:54
 #: tcn/ui/templates/ui/base.html:143 tcn/ui/templates/ui/base.html:150
 #: tcn/ui/templates/ui/base.html:772
 msgid "Home"
-msgstr "الرئيسية"
+msgstr "Ana Sayfa"
 
 #: tcn/ui/templates/rest_framework/api.html:59
 #: tcn/ui/templates/rest_framework/api.html:66
 msgid "Pages"
-msgstr "الصفحات"
+msgstr "Sayfalar"
 
 #: tcn/ui/templates/rest_framework/api.html:71
 #: tcn/ui/templates/rest_framework/api.html:78
-#, fuzzy
-#| msgid "Image"
 msgid "Images"
-msgstr "صورة"
+msgstr "Görseller"
 
 #: tcn/ui/templates/rest_framework/api.html:83
 #: tcn/ui/templates/rest_framework/api.html:90
-#, fuzzy
-#| msgid "Document"
 msgid "Documents"
-msgstr "مستند"
+msgstr "Belgeler"
 
 #: tcn/ui/templates/rest_framework/api.html:95
 #: tcn/ui/templates/rest_framework/api.html:102
 #: tcn/ui/templates/ui/authors/id.html:36
 #: tcn/ui/templates/ui/components/category.html:13
 msgid "Articles"
-msgstr "مقالات"
+msgstr "Makaleler"
 
 #: tcn/ui/templates/rest_framework/api.html:107
 #: tcn/ui/templates/rest_framework/api.html:114
@@ -732,12 +639,12 @@ msgstr "مقالات"
 #: tcn/ui/templates/ui/base.html:189 tcn/ui/templates/ui/base.html:196
 #: tcn/ui/templates/ui/base.html:806 tcn/ui/templates/ui/base.html:816
 msgid "Categories"
-msgstr "الفئات"
+msgstr "Kategoriler"
 
 #: tcn/ui/templates/rest_framework/api.html:119
 #: tcn/ui/templates/rest_framework/api.html:126
 msgid "Users"
-msgstr "المستخدمون"
+msgstr "Kullanıcılar"
 
 #: tcn/ui/templates/ui/articles/archive/day.html:11
 #: tcn/ui/templates/ui/articles/archive/index.html:11
@@ -749,7 +656,7 @@ msgstr "المستخدمون"
 #: tcn/ui/templates/ui/articles/id.html:38
 #: tcn/ui/templates/ui/articles/id.html:42 tcn/ui/templates/ui/base.html:562
 msgid "News"
-msgstr "الأخبار"
+msgstr "Haberler"
 
 #: tcn/ui/templates/ui/articles/archive/day.html:18
 #: tcn/ui/templates/ui/articles/archive/day.html:28
@@ -762,7 +669,7 @@ msgstr "الأخبار"
 #: tcn/ui/templates/ui/components/pagination.html:8
 #: tcn/ui/templates/ui/components/pagination.html:15
 msgid "Previous"
-msgstr "السابق"
+msgstr "Önceki"
 
 #: tcn/ui/templates/ui/articles/archive/day.html:36
 #: tcn/ui/templates/ui/articles/archive/day.html:46
@@ -775,29 +682,27 @@ msgstr "السابق"
 #: tcn/ui/templates/ui/components/pagination.html:53
 #: tcn/ui/templates/ui/components/pagination.html:63
 msgid "Next"
-msgstr "التالي"
+msgstr "Sonraki"
 
 #: tcn/ui/templates/ui/articles/archive/day.html:65
 #: tcn/ui/templates/ui/articles/archive/month.html:65
 #: tcn/ui/templates/ui/articles/list.html:46
 #: tcn/ui/templates/ui/authors/id.html:51
 #: tcn/ui/templates/ui/blog/index.html:48
-#, fuzzy
-#| msgid "articles"
 msgid "No articles"
-msgstr "مقالات"
+msgstr "Makale yok"
 
 #: tcn/ui/templates/ui/articles/archive/day.html:66
 #: tcn/ui/templates/ui/articles/archive/month.html:66
 msgid "No articles published on"
-msgstr "لم يتم نشر شيء"
+msgstr "Şu tarihte makale yayımlanmadı:"
 
 #: tcn/ui/templates/ui/articles/archive/index.html:4
 #: tcn/ui/templates/ui/articles/archive/index.html:11
 #: tcn/ui/templates/ui/base.html:203 tcn/ui/templates/ui/base.html:213
 #: tcn/ui/templates/ui/base.html:827
 msgid "Archive"
-msgstr "الأرشيف"
+msgstr "Arşiv"
 
 #: tcn/ui/templates/ui/articles/archive/index.html:62
 #: tcn/ui/templates/ui/articles/archive/year.html:65
@@ -805,19 +710,19 @@ msgstr "الأرشيف"
 #: tcn/ui/templates/ui/components/article-2.html:8
 #: tcn/ui/templates/ui/components/article.html:14
 msgid "Read"
-msgstr "اقرأ"
+msgstr "Oku"
 
 #: tcn/ui/templates/ui/articles/archive/index.html:76
 #: tcn/ui/templates/ui/articles/archive/year.html:79
 msgid "None available"
-msgstr "لا توجد"
+msgstr "Mevcut değil"
 
 #: tcn/ui/templates/ui/articles/id.html:80
 #: tcn/ui/templates/ui/components/article-1.html:57
 #: tcn/ui/templates/ui/components/article-2.html:60
 #: tcn/ui/templates/ui/components/article.html:74
 msgid "Category"
-msgstr "الفئة"
+msgstr "Kategori"
 
 #: tcn/ui/templates/ui/articles/id.html:93
 #: tcn/ui/templates/ui/articles/id.html:99
@@ -831,102 +736,100 @@ msgstr "الفئة"
 #: tcn/ui/templates/ui/components/article.html:43
 #: tcn/ui/templates/ui/index.html:10 tcn/ui/templates/ui/index.html:12
 msgid "Breaking"
-msgstr "عاجل"
+msgstr "Son Dakika"
 
 #: tcn/ui/templates/ui/articles/id.html:155
 #: tcn/ui/templates/ui/blog/post.html:86
 msgid "Translations"
-msgstr "الترجمات"
+msgstr "Çeviriler"
 
 #: tcn/ui/templates/ui/articles/id.html:164 tcn/ui/templates/ui/base.html:221
 #: tcn/ui/templates/ui/base.html:230 tcn/ui/templates/ui/base.html:239
 #: tcn/ui/templates/ui/blog/post.html:95
 msgid "Language"
-msgstr "اللغة"
+msgstr "Dil"
 
 #: tcn/ui/templates/ui/articles/id.html:173
 #: tcn/ui/templates/ui/blog/post.html:104
 msgid "Available in"
-msgstr "متاح في"
+msgstr "Şu dillerde mevcut"
 
 #: tcn/ui/templates/ui/articles/id.html:188
 #: tcn/ui/templates/ui/blog/post.html:119
 msgid "None"
-msgstr "لا شيء"
+msgstr "Yok"
 
 #: tcn/ui/templates/ui/articles/id.html:196
 #: tcn/ui/templates/ui/articles/id.html:212
 #: tcn/ui/templates/ui/articles/id.html:307
-#, fuzzy
-#| msgid "Copy Link"
 msgid "Copy URL"
-msgstr "نسخ الرابط"
+msgstr "URL'yi Kopyala"
 
 #: tcn/ui/templates/ui/articles/id.html:218
 #: tcn/ui/templates/ui/articles/id.html:225
 msgid "Facebook"
-msgstr "فيسبوك"
+msgstr "Facebook"
 
 #: tcn/ui/templates/ui/articles/id.html:236
 #: tcn/ui/templates/ui/components/article-1.html:34
 #: tcn/ui/templates/ui/components/article-2.html:37
 #: tcn/ui/templates/ui/components/article.html:51
 msgid "Date published"
-msgstr "تاريخ النشر"
+msgstr "Yayın tarihi"
 
 #: tcn/ui/templates/ui/articles/id.html:278
 msgid "More news from"
-msgstr "المزيد من أخبار"
+msgstr "Daha fazla haber:"
 
 #: tcn/ui/templates/ui/articles/id.html:300
 msgid "Copied"
-msgstr "تم النسخ"
+msgstr "Kopyalandı"
 
 #: tcn/ui/templates/ui/articles/list.html:4
 #: tcn/ui/templates/ui/articles/list.html:15 tcn/ui/templates/ui/index.html:42
 msgid "Latest News"
-msgstr "أحدث الأخبار"
+msgstr "En Son Haberler"
 
 #: tcn/ui/templates/ui/articles/list.html:21
 #: tcn/ui/templates/ui/articles/list.html:29
 #: tcn/ui/templates/ui/articles/list.html:60
 msgid "Filters"
-msgstr "تصفية"
+msgstr "Filtreler"
 
 #: tcn/ui/templates/ui/articles/list.html:47
 #: tcn/ui/templates/ui/authors/id.html:52
 msgid "Published news articles will appear here"
-msgstr "المقالات المنشورة سوف تظهر هنا"
+msgstr "Yayımlanan haberler burada görünecek"
 
 #: tcn/ui/templates/ui/authors/id.html:4
 msgid "Authors"
-msgstr "الكتّاب"
+msgstr "Yazarlar"
 
 #: tcn/ui/templates/ui/base.html:15 tcn/ui/templates/ui/base.html:24
 #: tcn/ui/templates/ui/base.html:28 tcn/ui/templates/ui/base.html:48
 #: tcn/ui/templates/ui/base.html:52
 msgid "The Certain News - Journalism with Certainty."
-msgstr "النبأ اليقين - صحافة باليقين"
+msgstr "The Certain News - Kesin Gazetecilik."
 
 #: tcn/ui/templates/ui/base.html:293 tcn/ui/templates/ui/base.html:303
 msgid "Account"
-msgstr "الحساب"
+msgstr "Hesap"
 
 #: tcn/ui/templates/ui/base.html:440 tcn/ui/templates/ui/base.html:450
 msgid "Latest news"
-msgstr "أحدث الأخبار"
+msgstr "En Son Haberler"
 
 #: tcn/ui/templates/ui/base.html:560
 msgid "Services"
-msgstr "الخدمات"
+msgstr "Hizmetler"
 
 #: tcn/ui/templates/ui/base.html:561
 msgid "Ads"
-msgstr "الإعلانات"
+msgstr "Reklamlar"
 
 #: tcn/ui/templates/ui/base.html:565
 msgid "Company"
-msgstr "الشركة"
+msgstr "Şirket"
 
 #: tcn/ui/templates/ui/base.html:571 tcn/ui/templates/ui/base.html:578
 #: tcn/ui/templates/ui/base.html:838 tcn/ui/templates/ui/base.html:848
@@ -934,98 +837,96 @@ msgstr "الشركة"
 #: tcn/ui/templates/ui/blog/post.html:22 tcn/ui/templates/ui/blog/post.html:33
 #: tcn/ui/templates/ui/blog/post.html:37
 msgid "Blog"
-msgstr "المدونة"
+msgstr "Blog"
 
 #: tcn/ui/templates/ui/base.html:584 tcn/ui/templates/ui/base.html:591
 #: tcn/ui/templates/ui/base.html:861 tcn/ui/templates/ui/base.html:871
 msgid "About us"
-msgstr "من نحن"
+msgstr "Hakkımızda"
 
 #: tcn/ui/templates/ui/base.html:597 tcn/ui/templates/ui/base.html:604
 #: tcn/ui/templates/ui/base.html:884 tcn/ui/templates/ui/base.html:894
 msgid "Contact us"
-msgstr "اتصل بنا"
+msgstr "Bize Ulaşın"
 
 #: tcn/ui/templates/ui/base.html:609
 msgid "Legal"
-msgstr "القانونية"
+msgstr "Yasal"
 
 #: tcn/ui/templates/ui/base.html:611
 msgid "Terms of use"
-msgstr "شروط الاستخدام"
+msgstr "Kullanım koşulları"
 
 #: tcn/ui/templates/ui/base.html:614
 msgid "Privacy policy"
-msgstr "سياسة الخصوصية"
+msgstr "Gizlilik politikası"
 
 #: tcn/ui/templates/ui/base.html:617
 msgid "Cookie policy"
-msgstr "سياسة ملفات تعريف الارتباط"
+msgstr "Çerez politikası"
 
 #: tcn/ui/templates/ui/base.html:647
 msgid "Journalism with Certainty"
-msgstr "النبأ اليقين - صحافة باليقين"
+msgstr "Kesin Gazetecilik"
 
 #: tcn/ui/templates/ui/blog/index.html:32
 msgid "Learn more"
-msgstr "المزيد"
+msgstr "Daha fazla bilgi"
 
 #: tcn/ui/templates/ui/blog/index.html:49
-#, fuzzy
-#| msgid "Saved articles"
 msgid "Published blog articles will appear here"
-msgstr "المقالات المحفوظة"
+msgstr "Yayımlanan blog yazıları burada görünecek"
 
 #: tcn/ui/templates/ui/components/form.html:28
 msgid "Submit"
-msgstr "إرسال"
+msgstr "Gönder"
 
 #: tcn/ui/templates/ui/components/pagination.html:21
 #: tcn/ui/templates/ui/components/pagination.html:24
 msgid "First"
-msgstr "الأول"
+msgstr "İlk"
 
 #: tcn/ui/templates/ui/components/pagination.html:31
 msgid "Current"
-msgstr "الحالي"
+msgstr "Geçerli"
 
 #: tcn/ui/templates/ui/components/pagination.html:34
 msgid "of"
-msgstr "من"
+msgstr " / "
 
 #: tcn/ui/templates/ui/components/pagination.html:41
 #: tcn/ui/templates/ui/components/pagination.html:47
 msgid "Last"
-msgstr "الأخير"
+msgstr "Son"
 
 #: tcn/ui/templates/ui/index.html:5
 msgid "Latest news around the world"
-msgstr "آخر الأخبار من العالم"
+msgstr "Dünyadan en son haberler"
 
 #: tcn/ui/templates/ui/index.html:26
 msgid "Trending now"
-msgstr "يتصدر الآن"
+msgstr "Gündemde"
 
 #: tcn/ui/templates/ui/search.html:33
 msgid "Go"
-msgstr "اذهب"
+msgstr "Ara"
 
 #: tcn/ui/templates/ui/search.html:40
 msgid "Search results"
-msgstr "نتائج البحث"
+msgstr "Arama sonuçları"
 
 #: tcn/ui/templates/ui/search.html:49
 msgid "No results found"
-msgstr "لا توجد نتائج"
+msgstr "Sonuç bulunamadı"
 
 #: tcn/ui/views.py:39
 msgid "Your account was created successfully!"
-msgstr "تم إنشاء حسابك بنجاح"
+msgstr "Hesabınız başarıyla oluşturuldu!"
 
 #: tcn/ui/views.py:73
 msgid "Your account was updated successfully!"
-msgstr "تم تحديث حسابك بنجاح"
+msgstr "Hesabınız başarıyla güncellendi!"
 
 #: tcn/ui/views.py:97
 msgid "Your account was deleted successfully!"
-msgstr "تم حذف حسابك بنجاح"
+msgstr "Hesabınız başarıyla silindi!"
