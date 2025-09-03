@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: the-certain-news 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-02 05:39+0000\n"
+"POT-Creation-Date: 2025-09-03 08:03+0000\n"
 "PO-Revision-Date: 2025-6-20 HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -153,9 +153,9 @@ msgid ""
 "groupings, making it easier for users to explore and filter available news "
 "article."
 msgstr ""
-"Kategoriler, haber makalelerini tematik veya konuya ilişkin gruplara ayırmaya "
-"yardımcı olur; böylece kullanıcıların mevcut haber makalelerini keşfetmesi ve "
-"filtrelemesi kolaylaşır."
+"Kategoriler, haber makalelerini tematik veya konuya ilişkin gruplara "
+"ayırmaya yardımcı olur; böylece kullanıcıların mevcut haber makalelerini "
+"keşfetmesi ve filtrelemesi kolaylaşır."
 
 #: tcn/apps/categories/models.py:85
 msgid "category"
@@ -314,8 +314,7 @@ msgstr "Profil"
 msgid "Open drawer"
 msgstr "Menüyü aç"
 
-#: tcn/ui/templates/registration/base.html:30
-#: tcn/ui/templates/ui/base.html:133
+#: tcn/ui/templates/registration/base.html:30 tcn/ui/templates/ui/base.html:133
 #: tcn/ui/templates/ui/base.html:388 tcn/ui/templates/ui/base.html:688
 #: tcn/ui/templates/ui/base.html:725
 msgid "close sidebar"
@@ -343,8 +342,7 @@ msgstr "Kenar çubuğunu kapat"
 #: tcn/ui/templates/ui/articles/id.html:20
 #: tcn/ui/templates/ui/articles/id.html:24
 #: tcn/ui/templates/ui/articles/id.html:38
-#: tcn/ui/templates/ui/articles/id.html:42
-#: tcn/ui/templates/ui/base.html:11
+#: tcn/ui/templates/ui/articles/id.html:42 tcn/ui/templates/ui/base.html:11
 #: tcn/ui/templates/ui/base.html:104 tcn/ui/templates/ui/base.html:121
 #: tcn/ui/templates/ui/base.html:400 tcn/ui/templates/ui/base.html:416
 #: tcn/ui/templates/ui/base.html:639 tcn/ui/templates/ui/base.html:645
@@ -402,8 +400,8 @@ msgstr "Menüyü kapat"
 #: tcn/ui/templates/registration/base.html:223
 #: tcn/ui/templates/ui/articles/list.html:64
 #: tcn/ui/templates/ui/articles/list.html:72
-#: tcn/ui/templates/ui/articles/list.html:87
-#: tcn/ui/templates/ui/base.html:721 tcn/ui/templates/ui/base.html:729
+#: tcn/ui/templates/ui/articles/list.html:86 tcn/ui/templates/ui/base.html:721
+#: tcn/ui/templates/ui/base.html:729
 msgid "Close"
 msgstr "Kapat"
 
@@ -465,7 +463,8 @@ msgid ""
 "Your account doesn't have access to this page. To proceed, please login with "
 "an account that has access. <!---->"
 msgstr ""
-"Hesabınızın bu sayfaya erişim yetkisi yok. Devam etmek için lütfen yetkili bir hesapla giriş yapın."
+"Hesabınızın bu sayfaya erişim yetkisi yok. Devam etmek için lütfen yetkili "
+"bir hesapla giriş yapın."
 
 #: tcn/ui/templates/registration/login.html:68
 #: tcn/ui/templates/registration/signup.html:49
@@ -511,7 +510,8 @@ msgid ""
 "Please enter your old password, for security's sake, and then enter your new "
 "password twice so we can verify you typed it in correctly."
 msgstr ""
-"Lütfen güvenlik amacıyla eski şifrenizi girin ve ardından yeni şifrenizi doğrulamak için iki kez yazın."
+"Lütfen güvenlik amacıyla eski şifrenizi girin ve ardından yeni şifrenizi "
+"doğrulamak için iki kez yazın."
 
 #: tcn/ui/templates/registration/password_reset_complete.html:4
 msgid "Password Reset"
@@ -537,7 +537,9 @@ msgstr "Lütfen yeni şifrenizi doğrulamak için iki kez girin."
 msgid ""
 "The password reset link was invalid, possibly because it has already been "
 "used. Please request a new password reset. <!---->"
-msgstr "Şifre sıfırlama bağlantısı geçersiz; muhtemelen daha önce kullanıldı. Lütfen yeni bir şifre sıfırlama isteğinde bulunun."
+msgstr ""
+"Şifre sıfırlama bağlantısı geçersiz; muhtemelen daha önce kullanıldı. Lütfen "
+"yeni bir şifre sıfırlama isteğinde bulunun."
 
 #: tcn/ui/templates/registration/password_reset_done.html:4
 #: tcn/ui/templates/registration/password_reset_done.html:34
@@ -548,20 +550,26 @@ msgstr "Şifre Sıfırlama Tamamlandı"
 msgid ""
 "We've emailed you instructions for setting your password, if an account "
 "exists with the email you entered. You should receive them shortly."
-msgstr "Girdiğiniz e-posta adresine kayıtlı bir hesap varsa, şifrenizi ayarlamanız için talimatları e-posta ile gönderdik. Kısa süre içinde ulaşacaktır."
+msgstr ""
+"Girdiğiniz e-posta adresine kayıtlı bir hesap varsa, şifrenizi ayarlamanız "
+"için talimatları e-posta ile gönderdik. Kısa süre içinde ulaşacaktır."
 
 #: tcn/ui/templates/registration/password_reset_done.html:42
 msgid ""
 "If you don't receive an email, please make sure you've entered the address "
 "you registered with, and check your spam folder."
-msgstr "E-posta almadıysanız, kayıt olduğunuz adresi doğru girdiğinizden emin olun ve spam klasörünü kontrol edin."
+msgstr ""
+"E-posta almadıysanız, kayıt olduğunuz adresi doğru girdiğinizden emin olun "
+"ve spam klasörünü kontrol edin."
 
 #: tcn/ui/templates/registration/password_reset_email.html:6
 #, python-format
 msgid ""
 "You're receiving this email because you requested a password reset for your "
 "user account at %(site_name)s."
-msgstr "%(site_name)s üzerindeki kullanıcı hesabınız için şifre sıfırlama talebinde bulunduğunuz için bu e-postayı alıyorsunuz."
+msgstr ""
+"%(site_name)s üzerindeki kullanıcı hesabınız için şifre sıfırlama talebinde "
+"bulunduğunuz için bu e-postayı alıyorsunuz."
 
 #: tcn/ui/templates/registration/password_reset_email.html:10
 msgid "Please go to the following page and choose a new password:"
@@ -589,7 +597,9 @@ msgstr "Şifreyi sıfırla"
 msgid ""
 "Forgotten your password? Enter your email address below, and we'll email "
 "instructions for setting a new one. <!---->"
-msgstr "Şifrenizi mi unuttunuz? Aşağıya e-posta adresinizi girin, size yeni bir şifre oluşturmanız için talimat göndereceğiz."
+msgstr ""
+"Şifrenizi mi unuttunuz? Aşağıya e-posta adresinizi girin, size yeni bir "
+"şifre oluşturmanız için talimat göndereceğiz."
 
 #: tcn/ui/templates/registration/profile.html:33
 msgid "Welcome to your Profile"
@@ -761,7 +771,7 @@ msgstr "Yok"
 
 #: tcn/ui/templates/ui/articles/id.html:196
 #: tcn/ui/templates/ui/articles/id.html:212
-#: tcn/ui/templates/ui/articles/id.html:307
+#: tcn/ui/templates/ui/articles/id.html:308
 msgid "Copy URL"
 msgstr "URL'yi Kopyala"
 
@@ -781,7 +791,7 @@ msgstr "Yayın tarihi"
 msgid "More news from"
 msgstr "Daha fazla haber:"
 
-#: tcn/ui/templates/ui/articles/id.html:300
+#: tcn/ui/templates/ui/articles/id.html:301
 msgid "Copied"
 msgstr "Kopyalandı"
 
