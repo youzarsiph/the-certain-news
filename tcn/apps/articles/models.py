@@ -8,7 +8,6 @@ from wagtail.admin.panels import FieldPanel
 from wagtail.api import APIField
 from wagtail.fields import StreamField
 from wagtail.models import Page
-from django.utils.translation import get_language_from_request
 from wagtail.search import index
 
 from tcn.apps.mixins import DateTimeMixin

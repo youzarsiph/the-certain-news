@@ -1,7 +1,7 @@
 """URLConf for tcn.ui"""
 
 from django.contrib.auth import views as auth
-from django.urls import path
+from django.urls import path, include, reverse_lazy
 
 from tcn.ui import views
 
@@ -26,7 +26,9 @@ auth_urls = [
     ),
     path(
         "accounts/password/change/",
-        auth.PasswordChangeView.as_view(),
+        auth.PasswordChangeView.as_view(
+            success_url=reverse_lazy("ui:password_change_done")
+        ),
         name="password_change",
     ),
     path(
@@ -36,7 +38,9 @@ auth_urls = [
     ),
     path(
         "accounts/password/reset/",
-        auth.PasswordResetView.as_view(),
+        auth.PasswordResetView.as_view(
+            success_url=reverse_lazy("ui:password_reset_done")
+        ),
         name="password_reset",
     ),
     path(
@@ -46,7 +50,9 @@ auth_urls = [
     ),
     path(
         "accounts/password/reset/<uidb64>/<token>/",
-        auth.PasswordResetConfirmView.as_view(),
+        auth.PasswordResetConfirmView.as_view(
+            success_url=reverse_lazy("ui:password_reset_complete")
+        ),
         name="password_reset_confirm",
     ),
     path(
@@ -58,6 +64,7 @@ auth_urls = [
 
 
 urlpatterns = [
+    path("feeds/", include("tcn.apps.feeds.urls")),
     path("l/<slug:slug>/", views.LinkRedirectView.as_view(), name="redirect"),
     *auth_urls,
     path("authors/<slug:slug>/", views.UserDetailView.as_view(), name="author"),
