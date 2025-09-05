@@ -1,7 +1,7 @@
 """URLConf for tcn.ui"""
 
 from django.contrib.auth import views as auth
-from django.urls import path, include, reverse_lazy
+from django.urls import include, path, reverse_lazy
 
 from tcn.ui import views
 

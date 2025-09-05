@@ -4,7 +4,6 @@ from django.urls import path
 
 from tcn.apps.feeds import views
 
-
 # Create your URLConf here.
 urlpatterns = [
     path("rss/", views.LatestNewsFeed()),

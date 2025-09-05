@@ -3,7 +3,8 @@
 from django.contrib.syndication.views import Feed
 from django.urls import reverse_lazy
 from django.utils.feedgenerator import Atom1Feed
-from django.utils.translation import get_language, gettext_lazy as _
+from django.utils.translation import get_language
+from django.utils.translation import gettext_lazy as _
 
 from tcn.apps.articles.models import Article
 
