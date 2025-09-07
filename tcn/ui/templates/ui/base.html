@@ -451,24 +451,63 @@
                     </aside>
                     <nav class="grid gap-4">
                       <div class="grid grid-flow-col gap-4">
-                        <a class="btn btn-sm btn-square lg:btn-md btn-primary">
-                          <i
-                            data-lucide="facebook"
-                            class="size-4 md:size-6"
-                          ></i>
-                        </a>
-                        <a class="btn btn-sm btn-square lg:btn-md btn-primary">
-                          <i
-                            data-lucide="instagram"
-                            class="size-4 md:size-6"
-                          ></i>
-                        </a>
-                        <a class="btn btn-sm btn-square lg:btn-md btn-primary">
-                          <i
-                            data-lucide="linkedin"
-                            class="size-4 md:size-6"
-                          ></i>
-                        </a>
+                        <div
+                          class="tooltip tooltip-right rtl:tooltip-left tooltip-success"
+                          data-tip="{% trans 'Facebook' %}"
+                        >
+                          <a
+                            href="https://facebook.com/"
+                            class="btn btn-sm btn-square lg:btn-md btn-primary"
+                          >
+                            <i
+                              data-lucide="facebook"
+                              class="size-4 md:size-6"
+                            ></i>
+                            <span class="sr-only">{% trans 'Facebook' %}</span>
+                          </a>
+                        </div>
+                        <div
+                          class="tooltip tooltip-right rtl:tooltip-left tooltip-success"
+                          data-tip="{% trans 'Instagram' %}"
+                        >
+                          <a
+                            href="https://instagram.com/"
+                            class="btn btn-sm btn-square lg:btn-md btn-primary"
+                          >
+                            <i
+                              data-lucide="instagram"
+                              class="size-4 md:size-6"
+                            ></i>
+                            <span class="sr-only">{% trans 'Instagram' %}</span>
+                          </a>
+                        </div>
+                        <div
+                          class="tooltip tooltip-right rtl:tooltip-left tooltip-success"
+                          data-tip="{% trans 'Linkedin' %}"
+                        >
+                          <a
+                            href="https://linkedin.com/"
+                            class="btn btn-sm btn-square lg:btn-md btn-primary"
+                          >
+                            <i
+                              data-lucide="linkedin"
+                              class="size-4 md:size-6"
+                            ></i>
+                            <span class="sr-only">{% trans 'Linkedin' %}</span>
+                          </a>
+                        </div>
+                        <div
+                          class="tooltip tooltip-right rtl:tooltip-left tooltip-success"
+                          data-tip="{% trans 'RSS' %}"
+                        >
+                          <a
+                            href="{% url 'ui:rss-latest' %}"
+                            class="btn btn-sm btn-square lg:btn-md btn-primary"
+                          >
+                            <i data-lucide="rss" class="size-4 md:size-6"></i>
+                            <span class="sr-only">{% trans 'RSS' %}</span>
+                          </a>
+                        </div>
                       </div>
                       <span class="flex items-center gap-2 text-primary">
                         <i data-lucide="copyright" class="size-4 md:size-6"></i>

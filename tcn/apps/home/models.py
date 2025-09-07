@@ -23,6 +23,7 @@ class Home(Page):
         "blog_indexes.BlogIndex",
         "categories.CategoryIndex",
         "categories.Category",
+        "docs_indexes.DocsIndex",
     ]
 
     class Meta(Page.Meta):

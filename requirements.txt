@@ -6,6 +6,7 @@ django-debug-toolbar
 django-filter
 django-phonenumber-field
 django-w-blog
+django-w-docs
 djangorestframework
 djoser
 drf-restwind
