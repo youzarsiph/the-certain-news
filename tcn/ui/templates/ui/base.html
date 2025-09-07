@@ -89,285 +89,12 @@
       <input id="nav-drawer" type="checkbox" class="drawer-toggle" />
 
       <section id="content" class="drawer-content">
+        {% get_site_root as home %}
         <div
           id="main"
           class="bg-base-300 relative h-dvh overflow-hidden sm:p-1 lg:p-2"
         >
           <div class="flex size-full items-center gap-1">
-            <aside class="z-50 hidden h-full p-1 sm:block">
-              <nav
-                class="navbar h-full flex-col items-center justify-between gap-4 p-0"
-              >
-                <ol class="navbar-start flex-col gap-4">
-                  <li
-                    class="tooltip tooltip-right rtl:tooltip-left tooltip-primary aspect-square"
-                    data-tip="{% trans 'The Certain News' %}"
-                  >
-                    {% get_site_root as home %}
-                    <h1 class="relative">
-                      <a
-                        href="{% page_url home LANGUAGE_CODE %}"
-                        class="btn btn-square btn-primary lg:btn-lg"
-                      >
-                        <div
-                          class="bg-primary rounded-field text-primary-content absolute inset-0 size-full flex rotate-45 items-center justify-center"
-                        >
-                          <i
-                            data-lucide="scroll-text"
-                            class="-rotate-45 lg:size-8 2xl:size-10"
-                          ></i>
-                        </div>
-                        <span class="sr-only"
-                          >{% trans 'The Certain News' %}</span
-                        >
-                      </a>
-                    </h1>
-                  </li>
-
-                  <li
-                    class="tooltip tooltip-right rtl:tooltip-left tooltip-primary aspect-square"
-                    data-tip="{% trans 'Open drawer' %}"
-                  >
-                    <label
-                      for="nav-drawer"
-                      aria-label="{% trans 'close sidebar' %}"
-                      class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
-                    >
-                      <i data-lucide="menu" class="size-4 md:size-6"></i>
-                      <span class="sr-only">{% trans 'Open drawer' %}</span>
-                    </label>
-                  </li>
-
-                  <li
-                    class="tooltip tooltip-right rtl:tooltip-left tooltip-primary aspect-square"
-                    data-tip="{% trans 'Home' %}"
-                  >
-                    <a
-                      href="{% page_url home LANGUAGE_CODE %}"
-                      class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
-                    >
-                      <i data-lucide="home" class="size-4 md:size-6"></i>
-                      <span class="sr-only">{% trans 'Home' %}</span>
-                    </a>
-                  </li>
-
-                  {% if request.user.is_staff %}
-                  <li
-                    class="tooltip tooltip-right rtl:tooltip-left tooltip-primary aspect-square"
-                    data-tip="{% trans 'Dashboard' %}"
-                  >
-                    <a
-                      href="{% url 'wagtailadmin_home' %}"
-                      class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
-                    >
-                      <i
-                        data-lucide="layout-dashboard"
-                        class="size-4 md:size-6"
-                      ></i>
-                      <span class="sr-only">{% trans 'Dashboard' %}</span>
-                    </a>
-                  </li>
-                  {% endif %}
-
-                  <!---->
-                  {% if categories_index %}
-                  <li
-                    class="tooltip tooltip-right rtl:tooltip-left tooltip-primary aspect-square"
-                    data-tip="{% trans 'Categories' %}"
-                  >
-                    <a
-                      href="{% pageurl categories_index %}"
-                      class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
-                    >
-                      <i data-lucide="layers" class="size-4 md:size-6"></i>
-                      <span class="sr-only">{% trans 'Categories' %}</span>
-                    </a>
-                  </li>
-                  {% else %}
-                  <li
-                    class="tooltip tooltip-right rtl:tooltip-left tooltip-primary aspect-square"
-                    data-tip="{% trans 'Categories' %}"
-                  >
-                    <a
-                      href="{% slug_url 'categories' LANGUAGE_CODE %}"
-                      class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
-                    >
-                      <i data-lucide="layers" class="size-4 md:size-6"></i>
-                      <span class="sr-only">{% trans 'Categories' %}</span>
-                    </a>
-                  </li>
-                  {% endif %}
-
-                  <li
-                    class="tooltip tooltip-right rtl:tooltip-left tooltip-primary aspect-square"
-                    data-tip="{% trans 'Archive' %}"
-                  >
-                    <a
-                      href="{% url 'ui:archive' %}"
-                      class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
-                    >
-                      <i
-                        data-lucide="folder-archive"
-                        class="size-4 md:size-6"
-                      ></i>
-                      <span class="sr-only">{% trans 'Archive' %}</span>
-                    </a>
-                  </li>
-                </ol>
-
-                <ol class="navbar-end w-full flex-col gap-2">
-                  <li
-                    class="tooltip tooltip-right rtl:tooltip-left tooltip-primary"
-                    data-tip="{% translate 'Language' %}"
-                  >
-                    <button
-                      popovertarget="language"
-                      style="anchor-name: --language"
-                      class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
-                    >
-                      <i data-lucide="languages" class="size-4 lg:size-6"></i>
-
-                      <span class="sr-only">{% translate 'Language' %}</span>
-                    </button>
-
-                    <ul
-                      id="language"
-                      popover
-                      style="position-anchor: --language"
-                      class="menu dropdown dropdown-top dropdown-right rounded-box bg-base-100/75 dark:bg-base-100/50 backdrop-blur-3xl text-base-content shadow-sm rtl:dropdown-left rtl:dropdown-top"
-                    >
-                      <li class="menu-title">{% translate 'Language' %}</li>
-                      <form
-                        id="lang-form"
-                        class="hidden"
-                        action="{% url 'set_language' %}"
-                        method="post"
-                      >
-                        {% csrf_token %}
-                        <input
-                          name="next"
-                          type="hidden"
-                          value="{{ redirect_to }}"
-                        />
-                      </form>
-                      <!---->
-                      {% get_available_languages as LANGUAGES %}
-                      <!---->
-                      {% get_language_info_list for LANGUAGES as languages %}
-                      <!---->
-                      {% for language in languages %}
-                      <li>
-                        <label
-                          class="flex flex-row items-center justify-between gap-6"
-                        >
-                          <div class="flex flex-row items-center gap-2">
-                            <input
-                              form="lang-form"
-                              type="submit"
-                              name="language"
-                              value="{{ language.code|upper }}"
-                              aria-label="{{ language.name_local }} ({{ language.code }})"
-                            />
-                            <span>
-                              {{ language.name_local }} ({{ language.code }})
-                            </span>
-                          </div>
-                          {% if language.code == LANGUAGE_CODE %}
-                          <i data-lucide="check" class="size-4 lg:size-6"></i>
-                          {% endif %}
-                        </label>
-                      </li>
-                      {% endfor %}
-                    </ul>
-                  </li>
-
-                  <li class="collapse max-w-10 overflow-visible">
-                    <input
-                      type="checkbox"
-                      class="sr-only"
-                      id="account-collapse"
-                    />
-
-                    <div
-                      class="tooltip tooltip-right rtl:tooltip-left tooltip-primary aspect-square"
-                      data-tip="{% trans 'Account' %}"
-                    >
-                      <label
-                        for="account-collapse"
-                        class="collapse-title btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
-                      >
-                        <i
-                          data-lucide="user-circle"
-                          class="size-4 md:size-6"
-                        ></i>
-                        <span class="sr-only">{% trans 'Account' %}</span>
-                      </label>
-                    </div>
-
-                    <div
-                      class="collapse-content flex flex-col items-center gap-1 p-0 pt-1"
-                    >
-                      {% if request.user.is_authenticated %}
-                      <div
-                        class="tooltip tooltip-top tooltip-success"
-                        data-tip="{% trans 'Profile' %}"
-                      >
-                        <a
-                          href="{% url 'ui:profile' %}"
-                          class="btn btn-square btn-sm btn-soft btn-success"
-                        >
-                          <i data-lucide="user" class="size-4 md:size-5"></i>
-                          <span class="sr-only">{% trans 'Profile' %}</span>
-                        </a>
-                      </div>
-                      <div
-                        class="tooltip tooltip-top tooltip-error"
-                        data-tip="{% trans 'Log out' %}"
-                      >
-                        <button
-                          type="submit"
-                          form="logout"
-                          class="btn btn-square btn-sm btn-soft btn-error"
-                        >
-                          <i data-lucide="log-out" class="size-4 md:size-5"></i>
-                          <span class="sr-only">{% trans 'Log out' %}</span>
-                        </button>
-                      </div>
-                      {% else %}
-                      <div
-                        class="tooltip tooltip-top tooltip-success"
-                        data-tip="{% trans 'Sign up' %}"
-                      >
-                        <a
-                          href="{% url 'ui:subscribe' %}"
-                          class="btn btn-square btn-sm btn-soft btn-success"
-                        >
-                          <i
-                            data-lucide="heart-handshake"
-                            class="size-4 md:size-5"
-                          ></i>
-                          <span class="sr-only">{% trans 'Sign up' %}</span>
-                        </a>
-                      </div>
-                      <div
-                        class="tooltip tooltip-top tooltip-primary"
-                        data-tip="{% trans 'Log in' %}"
-                      >
-                        <a
-                          href="{% url 'ui:login' %}"
-                          class="btn btn-square btn-sm btn-soft btn-primary"
-                        >
-                          <i data-lucide="log-in" class="size-4 md:size-5"></i>
-                          <span class="sr-only">{% trans 'Log in' %}</span>
-                        </a>
-                      </div>
-                      {% endif %}
-                    </div>
-                  </li>
-                </ol>
-              </nav>
-            </aside>
-
             <section
               class="bg-base-100 relative size-full grow overflow-hidden sm:rounded-box"
             >
@@ -380,7 +107,7 @@
                   <nav class="navbar p-0">
                     <div class="navbar-start gap-4">
                       <div
-                        class="tooltip tooltip-right rtl:tooltip-left tooltip-primary z-10 sm:hidden"
+                        class="tooltip tooltip-right rtl:tooltip-left tooltip-primary z-10"
                         data-tip="{% trans 'Open drawer' %}"
                       >
                         <label
@@ -396,12 +123,12 @@
                       </div>
 
                       <div
-                        class="tooltip tooltip-right rtl:tooltip-left tooltip-primary sm:hidden"
+                        class="tooltip tooltip-right rtl:tooltip-left tooltip-primary"
                         data-tip="{% trans 'The Certain News' %}"
                       >
                         <h1 class="relative">
                           <a
-                            href="{% page_url home LANGUAGE_CODE %}"
+                            href="{% pageurl home %}"
                             class="btn btn-square btn-primary lg:btn-lg"
                           >
                             <div
@@ -495,6 +222,81 @@
                         </a>
                       </div>
                       {% endif %}
+
+                      <div
+                        class="tooltip tooltip-left rtl:tooltip-right tooltip-primary"
+                        data-tip="{% translate 'Language' %}"
+                      >
+                        <button
+                          popovertarget="language"
+                          style="anchor-name: --language"
+                          class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
+                        >
+                          <i
+                            data-lucide="languages"
+                            class="size-4 lg:size-6"
+                          ></i>
+
+                          <span class="sr-only"
+                            >{% translate 'Language' %}</span
+                          >
+                        </button>
+
+                        <ul
+                          id="language"
+                          popover
+                          style="position-anchor: --language"
+                          class="menu dropdown dropdown-bottom bg-base-100/75 dark:bg-base-100/50 dropdown-left rounded-box backdrop-blur-3xl text-base-content shadow-xl rtl:dropdown-right"
+                        >
+                          <li class="menu-title">{% translate 'Language' %}</li>
+                          <form
+                            id="lang-form"
+                            class="hidden"
+                            action="{% url 'set_language' %}"
+                            method="post"
+                          >
+                            {% csrf_token %}
+                            <input
+                              name="next"
+                              type="hidden"
+                              value="{{ redirect_to }}"
+                            />
+                          </form>
+                          <!---->
+                          {% get_available_languages as LANGS %}
+                          <!---->
+                          {% get_language_info_list for LANGS as langs %}
+                          <!---->
+                          {% for language in langs %}
+                          <li>
+                            <label
+                              class="flex flex-row items-center justify-between gap-6"
+                            >
+                              <div class="flex flex-row items-center gap-2">
+                                <input
+                                  form="lang-form"
+                                  type="submit"
+                                  name="language"
+                                  value="{{ language.code|upper }}"
+                                  aria-label="{{ language.name_local }} ({{ language.code }})"
+                                />
+                                <span>
+                                  {{ language.name_local }}
+                                  <!---->
+                                  ({{ language.code }})
+                                </span>
+                              </div>
+                              {% if language.code == LANGUAGE_CODE %}
+                              <i
+                                data-lucide="check"
+                                class="size-4 lg:size-6"
+                              ></i>
+                              {% endif %}
+                            </label>
+                          </li>
+                          {% endfor %}
+                        </ul>
+                      </div>
 
                       <form
                         method="get"
@@ -624,7 +426,7 @@
                     <aside class="grid-flow-col gap-4 items-center">
                       <h1 class="relative">
                         <a
-                          href="{% page_url home LANGUAGE_CODE %}"
+                          href="{% pageurl home %}"
                           class="btn btn-square btn-primary lg:btn-lg"
                         >
                           <div
@@ -700,7 +502,7 @@
               >
                 <h1 class="relative">
                   <a
-                    href="{% page_url home LANGUAGE_CODE %}"
+                    href="{% pageurl home %}"
                     class="btn btn-square btn-primary lg:btn-lg"
                   >
                     <div
@@ -732,7 +534,7 @@
             </header>
 
             <ol class="grid size-full grow gap-4 overflow-y-auto px-4">
-              <li class="pt-2 lg:hidden">
+              <li class="pt-2">
                 <form method="get" action="{% url 'ui:search' %}">
                   <label
                     class="mx-auto max-w-xl w-full bg-transparent input input-primary"
@@ -765,7 +567,7 @@
 
               <li>
                 <a
-                  href="{% page_url home LANGUAGE_CODE %}"
+                  href="{% pageurl home %}"
                   class="btn btn-sm btn-ghost btn-primary md:btn-md btn-block 2xl:btn-xl justify-start"
                 >
                   <i data-lucide="home" class="size-4 md:size-6"></i>
@@ -773,31 +575,9 @@
                 </a>
               </li>
 
-              {% if request.user.is_staff %}
-              <li class="sm:hidden">
-                <a
-                  href="{% url 'wagtailadmin_home' %}"
-                  class="btn btn-sm btn-ghost btn-primary md:btn-md btn-block 2xl:btn-xl justify-between"
-                >
-                  <span class="flex items-center gap-[inherit]">
-                    <i
-                      data-lucide="layout-dashboard"
-                      class="size-4 md:size-6"
-                    ></i>
-                    <span>{% trans 'Dashboard' %}</span>
-                  </span>
-
-                  <i
-                    data-lucide="chevron-right"
-                    class="size-4 md:size-6 2xl:size-8 rtl:rotate-180"
-                  ></i>
-                </a>
-              </li>
-              {% endif %}
-
               <!---->
               {% if categories_index %}
-              <li class="sm:hidden">
+              <li>
                 <a
                   href="{% pageurl categories_index %}"
                   class="btn btn-sm btn-ghost btn-primary md:btn-md btn-block 2xl:btn-xl justify-start"
@@ -807,7 +587,7 @@
                 </a>
               </li>
               {% else %}
-              <li class="sm:hidden">
+              <li>
                 <a
                   href="{% slug_url 'categories' LANGUAGE_CODE %}"
                   class="btn btn-sm btn-ghost btn-primary md:btn-md btn-block 2xl:btn-xl justify-start"

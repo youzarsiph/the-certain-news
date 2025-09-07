@@ -236,11 +236,11 @@
         data-tip="{% trans 'Date published' %}"
       >
         <a
-          href="{% url 'ui:articles-d' article.created_at.year article.created_at.month article.created_at.day %}"
+          href="{% url 'ui:articles-d' article.created_at.year|default:'2025' article.created_at.month|default:'08' article.created_at.day|default:'01' %}"
           class="flex items-center gap-2 link link-primary link-hover"
         >
           <span class="status status-xl status-primary"></span>
-          {{ article.created_at|date }}
+          {{ article.created_at }}
         </a>
       </div>
       <span class="flex items-center gap-2 text-primary">
