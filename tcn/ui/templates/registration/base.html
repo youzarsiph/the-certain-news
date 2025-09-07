@@ -17,12 +17,12 @@
     <div class="relative container py-20 px-4 lg:px-8 mx-auto">
       <main class="flex flex-col gap-4 lg:gap-6">
         <header
-          class="rounded-field absolute inset-x-0 top-0 z-40 px-2 backdrop-blur-3xl lg:px-4"
+          class="absolute inset-x-0 top-0 z-40 px-2 backdrop-blur-3xl lg:px-4"
         >
           <nav class="navbar p-0">
             <div class="navbar-start gap-4">
               <div
-                class="tooltip tooltip-right rtl:tooltip-left tooltip-primary z-10 sm:hidden"
+                class="tooltip tooltip-right rtl:tooltip-left tooltip-primary z-10"
                 data-tip="{% trans 'Open drawer' %}"
               >
                 <label
@@ -35,9 +35,8 @@
                 </label>
               </div>
 
-              {% block brand %}
               <div
-                class="tooltip tooltip-right rtl:tooltip-left tooltip-primary sm:hidden"
+                class="tooltip tooltip-right rtl:tooltip-left tooltip-primary"
                 data-tip="{% trans 'The Certain News' %}"
               >
                 <h1 class="relative">
@@ -59,7 +58,32 @@
                   </a>
                 </h1>
               </div>
-              {% endblock %}
+
+              <div
+                class="tooltip tooltip-right rtl:tooltip-left tooltip-error"
+                data-tip="{% trans 'Breaking' %}"
+              >
+                <a
+                  href="{% url 'ui:articles' %}?is_breaking=True"
+                  class="btn btn-square btn-sm btn-error animate-pulse md:btn-md 2xl:btn-lg"
+                >
+                  <i data-lucide="alert-circle" class="size-4 md:size-6"></i>
+                  <span class="sr-only"> {% trans 'Breaking' %} </span>
+                </a>
+              </div>
+
+              <div
+                class="tooltip tooltip-right rtl:tooltip-left tooltip-primary"
+                data-tip="{% trans 'Latest news' %}"
+              >
+                <a
+                  href="{% url 'ui:articles' %}"
+                  class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
+                >
+                  <i data-lucide="clock-fading" class="size-4 md:size-6"></i>
+                  <span class="sr-only">{% trans 'Latest news' %}</span>
+                </a>
+              </div>
             </div>
 
             <div class="navbar-end gap-2">
@@ -90,12 +114,12 @@
                 </a>
               </div>
               <div
-                class="tooltip tooltip-left rtl:tooltip-right tooltip-primary"
+                class="tooltip tooltip-left rtl:tooltip-right tooltip-success"
                 data-tip="{% trans 'Sign up' %}"
               >
                 <a
                   href="{% url 'ui:subscribe' %}"
-                  class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
+                  class="btn btn-square btn-soft btn-sm btn-success md:btn-md 2xl:btn-lg"
                 >
                   <i data-lucide="heart-handshake" class="size-4 md:size-6"></i>
                   <span class="sr-only">{% trans 'Sign up' %}</span>
@@ -103,13 +127,80 @@
               </div>
               {% endif %}
 
+              <div
+                class="tooltip tooltip-left rtl:tooltip-right tooltip-primary"
+                data-tip="{% translate 'Language' %}"
+              >
+                <button
+                  popovertarget="language"
+                  style="anchor-name: --language"
+                  class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
+                >
+                  <i data-lucide="languages" class="size-4 lg:size-6"></i>
+
+                  <span class="sr-only">{% translate 'Language' %}</span>
+                </button>
+
+                <ul
+                  id="language"
+                  popover
+                  style="position-anchor: --language"
+                  class="menu dropdown dropdown-bottom bg-base-100/75 dark:bg-base-100/50 dropdown-left rounded-box backdrop-blur-3xl text-base-content shadow-xl rtl:dropdown-right"
+                >
+                  <li class="menu-title">{% translate 'Language' %}</li>
+                  <form
+                    id="lang-form"
+                    class="hidden"
+                    action="{% url 'set_language' %}"
+                    method="post"
+                  >
+                    {% csrf_token %}
+                    <input
+                      name="next"
+                      type="hidden"
+                      value="{{ redirect_to }}"
+                    />
+                  </form>
+                  <!---->
+                  {% get_available_languages as LANGS %}
+                  <!---->
+                  {% get_language_info_list for LANGS as langs %}
+                  <!---->
+                  {% for language in langs %}
+                  <li>
+                    <label
+                      class="flex flex-row items-center justify-between gap-6"
+                    >
+                      <div class="flex flex-row items-center gap-2">
+                        <input
+                          form="lang-form"
+                          type="submit"
+                          name="language"
+                          value="{{ language.code|upper }}"
+                          aria-label="{{ language.name_local }} ({{ language.code }})"
+                        />
+                        <span>
+                          {{ language.name_local }}
+                          <!---->
+                          ({{ language.code }})
+                        </span>
+                      </div>
+                      {% if language.code == LANGUAGE_CODE %}
+                      <i data-lucide="check" class="size-4 lg:size-6"></i>
+                      {% endif %}
+                    </label>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </div>
+
               <form
                 method="get"
                 action="{% url 'ui:search' %}"
                 class="hidden lg:block"
               >
                 <label
-                  class="mx-auto max-w-xl w-full bg-transparent input input-primary xl:input-lg 2xl:input-xl"
+                  class="mx-auto max-w-xl w-full bg-transparent input input-primary 2xl:input-lg"
                 >
                   <i
                     data-lucide="search"
