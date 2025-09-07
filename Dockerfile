@@ -22,7 +22,6 @@ RUN echo "AUTH_USER_MODEL = 'users.User'" >> core/settings.py
 RUN echo "INSTALLED_APPS += [" >> core/settings.py
 RUN echo "    'tcn'," >> core/settings.py
 RUN echo "    'tcn.apps.articles'," >> core/settings.py
-RUN echo "    'tcn.apps.blog'," >> core/settings.py
 RUN echo "    'tcn.apps.categories'," >> core/settings.py
 RUN echo "    'tcn.apps.home'," >> core/settings.py
 RUN echo "    'tcn.apps.links'," >> core/settings.py

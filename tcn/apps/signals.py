@@ -4,7 +4,6 @@ from django.db.models.signals import pre_delete
 from wagtail.contrib.frontend_cache.utils import PurgeBatch
 from wagtail.signals import page_published
 
-from tcn.apps.blog.models import Post
 from tcn.apps.categories.models import Category
 
 
@@ -25,7 +24,3 @@ def register_signal_receivers(sender):
 
 def register_category_signal_receivers():
     register_signal_receivers(Category)
-
-
-def register_post_signal_receivers():
-    register_signal_receivers(Post)

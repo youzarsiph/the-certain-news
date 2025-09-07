@@ -36,7 +36,6 @@ jobs:
           echo "INSTALLED_APPS += [" >> core/settings.py
           echo "    'tcn'," >> core/settings.py
           echo "    'tcn.apps.articles'," >> core/settings.py
-          echo "    'tcn.apps.blog'," >> core/settings.py
           echo "    'tcn.apps.categories'," >> core/settings.py
           echo "    'tcn.apps.home'," >> core/settings.py
           echo "    'tcn.apps.links'," >> core/settings.py

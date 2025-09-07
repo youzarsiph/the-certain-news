@@ -5,8 +5,8 @@ from wagtail.admin.panels import FieldPanel
 from wagtail.fields import StreamField
 from wagtail.models import Page
 
+from blog.apps.indexes.models import BlogIndex
 from tcn.apps.articles.models import Article
-from tcn.apps.blog.models import BlogIndex
 from tcn.apps.categories.models import Category, CategoryIndex
 from tcn.cms.blocks import MediaBlock
 
@@ -20,7 +20,7 @@ class Home(Page):
     subpage_types = [
         "home.About",
         "home.Contact",
-        "blog.BlogIndex",
+        "blog_indexes.BlogIndex",
         "categories.CategoryIndex",
         "categories.Category",
     ]

@@ -5,6 +5,7 @@ django-cors-headers
 django-debug-toolbar
 django-filter
 django-phonenumber-field
+django-w-blog
 djangorestframework
 djoser
 drf-restwind

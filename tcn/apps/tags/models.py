@@ -14,13 +14,3 @@ class ArticleTag(TaggedItemBase):
         related_name="tagged_items",
         on_delete=models.CASCADE,
     )
-
-
-class PostTag(TaggedItemBase):
-    """Through model for defining m2m rel between Posts and Tags"""
-
-    content_object = ParentalKey(
-        "blog.Post",
-        related_name="tagged_items",
-        on_delete=models.CASCADE,
-    )
