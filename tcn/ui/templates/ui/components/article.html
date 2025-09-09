@@ -21,18 +21,6 @@
     <div
       class="card-body p-4 justify-end bg-gradient-to-t from-primary dark:from-base-100 to-transparent to-75%"
     >
-      <h2
-        class="card-title text-primary-content text-shadow-lg dark:text-primary"
-      >
-        {{ article.title }}
-      </h2>
-
-      <p
-        class="hidden grow-0 text-primary-content text-shadow-lg dark:text-primary group-first:block"
-      >
-        {{ article.headline }}
-      </p>
-
       <div class="card-actions items-center gap-1">
         {% if article.is_breaking %}
         <div
@@ -78,6 +66,18 @@
           </span>
         </a>
       </div>
+
+      <h2
+        class="card-title text-primary-content text-shadow-lg dark:text-primary"
+      >
+        {{ article.title }}
+      </h2>
+
+      <p
+        class="hidden grow-0 text-primary-content text-shadow-lg dark:text-primary group-first:block"
+      >
+        {{ article.headline }}
+      </p>
     </div>
   </div>
 </li>

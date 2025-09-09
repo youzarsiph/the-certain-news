@@ -1,8 +1,8 @@
 {% extends 'ui/base.html' %}{% load i18n wagtailcore_tags %}
 
 <!---->
-{% block title %}{{ block.super }} | 
-{% trans 'Latest news around the world' %}{% endblock %}
+{% block title %}{{ block.super }} | {% trans 'Latest news around the world'
+%}{% endblock %}
 
 <!---->
 {% block content %}
@@ -62,7 +62,7 @@
       </h1>
 
       <ol class="grid grid-cols-12 grid-rows-[auto] gap-4">
-        {% for article in category.get_ordered_children.specific|slice:':6' %}
+        {% for article in category.get_ordered_children.specific|slice:':9' %}
         <!---->
         {% include 'ui/components/article.html' %}
         <!---->

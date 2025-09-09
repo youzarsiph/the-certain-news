@@ -44,14 +44,14 @@ class Home(Page):
             "trending_news": Article.objects.descendant_of(self)
             .live()
             .prefetch_related("link")
-            .order_by("link__view_count")[:10],
+            .order_by("link__view_count")[:9],
             "latest_news": Article.objects.descendant_of(self)
             .live()
-            .order_by("-created_at")[:10],
+            .order_by("-created_at")[:9],
             "breaking_news": Article.objects.descendant_of(self)
             .live()
             .filter(is_breaking=True)
-            .order_by("-created_at")[:10],
+            .order_by("-created_at")[:9],
             "categories": Category.objects.descendant_of(self).live().order_by("?")[:5],
         }
 
