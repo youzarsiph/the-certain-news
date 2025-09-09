@@ -24,7 +24,7 @@
       <div class="card-actions items-center gap-1">
         {% if article.is_breaking %}
         <div
-          class="tooltip flex tooltip-error"
+          class="tooltip tooltip-bottom flex tooltip-error"
           data-tip="{% trans 'Breaking' %}"
         >
           <div class="inline-grid *:[grid-area:1/1]">
@@ -35,7 +35,7 @@
         </div>
         {% endif %}
         <a
-          class="tooltip tooltip-primary z-20"
+          class="tooltip tooltip-bottom tooltip-primary z-20"
           data-tip="{% trans 'Date published' %}"
           href="{% url 'ui:articles-d' article.created_at.year article.created_at.month article.created_at.day %}"
         >
@@ -45,7 +45,7 @@
         </a>
         {% if article.country %}
         <div
-          class="tooltip tooltip-success z-20"
+          class="tooltip tooltip-bottom tooltip-success z-20"
           data-tip="{{ article.country.name }}"
         >
           <a
@@ -58,7 +58,7 @@
         {% endif %}
         <a
           href="{% pageurl article.get_parent %}"
-          class="tooltip tooltip-primary z-20"
+          class="tooltip tooltip-bottom tooltip-primary z-20"
           data-tip="{% trans 'Category' %}"
         >
           <span class="badge badge-xs md:badge-sm badge-primary">
