@@ -7,11 +7,14 @@ from modelcluster.contrib.taggit import ClusterTaggableManager
 from wagtail.admin.panels import FieldPanel
 from wagtail.api import APIField
 from wagtail.fields import StreamField
+from wagtail.images import get_image_model
 from wagtail.models import Page
 from wagtail.search import index
 
 from tcn.apps.mixins import DateTimeMixin
 from tcn.cms.blocks import MediaBlock
+
+Image = get_image_model()
 
 
 # Create your models here.
@@ -25,7 +28,7 @@ class Article(DateTimeMixin, Page):
         help_text=_("Country"),
     )
     image = models.ForeignKey(
-        "wagtailimages.Image",
+        Image,
         on_delete=models.PROTECT,
         related_name="+",
         verbose_name=_("image"),

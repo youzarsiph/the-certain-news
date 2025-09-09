@@ -365,22 +365,12 @@
                     </nav>
                     <nav>
                       <div class="footer-title">{% trans 'Company' %}</div>
-                      {% if blog_index %}
-                      <a
-                        href="{% pageurl blog_index %}"
-                        class="link link-hover"
-                      >
-                        {% trans 'Blog' %}
-                      </a>
-                      {% else %}
                       <a
                         href="{% slug_url 'blog' LANGUAGE_CODE %}"
                         class="link link-hover"
                       >
                         {% trans 'Blog' %}
                       </a>
-                      {% endif %}
-                      <!---->
                       {% if about %}
                       <a href="{% pageurl about %}" class="link link-hover">
                         {% trans 'About us' %}
@@ -647,17 +637,6 @@
                 </a>
               </li>
 
-              {% if blog_index %}
-              <li>
-                <a
-                  href="{% pageurl blog_index %}"
-                  class="btn btn-sm btn-ghost btn-primary md:btn-md btn-block 2xl:btn-xl justify-start"
-                >
-                  <i data-lucide="newspaper" class="size-4 md:size-6"></i>
-                  <span>{% trans 'Blog' %}</span>
-                </a>
-              </li>
-              {% else %}
               <li>
                 <a
                   href="{% slug_url 'blog' LANGUAGE_CODE %}"
@@ -667,9 +646,7 @@
                   <span>{% trans 'Blog' %}</span>
                 </a>
               </li>
-              {% endif %}
 
-              <!---->
               {% if about %}
               <li>
                 <a

@@ -3,6 +3,7 @@ django
 django-countries
 django-cors-headers
 django-debug-toolbar
+django-extensions
 django-filter
 django-phonenumber-field
 django-w-blog

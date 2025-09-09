@@ -5,7 +5,6 @@ from wagtail.admin.panels import FieldPanel
 from wagtail.fields import StreamField
 from wagtail.models import Page
 
-from blog.apps.indexes.models import BlogIndex
 from tcn.apps.articles.models import Article
 from tcn.apps.categories.models import Category, CategoryIndex
 from tcn.cms.blocks import MediaBlock
@@ -41,7 +40,6 @@ class Home(Page):
             **context,
             "about": self.get_children().type(About).last(),
             "contact": self.get_children().type(Contact).last(),
-            "blog_index": self.get_children().type(BlogIndex).last(),
             "categories_index": self.get_children().type(CategoryIndex).last(),
             "trending_news": Article.objects.descendant_of(self)
             .live()
