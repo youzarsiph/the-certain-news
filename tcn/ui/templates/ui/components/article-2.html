@@ -15,17 +15,17 @@
     {% image article.image fill-1920x1080 %}
   </figure>
 
-  <div class="card-body p-4 justify-end">
+  <div class="card-body p-4">
     <h2 class="card-title text-primary">{{ article.title }}</h2>
 
     <p
       data-order="{{ forloop.counter }}"
-      class="hidden grow-0 [data-order=2]:block"
+      class="hidden grow-0 data-[order=1]:block data-[order=2]:block data-[order=3]:block"
     >
       {{ article.headline }}
     </p>
 
-    <div class="card-actions items-center gap-1">
+    <div class="card-actions items-center gap-1 z-20">
       {% if article.is_breaking %}
       <div class="tooltip flex tooltip-error" data-tip="{% trans 'Breaking' %}">
         <div class="inline-grid *:[grid-area:1/1]">

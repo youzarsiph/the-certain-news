@@ -1,6 +1,9 @@
 {% extends 'ui/base.html' %}{% load static %}
 
 <!---->
+{% block title %}{{ block.super }} | {% trans 'Docs' %}{% endblock %}
+
+<!---->
 {% block styles %}
 <link rel="stylesheet" href="{% static 'docs/css/styles.css' %}" />
 {{ block.super }}{% endblock %}

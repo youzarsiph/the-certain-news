@@ -12,6 +12,7 @@ To generate the styles:
 
 ```console
 npm install
+cd tcn/ui/static/ui
 npx @tailwindcss/cli -i ../static/ui/css/app.css -o ../static/ui/css/styles.css --cwd ../../templates -m -w
 ```
 

@@ -1,6 +1,9 @@
 {% extends 'ui/base.html' %}{% load static %}
 
 <!---->
+{% block title %}{{ block.super }} | {% trans 'Blog' %}{% endblock %}
+
+<!---->
 {% block styles %}
 <link rel="stylesheet" href="{% static 'blog/css/styles.css' %}" />
 {{ block.super }}{% endblock %}
