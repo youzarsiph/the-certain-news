@@ -1,6 +1,7 @@
 """API views"""
 
 from typing import Any, Dict
+
 from channels.generic.websocket import AsyncJsonWebsocketConsumer
 
 

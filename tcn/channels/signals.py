@@ -1,8 +1,8 @@
 """Signals to send breaking news to live feed"""
 
 from asgiref.sync import async_to_sync
-from django.utils.timesince import timesince
 from channels.layers import get_channel_layer
+from django.utils.timesince import timesince
 from wagtail.signals import page_published
 
 from tcn.apps.articles.models import Article
