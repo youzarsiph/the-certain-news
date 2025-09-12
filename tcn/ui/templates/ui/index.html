@@ -1,23 +1,64 @@
 {% extends 'ui/base.html' %}{% load i18n wagtailcore_tags %}
 
 <!---->
-{% block title %}
-{{ block.super }} | {% trans 'Latest news around the world' %}{% endblock %}
+{% block title %}{{ block.super }} | {% trans 'Latest news around the world'%}
+{% endblock %}
 
 <!---->
 {% block content %}
 <div class="container grid gap-16 mx-auto px-4 py-20">
   <section title="{% trans 'Breaking' %}">
-    <ol
-      title="{% trans 'Breaking' %}"
-      class="grid grid-cols-12 grid-rows-[auto] gap-4"
-    >
+    <ol class="grid grid-cols-12 grid-rows-[auto] gap-4">
       {% for article in breaking_news %}
       <!---->
       {% include 'ui/components/article-1.html' %}
       <!---->
       {% endfor %}
     </ol>
+  </section>
+
+  <section title="{% trans 'Live feed' %}" class="grid grid-cols-12 gap-4">
+    <div class="grid gap-8 col-span-12 md:col-span-6 lg:col-span-4">
+      <h1 class="text-3xl text-primary font-black lg:text-5xl">
+        {% trans 'Live feed' %}
+      </h1>
+      <p>
+        {% blocktrans trimmed %}Stay updated with the latest breaking news as it
+        happens. New breaking articles will appear instantly in the live feed
+        below.{% endblocktrans %}
+      </p>
+    </div>
+    <div class="col-span-12 md:col-span-6 lg:col-span-8">
+      <ol
+        class="size-full items-center justify-center timeline timeline-vertical"
+      >
+        {% for article in breaking_news|slice:':2' %}
+        <li>
+          <hr class="bg-error" />
+          <time class="timeline-start text-xs text-primary font-semibold">
+            {{ article.created_at|timesince }}
+          </time>
+          <div class="timeline-middle animate-pulse rounded-full">
+            <i
+              class="size-4 md:size-6 text-error"
+              data-lucide="circle-alert"
+            ></i>
+            <span class="sr-only">{% trans 'Breaking' %}</span>
+          </div>
+          <a
+            href="{% url 'ui:redirect' article.link.slug %}"
+            class="timeline-end timeline-box bg-primary font-bold text-primary-content"
+          >
+            {{ article.title }}
+          </a>
+
+          {% if not forloop.last %}
+          <hr class="bg-error" />
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ol>
+    </div>
   </section>
 
   <section class="grid gap-8">
@@ -72,4 +113,48 @@
     {% endfor %}
   </div>
 </div>
+
+<script>
+  function insertLiveArticle(article) {
+    // Find the timeline ol
+    const timeline = document.querySelector(".timeline.timeline-vertical");
+    if (!timeline) return;
+
+    // Create a new li element for the article
+    const li = document.createElement("li");
+
+    // Format time (you can adjust this as needed)
+    const timeAgo = article.created_at || "{% trans 'Now' %}";
+
+    li.innerHTML = `
+      <hr class="bg-error" />
+      <time class="timeline-start text-xs text-primary font-semibold">${timeAgo}</time>
+      <div class="timeline-middle animate-pulse rounded-full">
+        <i class="size-4 text-error md:size-6" data-lucide="circle-alert"></i>
+        <span class="sr-only">{% trans 'Breaking' %}</span>
+      </div>
+      <a 
+        href="${article.url || "#"}"
+        class="timeline-end timeline-box bg-primary font-bold text-primary-content"
+      >
+        ${article.title}
+      </a>
+      <hr class="bg-error" />`;
+
+    // Insert as first child
+    timeline.insertBefore(li, timeline.firstChild);
+    lucide.createIcons();
+  }
+
+  const ws = new WebSocket("ws://" + window.location.host + "/ws/live-feed/");
+
+  ws.onmessage = function (e) {
+    const article = JSON.parse(e.data);
+    insertLiveArticle(article);
+  };
+
+  ws.onclose = function (e) {
+    console.error("Chat socket closed unexpectedly");
+  };
+</script>
 {% endblock %}

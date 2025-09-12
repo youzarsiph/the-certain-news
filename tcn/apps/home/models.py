@@ -47,9 +47,11 @@ class Home(Page):
             .order_by("link__view_count")[:9],
             "latest_news": Article.objects.descendant_of(self)
             .live()
+            .prefetch_related("link")
             .order_by("-created_at")[:9],
             "breaking_news": Article.objects.descendant_of(self)
             .live()
+            .prefetch_related("link")
             .filter(is_breaking=True)
             .order_by("-created_at")[:9],
             "categories": Category.objects.descendant_of(self).live().order_by("?")[:5],
