@@ -11,13 +11,16 @@ from wagtail.images.blocks import ImageBlock
 class TextBlock(blocks.StreamBlock):
     """Custom StreamBlock for Text content"""
 
-    quote = blocks.BlockQuoteBlock(help_text=_("Quote"))
-    paragraph = blocks.RichTextBlock(help_text=_("Rich Text"))
+    quote = blocks.BlockQuoteBlock(verbose_name=_("quote"), help_text=_("Quote"))
+    paragraph = blocks.RichTextBlock(
+        verbose_name=_("paragraph"),
+        help_text=_("Rich Text"),
+    )
 
 
 class MediaBlock(TextBlock):
     """Custom StreamBlock for Text and Media content"""
 
-    video = EmbedBlock(help_text=_("Video"))
-    image = ImageBlock(help_text=_("Image"))
-    document = DocumentChooserBlock(help_text=_("Document"))
+    video = EmbedBlock(verbose_name=_("video"), help_text=_("Video"))
+    image = ImageBlock(verbose_name=_("image"), help_text=_("Image"))
+    document = DocumentChooserBlock(verbose_name=_("document"), help_text=_("Document"))

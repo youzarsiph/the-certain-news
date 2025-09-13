@@ -18,32 +18,32 @@
   </section>
 
   <section title="{% trans 'Live feed' %}" class="grid grid-cols-12 gap-4">
-    <div class="grid gap-8 col-span-12 md:col-span-6 lg:col-span-4">
-      <h1 class="text-3xl text-primary font-black lg:text-5xl">
-        {% trans 'Live feed' %}
-      </h1>
-      <p>
-        {% blocktrans trimmed %}Stay updated with the latest breaking news as it
-        happens. New breaking articles will appear instantly in the live feed
-        below.{% endblocktrans %}
-      </p>
+    <div class="col-span-12 md:col-span-6 lg:col-span-4">
+      <div class="flex gap-8 size-full flex-col justify-center">
+        <h1 class="text-3xl text-primary font-black lg:text-5xl">
+          {% trans 'Live feed' %}
+        </h1>
+        <p>
+          {% blocktrans trimmed %}Stay updated with the latest breaking news as
+          it happens. New breaking articles will appear instantly in the live
+          feed below.{% endblocktrans %}
+        </p>
+      </div>
     </div>
     <div class="col-span-12 md:col-span-6 lg:col-span-8">
       <ol
         class="size-full items-center justify-center timeline timeline-vertical"
       >
-        {% for article in breaking_news|slice:':2' %}
+        {% for article in breaking_news|slice:':3' %}
         <li>
           <hr class="bg-error" />
           <time class="timeline-start text-xs text-primary font-semibold">
             {{ article.created_at|timesince }}
           </time>
-          <div class="timeline-middle animate-pulse rounded-full">
-            <i
-              class="size-4 md:size-6 text-error"
-              data-lucide="circle-alert"
-            ></i>
-            <span class="sr-only">{% trans 'Breaking' %}</span>
+          <div class="timeline-middle">
+            <span class="status status-xl status-primary">
+              <span class="sr-only">{% trans 'Breaking' %}</span>
+            </span>
           </div>
           <a
             href="{% url 'ui:redirect' article.link.slug %}"

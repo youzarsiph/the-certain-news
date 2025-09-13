@@ -2,6 +2,7 @@
 
 from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
+from django.urls import reverse_lazy
 from django.utils.timesince import timesince
 from wagtail.signals import page_published
 
@@ -21,7 +22,7 @@ def send_to_live_feed(sender, **kwargs):
             {
                 "type": "live.broadcast",
                 "article": {
-                    "url": article.url,
+                    "url": reverse_lazy("ui:redirect", args=[article.link.slug]),
                     "title": article.title,
                     "created_at": timesince(article.created_at),
                 },

@@ -2,7 +2,8 @@
 
 from django.contrib.sitemaps import Sitemap
 from django.urls import reverse_lazy
-from wagtail.contrib.sitemaps.sitemap_generator import Sitemap as WagtailSitemap
+from wagtail.contrib.sitemaps.sitemap_generator import \
+    Sitemap as WagtailSitemap
 
 
 # Create your views here

@@ -1,8 +1,12 @@
 """Home page"""
 
+from django.db import models
 from django.utils.translation import gettext_lazy as _
-from wagtail.admin.panels import FieldPanel
-from wagtail.fields import StreamField
+from modelcluster.fields import ParentalKey
+from wagtail.admin.panels import FieldPanel, FieldRowPanel, InlinePanel, MultiFieldPanel
+from wagtail.contrib.forms.panels import FormSubmissionsPanel
+from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
+from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Page
 
 from tcn.apps.articles.models import Article
@@ -83,7 +87,15 @@ class About(Page):
         verbose_name_plural = _("About pages")
 
 
-class Contact(Page):
+class FormField(AbstractFormField):
+    page = ParentalKey(
+        "home.Contact",
+        on_delete=models.CASCADE,
+        related_name="form_fields",
+    )
+
+
+class Contact(AbstractEmailForm):
     """Contact page"""
 
     content = StreamField(
@@ -93,6 +105,12 @@ class Contact(Page):
         verbose_name=_("content"),
         help_text=_("Page content"),
     )
+    message = RichTextField(
+        null=True,
+        blank=True,
+        verbose_name=_("message"),
+        help_text=_("Message to display after form submission"),
+    )
 
     template = "ui/contact.html"
     context_object_name = "contact"
@@ -100,6 +118,20 @@ class Contact(Page):
     content_panels = Page.content_panels + [FieldPanel("content")]
     parent_page_types = ["home.Home"]
     subpage_types = []
+
+    content_panels = AbstractEmailForm.content_panels + [
+        FieldPanel("content"),
+        FieldPanel("message"),
+        FormSubmissionsPanel(),
+        InlinePanel("form_fields"),
+        MultiFieldPanel(
+            [
+                FieldPanel("subject"),
+                FieldRowPanel([FieldPanel("from_address"), FieldPanel("to_address")]),
+            ],
+            "Email",
+        ),
+    ]
 
     class Meta(Page.Meta):
         """Meta data"""
