@@ -32,15 +32,15 @@
 
 <script>
   function insertLiveArticleAlert(article) {
-    const carousel = document.getElementById('live-line');
+    const carousel = document.getElementById("live-line");
     if (!carousel) return;
 
-    const container = document.getElementById('container');
-    container.classList.toggle('hidden')
+    const container = document.getElementById("container");
+    container.classList.toggle("hidden");
 
     // Create a new li element for the article
-    const li = document.createElement('li');
-    li.classList = 'carousel-item w-full grow';
+    const li = document.createElement("li");
+    li.classList = "carousel-item w-full grow";
 
     li.innerHTML = `
       <a
@@ -66,7 +66,7 @@
     lucide.createIcons();
   }
 
-  const ws = new WebSocket(;ws://; + window.location.host + ;/ws/live-feed/;);
+  const ws = new WebSocket("wss:" + window.location.host + "/ws/live-feed/");
 
   ws.onmessage = function (e) {
     const article = JSON.parse(e.data);
@@ -74,6 +74,6 @@
   };
 
   ws.onclose = function (e) {
-    console.error('Chat socket closed unexpectedly');
+    console.error("Chat socket closed unexpectedly");
   };
 </script>

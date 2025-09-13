@@ -146,7 +146,7 @@
     lucide.createIcons();
   }
 
-  const ws = new WebSocket("ws://" + window.location.host + "/ws/live-feed/");
+  const ws = new WebSocket("wss://" + window.location.host + "/ws/live-feed/");
 
   ws.onmessage = function (e) {
     const article = JSON.parse(e.data);
