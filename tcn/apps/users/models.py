@@ -47,6 +47,13 @@ class User(AbstractUser):
         verbose_name=_("bio"),
         help_text=_("Tell us about yourself"),
     )
+    saved_articles = models.ManyToManyField(
+        "articles.Article",
+        blank=True,
+        related_name="saved_articles",
+        verbose_name=_("saved articles"),
+        help_text=_("Articles saved by user"),
+    )
 
     def save(self, **kwargs) -> None:
         """Update slug value"""

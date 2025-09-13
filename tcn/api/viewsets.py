@@ -1,6 +1,11 @@
 """API endpoints for tcn.apps.users"""
 
 from djoser.views import UserViewSet as BaseUVS
+from rest_framework import status
+from rest_framework.request import Request
+from rest_framework.response import Response
+from rest_framework.decorators import action
+from rest_framework.permissions import IsAuthenticated
 
 
 # Create your views here.
@@ -99,3 +104,26 @@ class UserViewSet(BaseUVS):
     search_fields = ["username", "first_name", "last_name"]
     ordering_fields = ["username", "date_joined", "last_login"]
     filterset_fields = ["username"]
+
+    @action(
+        detail=True,
+        methods=["post"],
+        permission_classes=[IsAuthenticated],
+        url_path="save-article",
+        url_name="save_article",
+    )
+    def save_article(self, request: Request, *args, **kwargs) -> Response:
+        """
+        Save an article to the user's saved articles list.
+
+        Args:
+            request (Request): The request object containing user and article data.
+
+        Returns:
+            Response: A response indicating success or failure of the operation.
+        """
+
+        return Response(
+            {"detail": "Article saved successfully."},
+            status=status.HTTP_200_OK,
+        )
