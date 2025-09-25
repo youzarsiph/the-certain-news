@@ -2,9 +2,9 @@
 
 <!---->
 {% block main_content %}
-<section id="profile" class="flex items-center justify-center gap-6 size-full">
+<section class="grid gap-8 size-full">
   <div
-    class="card card-sm w-full max-w-lg bg-base-200 shadow-xs md:card-md xl:card-lg 2xl:card-xl 2xl:max-w-xl"
+    class="card mx-auto card-sm w-full max-w-lg bg-base-200 shadow-xs md:card-md xl:card-lg 2xl:card-xl 2xl:max-w-xl"
   >
     <div class="flex items-center justify-center py-8">
       {% if request.user.photo %}
@@ -33,5 +33,32 @@
       <p>{% trans 'Welcome to your Profile' %}</p>
     </div>
   </div>
+
+  <section class="grid gap-4">
+    <h1 class="text-3xl text-primary font-black lg:text-5xl">
+      {% trans 'Saved articles' %}
+    </h1>
+    <ol class="grid grid-cols-12 grid-rows-[auto] gap-4">
+      {% for article in request.user.bookmarked_articles.all %}
+      <!---->
+      {% include 'ui/components/article.html' %}
+      <!---->
+      {% empty %}
+      <li class="col-span-12">
+        <article
+          class="card card-sm bg-base-200 shadow-xs lg:card-md xl:card-lg 2xl:card-xl overflow-hidden"
+        >
+          <main class="card-body items-center">
+            <i data-lucide="info" class="mx-auto size-1/4 text-primary"></i>
+            <h2 class="card-title text-primary">
+              {% trans 'No saved articles' %}
+            </h2>
+            <p>{% trans 'Your saved articles will appear here.' %}</p>
+          </main>
+        </article>
+      </li>
+      {% endfor %}
+    </ol>
+  </section>
 </section>
 {% endblock %}

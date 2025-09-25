@@ -138,11 +138,13 @@
         </div>
         {% endif %}
 
-        <div class="grid gap-1">
-          <h2 class="text-primary text-lg font-bold lg:text-xl">
-            {{ article.owner.get_full_name }}
-          </h2>
-          <p>{{ article.owner.bio }}</p>
+        <div class="flex items-center gap-4">
+          <div class="grid gap-1">
+            <h2 class="text-primary text-lg font-bold lg:text-xl">
+              {{ article.owner.get_full_name }}
+            </h2>
+            <p>{{ article.owner.bio|default:'' }}</p>
+          </div>
         </div>
       </a>
       {% else %}
@@ -150,6 +152,60 @@
       {% endif %}
 
       <div class="flex items-center justify-end gap-4">
+        {% if request.user.is_authenticated %}
+        <div
+          class="tooltip tooltip-left tooltip-primary rtl:tooltip-right"
+          data-tip="{% translate 'Follow' %}"
+        >
+          <button
+            onclick="follow('{{ article.owner.slug }}')"
+            class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
+          >
+            <i data-lucide="user-plus" class="size-4 lg:size-6"></i>
+            <span class="sr-only">{% translate 'Follow' %}</span>
+          </button>
+        </div>
+
+        <div
+          class="tooltip tooltip-left tooltip-success rtl:tooltip-right"
+          data-tip="{% translate 'Save' %}"
+        >
+          <button
+            onclick="save('{{ article.slug }}')"
+            class="btn btn-square btn-soft btn-sm btn-success md:btn-md 2xl:btn-lg"
+          >
+            <i data-lucide="bookmark" class="size-4 lg:size-6"></i>
+            <span class="sr-only">{% translate 'Save' %}</span>
+          </button>
+        </div>
+        {% else %}
+        <div
+          class="tooltip tooltip-left tooltip-primary rtl:tooltip-right"
+          data-tip="{% translate 'Login to follow' %}"
+        >
+          <a
+            href="{% url 'ui:login' %}"
+            class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
+          >
+            <i data-lucide="user-plus" class="size-4 lg:size-6"></i>
+            <span class="sr-only">{% translate 'Login to follow' %}</span>
+          </a>
+        </div>
+
+        <div
+          class="tooltip tooltip-left tooltip-success rtl:tooltip-right"
+          data-tip="{% translate 'Login to save' %}"
+        >
+          <a
+            href="{% url 'ui:login' %}"
+            class="btn btn-square btn-soft btn-sm btn-success md:btn-md 2xl:btn-lg"
+          >
+            <i data-lucide="bookmark" class="size-4 lg:size-6"></i>
+            <span class="sr-only">{% translate 'Login to save' %}</span>
+          </a>
+        </div>
+        {% endif %}
+
         <div
           class="tooltip tooltip-left tooltip-primary rtl:tooltip-right"
           data-tip="{% translate 'Translations' %}"
@@ -202,12 +258,12 @@
             <i
               id="clipboard"
               data-lucide="clipboard"
-              class="size-4 md:size-6"
+              class="size-4 lg:size-6"
             ></i>
             <i
               id="clipboard-check"
               data-lucide="clipboard-check"
-              class="hidden size-4 md:size-6"
+              class="hidden size-4 lg:size-6"
             ></i>
             <span class="sr-only">{% trans 'Copy URL' %}</span>
           </button>
@@ -221,7 +277,7 @@
             class="btn btn-copy btn-square btn-sm btn-info md:btn-md 2xl:btn-lg"
             href="https://www.facebook.com/sharer/sharer.php?u={% short_link article.link.slug %}"
           >
-            <i data-lucide="facebook" class="size-4 md:size-6"></i>
+            <i data-lucide="facebook" class="size-4 lg:size-6"></i>
             <span class="sr-only">{% trans 'Facebook' %}</span>
           </a>
         </div>
@@ -313,4 +369,84 @@
     }, 2000);
   });
 </script>
+
+<div>
+  {% csrf_token %}
+  <div
+    id="notifications"
+    class="hidden toast toast-top toast-end top-24 right-4 lg:right-24 z-50"
+  >
+    <div class="alert alert-horizontal alert-success">
+      <i data-lucide="circle-check" class="size-4 lg:size-6"></i>
+      <p id="message"></p>
+    </div>
+  </div>
+  {% if request.user.is_authenticated %}
+  <script>
+    const token = document.querySelector("[name=csrfmiddlewaretoken]").value;
+    const message = document.getElementById("message");
+    const notifications = document.getElementById("notifications");
+
+    const save = (article) =>
+      fetch("/{{ LANGUAGE_CODE }}/api/articles/{{ article.slug }}/save/", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "X-CSRFToken": token,
+        },
+        body: JSON.stringify({}),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          message.innerText = data.detail;
+          notifications.classList.toggle("hidden");
+
+          setTimeout(() => {
+            notifications.classList.toggle("hidden");
+            message.innerText = "";
+          }, 2000);
+        })
+        .catch((err) => {
+          message.innerText = err.message;
+          notifications.classList.toggle("hidden");
+
+          setTimeout(() => {
+            notifications.classList.toggle("hidden");
+            message.innerText = "";
+          }, 2000);
+        });
+
+    const follow = (user) =>
+      fetch("/{{ LANGUAGE_CODE }}/api/users/{{ article.owner.slug }}/follow/", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "X-CSRFToken": token,
+        },
+        body: JSON.stringify({}),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          message.innerText = data.detail;
+          notifications.classList.toggle("hidden");
+
+          setTimeout(() => {
+            notifications.classList.toggle("hidden");
+            message.innerText = "";
+          }, 2000);
+        })
+        .catch((err) => {
+          message.innerText = err.message;
+          notifications.classList.toggle("hidden");
+
+          setTimeout(() => {
+            notifications.classList.toggle("hidden");
+            message.innerText = "";
+          }, 2000);
+        });
+  </script>
+  {% endif %}
+</div>
 {% endblock %}

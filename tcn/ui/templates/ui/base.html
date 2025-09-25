@@ -104,7 +104,7 @@
                 <header
                   class="absolute inset-x-0 top-0 z-40 px-2 backdrop-blur-3xl lg:px-4"
                 >
-                  <nav class="navbar p-0">
+                  <nav class="navbar p-4">
                     <div class="navbar-start gap-4">
                       <div
                         class="tooltip tooltip-right rtl:tooltip-left tooltip-primary z-10"
@@ -115,7 +115,7 @@
                           aria-label="{% trans 'close sidebar' %}"
                           class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
                         >
-                          <i data-lucide="menu" class="size-4 md:size-6"></i>
+                          <i data-lucide="menu" class="size-4 lg:size-6"></i>
                           <span class="sr-only">
                             {% trans 'Open drawer' %}
                           </span>
@@ -156,7 +156,7 @@
                         >
                           <i
                             data-lucide="alert-circle"
-                            class="size-4 md:size-6"
+                            class="size-4 lg:size-6"
                           ></i>
                           <span class="sr-only"> {% trans 'Breaking' %} </span>
                         </a>
@@ -172,7 +172,7 @@
                         >
                           <i
                             data-lucide="clock-fading"
-                            class="size-4 md:size-6"
+                            class="size-4 lg:size-6"
                           ></i>
                           <span class="sr-only">{% trans 'Latest news' %}</span>
                         </a>
@@ -189,7 +189,7 @@
                           href="{% url 'ui:profile' %}"
                           class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
                         >
-                          <i data-lucide="user" class="size-4 md:size-6"></i>
+                          <i data-lucide="user" class="size-4 lg:size-6"></i>
                           <span class="sr-only">{% trans 'Profile' %}</span>
                         </a>
                       </div>
@@ -202,7 +202,7 @@
                           href="{% url 'ui:login' %}"
                           class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
                         >
-                          <i data-lucide="log-in" class="size-4 md:size-6"></i>
+                          <i data-lucide="log-in" class="size-4 lg:size-6"></i>
                           <span class="sr-only">{% trans 'Log in' %}</span>
                         </a>
                       </div>
@@ -216,7 +216,7 @@
                         >
                           <i
                             data-lucide="heart-handshake"
-                            class="size-4 md:size-6"
+                            class="size-4 lg:size-6"
                           ></i>
                           <span class="sr-only">{% trans 'Sign up' %}</span>
                         </a>
@@ -308,7 +308,7 @@
                         >
                           <i
                             data-lucide="search"
-                            class="size-4 text-primary md:size-6"
+                            class="size-4 text-primary lg:size-6"
                           ></i>
                           <input
                             required
@@ -324,7 +324,7 @@
                           >
                             <i
                               data-lucide="check-circle2"
-                              class="size-4 md:size-6"
+                              class="size-4 lg:size-6"
                             ></i>
                             <span class="sr-only">{% trans 'Search' %}</span>
                           </button>
@@ -339,7 +339,7 @@
                           href="{% url 'ui:search' %}"
                           class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
                         >
-                          <i data-lucide="search" class="size-4 md:size-6"></i>
+                          <i data-lucide="search" class="size-4 lg:size-6"></i>
                           <span class="sr-only">{% trans 'Search' %}</span>
                         </a>
                       </div>
@@ -451,7 +451,7 @@
                           >
                             <i
                               data-lucide="facebook"
-                              class="size-4 md:size-6"
+                              class="size-4 lg:size-6"
                             ></i>
                             <span class="sr-only">{% trans 'Facebook' %}</span>
                           </a>
@@ -466,7 +466,7 @@
                           >
                             <i
                               data-lucide="instagram"
-                              class="size-4 md:size-6"
+                              class="size-4 lg:size-6"
                             ></i>
                             <span class="sr-only">{% trans 'Instagram' %}</span>
                           </a>
@@ -481,7 +481,7 @@
                           >
                             <i
                               data-lucide="linkedin"
-                              class="size-4 md:size-6"
+                              class="size-4 lg:size-6"
                             ></i>
                             <span class="sr-only">{% trans 'Linkedin' %}</span>
                           </a>
@@ -494,13 +494,13 @@
                             href="{% url 'ui:rss-latest' %}"
                             class="btn btn-sm btn-square lg:btn-md btn-primary"
                           >
-                            <i data-lucide="rss" class="size-4 md:size-6"></i>
+                            <i data-lucide="rss" class="size-4 lg:size-6"></i>
                             <span class="sr-only">{% trans 'RSS' %}</span>
                           </a>
                         </div>
                       </div>
                       <span class="flex items-center gap-2 text-primary">
-                        <i data-lucide="copyright" class="size-4 md:size-6"></i>
+                        <i data-lucide="copyright" class="size-4 lg:size-6"></i>
                         {% trans 'The Certain News' %}
                       </span>
                     </nav>
@@ -556,7 +556,7 @@
                   aria-label="{% trans 'close sidebar' %}"
                   class="btn btn-square btn-soft btn-sm btn-primary hover:btn-error md:btn-md 2xl:btn-lg"
                 >
-                  <i data-lucide="x" class="size-4 md:size-6"></i>
+                  <i data-lucide="x" class="size-4 lg:size-6"></i>
                   <span class="sr-only">{% trans 'Close' %}</span>
                 </label>
               </div>
@@ -570,7 +570,7 @@
                   >
                     <i
                       data-lucide="search"
-                      class="size-4 text-primary md:size-6"
+                      class="size-4 text-primary lg:size-6"
                     ></i>
                     <input
                       required
@@ -586,7 +586,7 @@
                     >
                       <i
                         data-lucide="check-circle2"
-                        class="size-4 md:size-6"
+                        class="size-4 lg:size-6"
                       ></i>
                       <span class="sr-only">{% trans 'Search' %}</span>
                     </button>
@@ -599,7 +599,7 @@
                   href="{% pageurl home %}"
                   class="btn btn-sm btn-ghost btn-primary md:btn-md btn-block 2xl:btn-xl justify-start"
                 >
-                  <i data-lucide="home" class="size-4 md:size-6"></i>
+                  <i data-lucide="home" class="size-4 lg:size-6"></i>
                   <span>{% trans 'Home' %}</span>
                 </a>
               </li>
@@ -611,7 +611,7 @@
                   href="{% pageurl categories_index %}"
                   class="btn btn-sm btn-ghost btn-primary md:btn-md btn-block 2xl:btn-xl justify-start"
                 >
-                  <i data-lucide="layers" class="size-4 md:size-6"></i>
+                  <i data-lucide="layers" class="size-4 lg:size-6"></i>
                   <span>{% trans 'Categories' %}</span>
                 </a>
               </li>
@@ -621,7 +621,7 @@
                   href="{% slug_url 'categories' LANGUAGE_CODE %}"
                   class="btn btn-sm btn-ghost btn-primary md:btn-md btn-block 2xl:btn-xl justify-start"
                 >
-                  <i data-lucide="layers" class="size-4 md:size-6"></i>
+                  <i data-lucide="layers" class="size-4 lg:size-6"></i>
                   <span>{% trans 'Categories' %}</span>
                 </a>
               </li>
@@ -632,7 +632,7 @@
                   href="{% url 'ui:archive' %}"
                   class="btn btn-sm btn-ghost btn-primary md:btn-md btn-block 2xl:btn-xl justify-start"
                 >
-                  <i data-lucide="folder-archive" class="size-4 md:size-6"></i>
+                  <i data-lucide="folder-archive" class="size-4 lg:size-6"></i>
                   <span>{% trans 'Archive' %}</span>
                 </a>
               </li>
@@ -642,7 +642,7 @@
                   href="{% slug_url 'blog' LANGUAGE_CODE %}"
                   class="btn btn-sm btn-ghost btn-primary md:btn-md btn-block 2xl:btn-xl justify-start"
                 >
-                  <i data-lucide="newspaper" class="size-4 md:size-6"></i>
+                  <i data-lucide="newspaper" class="size-4 lg:size-6"></i>
                   <span>{% trans 'Blog' %}</span>
                 </a>
               </li>
@@ -653,7 +653,7 @@
                   href="{% pageurl about %}"
                   class="btn btn-sm btn-ghost btn-primary md:btn-md btn-block 2xl:btn-xl justify-start"
                 >
-                  <i data-lucide="info" class="size-4 md:size-6"></i>
+                  <i data-lucide="info" class="size-4 lg:size-6"></i>
                   <span>{% trans 'About us' %}</span>
                 </a>
               </li>
@@ -663,7 +663,7 @@
                   href="{% slug_url 'about-us' LANGUAGE_CODE %}"
                   class="btn btn-sm btn-ghost btn-primary md:btn-md btn-block 2xl:btn-xl justify-start"
                 >
-                  <i data-lucide="info" class="size-4 md:size-6"></i>
+                  <i data-lucide="info" class="size-4 lg:size-6"></i>
                   <span>{% trans 'About us' %}</span>
                 </a>
               </li>
@@ -676,7 +676,7 @@
                   href="{% pageurl contact %}"
                   class="btn btn-sm btn-ghost btn-primary md:btn-md btn-block 2xl:btn-xl justify-start"
                 >
-                  <i data-lucide="contact" class="size-4 md:size-6"></i>
+                  <i data-lucide="contact" class="size-4 lg:size-6"></i>
                   <span>{% trans 'Contact us' %}</span>
                 </a>
               </li>
@@ -686,7 +686,7 @@
                   href="{% slug_url 'contact-us' LANGUAGE_CODE %}"
                   class="btn btn-sm btn-ghost btn-primary md:btn-md btn-block 2xl:btn-xl justify-start"
                 >
-                  <i data-lucide="contact" class="size-4 md:size-6"></i>
+                  <i data-lucide="contact" class="size-4 lg:size-6"></i>
                   <span>{% trans 'Contact us' %}</span>
                 </a>
               </li>
@@ -701,7 +701,7 @@
                 href="{% url 'ui:profile' %}"
                 class="btn btn-sm btn-ghost btn-primary md:btn-md btn-block 2xl:btn-xl justify-start"
               >
-                <i data-lucide="user" class="size-4 md:size-6"></i>
+                <i data-lucide="user" class="size-4 lg:size-6"></i>
                 <span>{% trans 'Profile' %}</span>
               </a>
             </li>
@@ -711,7 +711,7 @@
                 form="logout"
                 class="btn btn-sm btn-soft btn-error md:btn-md btn-block 2xl:btn-xl justify-start"
               >
-                <i data-lucide="log-out" class="size-4 md:size-6"></i>
+                <i data-lucide="log-out" class="size-4 lg:size-6"></i>
                 <span>{% trans 'Log out' %}</span>
               </button>
             </li>
@@ -721,7 +721,7 @@
                 href="{% url 'ui:login' %}"
                 class="btn btn-sm btn-ghost btn-primary md:btn-md btn-block 2xl:btn-xl justify-start"
               >
-                <i data-lucide="user" class="size-4 md:size-6"></i>
+                <i data-lucide="user" class="size-4 lg:size-6"></i>
                 <span>{% trans 'Log in' %}</span>
               </a>
             </li>
@@ -730,7 +730,7 @@
                 href="{% url 'ui:subscribe' %}"
                 class="btn btn-sm btn-soft btn-success md:btn-md btn-block 2xl:btn-xl justify-start"
               >
-                <i data-lucide="heart-handshake" class="size-4 md:size-6"></i>
+                <i data-lucide="heart-handshake" class="size-4 lg:size-6"></i>
                 <span>{% trans 'Sign up' %}</span>
               </a>
             </li>

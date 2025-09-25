@@ -19,7 +19,7 @@
         <header
           class="absolute inset-x-0 top-0 z-40 px-2 backdrop-blur-3xl lg:px-4"
         >
-          <nav class="navbar p-0">
+          <nav class="navbar p-4">
             <div class="navbar-start gap-4">
               <div
                 class="tooltip tooltip-right rtl:tooltip-left tooltip-primary z-10"
@@ -136,7 +136,7 @@
                   style="anchor-name: --language"
                   class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
                 >
-                  <i data-lucide="languages" class="size-4 lg:size-6"></i>
+                  <i data-lucide="languages" class="size-4 md:size-6"></i>
 
                   <span class="sr-only">{% translate 'Language' %}</span>
                 </button>
@@ -186,7 +186,7 @@
                         </span>
                       </div>
                       {% if language.code == LANGUAGE_CODE %}
-                      <i data-lucide="check" class="size-4 lg:size-6"></i>
+                      <i data-lucide="check" class="size-4 md:size-6"></i>
                       {% endif %}
                     </label>
                   </li>
@@ -250,7 +250,7 @@
               aria-label="{% trans 'Open drawer' %}"
               class="btn btn-sm btn-square btn-soft btn-primary lg:btn-md"
             >
-              <i data-lucide="menu" class="size-4 lg:size-6"></i>
+              <i data-lucide="menu" class="size-4 md:size-6"></i>
               <span class="sr-only">{% trans 'Open drawer' %}</span>
             </label>
           </div>
@@ -310,7 +310,7 @@
             aria-label="{% trans 'Close drawer' %}"
             class="btn btn-square btn-soft btn-sm btn-primary hover:btn-error lg:btn-md"
           >
-            <i data-lucide="x" class="size-4 lg:size-6"></i>
+            <i data-lucide="x" class="size-4 md:size-6"></i>
             <span class="sr-only">{% trans 'Close' %}</span>
           </label>
         </div>
@@ -323,7 +323,7 @@
               href="{% url 'ui:profile' %}"
               class="btn btn-ghost btn-primary justify-start gap-4 w-full"
             >
-              <i data-lucide="user" class="size-4 lg:size-6"></i>
+              <i data-lucide="user" class="size-4 md:size-6"></i>
               <span>{% trans 'Profile' %}</span>
             </a>
           </li>
@@ -332,7 +332,7 @@
               href="{% url 'ui:u-user' request.user.slug %}"
               class="btn btn-ghost btn-primary justify-start gap-4 w-full"
             >
-              <i data-lucide="user-cog" class="size-4 lg:size-6"></i>
+              <i data-lucide="user-cog" class="size-4 md:size-6"></i>
               <span>{% trans 'Settings' %}</span>
             </a>
           </li>
@@ -341,7 +341,7 @@
               href="{% url 'ui:password_change' %}"
               class="btn btn-ghost btn-primary justify-start gap-4 w-full"
             >
-              <i data-lucide="rotate-ccw-key" class="size-4 lg:size-6"></i>
+              <i data-lucide="rotate-ccw-key" class="size-4 md:size-6"></i>
               <span>{% trans 'Change Password' %}</span>
             </a>
           </li>
@@ -353,7 +353,7 @@
               href="{% url 'ui:d-user' request.user.slug %}"
               class="btn btn-soft btn-error justify-start gap-4 w-full"
             >
-              <i data-lucide="user-x" class="size-4 lg:size-6"></i>
+              <i data-lucide="user-x" class="size-4 md:size-6"></i>
               <span>{% trans 'Delete account' %}</span>
             </a>
           </li>
@@ -363,7 +363,7 @@
               type="submit"
               class="btn btn-ghost btn-primary justify-start gap-4 w-full"
             >
-              <i data-lucide="log-out" class="size-4 lg:size-6"></i>
+              <i data-lucide="log-out" class="size-4 md:size-6"></i>
               <span>{% trans 'Log out' %}</span>
             </button>
           </li>

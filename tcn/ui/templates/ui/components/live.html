@@ -8,23 +8,60 @@
   <ol id="live-line" class="carousel w-full carousel-center">
     {% for article in articles %}
     <li class="carousel-item w-full grow">
-      <a
-        role="alert"
-        class="alert-soft alert w-full alert-error"
-        href="{% url 'ui:redirect' article.link.slug %}"
-      >
-        <div
-          class="tooltip tooltip-right tooltip-error rtl:tooltip-left"
-          data-tip="{% trans 'Breaking' %}"
+      <div role="alert" class="alert-soft relative alert w-full alert-error">
+        <a
+          href="{% url 'ui:redirect' article.link.slug %}"
+          class="absolute inset-x-0 z-10"
         >
-          <span class="btn btn-circle btn-xs btn-error lg:btn-sm">
-            <span class="sr-only">{% trans 'Breaking' %}</span>
+          <span class="sr-only">{% trans 'Read' %}</span>
+        </a>
+
+        <div
+          class="tooltip tooltip-right z-20 tooltip-error rtl:tooltip-left"
+          data-tip="Breaking"
+        >
+          <a href="#" class="btn btn-circle btn-xs btn-error lg:btn-sm">
+            <span class="sr-only">Breaking</span>
             <i data-lucide="alert-circle" class="size-4 lg:size-6"></i>
-          </span>
+          </a>
         </div>
 
         <p>{{ article.title }}</p>
-      </a>
+
+        <div class="z-20 flex items-center gap-2">
+          <div
+            class="tooltip tooltip-left tooltip-error rtl:tooltip-right"
+            data-tip="{% trans 'Previous' %}"
+          >
+            <a
+              href="#"
+              class="btn btn-circle btn-outline btn-xs btn-error lg:btn-sm"
+            >
+              <span class="sr-only">{% trans 'Previous' %}</span>
+              <i
+                data-lucide="chevron-left"
+                class="size-4 lg:size-6 rtl:rotate-180"
+              ></i>
+            </a>
+          </div>
+
+          <div
+            class="tooltip tooltip-left tooltip-error rtl:tooltip-right"
+            data-tip="{% trans 'Next' %}"
+          >
+            <a
+              href="#"
+              class="btn btn-circle btn-outline btn-xs btn-error lg:btn-sm"
+            >
+              <span class="sr-only">{% trans 'Next' %}</span>
+              <i
+                data-lucide="chevron-right"
+                class="size-4 lg:size-6 rtl:rotate-180"
+              ></i>
+            </a>
+          </div>
+        </div>
+      </div>
     </li>
     {% endfor %}
   </ol>

@@ -12,6 +12,7 @@ from django.utils.translation import get_language_from_request
 from django.utils.translation import gettext_lazy as _
 from django.views import generic
 from django_filters.views import FilterView
+from httpx import request
 from wagtail.contrib.search_promotions.models import Query
 
 from tcn.apps.articles.models import Article
@@ -132,7 +133,9 @@ class BaseArticleListView:
     filterset_fields = ["country", "is_breaking"]
 
     def get_queryset(self) -> mixins.QuerySet[Any]:
-        return (
+        """Filter queryset by active language"""
+
+        queryset = (
             super()
             .get_queryset()
             .filter(
@@ -141,6 +144,13 @@ class BaseArticleListView:
                 )
             )
         )
+
+        if self.request.user.is_authenticated and self.request.GET.get(
+            "following", None
+        ):
+            return queryset.filter(owner__in=self.request.user.following.all())
+
+        return queryset
 
 
 class ArticleListView(BaseArticleListView, FilterView, generic.ListView):

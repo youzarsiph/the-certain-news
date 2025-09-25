@@ -10,20 +10,40 @@
   <h1 class="text-primary text-xl font-bold lg:text-5xl">
     {% trans 'Breaking' %}
   </h1>
+  {% elif request.GET.following %}
+  <h1 class="text-primary text-xl font-bold lg:text-5xl">
+    {% trans 'Following' %}
+  </h1>
   {% else %}
   <h1 class="text-primary text-xl font-bold lg:text-5xl">
     {% trans 'Latest News' %}
   </h1>
   {% endif %}
 
-  <div class="flex items-center justify-end">
+  <div class="flex gap-4 items-center justify-end">
+    <form
+      method="get"
+      data-tip="{% trans 'Following' %}"
+      class="tooltip tooltip-left rtl:tooltip-right tooltip-primary"
+    >
+      <button
+        value="True"
+        type="submit"
+        name="following"
+        class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
+      >
+        <i data-lucide="users" class="size-4 lg:size-6"></i>
+        <span class="sr-only">{% trans 'Following' %}</span>
+      </button>
+    </form>
+
     <div
       data-tip="{% trans 'Filters' %}"
       class="tooltip tooltip-left rtl:tooltip-right tooltip-primary"
     >
       <button
         onclick="filters.showModal()"
-        class="btn btn-square btn-primary lg:btn-lg"
+        class="btn btn-square btn-sm btn-primary md:btn-md 2xl:btn-lg"
       >
         <i data-lucide="list-filter" class="size-4 lg:size-6"></i>
         <span class="sr-only">{% trans 'Filters' %}</span>
@@ -77,15 +97,6 @@
     <main>
       {% include 'ui/components/form.html' with method='get' csrf=False form=filter.form %}
     </main>
-
-    <footer class="-mx-5 -mb-5 grid">
-      <button
-        onclick="filters.close()"
-        class="btn rounded-none rounded-t rounded-b-box btn-primary"
-      >
-        {% trans 'Close' %}
-      </button>
-    </footer>
   </section>
 </dialog>
 {% endblock %}

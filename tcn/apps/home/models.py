@@ -8,6 +8,7 @@ from wagtail.contrib.forms.panels import FormSubmissionsPanel
 from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
 from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Page
+from wagtail.search import index
 
 from tcn.apps.articles.models import Article
 from tcn.apps.categories.models import Category, CategoryIndex
@@ -20,14 +21,6 @@ class Home(Page):
     template = "ui/index.html"
     context_object_name = "home"
     parent_page_types = ["wagtailcore.Page"]
-    subpage_types = [
-        "home.About",
-        "home.Contact",
-        "blog_indexes.BlogIndex",
-        "categories.CategoryIndex",
-        "categories.Category",
-        "docs_indexes.DocsIndex",
-    ]
 
     class Meta(Page.Meta):
         """Meta data"""
@@ -115,7 +108,6 @@ class Contact(AbstractEmailForm):
     template = "ui/contact.html"
     context_object_name = "contact"
     page_description = _("Contact us page")
-    content_panels = Page.content_panels + [FieldPanel("content")]
     parent_page_types = ["home.Home"]
     subpage_types = []
 
@@ -131,6 +123,10 @@ class Contact(AbstractEmailForm):
             ],
             "Email",
         ),
+    ]
+    search_fields = AbstractEmailForm.search_fields + [
+        index.SearchField("content"),
+        index.SearchField("message"),
     ]
 
     class Meta(Page.Meta):

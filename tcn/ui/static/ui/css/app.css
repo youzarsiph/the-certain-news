@@ -21,14 +21,14 @@
 }
 
 @plugin "daisyui/theme" {
-  name: luxurylight;
+  name: "luxurylight";
   default: true;
   prefersdark: false;
-  color-scheme: "dark";
+  color-scheme: "light";
   --color-base-100: oklch(100% 0 0);
   --color-base-200: oklch(98% 0 0);
   --color-base-300: oklch(97% 0 0);
-  --color-base-content: oklch(60% 0.123 76.89);
+  --color-base-content: oklch(50% 0.123 76.89);
   --color-primary: oklch(20% 0 0);
   --color-primary-content: oklch(100% 0 0);
   --color-secondary: oklch(85.516% 0.012 261.069);

@@ -1,11 +1,17 @@
 """API endpoints for tcn.apps.users"""
 
+from django.utils.translation import gettext_lazy as _
+
 from djoser.views import UserViewSet as BaseUVS
 from rest_framework import status
+from rest_framework.viewsets import ReadOnlyModelViewSet
 from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
+
+from tcn.api.serializers import ArticleSerializer
+from tcn.apps.articles.models import Article
 
 
 # Create your views here.
@@ -98,9 +104,17 @@ class UserViewSet(BaseUVS):
                 "new_password": "newsecurepassword"
             }'
     ```
+    
+    **Follow a Writer:**
+
+    ```bash
+    curl -X POST /api/users/{slug}/follow \\
+        -H "Content-Type: application/json" \\
+        -H "Authorization: Bearer YOUR_TOKEN_HERE"
+    ```
     """
 
-    lookup_field = "pk"
+    lookup_field = "slug"
     search_fields = ["username", "first_name", "last_name"]
     ordering_fields = ["username", "date_joined", "last_login"]
     filterset_fields = ["username"]
@@ -109,21 +123,73 @@ class UserViewSet(BaseUVS):
         detail=True,
         methods=["post"],
         permission_classes=[IsAuthenticated],
-        url_path="save-article",
-        url_name="save_article",
+        url_path="follow",
+        url_name="follow",
     )
-    def save_article(self, request: Request, *args, **kwargs) -> Response:
+    def follow(self, request: Request, slug: str, *args, **kwargs) -> Response:
         """
-        Save an article to the user's saved articles list.
+        Follow a writer
 
         Args:
-            request (Request): The request object containing user and article data.
+            request (Request): The request object containing user data.
+            slug (str): The slug of the writer to follow.
 
         Returns:
             Response: A response indicating success or failure of the operation.
         """
 
-        return Response(
-            {"detail": "Article saved successfully."},
-            status=status.HTTP_200_OK,
-        )
+        user = self.get_object()
+
+        if request.user.following.contains(user):
+            request.user.following.remove(user)
+            message = _(f"You are no longer following {user.username}.")
+
+        else:
+            request.user.following.add(user)
+            message = _(f"You are following {user.username}.")
+
+        return Response({"detail": message}, status=status.HTTP_200_OK)
+
+
+class ArticleViewSet(ReadOnlyModelViewSet):
+    """
+    API endpoint that allows articles to be viewed.
+    """
+
+    lookup_field = "slug"
+    queryset = Article.objects.live().public()
+    serializer_class = ArticleSerializer
+    permission_classes = [IsAuthenticated]
+    search_fields = ["title"]
+    ordering_fields = ["created_at", "updated_at", "title"]
+
+    @action(
+        detail=True,
+        methods=["post"],
+        permission_classes=[IsAuthenticated],
+        url_path="save",
+        url_name="save",
+    )
+    def save(self, request: Request, slug: str, *args, **kwargs) -> Response:
+        """
+        Save an article
+
+        Args:
+            request (Request): The request object containing user data.
+            slug (str): The slug of the article to save.
+
+        Returns:
+            Response: A response indicating success or failure of the operation.
+        """
+
+        article = self.get_object()
+
+        if request.user.bookmarked_articles.contains(article):
+            request.user.bookmarked_articles.remove(article)
+            message = _("Article removed from your saved list.")
+
+        else:
+            request.user.bookmarked_articles.add(article)
+            message = _("Article added to your saved list.")
+
+        return Response({"detail": message}, status=status.HTTP_200_OK)

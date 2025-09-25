@@ -1,10 +1,7 @@
 """Data Models for tcn.apps.users"""
 
-from secrets import token_urlsafe
-
 from django.contrib.auth.models import AbstractUser
-from django.db import IntegrityError, models
-from django.utils.text import slugify
+from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django_countries.fields import CountryField
 from phonenumber_field.modelfields import PhoneNumberField
@@ -47,27 +44,18 @@ class User(AbstractUser):
         verbose_name=_("bio"),
         help_text=_("Tell us about yourself"),
     )
-    saved_articles = models.ManyToManyField(
+    bookmarked_articles = models.ManyToManyField(
         "articles.Article",
         blank=True,
-        related_name="saved_articles",
-        verbose_name=_("saved articles"),
-        help_text=_("Articles saved by user"),
+        related_name="bookmarked_by",
+        verbose_name=_("bookmarked articles"),
+        help_text=_("Articles bookmarked by user"),
     )
-
-    def save(self, **kwargs) -> None:
-        """Update slug value"""
-
-        self.slug = slugify(self.username)
-
-        if (
-            update_fields := kwargs.get("update_fields")
-        ) is not None and "username" in update_fields:
-            kwargs["update_fields"] = {"slug"}.union(update_fields)
-
-        try:
-            super().save(**kwargs)
-
-        except IntegrityError:
-            self.slug = slugify(f"{self.username}-{token_urlsafe(4)}")
-            super().save(**kwargs)
+    followers = models.ManyToManyField(
+        "self",
+        blank=True,
+        symmetrical=False,
+        related_name="following",
+        verbose_name=_("followers"),
+        help_text=_("Users following this user"),
+    )
