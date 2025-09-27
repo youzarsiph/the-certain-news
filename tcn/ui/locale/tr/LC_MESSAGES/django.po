@@ -425,7 +425,7 @@ msgstr "Giriş yap"
 #: tcn/ui/templates/ui/base.html:734
 #: tcn/ui/templates/ui/components/sidebar.html:202
 #: tcn/ui/templates/ui/components/sidebar.html:209
-msgid "Sign up"
+msgid "Subscribe"
 msgstr "Kayıt ol"
 
 #: tcn/ui/templates/registration/base.html:132

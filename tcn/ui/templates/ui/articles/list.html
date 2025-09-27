@@ -10,7 +10,7 @@
   <h1 class="text-primary text-xl font-bold lg:text-5xl">
     {% trans 'Breaking' %}
   </h1>
-  {% elif request.GET.following %}
+  {% elif request.GET.following == True %}
   <h1 class="text-primary text-xl font-bold lg:text-5xl">
     {% trans 'Following' %}
   </h1>
@@ -21,6 +21,7 @@
   {% endif %}
 
   <div class="flex gap-4 items-center justify-end">
+    {% if request.user.is_authenticated %}
     <form
       method="get"
       data-tip="{% trans 'Following' %}"
@@ -36,6 +37,22 @@
         <span class="sr-only">{% trans 'Following' %}</span>
       </button>
     </form>
+    {% else %}
+    <div
+      data-tip="{% trans 'Following' %}"
+      class="tooltip tooltip-left rtl:tooltip-right tooltip-primary"
+    >
+      <a
+        href="{% url 'ui:login' %}"
+        class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
+      >
+        <i data-lucide="users" class="size-4 lg:size-6"></i>
+        <span class="sr-only">
+          {% trans 'Login to view articles by writers you follow.' %}
+        </span>
+      </a>
+    </div>
+    {% endif %}
 
     <div
       data-tip="{% trans 'Filters' %}"
@@ -43,7 +60,7 @@
     >
       <button
         onclick="filters.showModal()"
-        class="btn btn-square btn-sm btn-primary md:btn-md 2xl:btn-lg"
+        class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
       >
         <i data-lucide="list-filter" class="size-4 lg:size-6"></i>
         <span class="sr-only">{% trans 'Filters' %}</span>

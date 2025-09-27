@@ -13,7 +13,7 @@
             class="btn btn-square btn-primary lg:btn-lg"
           >
             <div
-              class="bg-primary rounded-field text-primary-content absolute inset-0 size-full flex rotate-45 items-center justify-center"
+              class="btn btn-square btn-primary rotate-45 p-0 shadow-none lg:btn-lg"
             >
               <i
                 data-lucide="scroll-text"
@@ -199,14 +199,14 @@
           {% else %}
           <div
             class="tooltip tooltip-top tooltip-success"
-            data-tip="{% trans 'Sign up' %}"
+            data-tip="{% trans 'Subscribe' %}"
           >
             <a
               href="{% url 'ui:subscribe' %}"
               class="btn btn-square btn-sm btn-soft btn-success"
             >
               <i data-lucide="heart-handshake" class="size-4 md:size-5"></i>
-              <span class="sr-only">{% trans 'Sign up' %}</span>
+              <span class="sr-only">{% trans 'Subscribe' %}</span>
             </a>
           </div>
           <div

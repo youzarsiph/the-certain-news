@@ -34,10 +34,11 @@
     </div>
   </div>
 
-  <section class="grid gap-4">
+  <section class="grid gap-8">
     <h1 class="text-3xl text-primary font-black lg:text-5xl">
       {% trans 'Saved articles' %}
     </h1>
+
     <ol class="grid grid-cols-12 grid-rows-[auto] gap-4">
       {% for article in request.user.bookmarked_articles.all %}
       <!---->
