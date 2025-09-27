@@ -156,7 +156,7 @@
                             data-lucide="alert-circle"
                             class="size-4 lg:size-6"
                           ></i>
-                          <span class="sr-only"> {% trans 'Breaking' %} </span>
+                          <span class="sr-only">{% trans 'Breaking' %}</span>
                         </a>
                       </div>
 
@@ -320,37 +320,11 @@
                     </nav>
                     <nav>
                       <div class="footer-title">{% trans 'Company' %}</div>
-                      <a
-                        href="{% slug_url 'blog' LANGUAGE_CODE %}"
-                        class="link link-hover"
-                      >
-                        {% trans 'Blog' %}
+                      {% for page in home.get_children %}
+                      <a href="{% pageurl page %}" class="link link-hover">
+                        {{ page }}
                       </a>
-                      {% if about %}
-                      <a href="{% pageurl about %}" class="link link-hover">
-                        {% trans 'About us' %}
-                      </a>
-                      {% else %}
-                      <a
-                        href="{% slug_url 'about-us' LANGUAGE_CODE %}"
-                        class="link link-hover"
-                      >
-                        {% trans 'About us' %}
-                      </a>
-                      {% endif %}
-                      <!---->
-                      {% if contact %}
-                      <a href="{% pageurl contact %}" class="link link-hover">
-                        {% trans 'Contact us' %}
-                      </a>
-                      {% else %}
-                      <a
-                        href="{% slug_url 'contact-us' LANGUAGE_CODE %}"
-                        class="link link-hover"
-                      >
-                        {% trans 'Contact us' %}
-                      </a>
-                      {% endif %}
+                      {% endfor %}
                     </nav>
                     <nav>
                       <div class="footer-title">{% trans 'Legal' %}</div>
@@ -604,7 +578,7 @@
 
           <ol class="menu menu-vertical w-full">
             <li>
-              <a href="{% pageurl home %}"> {% trans 'Home' %} </a>
+              <a href="{% pageurl home %}">{% trans 'Home' %}</a>
             </li>
             <li>
               <a href="{% url 'ui:articles' %}?is_breaking=True">
@@ -612,17 +586,34 @@
               </a>
             </li>
             <li>
-              <a href="{% url 'ui:articles' %}"> {% trans 'Latest news' %} </a>
+              <a href="{% url 'ui:articles' %}">{% trans 'Latest news' %}</a>
             </li>
             <li>
-              <a href="{% url 'ui:archive' %}"> {% trans 'Archive' %} </a>
+              <a href="{% url 'ui:archive' %}">{% trans 'Archive' %}</a>
             </li>
 
-            {% for page in home.get_children %}
+            {% if categories_index %}
             <li>
-              <a href="{% pageurl page %}">{{ page }}</a>
+              <details>
+                <summary class="group" class="flex items-center gap-2">
+                  <a href="{% pageurl categories_index %}">
+                    <i data-lucide="link" class="size-4"></i>
+                    <span class="sr-only">{{ categories_index }}</span>
+                  </a>
+
+                  <span>{{ categories_index.title }}</span>
+                </summary>
+
+                <ul>
+                  {% for category in categories_index.get_children %}
+                  <li>
+                    <a href="{% pageurl category %}">{{ category }}</a>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </details>
             </li>
-            {% endfor %}
+            {% endif %}
           </ol>
         </section>
       </section>

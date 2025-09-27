@@ -35,8 +35,6 @@ class Home(Page):
 
         return {
             **context,
-            "about": self.get_children().type(About).last(),
-            "contact": self.get_children().type(Contact).last(),
             "categories_index": self.get_children().type(CategoryIndex).last(),
             "trending_news": Article.objects.descendant_of(self)
             .live()
