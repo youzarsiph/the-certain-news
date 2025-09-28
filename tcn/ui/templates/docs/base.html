@@ -1,9 +1,123 @@
-{% extends 'ui/base.html' %}{% load i18n static %}
+{% extends 'docs/base.html' %}{% load i18n static wagtailcore_tags %}
 
 <!---->
-{% block title %}{{ block.super }} | {% trans 'Docs' %}{% endblock %}
+{% block branding %}
+<li
+  class="tooltip tooltip-right rtl:tooltip-left tooltip-primary"
+  data-tip="{% trans 'The Certain News' %} | {% trans 'Docs' %}"
+>
+  <h1 class="relative">
+    <a href="{% pageurl home %}" class="btn btn-square btn-primary lg:btn-lg">
+      <div
+        class="btn btn-square btn-primary rotate-45 p-0 shadow-none lg:btn-lg"
+      >
+        <i
+          data-lucide="scroll-text"
+          class="-rotate-45 lg:size-8 2xl:size-10"
+        ></i>
+      </div>
+      <span class="sr-only">
+        {% trans 'The Certain News' %} | {% trans 'Docs' %}
+      </span>
+    </a>
+  </h1>
+</li>
+{% endblock %}
 
 <!---->
-{% block styles %}
-<link rel="stylesheet" href="{% static 'docs/css/styles.css' %}" />
-{{ block.super }}{% endblock %}
+{% block links %}
+<div class="flex items-center gap-2 lg:gap-4">
+  {% if request.user.is_authenticated %}
+  <div
+    class="tooltip tooltip-left tooltip-primary rtl:tooltip-right"
+    data-tip="{% trans 'Profile' %}"
+  >
+    <a
+      href="{% url 'ui:profile' %}"
+      class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
+    >
+      <i data-lucide="user" class="size-4 lg:size-6"></i>
+      <span class="sr-only">{% trans 'Profile' %}</span>
+    </a>
+  </div>
+  <div
+    class="tooltip tooltip-left tooltip-error rtl:tooltip-right"
+    data-tip="{% trans 'Log out' %}"
+  >
+    <button
+      type="submit"
+      form="logout"
+      class="btn btn-square btn-soft btn-sm btn-error md:btn-md 2xl:btn-lg"
+    >
+      <i data-lucide="log-out" class="size-4 lg:size-6"></i>
+      <span class="sr-only">{% trans 'Log out' %}</span>
+    </button>
+  </div>
+  {% else %}
+  <div
+    class="tooltip tooltip-left tooltip-primary rtl:tooltip-right"
+    data-tip="{% trans 'Log in' %}"
+  >
+    <a
+      href="{% url 'ui:login' %}"
+      class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
+    >
+      <i data-lucide="log-in" class="size-4 lg:size-6"></i>
+      <span class="sr-only">{% trans 'Log in' %}</span>
+    </a>
+  </div>
+  <div
+    class="tooltip tooltip-left tooltip-success rtl:tooltip-right"
+    data-tip="{% trans 'Subscribe' %}"
+  >
+    <a
+      href="{% url 'ui:subscribe' %}"
+      class="btn btn-square btn-soft btn-sm btn-success md:btn-md 2xl:btn-lg"
+    >
+      <i data-lucide="heart-handshake" class="size-4 lg:size-6"></i>
+      <span class="sr-only">{% trans 'Subscribe' %}</span>
+    </a>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}
+
+<!---->
+{% block navbar_end %}
+<li
+  class="tooltip tooltip-left rtl:tooltip-right tooltip-primary"
+  data-tip="{% trans 'Search' %}"
+>
+  <a
+    href="{% url 'docs:search' %}"
+    class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
+  >
+    <i data-lucide="search" class="size-4 md:size-6"></i>
+    <span class="sr-only">{% trans 'Search' %}</span>
+  </a>
+</li>
+{% endblock %}
+
+<!---->
+{% block drawer_branding %}
+<div
+  class="tooltip tooltip-right rtl:tooltip-left tooltip-primary tooltip-open"
+  data-tip="{% trans 'The Certain News' %} | {% trans 'Docs' %}"
+>
+  <h1 class="relative">
+    <a href="{% pageurl home %}" class="btn btn-square btn-primary lg:btn-lg">
+      <div
+        class="btn btn-square btn-primary rotate-45 p-0 shadow-none lg:btn-lg"
+      >
+        <i
+          data-lucide="scroll-text"
+          class="-rotate-45 lg:size-8 2xl:size-10"
+        ></i>
+      </div>
+      <span class="sr-only">
+        {% trans 'The Certain News' %} | {% trans 'Docs' %}
+      </span>
+    </a>
+  </h1>
+</div>
+{% endblock %}
