@@ -13,6 +13,6 @@ class LinksConfig(AppConfig):
     def ready(self) -> None:
         """Register signal receivers"""
 
-        from tcn.apps.links.signals import register_signal_receivers
+        from tcn.apps.links.signals import register_link_signal_receivers
 
-        register_signal_receivers()
+        register_link_signal_receivers()

@@ -153,6 +153,8 @@
 
       <div class="flex items-center justify-end gap-4">
         {% if request.user.is_authenticated %}
+        <!---->
+        {% if article.get_parent.display_owner %}
         <div
           class="tooltip tooltip-left tooltip-primary rtl:tooltip-right"
           data-tip="{% translate 'Follow' %}"
@@ -165,6 +167,7 @@
             <span class="sr-only">{% translate 'Follow' %}</span>
           </button>
         </div>
+        {% endif %}
 
         <div
           class="tooltip tooltip-left tooltip-success rtl:tooltip-right"
@@ -179,25 +182,28 @@
           </button>
         </div>
         {% else %}
+        <!---->
+        {% if article.get_parent.display_owner %}
         <div
           class="tooltip tooltip-left tooltip-primary rtl:tooltip-right"
           data-tip="{% translate 'Login to follow' %}"
         >
           <a
-            href="{% url 'ui:login' %}"
+            href="{% url 'ui:login' %}?next={% url 'ui:redirect' article.link.slug %}"
             class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
           >
             <i data-lucide="user-plus" class="size-4 lg:size-6"></i>
             <span class="sr-only">{% translate 'Login to follow' %}</span>
           </a>
         </div>
+        {% endif %}
 
         <div
           class="tooltip tooltip-left tooltip-success rtl:tooltip-right"
           data-tip="{% translate 'Login to save' %}"
         >
           <a
-            href="{% url 'ui:login' %}"
+            href="{% url 'ui:login' %}?next={% url 'ui:redirect' article.link.slug %}"
             class="btn btn-square btn-soft btn-sm btn-success md:btn-md 2xl:btn-lg"
           >
             <i data-lucide="bookmark" class="size-4 lg:size-6"></i>

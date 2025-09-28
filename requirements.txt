@@ -24,3 +24,4 @@ python-dotenv
 wagtail
 wagtail-ai
 wagtail-localize
+wagtail-tw-blocks

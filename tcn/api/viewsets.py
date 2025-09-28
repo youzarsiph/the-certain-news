@@ -1,6 +1,6 @@
 """API endpoints for tcn.apps.users"""
 
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext_lazy as _, get_language_from_request
 from djoser.views import UserViewSet as BaseUVS
 from rest_framework import status
 from rest_framework.decorators import action
@@ -156,11 +156,25 @@ class ArticleViewSet(ReadOnlyModelViewSet):
     """
 
     lookup_field = "slug"
-    queryset = Article.objects.live().public()
+    queryset = Article.objects.live().public().prefetch_related("locale")
     serializer_class = ArticleSerializer
     permission_classes = [IsAuthenticated]
     search_fields = ["title"]
     ordering_fields = ["created_at", "updated_at", "title"]
+
+    def get_queryset(self):
+        """Filter queryset by language"""
+
+        return (
+            super()
+            .get_queryset()
+            .filter(
+                locale__language_code=get_language_from_request(
+                    self.request,
+                    check_path=True,
+                )
+            )
+        )
 
     @action(
         detail=True,

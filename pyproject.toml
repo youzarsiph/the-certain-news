@@ -35,6 +35,7 @@ python-dotenv = ">=1.1.0"
 wagtail = ">=7.0"
 wagtail-ai = ">=2.1.2"
 wagtail-localize = ">=1.12.1"
+wagtail-tw-blocks = ">=0.2.3"
 
 [tool.poetry.group.dev.dependencies]
 black = ">=25.1.0"

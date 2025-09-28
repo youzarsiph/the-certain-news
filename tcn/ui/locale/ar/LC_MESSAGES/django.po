@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: the-certain-news 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-13 07:55+0000\n"
+"POT-Creation-Date: 2025-09-28 05:56+0000\n"
 "PO-Revision-Date: 2025-6-20 HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,25 @@ msgstr ""
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: tcn/apps/articles/models.py:27 tcn/apps/users/models.py:27
+#: tcn/api/viewsets.py:144
+#, python-brace-format
+msgid "You are no longer following {user.username}."
+msgstr "لم تعد تتابع المستخدم {user.username}."
+
+#: tcn/api/viewsets.py:148
+#, python-brace-format
+msgid "You are following {user.username}."
+msgstr "أنت تتابع المستخدم {user.username}."
+
+#: tcn/api/viewsets.py:188
+msgid "Article removed from your saved list."
+msgstr "تمت إزالة المقال من قائمتك المحفوظة."
+
+#: tcn/api/viewsets.py:192
+msgid "Article added to your saved list."
+msgstr "تمت إضافة المقال إلى قائمتك المحفوظة."
+
+#: tcn/apps/articles/models.py:27 tcn/apps/users/models.py:24
 msgid "country"
 msgstr "الدولة"
 
@@ -29,7 +47,7 @@ msgstr "الدولة"
 msgid "Country"
 msgstr "الدولة"
 
-#: tcn/apps/articles/models.py:34 tcn/apps/users/models.py:39
+#: tcn/apps/articles/models.py:34 tcn/apps/users/models.py:36
 #: tcn/cms/blocks.py:25
 #, fuzzy
 #| msgid "Image"
@@ -50,8 +68,8 @@ msgstr "عنوان المقال"
 msgid "Article headline"
 msgstr "عنوان المقال"
 
-#: tcn/apps/articles/models.py:45 tcn/apps/home/models.py:72
-#: tcn/apps/home/models.py:105
+#: tcn/apps/articles/models.py:45 tcn/apps/home/models.py:62
+#: tcn/apps/home/models.py:95
 #, fuzzy
 #| msgid "Article content"
 msgid "content"
@@ -171,35 +189,31 @@ msgstr "الفئات"
 msgid "The Certain News feed"
 msgstr "النبأ اليقين"
 
-#: tcn/apps/feeds/base.py:17 tcn/ui/templates/registration/base.html:40
-#: tcn/ui/templates/registration/base.html:56
-#: tcn/ui/templates/registration/base.html:299
+#: tcn/apps/feeds/base.py:17 tcn/ui/templates/registration/base.html:71
 #: tcn/ui/templates/registration/logged_out.html:15
-#: tcn/ui/templates/registration/logged_out.html:27
+#: tcn/ui/templates/registration/logged_out.html:30
 #: tcn/ui/templates/registration/login.html:15
-#: tcn/ui/templates/registration/login.html:27
+#: tcn/ui/templates/registration/login.html:30
 #: tcn/ui/templates/registration/password_reset_complete.html:15
-#: tcn/ui/templates/registration/password_reset_complete.html:27
+#: tcn/ui/templates/registration/password_reset_complete.html:30
 #: tcn/ui/templates/registration/password_reset_confirm.html:15
-#: tcn/ui/templates/registration/password_reset_confirm.html:27
+#: tcn/ui/templates/registration/password_reset_confirm.html:30
 #: tcn/ui/templates/registration/password_reset_done.html:15
-#: tcn/ui/templates/registration/password_reset_done.html:27
+#: tcn/ui/templates/registration/password_reset_done.html:30
 #: tcn/ui/templates/registration/password_reset_form.html:15
-#: tcn/ui/templates/registration/password_reset_form.html:27
+#: tcn/ui/templates/registration/password_reset_form.html:30
 #: tcn/ui/templates/registration/signup.html:15
-#: tcn/ui/templates/registration/signup.html:27
+#: tcn/ui/templates/registration/signup.html:30
 #: tcn/ui/templates/rest_framework/api.html:4
 #: tcn/ui/templates/ui/articles/id.html:14
 #: tcn/ui/templates/ui/articles/id.html:20
 #: tcn/ui/templates/ui/articles/id.html:24
 #: tcn/ui/templates/ui/articles/id.html:38
-#: tcn/ui/templates/ui/articles/id.html:42 tcn/ui/templates/ui/base.html:11
-#: tcn/ui/templates/ui/base.html:127 tcn/ui/templates/ui/base.html:143
-#: tcn/ui/templates/ui/base.html:431 tcn/ui/templates/ui/base.html:437
-#: tcn/ui/templates/ui/base.html:504 tcn/ui/templates/ui/base.html:530
-#: tcn/ui/templates/ui/base.html:545
-#: tcn/ui/templates/ui/components/sidebar.html:8
-#: tcn/ui/templates/ui/components/sidebar.html:23
+#: tcn/ui/templates/ui/articles/id.html:42 tcn/ui/templates/ui/base.html:12
+#: tcn/ui/templates/ui/base.html:125 tcn/ui/templates/ui/base.html:141
+#: tcn/ui/templates/ui/base.html:360 tcn/ui/templates/ui/base.html:366
+#: tcn/ui/templates/ui/base.html:433 tcn/ui/templates/ui/base.html:459
+#: tcn/ui/templates/ui/base.html:474
 msgid "The Certain News"
 msgstr "النبأ اليقين"
 
@@ -209,61 +223,61 @@ msgstr "النبأ اليقين"
 msgid "Latest new from the World"
 msgstr "آخر الأخبار من العالم"
 
-#: tcn/apps/home/models.py:35
+#: tcn/apps/home/models.py:28
 #, fuzzy
 #| msgid "Home"
 msgid "Home page"
 msgstr "الرئيسية"
 
-#: tcn/apps/home/models.py:36
+#: tcn/apps/home/models.py:29
 msgid "Home pages"
 msgstr "الصفحات الرئيسية"
 
-#: tcn/apps/home/models.py:73 tcn/apps/home/models.py:106
+#: tcn/apps/home/models.py:63 tcn/apps/home/models.py:96
 #, fuzzy
 #| msgid "Article content"
 msgid "Page content"
 msgstr "محتوى المقال"
 
-#: tcn/apps/home/models.py:78
+#: tcn/apps/home/models.py:68
 #, fuzzy
 #| msgid "About us"
 msgid "About us page"
 msgstr "من نحن"
 
-#: tcn/apps/home/models.py:86
+#: tcn/apps/home/models.py:76
 #, fuzzy
 #| msgid "About us"
 msgid "About page"
 msgstr "من نحن"
 
-#: tcn/apps/home/models.py:87
+#: tcn/apps/home/models.py:77
 #, fuzzy
 #| msgid "About us"
 msgid "About pages"
 msgstr "من نحن"
 
-#: tcn/apps/home/models.py:111
+#: tcn/apps/home/models.py:101
 msgid "message"
 msgstr "رسالة"
 
-#: tcn/apps/home/models.py:112
+#: tcn/apps/home/models.py:102
 msgid "Message to display after form submission"
 msgstr "رسالة لعرضها بعد إرسال معلومات التواصل"
 
-#: tcn/apps/home/models.py:117
+#: tcn/apps/home/models.py:107
 #, fuzzy
 #| msgid "Contact"
 msgid "Contact us page"
 msgstr "اتصل بنا"
 
-#: tcn/apps/home/models.py:139
+#: tcn/apps/home/models.py:132
 #, fuzzy
 #| msgid "Contact"
 msgid "Contact page"
 msgstr "اتصل بنا"
 
-#: tcn/apps/home/models.py:140
+#: tcn/apps/home/models.py:133
 #, fuzzy
 #| msgid "Contact"
 msgid "Contact pages"
@@ -281,7 +295,7 @@ msgstr "مقالات"
 msgid "Related article"
 msgstr "المقالات المحفوظة"
 
-#: tcn/apps/links/models.py:33 tcn/apps/users/models.py:21
+#: tcn/apps/links/models.py:33 tcn/apps/users/models.py:18
 msgid "slug"
 msgstr "رابط"
 
@@ -312,7 +326,7 @@ msgid "Links"
 msgstr "لينكدإن"
 
 #: tcn/apps/mixins.py:15 tcn/apps/mixins.py:16
-#: tcn/ui/templates/ui/articles/id.html:248
+#: tcn/ui/templates/ui/articles/id.html:304
 msgid "Last update"
 msgstr "آخر تحديث"
 
@@ -320,37 +334,55 @@ msgstr "آخر تحديث"
 msgid "Date created"
 msgstr "تاريخ الإنشاء"
 
-#: tcn/apps/users/models.py:22
-msgid "Slug"
-msgstr "رابط قصير"
+#: tcn/apps/users/models.py:19
+msgid "Letters, numbers and dash only"
+msgstr "أحرف وأرقام وشرطة فقط"
 
-#: tcn/apps/users/models.py:28
+#: tcn/apps/users/models.py:25
 #, fuzzy
 #| msgid "User photo"
 msgid "User country"
 msgstr "صورة المستخدم"
 
-#: tcn/apps/users/models.py:33
+#: tcn/apps/users/models.py:30
 msgid "phone number"
 msgstr "رقم الهاتف"
 
-#: tcn/apps/users/models.py:34
+#: tcn/apps/users/models.py:31
 msgid "User phone number"
 msgstr "رقم هاتف المستخدم"
 
-#: tcn/apps/users/models.py:41
+#: tcn/apps/users/models.py:38
 #, fuzzy
 #| msgid "Article image"
 msgid "Profile image"
 msgstr "صورة المقال"
 
-#: tcn/apps/users/models.py:47
+#: tcn/apps/users/models.py:44
 msgid "bio"
 msgstr "معلومات عامة"
 
-#: tcn/apps/users/models.py:48
+#: tcn/apps/users/models.py:45
 msgid "Tell us about yourself"
 msgstr "أخبرنا عن حولك"
+
+#: tcn/apps/users/models.py:51
+#, fuzzy
+#| msgid "Similar articles"
+msgid "bookmarked articles"
+msgstr "مقالات ذات صلة"
+
+#: tcn/apps/users/models.py:52
+msgid "Articles bookmarked by user"
+msgstr "المقالات المُعَلمة كمرجعية من قِبل المستخدم"
+
+#: tcn/apps/users/models.py:59
+msgid "followers"
+msgstr "المتابعون"
+
+#: tcn/apps/users/models.py:60
+msgid "Users following this user"
+msgstr "المستخدمون الذين يتابعون هذا المستخدم"
 
 #: tcn/cms/blocks.py:14
 #, fuzzy
@@ -394,8 +426,7 @@ msgstr "مستند"
 msgid "Document"
 msgstr "مستند"
 
-#: tcn/ui/templates/blog/base.html:4 tcn/ui/templates/ui/base.html:372
-#: tcn/ui/templates/ui/base.html:646
+#: tcn/ui/templates/blog/base.html:4
 msgid "Blog"
 msgstr "المدونة"
 
@@ -404,154 +435,64 @@ msgid "Docs"
 msgstr "التوثيق"
 
 #: tcn/ui/templates/registration/base.html:4
-#: tcn/ui/templates/registration/base.html:93
-#: tcn/ui/templates/registration/base.html:100
-#: tcn/ui/templates/registration/base.html:260
-#: tcn/ui/templates/registration/base.html:287
-#: tcn/ui/templates/registration/base.html:327
-#: tcn/ui/templates/rest_framework/api.html:139
-#: tcn/ui/templates/ui/base.html:186 tcn/ui/templates/ui/base.html:193
-#: tcn/ui/templates/ui/base.html:705
-#: tcn/ui/templates/ui/components/sidebar.html:176
-#: tcn/ui/templates/ui/components/sidebar.html:183
+#: tcn/ui/templates/registration/base.html:31
+#: tcn/ui/templates/registration/base.html:56
+#: tcn/ui/templates/registration/base.html:111
+#: tcn/ui/templates/rest_framework/api.html:136
+#: tcn/ui/templates/ui/base.html:483 tcn/ui/templates/ui/base.html:490
 msgid "Profile"
 msgstr "الملف الشخصي"
 
-#: tcn/ui/templates/registration/base.html:26
-#: tcn/ui/templates/registration/base.html:34
-#: tcn/ui/templates/registration/base.html:246
-#: tcn/ui/templates/registration/base.html:250
-#: tcn/ui/templates/registration/base.html:254
-#: tcn/ui/templates/ui/base.html:111 tcn/ui/templates/ui/base.html:120
-#: tcn/ui/templates/ui/components/sidebar.html:30
-#: tcn/ui/templates/ui/components/sidebar.html:38
+#: tcn/ui/templates/registration/base.html:17
+#: tcn/ui/templates/registration/base.html:21
+#: tcn/ui/templates/registration/base.html:25 tcn/ui/templates/ui/base.html:109
+#: tcn/ui/templates/ui/base.html:118
 msgid "Open drawer"
 msgstr "افتح القائمة"
 
-#: tcn/ui/templates/registration/base.html:30 tcn/ui/templates/ui/base.html:115
-#: tcn/ui/templates/ui/base.html:519 tcn/ui/templates/ui/base.html:556
-#: tcn/ui/templates/ui/components/sidebar.html:34
+#: tcn/ui/templates/registration/base.html:46
+msgid "Close drawer"
+msgstr "أغلق القائمة"
+
+#: tcn/ui/templates/registration/base.html:79
+#: tcn/ui/templates/registration/base.html:87 tcn/ui/templates/ui/base.html:495
+#: tcn/ui/templates/ui/base.html:503
+msgid "Log out"
+msgstr "تسجيل الخروج"
+
+#: tcn/ui/templates/registration/base.html:93
+#: tcn/ui/templates/registration/base.html:101
+#: tcn/ui/templates/ui/articles/list.html:101
+#: tcn/ui/templates/ui/articles/list.html:109 tcn/ui/templates/ui/base.html:538
+#: tcn/ui/templates/ui/base.html:546
+msgid "Close"
+msgstr "إغلاق"
+
+#: tcn/ui/templates/registration/base.html:97 tcn/ui/templates/ui/base.html:113
+#: tcn/ui/templates/ui/base.html:448 tcn/ui/templates/ui/base.html:542
 #, fuzzy
 #| msgid "Close drawer"
 msgid "close sidebar"
 msgstr "أغلق القائمة"
 
-#: tcn/ui/templates/registration/base.html:64
-#: tcn/ui/templates/registration/base.html:71
-#: tcn/ui/templates/ui/articles/id.html:93
-#: tcn/ui/templates/ui/articles/id.html:99
-#: tcn/ui/templates/ui/articles/list.html:11 tcn/ui/templates/ui/base.html:151
-#: tcn/ui/templates/ui/base.html:161
-#: tcn/ui/templates/ui/components/article-1.html:27
-#: tcn/ui/templates/ui/components/article-1.html:29
-#: tcn/ui/templates/ui/components/article-2.html:30
-#: tcn/ui/templates/ui/components/article-2.html:32
-#: tcn/ui/templates/ui/components/article.html:28
-#: tcn/ui/templates/ui/components/article.html:31
-#: tcn/ui/templates/ui/components/live.html:5
-#: tcn/ui/templates/ui/components/live.html:18
-#: tcn/ui/templates/ui/components/live.html:21
-#: tcn/ui/templates/ui/components/live.html:53
-#: tcn/ui/templates/ui/components/live.html:56
-#: tcn/ui/templates/ui/index.html:10 tcn/ui/templates/ui/index.html:45
-#: tcn/ui/templates/ui/index.html:134
-msgid "Breaking"
-msgstr "عاجل"
-
-#: tcn/ui/templates/registration/base.html:77
-#: tcn/ui/templates/registration/base.html:84 tcn/ui/templates/ui/base.html:167
-#: tcn/ui/templates/ui/base.html:177
-msgid "Latest news"
-msgstr "أحدث الأخبار"
-
-#: tcn/ui/templates/registration/base.html:106
-#: tcn/ui/templates/registration/base.html:113
-#: tcn/ui/templates/registration/logged_out.html:40
-#: tcn/ui/templates/registration/login.html:4
-#: tcn/ui/templates/registration/login.html:34
-#: tcn/ui/templates/registration/password_reset_complete.html:44
-#: tcn/ui/templates/registration/password_reset_done.html:48
-#: tcn/ui/templates/registration/signup.html:43
-#: tcn/ui/templates/ui/base.html:199 tcn/ui/templates/ui/base.html:206
-#: tcn/ui/templates/ui/base.html:725
-#: tcn/ui/templates/ui/components/sidebar.html:214
-#: tcn/ui/templates/ui/components/sidebar.html:221
-msgid "Log in"
-msgstr "تسجيل الدخول"
-
-#: tcn/ui/templates/registration/base.html:118
-#: tcn/ui/templates/registration/base.html:125
-#: tcn/ui/templates/registration/logged_out.html:43
-#: tcn/ui/templates/registration/login.html:62
-#: tcn/ui/templates/registration/signup.html:4
-#: tcn/ui/templates/registration/signup.html:34
-#: tcn/ui/templates/ui/base.html:211 tcn/ui/templates/ui/base.html:221
-#: tcn/ui/templates/ui/base.html:734
-#: tcn/ui/templates/ui/components/sidebar.html:202
-#: tcn/ui/templates/ui/components/sidebar.html:209
-msgid "Subscribe"
-msgstr "إنشاء حساب"
-
-#: tcn/ui/templates/registration/base.html:132
-#: tcn/ui/templates/registration/base.html:141
-#: tcn/ui/templates/registration/base.html:150
-#: tcn/ui/templates/ui/articles/id.html:164 tcn/ui/templates/ui/base.html:228
-#: tcn/ui/templates/ui/base.html:241 tcn/ui/templates/ui/base.html:251
-#: tcn/ui/templates/ui/components/sidebar.html:101
-#: tcn/ui/templates/ui/components/sidebar.html:110
-#: tcn/ui/templates/ui/components/sidebar.html:119
-msgid "Language"
-msgstr "اللغة"
-
-#: tcn/ui/templates/registration/base.html:214
-#: tcn/ui/templates/registration/base.html:222
-#: tcn/ui/templates/registration/base.html:229
-#: tcn/ui/templates/registration/base.html:236
-#: tcn/ui/templates/ui/base.html:318 tcn/ui/templates/ui/base.html:329
-#: tcn/ui/templates/ui/base.html:336 tcn/ui/templates/ui/base.html:343
-#: tcn/ui/templates/ui/base.html:580 tcn/ui/templates/ui/base.html:591
-#: tcn/ui/templates/ui/search.html:6 tcn/ui/templates/ui/search.html:12
-#: tcn/ui/templates/ui/search.html:29
-msgid "Search"
-msgstr "بحث"
-
-#: tcn/ui/templates/registration/base.html:277
-#: tcn/ui/templates/registration/base.html:310
-msgid "Close drawer"
-msgstr "أغلق القائمة"
-
-#: tcn/ui/templates/registration/base.html:306
-#: tcn/ui/templates/registration/base.html:314
-#: tcn/ui/templates/ui/articles/list.html:64
-#: tcn/ui/templates/ui/articles/list.html:72
-#: tcn/ui/templates/ui/articles/list.html:86 tcn/ui/templates/ui/base.html:552
-#: tcn/ui/templates/ui/base.html:560
-msgid "Close"
-msgstr "إغلاق"
-
-#: tcn/ui/templates/registration/base.html:336
-#: tcn/ui/templates/registration/edit.html:4
-#: tcn/ui/templates/registration/edit.html:9
-msgid "Settings"
-msgstr "الإعدادات"
-
-#: tcn/ui/templates/registration/base.html:345
+#: tcn/ui/templates/registration/base.html:117
 msgid "Change Password"
 msgstr "تغيير كلمة المرور"
 
-#: tcn/ui/templates/registration/base.html:357
+#: tcn/ui/templates/registration/base.html:123
+#: tcn/ui/templates/registration/edit.html:4
+#: tcn/ui/templates/registration/edit.html:9
+#, fuzzy
+#| msgid "Delete account"
+msgid "Edit account"
+msgstr "حذف الحساب"
+
+#: tcn/ui/templates/registration/base.html:129
 #: tcn/ui/templates/registration/delete.html:4
 #: tcn/ui/templates/registration/delete.html:8
 #: tcn/ui/templates/registration/delete.html:14
 msgid "Delete account"
 msgstr "حذف الحساب"
-
-#: tcn/ui/templates/registration/base.html:367
-#: tcn/ui/templates/ui/base.html:715
-#: tcn/ui/templates/ui/components/sidebar.html:188
-#: tcn/ui/templates/ui/components/sidebar.html:196
-msgid "Log out"
-msgstr "تسجيل الخروج"
 
 #: tcn/ui/templates/registration/delete.html:18
 msgid "Are your sure that you want to delete your account?"
@@ -565,19 +506,37 @@ msgstr "هذا الإجراء مدمر!"
 msgid "Logged out"
 msgstr "تم تسجيل الخروج"
 
-#: tcn/ui/templates/registration/logged_out.html:34
+#: tcn/ui/templates/registration/logged_out.html:37
 msgid "Logged Out"
 msgstr "تم تسجيل الخروج"
 
-#: tcn/ui/templates/registration/logged_out.html:36
+#: tcn/ui/templates/registration/logged_out.html:39
 msgid "Thanks for spending some quality time with us today."
 msgstr "شكرًا لقضاء بعض الوقت الثمين معنا اليوم."
 
-#: tcn/ui/templates/registration/login.html:36
+#: tcn/ui/templates/registration/logged_out.html:43
+#: tcn/ui/templates/registration/login.html:4
+#: tcn/ui/templates/registration/login.html:37
+#: tcn/ui/templates/registration/password_reset_complete.html:47
+#: tcn/ui/templates/registration/password_reset_done.html:51
+#: tcn/ui/templates/registration/signup.html:46
+#: tcn/ui/templates/ui/base.html:509 tcn/ui/templates/ui/base.html:516
+msgid "Log in"
+msgstr "تسجيل الدخول"
+
+#: tcn/ui/templates/registration/logged_out.html:46
+#: tcn/ui/templates/registration/login.html:65
+#: tcn/ui/templates/registration/signup.html:4
+#: tcn/ui/templates/registration/signup.html:37
+#: tcn/ui/templates/ui/base.html:521 tcn/ui/templates/ui/base.html:531
+msgid "Subscribe"
+msgstr "إنشاء حساب"
+
+#: tcn/ui/templates/registration/login.html:39
 msgid "Welcome, please login to continue."
 msgstr "مرحبًا، يرجى تسجيل الدخول للمتابعة."
 
-#: tcn/ui/templates/registration/login.html:46
+#: tcn/ui/templates/registration/login.html:49
 msgid ""
 "Your account doesn't have access to this page. To proceed, please login with "
 "an account that has access. <!---->"
@@ -585,8 +544,8 @@ msgstr ""
 "ليس لدى حسابك صلاحية الوصول إلى هذه الصفحة. للمتابعة، يرجى تسجيل الدخول "
 "بحساب لديه الصلاحية."
 
-#: tcn/ui/templates/registration/login.html:68
-#: tcn/ui/templates/registration/signup.html:49
+#: tcn/ui/templates/registration/login.html:71
+#: tcn/ui/templates/registration/signup.html:52
 msgid "Forgot password?"
 msgstr "نسيت كلمة المرور؟"
 
@@ -636,23 +595,23 @@ msgstr ""
 msgid "Password Reset"
 msgstr "إعادة تعيين كلمة المرور"
 
-#: tcn/ui/templates/registration/password_reset_complete.html:35
+#: tcn/ui/templates/registration/password_reset_complete.html:38
 #: tcn/ui/templates/registration/password_reset_confirm.html:4
-#: tcn/ui/templates/registration/password_reset_confirm.html:35
+#: tcn/ui/templates/registration/password_reset_confirm.html:38
 msgid "Password Reset Confirm"
 msgstr "تأكيد إعادة التعيين"
 
-#: tcn/ui/templates/registration/password_reset_complete.html:39
+#: tcn/ui/templates/registration/password_reset_complete.html:42
 msgid "Your password has been set. You may go ahead and log in now."
 msgstr "تم تعيين كلمة المرور. يمكنك الآن تسجيل الدخول."
 
-#: tcn/ui/templates/registration/password_reset_confirm.html:40
+#: tcn/ui/templates/registration/password_reset_confirm.html:43
 msgid ""
 "Please enter your new password twice so we can verify you typed it in "
 "correctly."
 msgstr "يرجى إدخال كلمة المرور الجديدة مرتين للتأكد من صحتها."
 
-#: tcn/ui/templates/registration/password_reset_confirm.html:47
+#: tcn/ui/templates/registration/password_reset_confirm.html:50
 msgid ""
 "The password reset link was invalid, possibly because it has already been "
 "used. Please request a new password reset. <!---->"
@@ -661,11 +620,11 @@ msgstr ""
 "جديدة."
 
 #: tcn/ui/templates/registration/password_reset_done.html:4
-#: tcn/ui/templates/registration/password_reset_done.html:34
+#: tcn/ui/templates/registration/password_reset_done.html:37
 msgid "Password Reset Done"
 msgstr "تمت إعادة التعيين"
 
-#: tcn/ui/templates/registration/password_reset_done.html:37
+#: tcn/ui/templates/registration/password_reset_done.html:40
 msgid ""
 "We've emailed you instructions for setting your password, if an account "
 "exists with the email you entered. You should receive them shortly."
@@ -673,7 +632,7 @@ msgstr ""
 "أرسلنا لك تعليمات لإعادة تعيين كلمة المرور في حال وجود حساب مرتبط بالبريد "
 "الإلكتروني الذي أدخلته. ستصله قريبًا."
 
-#: tcn/ui/templates/registration/password_reset_done.html:42
+#: tcn/ui/templates/registration/password_reset_done.html:45
 msgid ""
 "If you don't receive an email, please make sure you've entered the address "
 "you registered with, and check your spam folder."
@@ -710,13 +669,13 @@ msgid "The %(site_name)s team"
 msgstr "فريق %(site_name)s"
 
 #: tcn/ui/templates/registration/password_reset_form.html:4
-#: tcn/ui/templates/registration/password_reset_form.html:34
+#: tcn/ui/templates/registration/password_reset_form.html:37
 #, fuzzy
 #| msgid "Reset Password"
 msgid "Reset password"
 msgstr "إعادة تعيين كلمة المرور"
 
-#: tcn/ui/templates/registration/password_reset_form.html:37
+#: tcn/ui/templates/registration/password_reset_form.html:40
 #, fuzzy
 #| msgid ""
 #| "Forgotten your password? Enter your email address below, and we'll email "
@@ -731,7 +690,25 @@ msgstr ""
 msgid "Welcome to your Profile"
 msgstr "مرحبًا بك في ملفك الشخصي"
 
-#: tcn/ui/templates/registration/signup.html:36
+#: tcn/ui/templates/registration/profile.html:39
+#, fuzzy
+#| msgid "Saved articles"
+msgid "Saved articles"
+msgstr "المقالات المحفوظة"
+
+#: tcn/ui/templates/registration/profile.html:55
+#, fuzzy
+#| msgid "articles"
+msgid "No saved articles"
+msgstr "مقالات"
+
+#: tcn/ui/templates/registration/profile.html:57
+#, fuzzy
+#| msgid "Published news articles will appear here"
+msgid "Your saved articles will appear here."
+msgstr "المقالات المنشورة سوف تظهر هنا"
+
+#: tcn/ui/templates/registration/signup.html:39
 msgid "Welcome, please signup to continue."
 msgstr "مرحبًا، يرجى إنشاء حساب للمتابعة."
 
@@ -742,52 +719,45 @@ msgstr "مرحبًا، يرجى إنشاء حساب للمتابعة."
 msgid "The Certain News | API"
 msgstr "النبأ اليقين"
 
-#: tcn/ui/templates/rest_framework/api.html:47
-#: tcn/ui/templates/rest_framework/api.html:54
-#: tcn/ui/templates/ui/base.html:603
-#: tcn/ui/templates/ui/components/sidebar.html:44
-#: tcn/ui/templates/ui/components/sidebar.html:51
+#: tcn/ui/templates/rest_framework/api.html:45
+#: tcn/ui/templates/rest_framework/api.html:51
+#: tcn/ui/templates/ui/base.html:581
 msgid "Home"
 msgstr "الرئيسية"
 
-#: tcn/ui/templates/rest_framework/api.html:59
-#: tcn/ui/templates/rest_framework/api.html:66
+#: tcn/ui/templates/rest_framework/api.html:56
+#: tcn/ui/templates/rest_framework/api.html:63
 msgid "Pages"
 msgstr "الصفحات"
 
-#: tcn/ui/templates/rest_framework/api.html:71
-#: tcn/ui/templates/rest_framework/api.html:78
+#: tcn/ui/templates/rest_framework/api.html:68
+#: tcn/ui/templates/rest_framework/api.html:75
 #, fuzzy
 #| msgid "Image"
 msgid "Images"
 msgstr "صورة"
 
-#: tcn/ui/templates/rest_framework/api.html:83
-#: tcn/ui/templates/rest_framework/api.html:90
+#: tcn/ui/templates/rest_framework/api.html:80
+#: tcn/ui/templates/rest_framework/api.html:87
 #, fuzzy
 #| msgid "Document"
 msgid "Documents"
 msgstr "مستند"
 
-#: tcn/ui/templates/rest_framework/api.html:95
-#: tcn/ui/templates/rest_framework/api.html:102
+#: tcn/ui/templates/rest_framework/api.html:92
+#: tcn/ui/templates/rest_framework/api.html:99
 #: tcn/ui/templates/ui/authors/id.html:36
 #: tcn/ui/templates/ui/components/category.html:13
 msgid "Articles"
 msgstr "مقالات"
 
-#: tcn/ui/templates/rest_framework/api.html:107
-#: tcn/ui/templates/rest_framework/api.html:114
-#: tcn/ui/templates/ui/base.html:615 tcn/ui/templates/ui/base.html:625
-#: tcn/ui/templates/ui/components/sidebar.html:59
-#: tcn/ui/templates/ui/components/sidebar.html:66
-#: tcn/ui/templates/ui/components/sidebar.html:72
-#: tcn/ui/templates/ui/components/sidebar.html:79
+#: tcn/ui/templates/rest_framework/api.html:104
+#: tcn/ui/templates/rest_framework/api.html:111
 msgid "Categories"
 msgstr "الفئات"
 
-#: tcn/ui/templates/rest_framework/api.html:119
-#: tcn/ui/templates/rest_framework/api.html:126
+#: tcn/ui/templates/rest_framework/api.html:116
+#: tcn/ui/templates/rest_framework/api.html:123
 msgid "Users"
 msgstr "المستخدمون"
 
@@ -799,7 +769,7 @@ msgstr "المستخدمون"
 #: tcn/ui/templates/ui/articles/id.html:20
 #: tcn/ui/templates/ui/articles/id.html:24
 #: tcn/ui/templates/ui/articles/id.html:38
-#: tcn/ui/templates/ui/articles/id.html:42 tcn/ui/templates/ui/base.html:364
+#: tcn/ui/templates/ui/articles/id.html:42 tcn/ui/templates/ui/base.html:319
 msgid "News"
 msgstr "الأخبار"
 
@@ -811,6 +781,8 @@ msgstr "الأخبار"
 #: tcn/ui/templates/ui/articles/archive/month.html:28
 #: tcn/ui/templates/ui/articles/archive/year.html:18
 #: tcn/ui/templates/ui/articles/archive/year.html:28
+#: tcn/ui/templates/ui/components/live.html:34
+#: tcn/ui/templates/ui/components/live.html:40
 #: tcn/ui/templates/ui/components/pagination.html:8
 #: tcn/ui/templates/ui/components/pagination.html:15
 msgid "Previous"
@@ -824,6 +796,8 @@ msgstr "السابق"
 #: tcn/ui/templates/ui/articles/archive/month.html:46
 #: tcn/ui/templates/ui/articles/archive/year.html:36
 #: tcn/ui/templates/ui/articles/archive/year.html:46
+#: tcn/ui/templates/ui/components/live.html:50
+#: tcn/ui/templates/ui/components/live.html:56
 #: tcn/ui/templates/ui/components/pagination.html:53
 #: tcn/ui/templates/ui/components/pagination.html:63
 msgid "Next"
@@ -831,7 +805,7 @@ msgstr "التالي"
 
 #: tcn/ui/templates/ui/articles/archive/day.html:65
 #: tcn/ui/templates/ui/articles/archive/month.html:65
-#: tcn/ui/templates/ui/articles/list.html:46
+#: tcn/ui/templates/ui/articles/list.html:83
 #: tcn/ui/templates/ui/authors/id.html:51
 #, fuzzy
 #| msgid "articles"
@@ -845,9 +819,7 @@ msgstr "لم يتم نشر شيء"
 
 #: tcn/ui/templates/ui/articles/archive/index.html:4
 #: tcn/ui/templates/ui/articles/archive/index.html:11
-#: tcn/ui/templates/ui/base.html:636
-#: tcn/ui/templates/ui/components/sidebar.html:86
-#: tcn/ui/templates/ui/components/sidebar.html:93
+#: tcn/ui/templates/ui/base.html:592
 msgid "Archive"
 msgstr "الأرشيف"
 
@@ -856,6 +828,7 @@ msgstr "الأرشيف"
 #: tcn/ui/templates/ui/components/article-1.html:11
 #: tcn/ui/templates/ui/components/article-2.html:11
 #: tcn/ui/templates/ui/components/article.html:14
+#: tcn/ui/templates/ui/components/live.html:16
 msgid "Read"
 msgstr "اقرأ"
 
@@ -871,59 +844,113 @@ msgstr "لا توجد"
 msgid "Category"
 msgstr "الفئة"
 
-#: tcn/ui/templates/ui/articles/id.html:155
+#: tcn/ui/templates/ui/articles/id.html:93
+#: tcn/ui/templates/ui/articles/id.html:99
+#: tcn/ui/templates/ui/articles/list.html:11 tcn/ui/templates/ui/base.html:149
+#: tcn/ui/templates/ui/base.html:159 tcn/ui/templates/ui/base.html:585
+#: tcn/ui/templates/ui/components/article-1.html:27
+#: tcn/ui/templates/ui/components/article-1.html:29
+#: tcn/ui/templates/ui/components/article-2.html:30
+#: tcn/ui/templates/ui/components/article-2.html:32
+#: tcn/ui/templates/ui/components/article.html:28
+#: tcn/ui/templates/ui/components/article.html:31
+#: tcn/ui/templates/ui/components/live.html:5
+#: tcn/ui/templates/ui/components/live.html:90
+#: tcn/ui/templates/ui/components/live.html:93
+#: tcn/ui/templates/ui/index.html:10 tcn/ui/templates/ui/index.html:45
+#: tcn/ui/templates/ui/index.html:134
+msgid "Breaking"
+msgstr "عاجل"
+
+#: tcn/ui/templates/ui/articles/id.html:158
+#: tcn/ui/templates/ui/articles/id.html:165
+msgid "Follow"
+msgstr "متابعة"
+
+#: tcn/ui/templates/ui/articles/id.html:171
+#: tcn/ui/templates/ui/articles/id.html:178
+msgid "Save"
+msgstr "حفظ"
+
+#: tcn/ui/templates/ui/articles/id.html:184
+#: tcn/ui/templates/ui/articles/id.html:191
+msgid "Login to follow"
+msgstr "تسجيل الدخول للمتابعة"
+
+#: tcn/ui/templates/ui/articles/id.html:197
+#: tcn/ui/templates/ui/articles/id.html:204
+msgid "Login to save"
+msgstr "تسجيل الدخول للحفظ"
+
+#: tcn/ui/templates/ui/articles/id.html:211
 msgid "Translations"
 msgstr "الترجمات"
 
-#: tcn/ui/templates/ui/articles/id.html:173
+#: tcn/ui/templates/ui/articles/id.html:220 tcn/ui/templates/ui/base.html:183
+#: tcn/ui/templates/ui/base.html:196 tcn/ui/templates/ui/base.html:206
+msgid "Language"
+msgstr "اللغة"
+
+#: tcn/ui/templates/ui/articles/id.html:229
 msgid "Available in"
 msgstr "متاح في"
 
-#: tcn/ui/templates/ui/articles/id.html:188
+#: tcn/ui/templates/ui/articles/id.html:244
 msgid "None"
 msgstr "لا شيء"
 
-#: tcn/ui/templates/ui/articles/id.html:196
-#: tcn/ui/templates/ui/articles/id.html:212
-#: tcn/ui/templates/ui/articles/id.html:308
+#: tcn/ui/templates/ui/articles/id.html:252
+#: tcn/ui/templates/ui/articles/id.html:268
+#: tcn/ui/templates/ui/articles/id.html:364
 #, fuzzy
 #| msgid "Copy Link"
 msgid "Copy URL"
 msgstr "نسخ الرابط"
 
-#: tcn/ui/templates/ui/articles/id.html:218
-#: tcn/ui/templates/ui/articles/id.html:225 tcn/ui/templates/ui/base.html:446
-#: tcn/ui/templates/ui/base.html:456
+#: tcn/ui/templates/ui/articles/id.html:274
+#: tcn/ui/templates/ui/articles/id.html:281 tcn/ui/templates/ui/base.html:375
+#: tcn/ui/templates/ui/base.html:385
 msgid "Facebook"
 msgstr "فيسبوك"
 
-#: tcn/ui/templates/ui/articles/id.html:236
+#: tcn/ui/templates/ui/articles/id.html:292
 #: tcn/ui/templates/ui/components/article-1.html:37
 #: tcn/ui/templates/ui/components/article-2.html:40
 #: tcn/ui/templates/ui/components/article.html:39
 msgid "Date published"
 msgstr "تاريخ النشر"
 
-#: tcn/ui/templates/ui/articles/id.html:278
+#: tcn/ui/templates/ui/articles/id.html:334
 msgid "More news from"
 msgstr "المزيد من أخبار"
 
-#: tcn/ui/templates/ui/articles/id.html:301
+#: tcn/ui/templates/ui/articles/id.html:357
 msgid "Copied"
 msgstr "تم النسخ"
 
 #: tcn/ui/templates/ui/articles/list.html:4
-#: tcn/ui/templates/ui/articles/list.html:15 tcn/ui/templates/ui/index.html:83
+#: tcn/ui/templates/ui/articles/list.html:19 tcn/ui/templates/ui/index.html:83
 msgid "Latest News"
 msgstr "أحدث الأخبار"
 
-#: tcn/ui/templates/ui/articles/list.html:21
-#: tcn/ui/templates/ui/articles/list.html:29
-#: tcn/ui/templates/ui/articles/list.html:60
+#: tcn/ui/templates/ui/articles/list.html:15
+#: tcn/ui/templates/ui/articles/list.html:27
+#: tcn/ui/templates/ui/articles/list.html:37
+#: tcn/ui/templates/ui/articles/list.html:42
+msgid "Following"
+msgstr "مُتابَع"
+
+#: tcn/ui/templates/ui/articles/list.html:51
+msgid "Login to view articles by writers you follow."
+msgstr "تسجيل الدخول لعرض المقالات من قِبَل الكُتاب الذين تتابعهم."
+
+#: tcn/ui/templates/ui/articles/list.html:58
+#: tcn/ui/templates/ui/articles/list.html:66
+#: tcn/ui/templates/ui/articles/list.html:97
 msgid "Filters"
 msgstr "تصفية"
 
-#: tcn/ui/templates/ui/articles/list.html:47
+#: tcn/ui/templates/ui/articles/list.html:84
 #: tcn/ui/templates/ui/authors/id.html:52
 msgid "Published news articles will appear here"
 msgstr "المقالات المنشورة سوف تظهر هنا"
@@ -932,69 +959,72 @@ msgstr "المقالات المنشورة سوف تظهر هنا"
 msgid "Authors"
 msgstr "الكتّاب"
 
-#: tcn/ui/templates/ui/base.html:15 tcn/ui/templates/ui/base.html:24
-#: tcn/ui/templates/ui/base.html:28 tcn/ui/templates/ui/base.html:48
-#: tcn/ui/templates/ui/base.html:52
+#: tcn/ui/templates/ui/base.html:16 tcn/ui/templates/ui/base.html:25
+#: tcn/ui/templates/ui/base.html:29 tcn/ui/templates/ui/base.html:49
+#: tcn/ui/templates/ui/base.html:53
 msgid "The Certain News - Journalism with Certainty."
 msgstr "النبأ اليقين - صحافة باليقين"
 
-#: tcn/ui/templates/ui/base.html:362
+#: tcn/ui/templates/ui/base.html:165 tcn/ui/templates/ui/base.html:175
+#: tcn/ui/templates/ui/base.html:589
+msgid "Latest news"
+msgstr "أحدث الأخبار"
+
+#: tcn/ui/templates/ui/base.html:258 tcn/ui/templates/ui/base.html:265
+#: tcn/ui/templates/ui/base.html:286 tcn/ui/templates/ui/base.html:297
+#: tcn/ui/templates/ui/base.html:565 tcn/ui/templates/ui/base.html:573
+#: tcn/ui/templates/ui/search.html:6 tcn/ui/templates/ui/search.html:12
+#: tcn/ui/templates/ui/search.html:29
+msgid "Search"
+msgstr "بحث"
+
+#: tcn/ui/templates/ui/base.html:317
 msgid "Services"
 msgstr "الخدمات"
 
-#: tcn/ui/templates/ui/base.html:363
+#: tcn/ui/templates/ui/base.html:318
 msgid "Ads"
 msgstr "الإعلانات"
 
-#: tcn/ui/templates/ui/base.html:367
+#: tcn/ui/templates/ui/base.html:322
 msgid "Company"
 msgstr "الشركة"
 
-#: tcn/ui/templates/ui/base.html:376 tcn/ui/templates/ui/base.html:383
-#: tcn/ui/templates/ui/base.html:657 tcn/ui/templates/ui/base.html:667
-msgid "About us"
-msgstr "من نحن"
-
-#: tcn/ui/templates/ui/base.html:389 tcn/ui/templates/ui/base.html:396
-#: tcn/ui/templates/ui/base.html:680 tcn/ui/templates/ui/base.html:690
-msgid "Contact us"
-msgstr "اتصل بنا"
-
-#: tcn/ui/templates/ui/base.html:401
+#: tcn/ui/templates/ui/base.html:330
 msgid "Legal"
 msgstr "القانونية"
 
-#: tcn/ui/templates/ui/base.html:403
+#: tcn/ui/templates/ui/base.html:332
 msgid "Terms of use"
 msgstr "شروط الاستخدام"
 
-#: tcn/ui/templates/ui/base.html:406
+#: tcn/ui/templates/ui/base.html:335
 msgid "Privacy policy"
 msgstr "سياسة الخصوصية"
 
-#: tcn/ui/templates/ui/base.html:409
+#: tcn/ui/templates/ui/base.html:338
 msgid "Cookie policy"
 msgstr "سياسة ملفات تعريف الارتباط"
 
-#: tcn/ui/templates/ui/base.html:439
+#: tcn/ui/templates/ui/base.html:368
 msgid "Journalism with Certainty"
 msgstr "النبأ اليقين - صحافة باليقين"
 
-#: tcn/ui/templates/ui/base.html:461 tcn/ui/templates/ui/base.html:471
+#: tcn/ui/templates/ui/base.html:390 tcn/ui/templates/ui/base.html:400
 msgid "Instagram"
 msgstr "انستغرام"
 
-#: tcn/ui/templates/ui/base.html:476 tcn/ui/templates/ui/base.html:486
+#: tcn/ui/templates/ui/base.html:405 tcn/ui/templates/ui/base.html:415
 #, fuzzy
 #| msgid "Linkedin"
 msgid "Linkedin"
 msgstr "لينكدإن"
 
-#: tcn/ui/templates/ui/base.html:491 tcn/ui/templates/ui/base.html:498
+#: tcn/ui/templates/ui/base.html:420 tcn/ui/templates/ui/base.html:427
 msgid "RSS"
 msgstr "RSS"
 
-#: tcn/ui/templates/ui/components/form.html:28
+#: tcn/ui/templates/ui/components/form.html:31
 msgid "Submit"
 msgstr "إرسال"
 
@@ -1016,11 +1046,6 @@ msgstr "من"
 msgid "Last"
 msgstr "الأخير"
 
-#: tcn/ui/templates/ui/components/sidebar.html:161
-#: tcn/ui/templates/ui/components/sidebar.html:168
-msgid "Account"
-msgstr "الحساب"
-
 #: tcn/ui/templates/ui/contact_landing.html:18
 #: tcn/ui/templates/ui/contact_landing.html:22
 msgid "Success"
@@ -1038,7 +1063,9 @@ msgstr "البث المباشر"
 msgid ""
 "Stay updated with the latest breaking news as it happens. New breaking "
 "articles will appear instantly in the live feed below."
-msgstr "ابقَ على اطلاع بآخر الأخبار العاجلة كما تحدث. ستظهرالمقالات العاجلة الجديدة فورًا في موجز البث المباشر أدناه"
+msgstr ""
+"ابقَ على اطلاع بآخر الأخبار العاجلة كما تحدث. ستظهرالمقالات العاجلة الجديدة "
+"فورًا في موجز البث المباشر أدناه"
 
 #: tcn/ui/templates/ui/index.html:67
 msgid "Trending now"
@@ -1060,14 +1087,14 @@ msgstr "نتائج البحث"
 msgid "No results found"
 msgstr "لا توجد نتائج"
 
-#: tcn/ui/views.py:39
+#: tcn/ui/views.py:40
 msgid "Your account was created successfully!"
 msgstr "تم إنشاء حسابك بنجاح"
 
-#: tcn/ui/views.py:73
+#: tcn/ui/views.py:74
 msgid "Your account was updated successfully!"
 msgstr "تم تحديث حسابك بنجاح"
 
-#: tcn/ui/views.py:97
+#: tcn/ui/views.py:98
 msgid "Your account was deleted successfully!"
 msgstr "تم حذف حسابك بنجاح"
