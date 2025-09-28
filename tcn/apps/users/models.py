@@ -16,7 +16,7 @@ class User(AbstractUser):
         db_index=True,
         allow_unicode=True,
         verbose_name=_("slug"),
-        help_text=_("Slug"),
+        help_text=_("Letters, numbers and dash only"),
     )
     country = CountryField(
         null=True,

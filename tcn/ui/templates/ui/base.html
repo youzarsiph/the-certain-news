@@ -4,6 +4,7 @@
   lang="{{ LANGUAGE_CODE }}"
   dir="{% if LANGUAGE_CODE == 'ar' %}rtl{% else %}ltr{% endif %}"
 >
+  {% get_site_root as home %}{% get_category_index home as categories_index %}
   <head>
     {% block head %}
     <meta charset="UTF-8" />
@@ -89,7 +90,6 @@
       <input id="nav-drawer" type="checkbox" class="drawer-toggle" />
 
       <section id="content" class="drawer-content">
-        {% get_site_root as home %}
         <div
           id="main"
           class="bg-base-300 relative h-dvh overflow-hidden sm:p-1 lg:p-2"
@@ -272,7 +272,7 @@
                         class="hidden lg:block"
                       >
                         <label
-                          class="mx-auto max-w-xl w-full bg-transparent input input-primary 2xl:input-lg"
+                          class="mx-auto max-w-xl w-full bg-transparent input input-ghost input-primary 2xl:input-lg"
                         >
                           <i
                             data-lucide="search"
@@ -551,7 +551,7 @@
 
             <form method="get" action="{% url 'ui:search' %}">
               <label
-                class="mx-auto max-w-xl w-full bg-transparent input input-primary"
+                class="mx-auto max-w-xl w-full bg-transparent input input-ghost input-primary"
               >
                 <i
                   data-lucide="search"

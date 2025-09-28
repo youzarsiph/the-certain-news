@@ -4,14 +4,14 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from modelcluster.fields import ParentalKey
 from wagtail.admin.panels import FieldPanel, FieldRowPanel, InlinePanel, MultiFieldPanel
-from wagtail.contrib.forms.panels import FormSubmissionsPanel
 from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
+from wagtail.contrib.forms.panels import FormSubmissionsPanel
 from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Page
 from wagtail.search import index
 
 from tcn.apps.articles.models import Article
-from tcn.apps.categories.models import Category, CategoryIndex
+from tcn.apps.categories.models import Category
 from tcn.cms.blocks import MediaBlock
 
 
@@ -35,7 +35,6 @@ class Home(Page):
 
         return {
             **context,
-            "categories_index": self.get_children().type(CategoryIndex).last(),
             "trending_news": Article.objects.descendant_of(self)
             .live()
             .prefetch_related("link")

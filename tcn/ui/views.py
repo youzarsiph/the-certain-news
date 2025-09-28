@@ -1,10 +1,11 @@
 """Views for tcn.ui"""
 
-from typing import Any
+from typing import Any, Dict, Tuple
 
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
+from django.db.models import QuerySet
 from django.http import HttpRequest
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
@@ -12,7 +13,6 @@ from django.utils.translation import get_language_from_request
 from django.utils.translation import gettext_lazy as _
 from django.views import generic
 from django_filters.views import FilterView
-from httpx import request
 from wagtail.contrib.search_promotions.models import Query
 
 from tcn.apps.articles.models import Article
@@ -46,7 +46,7 @@ class UserDetailView(generic.DetailView):
     model = User
     template_name = "ui/authors/id.html"
 
-    def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
+    def get_context_data(self, **kwargs: Dict[str, Any]) -> Dict[str, Any]:
         """Add articles to context"""
 
         context = super().get_context_data(**kwargs)
@@ -104,7 +104,10 @@ class LinkRedirectView(generic.DetailView):
     model = Link
 
     def get(
-        self, request: HttpRequest, *args: Any, **kwargs: Any
+        self,
+        request: HttpRequest,
+        *args: Tuple[Any],
+        **kwargs: Dict[str, Any],
     ) -> mixins.HttpResponse:
         """Redirect to news article"""
 
@@ -132,7 +135,7 @@ class BaseArticleListView:
     queryset = Article.objects.live().public().prefetch_related("link")
     filterset_fields = ["country", "is_breaking"]
 
-    def get_queryset(self) -> mixins.QuerySet[Any]:
+    def get_queryset(self) -> QuerySet[Article]:
         """Filter queryset by active language"""
 
         queryset = (
@@ -165,7 +168,7 @@ class SearchView(ArticleListView):
     template_name = "ui/search.html"
     context_object_name = "search_results"
 
-    def get_context_data(self, **kwargs) -> dict[str, Any]:
+    def get_context_data(self, **kwargs: Dict[str, Any]) -> Dict[str, Any]:
         """Search new article"""
 
         return {
@@ -217,7 +220,7 @@ class ArticleDayView(BaseArticleListView, generic.DayArchiveView):
     template_name = "ui/articles/archive/day.html"
 
 
-class ArticleDetailView(generic.DateDetailView):
+class ArticleDetailView(BaseArticleListView, generic.DateDetailView):
     """Article details"""
 
     month_format = "%m"

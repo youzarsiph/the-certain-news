@@ -9,7 +9,8 @@ from wagtail.documents.api.v2.views import DocumentsAPIViewSet
 from wagtail.images.api.v2.views import ImagesAPIViewSet
 
 from tcn.api.views import ArticleViewSet, CategoryViewSet
-from tcn.api.viewsets import ArticleViewSet as DRFArticleViewSet, UserViewSet
+from tcn.api.viewsets import ArticleViewSet as DRFArticleViewSet
+from tcn.api.viewsets import UserViewSet
 
 # Create your URLConf here.
 router = DefaultRouter()
