@@ -9,9 +9,14 @@ from channels.generic.websocket import AsyncJsonWebsocketConsumer
 class LiveFeedConsumer(AsyncJsonWebsocketConsumer):
     """Live breaking news feed"""
 
-    groups = ["broadcast"]
+    groups = []
+    language: str
 
     async def connect(self) -> None:
+
+        self.language = self.scope["url_route"]["kwargs"]["language_code"]
+        self.groups = [f"{self.language}-live"]
+
         return await self.accept()
 
     async def receive_json(
@@ -20,14 +25,14 @@ class LiveFeedConsumer(AsyncJsonWebsocketConsumer):
         """Send received breaking news"""
 
         await self.channel_layer.group_send(
-            "broadcast",
+            self.groups[0],
             {
-                "type": "live.broadcast",
+                "type": "broadcast",
                 "article": content["article"],
             },
         )
 
-    async def live_broadcast(self, event: Dict[str, Any]):
+    async def broadcast(self, event: Dict[str, Any]):
         """Broadcast breaking news"""
 
         await self.send_json(event["article"])

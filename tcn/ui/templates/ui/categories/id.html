@@ -10,32 +10,22 @@
     {% include 'ui/components/breadcrumbs.html' %}
 
     <div
-      class="hero bg-gradient-to-r from-emerald-500 to-sky-400 rounded-box md:aspect-video"
+      class="prose mx-auto prose-sm prose-video:rounded-box xl:prose-lg 2xl:prose-xl prose-headings:text-primary prose-img:rounded-box prose-img:w-full"
     >
-      <div class="hero-content grid gap-8">
-        <h1 class="text-3xl text-primary font-black lg:text-7xl">
-          {{ category.title }}
-        </h1>
-      </div>
+      <h1>{{ category.title }}</h1>
+
+      {{ category.description|richtext }}
     </div>
 
-    <section class="grid gap-8">
-      <div
-        class="prose mx-auto prose-sm prose-video:rounded-box xl:prose-lg 2xl:prose-xl prose-headings:text-primary prose-headings:font-serif rtl:prose-headings:font-kufi prose-img:rounded-box prose-img:w-full prose-pre:bg-base-200 prose-pre:border prose-pre:border-base-300"
-      >
-        {{ category.description|richtext }}
-      </div>
+    <ol class="grid grid-cols-12 grid-rows-[auto] gap-4">
+      {% for article in children.specific %}
+      <!---->
+      {% include 'ui/components/article-2.html' %}
+      <!---->
+      {% endfor %}
+    </ol>
 
-      <ol class="grid grid-cols-12 grid-rows-[auto] gap-4">
-        {% for article in children.specific %}
-        <!---->
-        {% include 'ui/components/article-2.html' %}
-        <!---->
-        {% endfor %}
-      </ol>
-
-      {% include 'ui/components/pagination.html' %}
-    </section>
+    {% include 'ui/components/pagination.html' %}
   </section>
 </div>
 {% endblock %}

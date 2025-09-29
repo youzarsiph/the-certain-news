@@ -18,9 +18,9 @@ def send_to_live_feed(sender, **kwargs):
 
     if article.is_breaking:
         async_to_sync(channel_layer.group_send)(
-            "broadcast",
+            f"{article.locale.language_code}-live",
             {
-                "type": "live.broadcast",
+                "type": "broadcast",
                 "article": {
                     "url": reverse_lazy("ui:redirect", args=[article.link.slug]),
                     "title": article.title,

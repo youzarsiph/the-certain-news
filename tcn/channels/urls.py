@@ -1,10 +1,12 @@
 """URL Configuration for tcn.channels"""
 
-from django.urls import re_path
+from django.urls import path
 
 from tcn.channels.consumers import LiveFeedConsumer
 
 # Create your URLConf here.
+app_name = "tcn_live"
+
 urlpatterns = [
-    re_path(r"ws/live-feed/$", LiveFeedConsumer.as_asgi()),
+    path("wss/<slug:language_code>/live/", LiveFeedConsumer.as_asgi(), name="live"),
 ]

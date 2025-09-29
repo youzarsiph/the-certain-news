@@ -1,33 +1,21 @@
 {% extends 'ui/contact.html' %}{% load i18n wagtailcore_tags %}
 
 <!---->
-{% block title %}{{ block.super }} | {{ contact.title }}{% endblock %}
+{% block message %}
+<div role="alert" class="alert alert-soft alert-success">
+  <div
+    class="tooltip tooltip-right rtl:tooltip-left tooltip-success"
+    data-tip="{% trans 'Success' %}"
+  >
+    <span class="btn btn-xs btn-circle btn-success md:btn-sm">
+      <i class="size-4 lg:size-6" data-lucide="check-circle2"></i>
+      <span class="sr-only">{% trans 'Success' %}</span>
+    </span>
+  </div>
+
+  {{ contact.message|richtext }}
+</div>
+{% endblock %}
 
 <!---->
-{% block content %}
-<section class="container mx-auto px-4 py-20">
-  <div
-    class="mx-auto prose prose-sm prose-video:rounded-box xl:prose-lg 2xl:prose-xl prose-headings:text-primary prose-headings:font-serif rtl:prose-headings:font-kufi prose-img:rounded-box prose-img:w-full"
-  >
-    <h1>{{ contact.title }}</h1>
-
-    <div class="not-prose">
-      <div role="alert" class="alert alert-soft alert-success">
-        <div
-          class="tooltip tooltip-right rtl:tooltip-left tooltip-success"
-          data-tip="{% trans 'Success' %}"
-        >
-          <span class="btn btn-xs btn-circle btn-success md:btn-sm">
-            <i class="size-4 lg:size-6" data-lucide="check-circle2"></i>
-            <span class="sr-only">{% trans 'Success' %}</span>
-          </span>
-        </div>
-
-        {{ contact.message|richtext }}
-      </div>
-    </div>
-
-    {{ contact.content }}
-  </div>
-</section>
-{% endblock %}
+{% block form %}{% endblock %}

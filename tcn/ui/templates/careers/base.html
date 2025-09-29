@@ -1,6 +1,18 @@
 {% extends 'careers/base.html' %}{% load i18n static wagtailcore_tags %}
 
 <!---->
+{% block title %}{% trans 'The Certain News | Careers' %}{% endblock %}
+
+<!---->
+{% block styles %}{{ block.super }}
+<link
+  href="{% static 'ui/css/styles.css' %}"
+  rel="stylesheet"
+  type="text/css"
+/>
+{% endblock %}
+
+<!---->
 {% block branding %}
 <li
   class="tooltip tooltip-right rtl:tooltip-left tooltip-primary"
@@ -95,6 +107,9 @@
   </a>
 </li>
 {% endblock %}
+
+<!---->
+{% block footer %}{% include 'ui/components/footer.html' %}{% endblock %}
 
 <!---->
 {% block drawer_branding %}
