@@ -5,6 +5,17 @@
 {% endblock %}
 
 <!---->
+{% block languages %}
+<!---->
+{% if page.get_translations.live %}
+<!---->
+{% include 'ui/components/lang_switch.html' %}
+<!---->
+{% else %}{{ block.super }}{% endif %}
+<!---->
+{% endblock %}
+
+<!---->
 {% block content %}
 <div class="container grid gap-16 mx-auto px-4 py-20">
   <section title="{% trans 'Breaking' %}">
@@ -129,9 +140,10 @@
     li.innerHTML = `
       <hr class="bg-error" />
       <time class="timeline-start text-xs text-primary font-semibold">${timeAgo}</time>
-      <div class="timeline-middle animate-pulse rounded-full">
-        <i class="size-4 text-error lg:size-6" data-lucide="circle-alert"></i>
-        <span class="sr-only">{% trans 'Breaking' %}</span>
+      <div class="timeline-middle">
+        <span class="status status-xl status-primary">
+          <span class="sr-only">{% trans 'Breaking' %}</span>
+        </span>
       </div>
       <a 
         href="${article.url || "#"}"
@@ -146,7 +158,9 @@
     lucide.createIcons();
   }
 
-  const ws = new WebSocket("wss://" + window.location.host + "/ws/live-feed/");
+  const ws = new WebSocket(
+    "wss://" + window.location.host + "{% url 'tcn_live:live' LANGUAGE_CODE %}"
+  );
 
   ws.onmessage = function (e) {
     const article = JSON.parse(e.data);

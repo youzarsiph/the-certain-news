@@ -53,73 +53,35 @@
 {% endblock %}
 
 <!---->
+{% block languages %}
+<!---->
+{% if page.get_translations.live %}
+<!---->
+{% include 'ui/components/lang_switch.html' %}
+<!---->
+{% else %}{{ block.super }}{% endif %}
+<!---->
+{% endblock %}
+
+<!---->
 {% block content %}
 <div class="container grid gap-12 mx-auto px-4 py-20">
   {% include 'ui/components/breadcrumbs.html' %}
 
-  <div class="flex items-center flex-wrap gap-4">
-    {% if article.country %}
-    <div>
-      <div
-        class="tooltip tooltip-success tooltip-right rtl:tooltip-left"
-        data-tip="{{ article.country.name }}"
-      >
-        <a
-          href="{% url 'ui:articles' %}?country={{ article.country }}"
-          class="badge badge-success badge-xl"
-        >
-          <i data-lucide="map-pin" class="size-4 lg:size-6"></i>
-          {{ article.country }}
-        </a>
-      </div>
-    </div>
-    {% endif %}
-
-    <div
-      class="tooltip tooltip-primary tooltip-right rtl:tooltip-left"
-      data-tip="{% trans 'Category' %}"
-    >
-      <a
-        href="{% pageurl article.get_parent %}"
-        class="badge badge-primary badge-xl"
-      >
-        {{ article.get_parent }}
-      </a>
-    </div>
-
-    {% if article.is_breaking %}
-    <div
-      class="tooltip tooltip-error tooltip-right rtl:tooltip-left"
-      data-tip="{% trans 'Breaking' %}"
-    >
-      <a
-        href="{% url 'ui:articles' %}?is_breaking=True"
-        class="badge badge-error badge-xl animate-pulse"
-      >
-        {% trans 'Breaking' %}
-      </a>
-    </div>
-    {% endif %}
-  </div>
-
-  <h1
-    class="font-bold text-primary text-xl md:text-3xl lg:text-5xl/24 xl:text-6xl/32 2xl:text-7xl/36"
+  <div
+    class="prose mx-auto prose-sm xl:prose-lg 2xl:prose-xl prose-headings:text-primary prose-headings:lg:rtl:leading-relaxed"
   >
-    {{ article.title }}
-  </h1>
+    <h1>{{ article.title }}</h1>
 
-  <div class="grid gap-4">
-    <div
-      class="flex flex-col md:flex-row md:items-center md:justify-between gap-4"
-    >
-      {% if article.get_parent.display_owner %}
+    {% if article.get_parent.display_owner %}
+    <div class="not-prose flex items-center justify-between">
       <a
         href="{% url 'ui:author' article.owner.slug %}"
         class="flex items-center gap-2"
       >
         {% if article.owner.photo %}
         <div class="avatar">
-          <div class="mask mask-squircle size-10 lg:size-16">
+          <div class="mask mask-squircle size-12 lg:size-16">
             <img
               src="{{ article.owner.photo.url }}"
               alt="{{ article.owner }}"
@@ -129,7 +91,7 @@
         {% else %}
         <div class="avatar avatar-placeholder">
           <div
-            class="mask mask-squircle flex items-center justify-center bg-primary text-primary-content size-10 lg:size-16"
+            class="mask mask-squircle flex items-center justify-center bg-primary text-primary-content size-12 lg:size-16"
           >
             <span class="text-xl uppercase font-bold lg:text-4xl">
               {{ article.owner.first_name|slice:':1' }}
@@ -147,9 +109,6 @@
           </div>
         </div>
       </a>
-      {% else %}
-      <div></div>
-      {% endif %}
 
       <div class="flex items-center justify-end gap-4">
         {% if request.user.is_authenticated %}
@@ -167,21 +126,7 @@
             <span class="sr-only">{% translate 'Follow' %}</span>
           </button>
         </div>
-        {% endif %}
-
-        <div
-          class="tooltip tooltip-left tooltip-success rtl:tooltip-right"
-          data-tip="{% translate 'Save' %}"
-        >
-          <button
-            onclick="save('{{ article.slug }}')"
-            class="btn btn-square btn-soft btn-sm btn-success md:btn-md 2xl:btn-lg"
-          >
-            <i data-lucide="bookmark" class="size-4 lg:size-6"></i>
-            <span class="sr-only">{% translate 'Save' %}</span>
-          </button>
-        </div>
-        {% else %}
+        {% endif %}{% else %}
         <!---->
         {% if article.get_parent.display_owner %}
         <div
@@ -196,128 +141,162 @@
             <span class="sr-only">{% translate 'Login to follow' %}</span>
           </a>
         </div>
-        {% endif %}
-
-        <div
-          class="tooltip tooltip-left tooltip-success rtl:tooltip-right"
-          data-tip="{% translate 'Login to save' %}"
-        >
-          <a
-            href="{% url 'ui:login' %}?next={% url 'ui:redirect' article.link.slug %}"
-            class="btn btn-square btn-soft btn-sm btn-success md:btn-md 2xl:btn-lg"
-          >
-            <i data-lucide="bookmark" class="size-4 lg:size-6"></i>
-            <span class="sr-only">{% translate 'Login to save' %}</span>
-          </a>
-        </div>
-        {% endif %}
-
-        <div
-          class="tooltip tooltip-left tooltip-primary rtl:tooltip-right"
-          data-tip="{% translate 'Translations' %}"
-        >
-          <button
-            popovertarget="translations"
-            style="anchor-name: --translations"
-            class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
-          >
-            <i data-lucide="languages" class="size-4 lg:size-6"></i>
-
-            <span class="sr-only">{% translate 'Language' %}</span>
-          </button>
-
-          <ul
-            id="translations"
-            popover
-            style="position-anchor: --translations"
-            class="menu dropdown dropdown-left rounded-box bg-base-100/75 dark:bg-base-100/50 backdrop-blur-3xl text-base-content shadow-sm rtl:dropdown-right"
-          >
-            <li class="menu-title">{% translate 'Available in' %}</li>
-
-            {% for translation in article.get_translations.live %}
-            <li>
-              <a
-                href="{% pageurl translation %}"
-                rel="alternate"
-                hreflang="{{ translation.locale.language_code }}"
-              >
-                {{ translation.locale.language_name_local }}
-                <!---->
-                ({{ translation.locale.language_code }})
-              </a>
-            </li>
-            {% empty %}
-            <li>{% trans 'None' %}</li>
-            {% endfor %}
-          </ul>
-        </div>
-
-        <div
-          id="btn-copy"
-          class="tooltip tooltip-left tooltip-primary rtl:tooltip-right"
-          data-tip="{% trans 'Copy URL' %}"
-        >
-          <button
-            class="btn btn-copy btn-square btn-sm btn-primary md:btn-md 2xl:btn-lg"
-            data-clipboard-text="{% short_link article.link.slug %}"
-          >
-            <i
-              id="clipboard"
-              data-lucide="clipboard"
-              class="size-4 lg:size-6"
-            ></i>
-            <i
-              id="clipboard-check"
-              data-lucide="clipboard-check"
-              class="hidden size-4 lg:size-6"
-            ></i>
-            <span class="sr-only">{% trans 'Copy URL' %}</span>
-          </button>
-        </div>
-
-        <div
-          class="tooltip tooltip-left tooltip-info rtl:tooltip-right"
-          data-tip="{% trans 'Facebook' %}"
-        >
-          <a
-            class="btn btn-copy btn-square btn-sm btn-info md:btn-md 2xl:btn-lg"
-            href="https://www.facebook.com/sharer/sharer.php?u={% short_link article.link.slug %}"
-          >
-            <i data-lucide="facebook" class="size-4 lg:size-6"></i>
-            <span class="sr-only">{% trans 'Facebook' %}</span>
-          </a>
-        </div>
+        {% endif %}{% endif %}
       </div>
     </div>
-
-    <div
-      class="flex flex-col md:flex-row text-xs sm:text-sm md:items-center gap-4"
-    >
-      <div
-        class="tooltip tooltip-bottom tooltip-primary"
-        data-tip="{% trans 'Date published' %}"
-      >
-        <a
-          href="{% url 'ui:articles-d' article.created_at.year|default:'2025' article.created_at.month|default:'08' article.created_at.day|default:'01' %}"
-          class="flex items-center gap-2 link link-primary link-hover"
-        >
-          <span class="status status-xl status-primary"></span>
-          {{ article.created_at }}
-        </a>
-      </div>
-      <span class="flex items-center gap-2 text-primary">
-        <span class="status status-xl status-info"></span>
-        <span>{% trans 'Last update' %}: {{ article.updated_at }}</span>
-      </span>
-    </div>
+    {% endif %}
   </div>
 
   <div
     class="prose mx-auto prose-sm prose-video:rounded-box xl:prose-lg 2xl:prose-xl prose-headings:text-primary prose-img:rounded-box prose-img:w-full"
   >
-    <figure class="skeleton overflow-clip">
-      {% image article.image fill-1920x1080 %}
-    </figure>
+    <div class="grid">
+      <div class="not-prose flex items-center flex-wrap gap-4">
+        {% if article.is_breaking %}
+        <div
+          class="tooltip tooltip-error tooltip-right rtl:tooltip-left"
+          data-tip="{% trans 'Breaking' %}"
+        >
+          <a
+            href="{% url 'ui:articles' %}?is_breaking=True"
+            class="badge badge-sm badge-error md:badge-md xl:badge-lg 2xl:badge-xl"
+          >
+            <i data-lucide="alert-circle" class="size-4 lg:size-6"></i>
+            {% trans 'Breaking' %}
+          </a>
+        </div>
+        {% endif %}
+
+        <!---->
+        {% if article.country %}
+        <div
+          class="tooltip tooltip-success tooltip-right rtl:tooltip-left"
+          data-tip="{{ article.country.name }}"
+        >
+          <a
+            href="{% url 'ui:articles' %}?country={{ article.country }}"
+            class="badge badge-sm badge-success md:badge-md xl:badge-lg 2xl:badge-xl"
+          >
+            <i data-lucide="map-pin" class="size-4 lg:size-6"></i>
+            {{ article.country }}
+          </a>
+        </div>
+        {% endif %}
+
+        <div
+          class="tooltip tooltip-primary tooltip-right rtl:tooltip-left"
+          data-tip="{% trans 'Category' %}"
+        >
+          <a
+            href="{% pageurl article.get_parent %}"
+            class="badge badge-sm badge-primary md:badge-md xl:badge-lg 2xl:badge-xl"
+          >
+            {{ article.get_parent }}
+          </a>
+        </div>
+      </div>
+
+      <figure class="skeleton overflow-clip">
+        {% image article.image fill-1920x1080 %}
+      </figure>
+
+      <div class="not-prose flex items-center justify-between">
+        <div class="flex text-primary flex-col text-xs gap-1">
+          <a
+            href="{% url 'ui:articles-d' article.created_at.year|default:'2025' article.created_at.month|default:'08' article.created_at.day|default:'01' %}"
+            class="flex items-center gap-2 link link-primary link-hover"
+          >
+            <span
+              class="tooltip tooltip-right tooltip-primary rtl:tooltip-left"
+              data-tip="{% trans 'Date published' %}"
+            >
+              <span class="status status-xl status-primary">
+                <span class="sr-only"> {% trans 'Date published' %} </span>
+              </span>
+            </span>
+            {{ article.created_at }}
+          </a>
+
+          <span class="flex items-center gap-2">
+            <span
+              class="tooltip tooltip-right tooltip-info rtl:tooltip-left"
+              data-tip="{% trans 'Last update' %}"
+            >
+              <span class="status status-xl status-info">
+                <span class="sr-only"> {% trans 'Last update' %} </span>
+              </span>
+            </span>
+            {{ article.updated_at }}
+          </span>
+        </div>
+
+        <div class="flex items-center gap-4">
+          {% if request.user.is_authenticated %}
+          <div
+            class="tooltip tooltip-left tooltip-success rtl:tooltip-right"
+            data-tip="{% translate 'Save' %}"
+          >
+            <button
+              onclick="save('{{ article.slug }}')"
+              class="btn btn-square btn-soft btn-sm btn-success md:btn-md 2xl:btn-lg"
+            >
+              <i data-lucide="bookmark" class="size-4 lg:size-6"></i>
+              <span class="sr-only">{% translate 'Save' %}</span>
+            </button>
+          </div>
+          {% else %}
+          <div
+            class="tooltip tooltip-left tooltip-success rtl:tooltip-right"
+            data-tip="{% translate 'Login to save' %}"
+          >
+            <a
+              href="{% url 'ui:login' %}?next={% url 'ui:redirect' article.link.slug %}"
+              class="btn btn-square btn-soft btn-sm btn-success md:btn-md 2xl:btn-lg"
+            >
+              <i data-lucide="bookmark" class="size-4 lg:size-6"></i>
+              <span class="sr-only">{% translate 'Login to save' %}</span>
+            </a>
+          </div>
+          {% endif %}
+
+          <div
+            id="btn-copy"
+            class="tooltip tooltip-left tooltip-primary rtl:tooltip-right"
+            data-tip="{% trans 'Copy URL' %}"
+          >
+            <button
+              class="btn btn-copy btn-square btn-sm btn-primary md:btn-md 2xl:btn-lg"
+              data-clipboard-text="{% short_link article.link.slug %}"
+            >
+              <i
+                id="clipboard"
+                data-lucide="clipboard"
+                class="size-4 lg:size-6"
+              ></i>
+              <i
+                id="clipboard-check"
+                data-lucide="clipboard-check"
+                class="hidden size-4 lg:size-6"
+              ></i>
+              <span class="sr-only">{% trans 'Copy URL' %}</span>
+            </button>
+          </div>
+
+          <div
+            class="tooltip tooltip-left tooltip-info rtl:tooltip-right"
+            data-tip="{% trans 'Facebook' %}"
+          >
+            <a
+              class="btn btn-copy btn-square btn-sm btn-info md:btn-md 2xl:btn-lg"
+              href="https://www.facebook.com/sharer/sharer.php?u={% short_link article.link.slug %}"
+            >
+              <i data-lucide="facebook" class="size-4 lg:size-6"></i>
+              <span class="sr-only">{% trans 'Facebook' %}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <p class="lead">{{ article.headline }}</p>
 

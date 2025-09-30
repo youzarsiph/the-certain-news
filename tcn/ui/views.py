@@ -75,6 +75,7 @@ class UserUpdateView(
     fields = [
         "photo",
         "username",
+        "slug",
         "first_name",
         "last_name",
         "email",
@@ -169,29 +170,35 @@ class SearchView(ArticleListView):
     context_object_name = "search_results"
 
     def get_context_data(self, **kwargs: Dict[str, Any]) -> Dict[str, Any]:
-        """Search new article"""
+        """Search news articles"""
+
+        query = self.request.GET.get("search", None)
+        queryset = self.get_queryset()
+
+        if query:
+            queryset = self.filterset.qs.search(query)
+
+            # Log the query so Wagtail can suggest promoted results
+            Query.get(query).add_hit()
 
         return {
             **super().get_context_data(**kwargs),
-            "search_query": self.request.GET.get("search", None),
-            "search_results": self.get_search_results(),
+            "search_query": query,
+            "search_results": queryset,
         }
 
-    def get_search_results(self):
-        """Search news articles and return results"""
+    def get_queryset(self) -> QuerySet[Article]:
+        """Check if search query is provided to return the queryset else none"""
 
-        queryset = self.get_queryset()
-        search_query = self.request.GET.get("search", None)
+        query = self.request.GET.get("search", None)
 
-        search_results = queryset.none()
+        if query:
+            # Return filtered queryset
+            return super().get_queryset()
 
-        if search_query:
-            search_results = queryset.search(search_query)
-
-            # Log the query so Wagtail can suggest promoted results
-            Query.get(search_query).add_hit()
-
-        return search_results
+        # No search query, no results
+        else:
+            return Article.objects.none()
 
 
 class ArticleArchiveView(BaseArticleListView, generic.ArchiveIndexView):

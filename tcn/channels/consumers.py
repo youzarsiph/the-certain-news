@@ -17,7 +17,12 @@ class LiveFeedConsumer(AsyncJsonWebsocketConsumer):
         self.language = self.scope["url_route"]["kwargs"]["language_code"]
         self.groups = [f"{self.language}-live"]
 
+        await self.channel_layer.group_add(self.groups[0], self.channel_name)
+
         return await self.accept()
+
+    async def disconnect(self, close_code) -> None:
+        await self.channel_layer.group_discard(self.groups[0], self.channel_name)
 
     async def receive_json(
         self, content: Dict[str, Any], **kwargs: Dict[str, Any]

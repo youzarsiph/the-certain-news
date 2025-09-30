@@ -32,23 +32,21 @@ class Home(Page):
         """Add extra context"""
 
         context = super().get_context(request, *args, **kwargs)
+        articles = (
+            Article.objects.descendant_of(self).live().public().prefetch_related("link")
+        )
 
         return {
             **context,
-            "trending_news": Article.objects.descendant_of(self)
+            "trending_news": articles.order_by("link__view_count")[:9],
+            "latest_news": articles.order_by("-created_at")[:9],
+            "breaking_news": articles.filter(is_breaking=True).order_by("-created_at")[
+                :9
+            ],
+            "categories": Category.objects.descendant_of(self)
             .live()
-            .prefetch_related("link")
-            .order_by("link__view_count")[:9],
-            "latest_news": Article.objects.descendant_of(self)
-            .live()
-            .prefetch_related("link")
-            .order_by("-created_at")[:9],
-            "breaking_news": Article.objects.descendant_of(self)
-            .live()
-            .prefetch_related("link")
-            .filter(is_breaking=True)
-            .order_by("-created_at")[:9],
-            "categories": Category.objects.descendant_of(self).live().order_by("?")[:5],
+            .public()
+            .order_by("?")[:5],
         }
 
 

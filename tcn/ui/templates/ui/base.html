@@ -177,7 +177,43 @@
                       </div>
                     </div>
 
-                    <div class="navbar-end gap-2">
+                    <div class="navbar-end gap-4">
+                      <div
+                        class="tooltip tooltip-left rtl:tooltip-right tooltip-primary lg:hidden"
+                        data-tip="{% trans 'Search' %}"
+                      >
+                        <a
+                          href="{% url 'ui:search' %}"
+                          class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
+                        >
+                          <i data-lucide="search" class="size-4 lg:size-6"></i>
+                          <span class="sr-only">{% trans 'Search' %}</span>
+                        </a>
+                      </div>
+
+                      <form
+                        method="get"
+                        action="{% url 'ui:search' %}"
+                        class="hidden lg:block"
+                      >
+                        <label
+                          class="mx-auto max-w-xl w-full bg-transparent input input-ghost input-primary 2xl:input-lg"
+                        >
+                          <i
+                            data-lucide="search"
+                            class="size-4 text-primary lg:size-6"
+                          ></i>
+                          <input
+                            required
+                            type="search"
+                            name="search"
+                            class="grow placeholder-primary"
+                            placeholder="{% trans 'Search' %}"
+                          />
+                        </label>
+                      </form>
+
+                      {% block languages %}
                       <div
                         class="tooltip tooltip-left rtl:tooltip-right tooltip-primary"
                         data-tip="{% translate 'Language' %}"
@@ -192,14 +228,14 @@
                             class="size-4 lg:size-6"
                           ></i>
 
-                          <span class="sr-only"
-                            >{% translate 'Language' %}</span
-                          >
+                          <span class="sr-only">
+                            {% translate 'Language' %}
+                          </span>
                         </button>
 
                         <ul
-                          id="language"
                           popover
+                          id="language"
                           style="position-anchor: --language"
                           class="menu dropdown dropdown-bottom bg-base-100/75 dark:bg-base-100/50 dropdown-left rounded-box backdrop-blur-3xl text-base-content shadow-xl rtl:dropdown-right"
                         >
@@ -252,52 +288,7 @@
                           {% endfor %}
                         </ul>
                       </div>
-
-                      <div
-                        class="tooltip tooltip-left rtl:tooltip-right tooltip-primary lg:hidden"
-                        data-tip="{% trans 'Search' %}"
-                      >
-                        <a
-                          href="{% url 'ui:search' %}"
-                          class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
-                        >
-                          <i data-lucide="search" class="size-4 lg:size-6"></i>
-                          <span class="sr-only">{% trans 'Search' %}</span>
-                        </a>
-                      </div>
-
-                      <form
-                        method="get"
-                        action="{% url 'ui:search' %}"
-                        class="hidden lg:block"
-                      >
-                        <label
-                          class="mx-auto max-w-xl w-full bg-transparent input input-ghost input-primary 2xl:input-lg"
-                        >
-                          <i
-                            data-lucide="search"
-                            class="size-4 text-primary lg:size-6"
-                          ></i>
-                          <input
-                            required
-                            type="search"
-                            name="search"
-                            class="grow placeholder-primary"
-                            placeholder="{% trans 'Search' %}"
-                          />
-
-                          <button
-                            type="submit"
-                            class="btn btn-square btn-soft btn-sm btn-primary"
-                          >
-                            <i
-                              data-lucide="check-circle2"
-                              class="size-4 lg:size-6"
-                            ></i>
-                            <span class="sr-only">{% trans 'Search' %}</span>
-                          </button>
-                        </label>
-                      </form>
+                      {% endblock %}
                     </div>
                   </nav>
                 </header>
@@ -443,14 +434,6 @@
                   class="grow placeholder-primary"
                   placeholder="{% trans 'Search' %}"
                 />
-
-                <button
-                  type="submit"
-                  class="btn btn-xs btn-square btn-soft sm:btn-sm btn-primary"
-                >
-                  <i data-lucide="check-circle2" class="size-4 lg:size-6"></i>
-                  <span class="sr-only">{% trans 'Search' %}</span>
-                </button>
               </label>
             </form>
           </div>

@@ -14,6 +14,10 @@ def send_to_live_feed(sender, **kwargs):
     """Send breaking news to live feed"""
 
     channel_layer = get_channel_layer()
+
+    if not channel_layer:
+        return
+
     article: Article = kwargs["instance"]
 
     if article.is_breaking:
@@ -22,7 +26,7 @@ def send_to_live_feed(sender, **kwargs):
             {
                 "type": "broadcast",
                 "article": {
-                    "url": reverse_lazy("ui:redirect", args=[article.link.slug]),
+                    "url": str(reverse_lazy("ui:redirect", args=[article.link.slug])),
                     "title": article.title,
                     "created_at": timesince(article.created_at),
                 },

@@ -1,0 +1,41 @@
+{% load i18n wagtailcore_tags %}
+
+<div
+  class="tooltip tooltip-left tooltip-primary rtl:tooltip-right"
+  data-tip="{% translate 'Language' %}"
+>
+  <button
+    popovertarget="language"
+    style="anchor-name: --language"
+    class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
+  >
+    <i data-lucide="languages" class="size-4 lg:size-6"></i>
+
+    <span class="sr-only">{% translate 'Language' %}</span>
+  </button>
+
+  <ul
+    id="language"
+    popover
+    style="position-anchor: --language"
+    class="menu dropdown dropdown-bottom bg-base-100/75 dark:bg-base-100/50 dropdown-left rounded-box backdrop-blur-3xl text-base-content shadow-xl rtl:dropdown-right"
+  >
+    <li class="menu-title">{% translate 'Language' %}</li>
+
+    {% for translation in page.get_translations.live %}
+    <li>
+      <a
+        rel="alternate"
+        href="{% pageurl translation %}"
+        hreflang="{{ translation.locale.language_code }}"
+      >
+        {{ translation.locale.language_name_local }}
+        <!---->
+        ({{ translation.locale.language_code }})
+      </a>
+    </li>
+    {% empty %}
+    <li>{% trans 'None' %}</li>
+    {% endfor %}
+  </ul>
+</div>
