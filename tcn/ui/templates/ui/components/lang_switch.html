@@ -35,7 +35,14 @@
       </a>
     </li>
     {% empty %}
-    <li>{% trans 'None' %}</li>
+    <li>
+      <button disabled aria-disabled="true">
+        <i data-lucide="check" class="size-4 lg:size-6"></i>
+        {{ page.locale.language_name_local }}
+        <!---->
+        ({{ page.locale.language_code }})
+      </button>
+    </li>
     {% endfor %}
   </ul>
 </div>
