@@ -55,7 +55,12 @@ class UserDetailView(generic.DetailView):
             **context,
             "articles": Article.objects.live()
             .public()
-            .filter(owner=context["user"])
+            .filter(
+                owner=context["user"],
+                locale__language_code=get_language_from_request(
+                    self.request, check_path=True
+                ),
+            )
             .order_by("-created_at"),
         }
 
