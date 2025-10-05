@@ -1,60 +1,56 @@
 {% load i18n %}
 
 <!---->
-<ol class="join flex-wrap">
+{% if is_paginated %}
+<ol class="flex items-center justify-center gap-2 flex-wrap">
   {% if page_obj.has_previous %}
+  <li
+    class="tooltip tooltip-top tooltip-accent"
+    data-tip="{% translate 'First' %}"
+  >
+    <a
+      href="?page=1"
+      class="btn btn-square btn-sm btn-accent md:btn-md 2xl:btn-lg"
+    >
+      <i
+        data-lucide="chevron-first"
+        class="size-4 lg:size-6 rtl:rotate-180"
+      ></i>
+      <span class="sr-only">{% translate 'First' %}</span>
+    </a>
+  </li>
+
   <li
     class="tooltip tooltip-top tooltip-primary"
     data-tip="{% translate 'Previous' %}"
   >
     <a
       href="?page={{ page_obj.previous_page_number }}"
-      class="btn join-item btn-primary"
+      class="btn btn-square btn-sm btn-soft btn-primary md:btn-md 2xl:btn-lg"
     >
       <i data-lucide="chevron-left" class="size-4 lg:size-6 rtl:rotate-180"></i>
       <span class="sr-only">{% translate 'Previous' %}</span>
     </a>
   </li>
-
-  <li
-    class="tooltip tooltip-top tooltip-info"
-    data-tip="{% translate 'First' %}"
-  >
-    <a href="?page=1" class="btn join-item btn-info">
-      {% translate 'First' %}
-    </a>
-  </li>
   {% endif %}
 
   <li
-    class="tooltip tooltip-top tooltip-success"
+    class="tooltip tooltip-top tooltip-info"
     data-tip="{% translate 'Current' %}"
   >
-    <button class="btn join-item btn-success">
+    <button class="btn btn-sm btn-soft btn-info md:btn-md 2xl:btn-lg">
       {{ page_obj.number }} {% trans 'of' %} {{ page_obj.paginator.num_pages }}
     </button>
   </li>
 
   {% if page_obj.has_next %}
   <li
-    class="tooltip tooltip-top tooltip-info"
-    data-tip="{% translate 'Last' %}"
-  >
-    <a
-      href="?page={{ page_obj.paginator.num_pages }}"
-      class="btn join-item btn-info"
-    >
-      {% translate 'Last' %}
-    </a>
-  </li>
-
-  <li
     class="tooltip tooltip-top tooltip-primary"
     data-tip="{% translate 'Next' %}"
   >
     <a
       href="?page={{ page_obj.next_page_number }}"
-      class="btn join-item btn-primary"
+      class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
     >
       <i
         data-lucide="chevron-right"
@@ -63,5 +59,19 @@
       <span class="sr-only">{% translate 'Next' %}</span>
     </a>
   </li>
+
+  <li
+    class="tooltip tooltip-top tooltip-accent"
+    data-tip="{% translate 'Last' %}"
+  >
+    <a
+      href="?page={{ page_obj.paginator.num_pages }}"
+      class="btn btn-square btn-sm btn-accent md:btn-md 2xl:btn-lg"
+    >
+      <i data-lucide="chevron-last" class="size-4 lg:size-6 rtl:rotate-180"></i>
+      <span class="sr-only">{% translate 'Last' %}</span>
+    </a>
+  </li>
   {% endif %}
 </ol>
+{% endif %}

@@ -1,11 +1,11 @@
-"""API views"""
+"""Consumers"""
 
 from typing import Any, Dict
 
 from channels.generic.websocket import AsyncJsonWebsocketConsumer
 
 
-# Create your views here.
+# Create your consumers here.
 class LiveFeedConsumer(AsyncJsonWebsocketConsumer):
     """Live breaking news feed"""
 

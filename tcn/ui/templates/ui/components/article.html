@@ -1,10 +1,9 @@
 {% load i18n wagtailcore_tags wagtailimages_tags %}
 
 <li
-  role="article"
   class="group col-span-12 row-span-12 md:col-span-6 md:row-span-3 first:md:col-span-6 first:md:row-span-6 lg:col-span-4 xl:col-span-3"
 >
-  <div
+  <article
     class="card border border-base-300 overflow-hidden image-full relative bg-base-300 hover:bg-base-200 card-sm md:card-md xl:card-lg 2xl:card-xl size-full shadow-sm group-first:flex-col lg:flex-col"
   >
     <a
@@ -79,5 +78,5 @@
         {{ article.headline }}
       </p>
     </div>
-  </div>
+  </article>
 </li>

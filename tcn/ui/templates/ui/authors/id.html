@@ -1,8 +1,7 @@
 {% extends 'ui/base.html' %}{% load i18n tcn %}
 
 <!---->
-{% block title %}{{ block.super }} | {% trans 'Authors' %} |
-{{ user.get_full_name }}{% endblock %}
+{% block title %}{{ block.super }} | {% trans 'Authors' %} | {{ user.get_full_name }}{% endblock %}
 
 <!---->
 {% block content %}
@@ -55,6 +54,8 @@
       </li>
       {% endfor %}
     </ol>
+
+    {% include 'ui/components/pagination.html' %}
   </section>
 </div>
 {% endblock %}

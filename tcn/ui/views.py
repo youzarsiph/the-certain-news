@@ -17,6 +17,7 @@ from wagtail.contrib.search_promotions.models import Query
 
 from tcn.apps.articles.models import Article
 from tcn.apps.links.models import Link
+from tcn.apps.mixins import PaginatorMixin
 from tcn.ui import mixins
 from tcn.ui.forms import UserCreateForm
 
@@ -40,7 +41,7 @@ class SignupView(SuccessMessageMixin, generic.CreateView):
     success_message = _("Your account was created successfully!")
 
 
-class UserDetailView(generic.DetailView):
+class UserDetailView(PaginatorMixin, generic.DetailView):
     """User detail view"""
 
     model = User
@@ -51,9 +52,9 @@ class UserDetailView(generic.DetailView):
 
         context = super().get_context_data(**kwargs)
 
-        return {
-            **context,
-            "articles": Article.objects.live()
+        # Pagination
+        queryset = (
+            Article.objects.live()
             .public()
             .filter(
                 owner=context["user"],
@@ -61,8 +62,31 @@ class UserDetailView(generic.DetailView):
                     self.request, check_path=True
                 ),
             )
-            .order_by("-created_at"),
-        }
+            .order_by("-created_at")
+        )
+        page_size = self.get_paginate_by(queryset)
+
+        if page_size:
+            paginator, page, queryset, is_paginated = self.paginate_queryset(
+                queryset, page_size, self.request
+            )
+
+            extra_context = {
+                "paginator": paginator,
+                "page_obj": page,
+                "is_paginated": is_paginated,
+                "object_list": queryset,
+            }
+
+        else:
+            extra_context = {
+                "paginator": None,
+                "page_obj": None,
+                "is_paginated": False,
+                "object_list": queryset,
+            }
+
+        return {**context, **extra_context, "articles": queryset}
 
 
 class UserUpdateView(
