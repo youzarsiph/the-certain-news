@@ -67,9 +67,18 @@ urlpatterns = [
     path("feeds/", include("tcn.apps.feeds.urls")),
     path("l/<slug:slug>/", views.LinkRedirectView.as_view(), name="redirect"),
     *auth_urls,
+    path("authors/", views.UserListView.as_view(), name="authors"),
     path("authors/<slug:slug>/", views.UserDetailView.as_view(), name="author"),
     path("search/", views.SearchView.as_view(), name="search"),
     path("articles/", views.ArticleListView.as_view(), name="articles"),
+    path(
+        "articles/following/",
+        views.FollowingArticleListView.as_view(),
+        name="following-articles",
+    ),
+    path(
+        "articles/saved/", views.SavedArticleListView.as_view(), name="saved-articles"
+    ),
     path("articles/archive/", views.ArticleArchiveView.as_view(), name="archive"),
     path("articles/<int:year>/", views.ArticleYearView.as_view(), name="articles-y"),
     path(

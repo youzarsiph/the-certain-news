@@ -89,6 +89,20 @@ class UserDetailView(PaginatorMixin, generic.DetailView):
         return {**context, **extra_context, "articles": queryset}
 
 
+class UserListView(LoginRequiredMixin, generic.ListView):
+    """User list view for authors"""
+
+    model = User
+    paginate_by = 25
+    context_object_name = "users"
+    template_name = "ui/authors/list.html"
+
+    def get_queryset(self) -> QuerySet[User]:
+        """Filter queryset to show only users that current user follows"""
+
+        return super().get_queryset().filter(id__in=self.request.user.following.all())
+
+
 class UserUpdateView(
     LoginRequiredMixin,
     SuccessMessageMixin,
@@ -168,7 +182,7 @@ class BaseArticleListView:
     def get_queryset(self) -> QuerySet[Article]:
         """Filter queryset by active language"""
 
-        queryset = (
+        return (
             super()
             .get_queryset()
             .filter(
@@ -178,18 +192,39 @@ class BaseArticleListView:
             )
         )
 
-        if self.request.user.is_authenticated and self.request.GET.get(
-            "following", None
-        ):
-            return queryset.filter(owner__in=self.request.user.following.all())
-
-        return queryset
-
 
 class ArticleListView(BaseArticleListView, FilterView, generic.ListView):
     """Article list"""
 
     template_name = "ui/articles/list.html"
+
+
+class SavedArticleListView(LoginRequiredMixin, ArticleListView):
+    """Saved articles list"""
+
+    template_name = "ui/articles/saved.html"
+
+    def get_queryset(self) -> QuerySet[Article]:
+        """Filter articles to show only saved articles"""
+
+        return (
+            super()
+            .get_queryset()
+            .filter(id__in=self.request.user.bookmarked_articles.all())
+        )
+
+
+class FollowingArticleListView(LoginRequiredMixin, ArticleListView):
+    """Articles from followed authors"""
+
+    template_name = "ui/articles/following.html"
+
+    def get_queryset(self) -> QuerySet[Article]:
+        """Filter articles to show only saved articles"""
+
+        return (
+            super().get_queryset().filter(owner__in=self.request.user.following.all())
+        )
 
 
 class SearchView(ArticleListView):

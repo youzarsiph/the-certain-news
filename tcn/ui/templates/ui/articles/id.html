@@ -65,7 +65,7 @@
   {% include 'ui/components/breadcrumbs.html' %}
 
   <div
-    class="prose mx-auto prose-sm xl:prose-lg 2xl:prose-xl prose-headings:text-primary prose-headings:lg:rtl:leading-relaxed"
+    class="prose mx-auto w-full prose-sm xl:prose-lg 2xl:prose-xl prose-headings:text-primary prose-headings:lg:rtl:leading-relaxed"
   >
     <h1>{{ article.title }}</h1>
 
@@ -75,26 +75,28 @@
         href="{% url 'ui:author' article.owner.slug %}"
         class="flex items-center gap-2"
       >
-        {% if article.owner.photo %}
-        <div class="avatar">
-          <div class="mask mask-squircle size-12 lg:size-16">
-            <img
-              src="{{ article.owner.photo.url }}"
-              alt="{{ article.owner }}"
-            />
+        <figure>
+          {% if article.owner.photo %}
+          <div class="avatar">
+            <div class="mask mask-squircle size-12 lg:size-16">
+              <img
+                src="{{ article.owner.photo.url }}"
+                alt="{{ article.owner }}"
+              />
+            </div>
           </div>
-        </div>
-        {% else %}
-        <div class="avatar avatar-placeholder">
-          <div
-            class="mask mask-squircle flex items-center justify-center bg-primary text-primary-content size-12 lg:size-16"
-          >
-            <span class="text-xl uppercase font-bold lg:text-4xl">
-              {{ article.owner.first_name|slice:':1' }}
-            </span>
+          {% else %}
+          <div class="avatar avatar-placeholder">
+            <div
+              class="mask mask-squircle flex items-center justify-center bg-primary text-primary-content size-12 lg:size-16"
+            >
+              <span class="text-xl uppercase font-bold lg:text-4xl">
+                {{ article.owner.first_name|slice:':1' }}
+              </span>
+            </div>
           </div>
-        </div>
-        {% endif %}
+          {% endif %}
+        </figure>
 
         <div class="flex items-center gap-4">
           <div class="grid gap-1">
@@ -110,6 +112,21 @@
         {% if request.user.is_authenticated %}
         <!---->
         {% if article.get_parent.display_owner %}
+        <!---->
+        {% if article.owner in request.user.following.all %}
+        <div
+          class="tooltip tooltip-left tooltip-primary rtl:tooltip-right"
+          data-tip="{% translate 'Following' %}"
+        >
+          <button
+            onclick="follow('{{ article.owner.slug }}')"
+            class="btn btn-square btn-sm btn-primary md:btn-md 2xl:btn-lg"
+          >
+            <i data-lucide="user-check" class="size-4 lg:size-6"></i>
+            <span class="sr-only">{% translate 'Following' %}</span>
+          </button>
+        </div>
+        {% else %}
         <div
           class="tooltip tooltip-left tooltip-primary rtl:tooltip-right"
           data-tip="{% translate 'Follow' %}"
@@ -122,7 +139,11 @@
             <span class="sr-only">{% translate 'Follow' %}</span>
           </button>
         </div>
-        {% endif %}{% else %}
+        {% endif %}
+        <!---->
+        {% endif %}
+        <!---->
+        {% else %}
         <!---->
         {% if article.get_parent.display_owner %}
         <div
@@ -369,7 +390,7 @@
     const notifications = document.getElementById("notifications");
 
     const save = (article) =>
-      fetch("/{{ LANGUAGE_CODE }}/api/articles/{{ article.slug }}/save/", {
+      fetch(`/{{ LANGUAGE_CODE }}/api/articles/${article}/save/`, {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -399,7 +420,7 @@
         });
 
     const follow = (user) =>
-      fetch("/{{ LANGUAGE_CODE }}/api/users/{{ article.owner.slug }}/follow/", {
+      fetch(`/{{ LANGUAGE_CODE }}/api/users/${user}/follow/`, {
         method: "POST",
         headers: {
           Accept: "application/json",

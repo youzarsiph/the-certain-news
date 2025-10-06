@@ -6,10 +6,7 @@
     <ol class="grid gap-4 max-w-2xl mx-auto">
       {% for field, errors in form.errors.items %}
       <li class="alert alert-soft alert-horizontal alert-error">
-        <span class="badge badge-error xl:badge-lg">
-          <i data-lucide="x-circle" class="size-4 lg:size-6"></i>
-          <span>{{ field }}</span>
-        </span>
+        <i data-lucide="x-circle" class="size-4 lg:size-6"></i>
 
         <div>{{ errors }}</div>
       </li>

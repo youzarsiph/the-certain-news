@@ -48,7 +48,7 @@
     ></label>
 
     <section
-      class="bg-base-100/75 dark:bg-base-100/50 flex size-full flex-col overflow-hidden overflow-y-auto backdrop-blur-3xl sm:w-10/12 md:w-8/12 lg:w-1/3 2xl:w-1/4"
+      class="min-w-sm bg-base-100/75 dark:bg-base-100/50 flex size-full flex-col overflow-hidden overflow-y-auto backdrop-blur-3xl sm:w-10/12 md:w-8/12 lg:w-1/3 2xl:w-1/4"
     >
       <header class="flex items-center justify-between gap-4 p-4">
         <div
@@ -75,20 +75,6 @@
 
         <div class="flex items-center gap-2 lg:gap-4">
           <div
-            class="tooltip tooltip-left tooltip-error rtl:tooltip-right"
-            data-tip="{% trans 'Log out' %}"
-          >
-            <button
-              type="submit"
-              form="logout"
-              class="btn btn-square btn-soft btn-sm btn-error md:btn-md 2xl:btn-lg"
-            >
-              <i data-lucide="log-out" class="size-4 lg:size-6"></i>
-              <span class="sr-only">{% trans 'Log out' %}</span>
-            </button>
-          </div>
-
-          <div
             class="tooltip tooltip-left rtl:tooltip-right"
             data-tip="{% trans 'Close' %}"
           >
@@ -112,22 +98,50 @@
           </a>
         </li>
         <li>
-          <a href="{% url 'ui:password_change' %}">
-            <i data-lucide="rotate-ccw-key" class="size-4 lg:size-6"></i>
-            <span>{% trans 'Change Password' %}</span>
+          <a href="{% url 'ui:saved-articles' %}">
+            <i data-lucide="bookmark-check" class="size-4 lg:size-6"></i>
+            <span>{% trans 'Saved articles' %}</span>
           </a>
         </li>
         <li>
-          <a href="{% url 'ui:u-user' request.user.slug %}">
-            <i data-lucide="user-pen" class="size-4 lg:size-6"></i>
-            <span>{% trans 'Edit account' %}</span>
+          <details>
+            <summary>
+              <i data-lucide="user-circle" class="size-4 lg:size-6"></i>
+              {% trans 'Account' %}
+            </summary>
+            <ul>
+              <li>
+                <a href="{% url 'ui:password_change' %}">
+                  <i data-lucide="rotate-ccw-key" class="size-4 lg:size-6"></i>
+                  <span>{% trans 'Change Password' %}</span>
+                </a>
+              </li>
+              <li>
+                <a href="{% url 'ui:u-user' request.user.slug %}">
+                  <i data-lucide="user-pen" class="size-4 lg:size-6"></i>
+                  <span>{% trans 'Edit account' %}</span>
+                </a>
+              </li>
+              <li>
+                <a href="{% url 'ui:d-user' request.user.slug %}">
+                  <i data-lucide="user-x" class="size-4 lg:size-6"></i>
+                  <span>{% trans 'Delete account' %}</span>
+                </a>
+              </li>
+            </ul>
+          </details>
+        </li>
+        <li>
+          <a href="{% url 'ui:authors' %}">
+            <i data-lucide="users" class="size-4 lg:size-6"></i>
+            <span>{% trans 'Following' %}</span>
           </a>
         </li>
         <li>
-          <a href="{% url 'ui:d-user' request.user.slug %}">
-            <i data-lucide="user-x" class="size-4 lg:size-6"></i>
-            <span>{% trans 'Delete account' %}</span>
-          </a>
+          <button type="submit" form="logout">
+            <i data-lucide="log-out" class="size-4 lg:size-6"></i>
+            <span>{% trans 'Log out' %}</span>
+          </button>
         </li>
       </ul>
     </section>

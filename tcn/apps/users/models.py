@@ -6,6 +6,8 @@ from django.utils.translation import gettext_lazy as _
 from django_countries.fields import CountryField
 from phonenumber_field.modelfields import PhoneNumberField
 
+from tcn.apps.articles.models import Article
+
 
 # Create your models here.
 class User(AbstractUser):
@@ -59,3 +61,9 @@ class User(AbstractUser):
         verbose_name=_("followers"),
         help_text=_("Users following this user"),
     )
+
+    @property
+    def article_count(self) -> int:
+        """Return the number of articles authored by the user"""
+
+        return Article.objects.live().public().filter(owner=self).count()

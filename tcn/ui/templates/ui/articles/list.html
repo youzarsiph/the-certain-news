@@ -6,53 +6,59 @@
 <!---->
 {% block content %}
 <div class="container grid gap-8 mx-auto px-4 py-20">
+  {% block page_title %}
+  <!---->
   {% if request.GET.is_breaking %}
   <h1 class="text-primary text-xl font-bold lg:text-5xl">
     {% trans 'Breaking' %}
-  </h1>
-  {% elif request.GET.following == True %}
-  <h1 class="text-primary text-xl font-bold lg:text-5xl">
-    {% trans 'Following' %}
   </h1>
   {% else %}
   <h1 class="text-primary text-xl font-bold lg:text-5xl">
     {% trans 'Latest News' %}
   </h1>
   {% endif %}
+  <!---->
+  {% endblock %}
 
   <div class="flex gap-4 items-center justify-end">
-    {% if request.user.is_authenticated %}
-    <form
-      method="get"
-      data-tip="{% trans 'Following' %}"
+    <div
+      data-tip="{% trans 'Latest' %}"
       class="tooltip tooltip-left rtl:tooltip-right tooltip-primary"
     >
-      <button
-        value="True"
-        type="submit"
-        name="following"
+      <a
+        href="{% url 'ui:articles' %}"
         class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
       >
-        <i data-lucide="users" class="size-4 lg:size-6"></i>
-        <span class="sr-only">{% trans 'Following' %}</span>
-      </button>
-    </form>
-    {% else %}
+        <i data-lucide="clock-fading" class="size-4 lg:size-6"></i>
+        <span class="sr-only">{% trans 'Latest' %}</span>
+      </a>
+    </div>
+
+    <div
+      data-tip="{% trans 'Saved' %}"
+      class="tooltip tooltip-left rtl:tooltip-right tooltip-primary"
+    >
+      <a
+        href="{% url 'ui:saved-articles' %}"
+        class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
+      >
+        <i data-lucide="bookmark-check" class="size-4 lg:size-6"></i>
+        <span class="sr-only">{% trans 'Saved' %}</span>
+      </a>
+    </div>
+
     <div
       data-tip="{% trans 'Following' %}"
       class="tooltip tooltip-left rtl:tooltip-right tooltip-primary"
     >
       <a
-        href="{% url 'ui:login' %}"
+        href="{% url 'ui:following-articles' %}"
         class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
       >
         <i data-lucide="users" class="size-4 lg:size-6"></i>
-        <span class="sr-only">
-          {% trans 'Login to view articles by writers you follow.' %}
-        </span>
+        <span class="sr-only">{% trans 'Following' %}</span>
       </a>
     </div>
-    {% endif %}
 
     <div
       data-tip="{% trans 'Filters' %}"

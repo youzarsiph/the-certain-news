@@ -1,0 +1,104 @@
+{% extends 'ui/base.html' %}{% load i18n wagtailcore_tags %}
+
+<!---->
+{% block title %}{{ block.super }} | {% trans 'Following' %}{% endblock %}
+
+<!---->
+{% block content %}
+<div class="container grid gap-12 mx-auto px-4 py-20">
+  <nav class="breadcrumbs text-primary text-xs lg:text-sm">
+    <ol>
+      <li>
+        <a href="{% pageurl home %}">{% trans 'Home' %}</a>
+      </li>
+      <li>{% trans 'Authors' %}</li>
+    </ol>
+  </nav>
+
+  <h1 class="font-bold text-primary text-xl md:text-3xl lg:text-4xl">
+    {% trans 'Following' %}
+  </h1>
+
+  <ol class="grid gap-4 grid-cols-12">
+    {% for user in users %}
+    <li
+      role="article"
+      class="relative col-span-12 lg:col-span-4 2xl:col-span-3"
+    >
+      <article
+        class="card bg-base-300 size-full shadow-sm hover:bg-base-200 card-side card-sm md:card-md xl:card-lg 2xl:card-xl"
+      >
+        <a href="{% url 'ui:author' user.slug %}" class="absolute inset-0 z-10">
+          <span class="sr-only">{% trans 'Details' %}</span>
+        </a>
+
+        <figure class="max-w-1/4">
+          {% if user.photo %}
+          <div class="avatar">
+            <div class="rounded-box">
+              <img src="{{ user.photo.url }}" alt="{{ user }}" />
+            </div>
+          </div>
+          {% else %}
+          <div class="avatar avatar-placeholder">
+            <div
+              class="rounded-box flex items-center justify-center bg-primary text-primary-content"
+            >
+              <span class="text-5xl uppercase font-bold lg:text-7xl">
+                {{ user.first_name|slice:':1' }}
+              </span>
+            </div>
+          </div>
+          {% endif %}
+        </figure>
+
+        <div class="card-body p-4 justify-end">
+          <h2 class="card-title text-primary">{{ user.get_full_name }}</h2>
+
+          <p class="grow-0">{{ user.bio|default_if_none:"" }}</p>
+
+          <div class="card-actions items-center gap-1 z-20">
+            <div
+              class="tooltip tooltip-info"
+              data-tip="{% trans 'Date joined' %}"
+            >
+              <span
+                class="badge badge-sm badge-info md:badge-md xl:badge-lg 2xl:badge-xl"
+              >
+                <i data-lucide="calendar-clock" class="size-4 lg:size-6"></i>
+                {{ user.date_joined|date:'Y/m/d' }}
+              </span>
+            </div>
+            <div
+              class="tooltip tooltip-success"
+              data-tip="{% trans 'Articles' %}"
+            >
+              <span
+                class="badge badge-sm badge-success md:badge-md xl:badge-lg 2xl:badge-xl"
+              >
+                <i data-lucide="notebook-pen" class="size-4 lg:size-6"></i>
+                {{ user.article_count }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </article>
+    </li>
+    {% empty %}
+    <li class="col-span-12">
+      <article
+        class="card card-sm bg-base-200 shadow-xs lg:card-md xl:card-lg 2xl:card-xl overflow-hidden"
+      >
+        <main class="card-body items-center">
+          <i data-lucide="info" class="mx-auto size-1/4 text-primary"></i>
+          <h2 class="card-title text-primary">{% trans 'Follow writers' %}</h2>
+          <p>{% trans 'Writer followed by you will appear here.' %}</p>
+        </main>
+      </article>
+    </li>
+    {% endfor %}
+  </ol>
+
+  {% include 'ui/components/pagination.html' %}
+</div>
+{% endblock %}
