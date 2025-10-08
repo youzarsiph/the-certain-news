@@ -15,7 +15,7 @@ auth_urls = [
     path("accounts/subscribe/", views.SignupView.as_view(), name="subscribe"),
     path("accounts/profile/", views.ProfileView.as_view(), name="profile"),
     path(
-        "accounts/<slug:slug>/settings/",
+        "accounts/<slug:slug>/edit/",
         views.UserUpdateView.as_view(),
         name="u-user",
     ),
