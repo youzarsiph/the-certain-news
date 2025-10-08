@@ -465,10 +465,6 @@ msgstr "phone mockup"
 msgid "Phone mockup"
 msgstr "Phone mockup"
 
-#: tcn/ui/templates/blog/base.html:4
-msgid "The Certain News | API"
-msgstr "The Certain News | API"
-
 #: tcn/ui/templates/blog/base.html:19 tcn/ui/templates/blog/base.html:32
 #: tcn/ui/templates/blog/base.html:118 tcn/ui/templates/blog/base.html:131
 msgid "Blog"
