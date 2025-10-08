@@ -118,13 +118,7 @@ class UserViewSet(BaseUVS):
     ordering_fields = ["username", "date_joined", "last_login"]
     filterset_fields = ["username"]
 
-    @action(
-        detail=True,
-        methods=["post"],
-        permission_classes=[IsAuthenticated],
-        url_path="follow",
-        url_name="follow",
-    )
+    @action(detail=True, methods=["post"], permission_classes=[IsAuthenticated])
     def follow(self, request: Request, slug: str, *args, **kwargs) -> Response:
         """
         Follow a writer
@@ -176,13 +170,7 @@ class ArticleViewSet(ReadOnlyModelViewSet):
             )
         )
 
-    @action(
-        detail=True,
-        methods=["post"],
-        permission_classes=[IsAuthenticated],
-        url_path="save",
-        url_name="save",
-    )
+    @action(detail=True, methods=["post"], permission_classes=[IsAuthenticated])
     def save(self, request: Request, slug: str, *args, **kwargs) -> Response:
         """
         Save an article
