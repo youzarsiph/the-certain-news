@@ -2,6 +2,7 @@
 
 from typing import Any, Dict, Tuple
 
+from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
@@ -14,6 +15,7 @@ from django.utils.translation import gettext_lazy as _
 from django.views import generic
 from django_filters.views import FilterView
 from wagtail.contrib.search_promotions.models import Query
+from wagtail.models import Locale
 
 from tcn.apps.articles.models import Article
 from tcn.apps.links.models import Link
@@ -52,18 +54,22 @@ class UserDetailView(PaginatorMixin, generic.DetailView):
 
         context = super().get_context_data(**kwargs)
 
+        lang = get_language_from_request(self.request, check_path=True)
+
+        try:
+            locale = Locale.objects.get(language_code=lang)
+
+        except Locale.DoesNotExist:
+            locale = Locale.objects.get(language_code=settings.LANGUAGE_CODE)
+
         # Pagination
         queryset = (
             Article.objects.live()
             .public()
-            .filter(
-                owner=context["user"],
-                locale__language_code=get_language_from_request(
-                    self.request, check_path=True
-                ),
-            )
+            .filter(owner=context["user"], locale=locale)
             .order_by("-created_at")
         )
+
         page_size = self.get_paginate_by(queryset)
 
         if page_size:
@@ -182,15 +188,15 @@ class BaseArticleListView:
     def get_queryset(self) -> QuerySet[Article]:
         """Filter queryset by active language"""
 
-        return (
-            super()
-            .get_queryset()
-            .filter(
-                locale__language_code=get_language_from_request(
-                    self.request, check_path=True
-                )
-            )
-        )
+        lang = get_language_from_request(self.request, check_path=True)
+
+        try:
+            locale = Locale.objects.get(language_code=lang)
+
+        except Locale.DoesNotExist:
+            locale = Locale.objects.get(language_code=settings.LANGUAGE_CODE)
+
+        return super().get_queryset().filter(locale=locale)
 
 
 class ArticleListView(BaseArticleListView, FilterView, generic.ListView):
@@ -296,5 +302,5 @@ class ArticleDetailView(BaseArticleListView, generic.DateDetailView):
 
     month_format = "%m"
     date_field = "created_at"
-    template_name = "ui/articles/id.html"
-    queryset = Article.objects.live().public()
+    context_object_name = "article"
+    template_name = "ui/articles/date_id.html"

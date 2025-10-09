@@ -1,5 +1,6 @@
 """API endpoints for tcn.apps.users"""
 
+from django.conf import settings
 from django.utils.translation import get_language_from_request
 from django.utils.translation import gettext_lazy as _
 from djoser.views import UserViewSet as BaseUVS
@@ -9,6 +10,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.viewsets import ReadOnlyModelViewSet
+from wagtail.models import Locale
 
 from tcn.api.serializers import ArticleSerializer
 from tcn.apps.articles.models import Article
@@ -160,16 +162,15 @@ class ArticleViewSet(ReadOnlyModelViewSet):
     def get_queryset(self):
         """Filter queryset by language"""
 
-        return (
-            super()
-            .get_queryset()
-            .filter(
-                locale__language_code=get_language_from_request(
-                    self.request,
-                    check_path=True,
-                )
-            )
-        )
+        lang = get_language_from_request(self.request, check_path=True)
+
+        try:
+            locale = Locale.objects.get(language_code=lang)
+
+        except Locale.DoesNotExist:
+            locale = Locale.objects.get(language_code=settings.LANGUAGE_CODE)
+
+        return super().get_queryset().filter(locale=locale)
 
     @action(detail=True, methods=["post"], permission_classes=[IsAuthenticated])
     def save(self, request: Request, slug: str, *args, **kwargs) -> Response:

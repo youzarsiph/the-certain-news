@@ -1,10 +1,12 @@
 """Base classes for reuse"""
 
+from django.conf import settings
 from django.contrib.syndication.views import Feed
 from django.urls import reverse_lazy
 from django.utils.feedgenerator import Atom1Feed
 from django.utils.translation import get_language
 from django.utils.translation import gettext_lazy as _
+from wagtail.models import Locale
 
 from tcn.apps.articles.models import Article
 
@@ -19,11 +21,21 @@ class BaseArticleFeed(Feed):
     description = _("Latest new from the World")
 
     def items(self):
+        """Feed items"""
+
+        lang = get_language()
+
+        try:
+            locale = Locale.objects.get(language_code=lang)
+
+        except Locale.DoesNotExist:
+            locale = Locale.objects.get(language_code=settings.LANGUAGE_CODE)
+
         return (
             Article.objects.live()
             .public()
             .prefetch_related("link")
-            .filter(locale__language_code=get_language())
+            .filter(locale=locale)
         )
 
     def item_title(self, item):
