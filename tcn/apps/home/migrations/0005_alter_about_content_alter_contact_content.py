@@ -5,7 +5,6 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("home", "0004_contact_from_address_contact_message_contact_subject_and_more"),
     ]

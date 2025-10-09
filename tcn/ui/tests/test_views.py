@@ -1,10 +1,9 @@
 """Tests for tcn.ui.views"""
 
-from rest_framework import status
-from django.urls import reverse_lazy
 from django.contrib.auth import get_user_model
 from django.test import TestCase
-
+from django.urls import reverse_lazy
+from rest_framework import status
 
 User = get_user_model()
 
@@ -13,12 +12,17 @@ User = get_user_model()
 class ViewTests(TestCase):
     """View tests"""
 
-    user_slug = "user"
+    user_info = {
+        "username": "user",
+        "email": "user@tests.com",
+        "password": "user.tests.1234",
+        "slug": "user",
+    }
     urlpatterns = {
         "login_required": {
             "profile": [],
-            "u-user": [user_slug],
-            "d-user": [user_slug],
+            "u-user": [user_info["slug"]],
+            "d-user": [user_info["slug"]],
             "password_reset_confirm": ["uidb64", "token"],
         },
         "public": {
@@ -33,7 +37,7 @@ class ViewTests(TestCase):
             "atom-breaking": [],
             "rss-latest": [],
             "rss-breaking": [],
-            "author": [user_slug],
+            "author": [user_info["slug"]],
             "authors": [],
             "search": [],
             "articles": [],
@@ -53,12 +57,7 @@ class ViewTests(TestCase):
     def setUpTestData(cls) -> None:
         """Setup data"""
 
-        cls.user = User.objects.create_user(
-            username="user",
-            email="user@tests.com",
-            password="user.tests.1234",
-            slug=cls.user_slug,
-        )
+        cls.user = User.objects.create_user(**cls.user_info)
 
     def test_public_views(self) -> None:
         """Test public views"""
@@ -73,6 +72,12 @@ class ViewTests(TestCase):
 
     def test_login_required_views(self) -> None:
         """Test login required views"""
+
+        # Authenticate user
+        self.client.login(
+            username=self.user_info["username"],
+            password=self.user_info["password"],
+        )
 
         for url, args in self.urlpatterns["login_required"].items():
             response = self.client.get(reverse_lazy(f"ui:{url}", args=args))

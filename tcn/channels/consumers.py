@@ -13,7 +13,6 @@ class LiveFeedConsumer(AsyncJsonWebsocketConsumer):
     language: str
 
     async def connect(self) -> None:
-
         self.language = self.scope["url_route"]["kwargs"]["language_code"]
         self.groups = [f"{self.language}-live"]
 

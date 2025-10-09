@@ -2,9 +2,9 @@
 
 from django.utils.translation import gettext_lazy as _
 from wagtail import blocks
-from wagtail_blocks import blocks as w_blocks
 from wagtail.documents.blocks import DocumentChooserBlock
 from wagtail.embeds.blocks import EmbedBlock
+from wagtail_blocks import blocks as w_blocks
 
 
 # Create your blocks here.

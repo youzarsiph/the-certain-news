@@ -22,26 +22,19 @@
   >
     <li class="menu-title">{% translate 'Language' %}</li>
 
-    {% for translation in page.get_translations.live %}
-    <li>
+    {% for language_code, language_name in LANGUAGES %}
+    <!---->
+    {% get_language_info for language_code as lang %}
+    <li class="tooltip tooltip-primary" data-tip="{{ lang.name_translated }}">
+      {% language language_code %}
       <a
         rel="alternate"
-        href="{% pageurl translation %}"
-        hreflang="{{ translation.locale.language_code }}"
+        href="{% pageurl page.localized %}"
+        hreflang="{{ language_code }}"
       >
-        {{ translation.locale.language_name_local }}
-        <!---->
-        ({{ translation.locale.language_code }})
+        {{ language_name }} - ({{ lang.name_local }})
       </a>
-    </li>
-    {% empty %}
-    <li>
-      <button disabled aria-disabled="true">
-        <i data-lucide="check" class="size-4 lg:size-6"></i>
-        {{ page.locale.language_name_local }}
-        <!---->
-        ({{ page.locale.language_code }})
-      </button>
+      {% endlanguage %}
     </li>
     {% endfor %}
   </ul>

@@ -6,7 +6,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("home", "0002_create_homepage"),
         ("wagtailcore", "0095_groupsitepermission"),

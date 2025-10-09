@@ -1,6 +1,7 @@
 """API endpoints for tcn.apps.users"""
 
-from django.utils.translation import gettext_lazy as _, get_language_from_request
+from django.utils.translation import get_language_from_request
+from django.utils.translation import gettext_lazy as _
 from djoser.views import UserViewSet as BaseUVS
 from rest_framework import status
 from rest_framework.decorators import action

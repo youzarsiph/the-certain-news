@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html
   lang="{{ LANGUAGE_CODE }}"
-  dir="{% if LANGUAGE_CODE == 'ar' %}rtl{% else %}ltr{% endif %}"
+  dir="{% if 'ar' in LANGUAGE_CODE %}rtl{% else %}ltr{% endif %}"
 >
   {% get_site_root as home %}{% get_category_index home as categories_index %}
   <head>
@@ -99,7 +99,6 @@
               class="bg-base-100 relative size-full grow overflow-hidden sm:rounded-box"
             >
               <section class="size-full grid gap-8 overflow-y-auto">
-                <!-- Navbar -->
                 {% block navbar %}
                 <header class="absolute inset-x-0 top-0 z-40 backdrop-blur-3xl">
                   <nav class="navbar p-4">
@@ -233,6 +232,20 @@
                           </span>
                         </button>
 
+                        <form
+                          id="lang-form"
+                          class="hidden"
+                          action="{% url 'set_language' %}"
+                          method="post"
+                        >
+                          {% csrf_token %}
+                          <input
+                            name="next"
+                            type="hidden"
+                            value="{{ redirect_to }}"
+                          />
+                        </form>
+
                         <ul
                           popover
                           id="language"
@@ -240,44 +253,31 @@
                           class="menu dropdown dropdown-bottom bg-base-100/75 dark:bg-base-100/50 dropdown-left rounded-box backdrop-blur-3xl text-base-content shadow-xl rtl:dropdown-right"
                         >
                           <li class="menu-title">{% translate 'Language' %}</li>
-                          <form
-                            id="lang-form"
-                            class="hidden"
-                            action="{% url 'set_language' %}"
-                            method="post"
+
+                          {% for language_code, language_name in LANGUAGES %}
+                          <!---->
+                          {% get_language_info for language_code as lang %}
+                          <li
+                            class="tooltip tooltip-primary"
+                            data-tip="{{ lang.name_translated }}"
                           >
-                            {% csrf_token %}
-                            <input
-                              name="next"
-                              type="hidden"
-                              value="{{ redirect_to }}"
-                            />
-                          </form>
-                          <!---->
-                          {% get_available_languages as LANGS %}
-                          <!---->
-                          {% get_language_info_list for LANGS as langs %}
-                          <!---->
-                          {% for language in langs %}
-                          <li>
                             <label
                               class="flex flex-row items-center justify-between gap-6"
                             >
                               <div class="flex flex-row items-center gap-2">
                                 <input
-                                  form="lang-form"
                                   type="submit"
+                                  class="hidden"
                                   name="language"
-                                  value="{{ language.code|upper }}"
-                                  aria-label="{{ language.name_local }} ({{ language.code }})"
+                                  form="lang-form"
+                                  value="{{ language_code }}"
+                                  aria-label="{{ lang.name_local }} ({{ lang.code }})"
                                 />
                                 <span>
-                                  {{ language.name_local }}
-                                  <!---->
-                                  ({{ language.code }})
+                                  {{ language_name }} - ({{ lang.name_local }})
                                 </span>
                               </div>
-                              {% if language.code == LANGUAGE_CODE %}
+                              {% if language_code == LANGUAGE_CODE %}
                               <i
                                 data-lucide="check"
                                 class="size-4 lg:size-6"

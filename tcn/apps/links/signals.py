@@ -1,6 +1,6 @@
 """Signals to create page shortened links"""
 
-from wagtail.signals import page_published, copy_for_translation_done
+from wagtail.signals import copy_for_translation_done, page_published
 
 from tcn.apps.articles.models import Article
 from tcn.apps.links.models import Link
