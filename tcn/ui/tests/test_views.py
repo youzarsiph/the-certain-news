@@ -23,11 +23,11 @@ class ViewTests(TestCase):
             "profile": [],
             "u-user": [user_info["slug"]],
             "d-user": [user_info["slug"]],
+            "password_change": [],
+            "password_change_done": [],
             "password_reset_confirm": ["uidb64", "token"],
         },
         "public": {
-            "password_change": [],
-            "password_change_done": [],
             "password_reset": [],
             "password_reset_done": [],
             "password_reset_complete": [],
@@ -63,7 +63,7 @@ class ViewTests(TestCase):
         """Test public views"""
 
         for url, args in self.urlpatterns["public"].items():
-            response = self.client.get(reverse_lazy(f"ui:{url}", args=args))
+            response = self.client.get(reverse_lazy(f"tcn:{url}", args=args))
             self.assertIn(
                 response.status_code,
                 [status.HTTP_200_OK, status.HTTP_302_FOUND],
@@ -80,7 +80,7 @@ class ViewTests(TestCase):
         )
 
         for url, args in self.urlpatterns["login_required"].items():
-            response = self.client.get(reverse_lazy(f"ui:{url}", args=args))
+            response = self.client.get(reverse_lazy(f"tcn:{url}", args=args))
             self.assertIn(
                 response.status_code,
                 [status.HTTP_200_OK, status.HTTP_302_FOUND],

@@ -54,7 +54,7 @@ class BaseArticleFeed(Feed):
         return [item.get_parent().title]
 
     def item_link(self, item):
-        return reverse_lazy("ui:redirect", args=[item.link.slug])
+        return reverse_lazy("tcn:redirect", args=[item.link.slug])
 
 
 class BaseArticleAtomFeed(BaseArticleFeed):

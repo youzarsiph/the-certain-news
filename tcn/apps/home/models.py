@@ -18,7 +18,7 @@ from tcn.cms.blocks import MediaBlock
 class Home(Page):
     """Home page"""
 
-    template = "ui/index.html"
+    template = "tcn/index.html"
     context_object_name = "home"
     parent_page_types = ["wagtailcore.Page"]
 
@@ -61,7 +61,7 @@ class About(Page):
         help_text=_("Page content"),
     )
 
-    template = "ui/about.html"
+    template = "tcn/about.html"
     context_object_name = "about"
     page_description = _("About us page")
     content_panels = Page.content_panels + [FieldPanel("content")]
@@ -100,7 +100,7 @@ class Contact(AbstractEmailForm):
         help_text=_("Message to display after form submission"),
     )
 
-    template = "ui/contact.html"
+    template = "tcn/contact.html"
     context_object_name = "contact"
     page_description = _("Contact us page")
     parent_page_types = ["home.Home"]

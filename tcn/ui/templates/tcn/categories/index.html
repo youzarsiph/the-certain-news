@@ -1,0 +1,32 @@
+{% extends 'tcn/base.html' %}{% load i18n wagtailcore_tags %}
+
+<!---->
+{% block title %}{{ block.super }} | {{ index.title }}{% endblock %}
+
+<!---->
+{% block languages %}
+<!---->
+{% include 'tcn/components/lang_switch.html' %}
+<!---->
+{% endblock %}
+
+<!---->
+{% block content %}
+<section class="grid gap-8">
+  {% include 'tcn/components/breadcrumbs.html' %}
+
+  <div class="container-prose">
+    <h1>{{ index.title }}</h1>
+
+    {{ index.description|richtext }}
+  </div>
+
+  <ol class="grid grid-cols-12 gap-4">
+    {% for category in index.get_children.specific %}
+    <li class="col-span-12 md:col-span-6 lg:col-span-4 2xl:col-span-3">
+      {% include 'tcn/components/category.html' %}
+    </li>
+    {% endfor %}
+  </ol>
+</section>
+{% endblock %}

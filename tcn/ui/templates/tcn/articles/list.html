@@ -1,0 +1,121 @@
+{% extends 'tcn/base.html' %}{% load i18n %}
+
+<!---->
+{% block title %}{{ block.super }} | {% trans 'Latest News' %}{% endblock %}
+
+<!---->
+{% block content %}
+<div class="container-prose">
+  {% block page_title %}
+  <!---->
+  {% if request.GET.is_breaking %}
+  <h1>{% trans 'Breaking' %}</h1>
+  {% else %}
+  <h1>{% trans 'Latest News' %}</h1>
+  {% endif %}
+  <!---->
+  {% endblock %}
+</div>
+
+<div class="flex gap-4 items-center justify-end">
+  <div
+    data-tip="{% trans 'Latest news' %}"
+    class="tooltip tooltip-left rtl:tooltip-right tooltip-primary"
+  >
+    <a
+      href="{% url 'tcn:articles' %}"
+      class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
+    >
+      <i data-lucide="clock-fading" class="size-4 lg:size-6"></i>
+      <span class="sr-only">{% trans 'Latest news' %}</span>
+    </a>
+  </div>
+
+  <div
+    data-tip="{% trans 'Saved' %}"
+    class="tooltip tooltip-left rtl:tooltip-right tooltip-primary"
+  >
+    <a
+      href="{% url 'tcn:saved-articles' %}"
+      class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
+    >
+      <i data-lucide="bookmark-check" class="size-4 lg:size-6"></i>
+      <span class="sr-only">{% trans 'Saved' %}</span>
+    </a>
+  </div>
+
+  <div
+    data-tip="{% trans 'Following' %}"
+    class="tooltip tooltip-left rtl:tooltip-right tooltip-primary"
+  >
+    <a
+      href="{% url 'tcn:following-articles' %}"
+      class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
+    >
+      <i data-lucide="users" class="size-4 lg:size-6"></i>
+      <span class="sr-only">{% trans 'Following' %}</span>
+    </a>
+  </div>
+
+  <div
+    data-tip="{% trans 'Filters' %}"
+    class="tooltip tooltip-left rtl:tooltip-right tooltip-primary"
+  >
+    <button
+      onclick="filters.showModal()"
+      class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
+    >
+      <i data-lucide="list-filter" class="size-4 lg:size-6"></i>
+      <span class="sr-only">{% trans 'Filters' %}</span>
+    </button>
+  </div>
+</div>
+
+<ol class="grid grid-cols-12 grid-rows-[auto] gap-4">
+  {% for article in articles %}
+  <!---->
+  {% include 'tcn/components/article-1.html' %}
+  <!---->
+  {% empty %}
+  <li class="col-span-12">
+    <article
+      class="card card-sm bg-base-200 shadow-xs lg:card-md xl:card-lg 2xl:card-xl overflow-hidden"
+    >
+      <main class="card-body items-center">
+        <i data-lucide="info" class="mx-auto size-1/4 text-primary"></i>
+        <h2 class="card-title text-primary">{% trans 'No articles' %}</h2>
+        <p>{% trans 'Published news articles will appear here' %}</p>
+      </main>
+    </article>
+  </li>
+  {% endfor %}
+</ol>
+
+{% include 'tcn/components/pagination.html' %}
+
+<dialog id="filters" class="modal">
+  <section class="relative modal-box grid max-w-xl gap-6 bg-base-200">
+    <header class="flex items-center justify-between gap-4 text-primary">
+      <h1 class="text-lg font-semibold lg:text-2xl">{% trans 'Filters' %}</h1>
+
+      <div
+        class="tooltip tooltip-left rtl:tooltip-right"
+        data-tip="{% trans 'Close' %}"
+      >
+        <button
+          onclick="filters.close()"
+          class="btn btn-square btn-sm btn-ghost md:btn-md 2xl:btn-lg"
+        >
+          <i data-lucide="x" class="size-4 lg:size-6"></i>
+
+          <span class="sr-only">{% trans 'Close' %}</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      {% include 'tcn/components/form.html' with method='get' csrf=False form=filter.form %}
+    </main>
+  </section>
+</dialog>
+{% endblock %}

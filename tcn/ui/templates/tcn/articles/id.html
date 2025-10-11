@@ -1,0 +1,451 @@
+{% extends 'tcn/base.html' %}
+
+<!---->
+{% load i18n tcn wagtailcore_tags wagtailimages_tags %}
+
+<!---->
+{% block title %} {{ block.super }} | {{ article.get_parent }} | {{ article }}
+{% endblock %}
+
+<!---->
+{% block meta %}
+<meta
+  name="description"
+  content="{% trans 'The Certain News' %} | {% trans 'News' %} | {{ article.title }}"
+/>
+<meta property="og:url" content="{% short_link article.link.slug %}" />
+<meta property="og:type" content="website" />
+<meta
+  property="og:title"
+  content="{% trans 'The Certain News' %} | {% trans 'News' %} | {{ article.title }}"
+/>
+<meta
+  property="og:description"
+  content="{% trans 'The Certain News' %} | {% trans 'News' %} | {{ article.title }}"
+/>
+<meta
+  property="og:image"
+  content="{% image_url article.image 'fill-1920x1080' %}"
+/>
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:domain" content="{% short_link article.link.slug %}" />
+<meta property="twitter:url" content="{% short_link article.link.slug %}" />
+<meta
+  name="twitter:title"
+  content="{% trans 'The Certain News' %} | {% trans 'News' %} | {{ article.title }}"
+/>
+<meta
+  name="twitter:description"
+  content="{% trans 'The Certain News' %} | {% trans 'News' %} | {{ article.title }}"
+/>
+<meta
+  name="twitter:image"
+  content="{% image_url article.image 'fill-1920x1080' %}"
+/>
+{% endblock %}
+
+<!---->
+{% block styles %}{{ block.super }}
+<script src="https://unpkg.com/clipboard@2/dist/clipboard.min.js"></script>
+{% endblock %}
+
+<!---->
+{% block languages %}
+<!---->
+{% include 'tcn/components/lang_switch.html' %}
+<!---->
+{% endblock %}
+
+<!---->
+{% block content %}
+<!---->
+{% include 'tcn/components/breadcrumbs.html' %}
+
+<div class="container-prose">
+  <h1>{{ article.title }}</h1>
+
+  {% if article.get_parent.display_owner %}
+  <div class="not-prose flex items-center justify-between">
+    <a
+      href="{% url 'tcn:author' article.owner.slug %}"
+      class="flex items-center gap-2"
+    >
+      <figure>
+        {% if article.owner.photo %}
+        <div class="avatar">
+          <div class="mask mask-squircle size-12 lg:size-16">
+            <img
+              src="{{ article.owner.photo.url }}"
+              alt="{{ article.owner }}"
+            />
+          </div>
+        </div>
+        {% else %}
+        <div class="avatar avatar-placeholder">
+          <div
+            class="mask mask-squircle flex items-center justify-center bg-primary text-primary-content size-12 lg:size-16"
+          >
+            <span class="text-xl uppercase font-bold lg:text-4xl">
+              {{ article.owner.first_name|slice:':1' }}
+            </span>
+          </div>
+        </div>
+        {% endif %}
+      </figure>
+
+      <div class="flex items-center gap-4">
+        <div class="grid gap-1">
+          <h2 class="text-primary text-lg font-bold lg:text-xl">
+            {{ article.owner.get_full_name }}
+          </h2>
+          <p>{{ article.owner.bio|default:'' }}</p>
+        </div>
+      </div>
+    </a>
+
+    <div class="flex items-center justify-end gap-4">
+      {% if request.user.is_authenticated %}
+      <!---->
+      {% if article.get_parent.display_owner %}
+      <!---->
+      {% if article.owner in request.user.following.all %}
+      <div
+        class="tooltip tooltip-left tooltip-primary rtl:tooltip-right"
+        data-tip="{% translate 'Following' %}"
+      >
+        <button
+          onclick="follow('{{ article.owner.slug }}')"
+          class="btn btn-square btn-sm btn-primary md:btn-md 2xl:btn-lg"
+        >
+          <i data-lucide="user-check" class="size-4 lg:size-6"></i>
+          <span class="sr-only">{% translate 'Following' %}</span>
+        </button>
+      </div>
+      {% else %}
+      <div
+        class="tooltip tooltip-left tooltip-primary rtl:tooltip-right"
+        data-tip="{% translate 'Follow' %}"
+      >
+        <button
+          onclick="follow('{{ article.owner.slug }}')"
+          class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
+        >
+          <i data-lucide="user-plus" class="size-4 lg:size-6"></i>
+          <span class="sr-only">{% translate 'Follow' %}</span>
+        </button>
+      </div>
+      {% endif %}
+      <!---->
+      {% endif %}
+      <!---->
+      {% else %}
+      <!---->
+      {% if article.get_parent.display_owner %}
+      <div
+        class="tooltip tooltip-left tooltip-primary rtl:tooltip-right"
+        data-tip="{% translate 'Login to follow' %}"
+      >
+        <a
+          href="{% url 'tcn:login' %}?next={% url 'tcn:redirect' article.link.slug %}"
+          class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
+        >
+          <i data-lucide="user-plus" class="size-4 lg:size-6"></i>
+          <span class="sr-only">{% translate 'Login to follow' %}</span>
+        </a>
+      </div>
+      {% endif %}{% endif %}
+    </div>
+  </div>
+  {% endif %}
+</div>
+
+<div class="container-prose">
+  <div class="grid">
+    <div class="not-prose flex items-center flex-wrap gap-4">
+      {% if article.is_breaking %}
+      <div
+        class="tooltip tooltip-error tooltip-right rtl:tooltip-left"
+        data-tip="{% trans 'Breaking' %}"
+      >
+        <a
+          href="{% url 'tcn:articles' %}?is_breaking=True"
+          class="badge badge-sm badge-error md:badge-md xl:badge-lg 2xl:badge-xl"
+        >
+          <i data-lucide="alert-circle" class="size-4 lg:size-6"></i>
+          {% trans 'Breaking' %}
+        </a>
+      </div>
+      {% endif %}
+
+      <!---->
+      {% if article.country %}
+      <div
+        class="tooltip tooltip-success tooltip-right rtl:tooltip-left"
+        data-tip="{{ article.country.name }}"
+      >
+        <a
+          href="{% url 'tcn:articles' %}?country={{ article.country }}"
+          class="badge badge-sm badge-success md:badge-md xl:badge-lg 2xl:badge-xl"
+        >
+          <i data-lucide="map-pin" class="size-4 lg:size-6"></i>
+          {{ article.country }}
+        </a>
+      </div>
+      {% endif %}
+
+      <div
+        class="tooltip tooltip-primary tooltip-right rtl:tooltip-left"
+        data-tip="{% trans 'Category' %}"
+      >
+        <a
+          href="{% pageurl article.get_parent %}"
+          class="badge badge-sm badge-primary md:badge-md xl:badge-lg 2xl:badge-xl"
+        >
+          {{ article.get_parent }}
+        </a>
+      </div>
+    </div>
+
+    <figure class="skeleton overflow-clip">
+      {% image article.image fill-1920x1080 %}
+    </figure>
+
+    <div class="not-prose flex items-center justify-between">
+      <div class="flex text-primary flex-col text-xs gap-1">
+        <a
+          href="{% url 'tcn:articles-d' article.created_at.year|default:'2025' article.created_at.month|default:'08' article.created_at.day|default:'01' %}"
+          class="flex items-center gap-2 link link-primary link-hover"
+        >
+          <span
+            class="tooltip tooltip-right tooltip-primary rtl:tooltip-left"
+            data-tip="{% trans 'Date published' %}"
+          >
+            <span class="status status-xl status-primary">
+              <span class="sr-only"> {% trans 'Date published' %} </span>
+            </span>
+          </span>
+          {{ article.created_at }}
+        </a>
+
+        <span class="flex items-center gap-2">
+          <span
+            class="tooltip tooltip-right tooltip-info rtl:tooltip-left"
+            data-tip="{% trans 'Last update' %}"
+          >
+            <span class="status status-xl status-info">
+              <span class="sr-only"> {% trans 'Last update' %} </span>
+            </span>
+          </span>
+          {{ article.updated_at }}
+        </span>
+      </div>
+
+      <div class="flex items-center gap-4">
+        {% if request.user.is_authenticated %}
+        <div
+          class="tooltip tooltip-left tooltip-success rtl:tooltip-right"
+          data-tip="{% translate 'Save' %}"
+        >
+          <button
+            onclick="save('{{ article.slug }}')"
+            class="btn btn-square btn-soft btn-sm btn-success md:btn-md 2xl:btn-lg"
+          >
+            <i data-lucide="bookmark" class="size-4 lg:size-6"></i>
+            <span class="sr-only">{% translate 'Save' %}</span>
+          </button>
+        </div>
+        {% else %}
+        <div
+          class="tooltip tooltip-left tooltip-success rtl:tooltip-right"
+          data-tip="{% translate 'Login to save' %}"
+        >
+          <a
+            href="{% url 'tcn:login' %}?next={% url 'tcn:redirect' article.link.slug %}"
+            class="btn btn-square btn-soft btn-sm btn-success md:btn-md 2xl:btn-lg"
+          >
+            <i data-lucide="bookmark" class="size-4 lg:size-6"></i>
+            <span class="sr-only">{% translate 'Login to save' %}</span>
+          </a>
+        </div>
+        {% endif %}
+
+        <div
+          id="btn-copy"
+          class="tooltip tooltip-left tooltip-primary rtl:tooltip-right"
+          data-tip="{% trans 'Copy URL' %}"
+        >
+          <button
+            class="btn btn-copy btn-square btn-sm btn-primary md:btn-md 2xl:btn-lg"
+            data-clipboard-text="{% short_link article.link.slug %}"
+          >
+            <i
+              id="clipboard"
+              data-lucide="clipboard"
+              class="size-4 lg:size-6"
+            ></i>
+            <i
+              id="clipboard-check"
+              data-lucide="clipboard-check"
+              class="hidden size-4 lg:size-6"
+            ></i>
+            <span class="sr-only">{% trans 'Copy URL' %}</span>
+          </button>
+        </div>
+
+        <div
+          class="tooltip tooltip-left tooltip-info rtl:tooltip-right"
+          data-tip="{% trans 'Facebook' %}"
+        >
+          <a
+            class="btn btn-copy btn-square btn-sm btn-info md:btn-md 2xl:btn-lg"
+            href="https://www.facebook.com/sharer/sharer.php?u={% short_link article.link.slug %}"
+          >
+            <i data-lucide="facebook" class="size-4 lg:size-6"></i>
+            <span class="sr-only">{% trans 'Facebook' %}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="lead">{{ article.headline }}</p>
+
+  {{ article.content }}
+</div>
+
+<div class="flex mx-auto flex-wrap items-center gap-4">
+  {% for tag in article.tags.all %}
+  <span
+    class="badge {% cycle 'badge-primary' 'badge-secondary' 'badge-success' 'badge-info' 'badge-warning' 'badge-error' %}"
+  >
+    {{ tag }}
+  </span>
+  {% endfor %}
+</div>
+
+{% if recommendations %}
+<section class="grid gap-8">
+  <div class="container-prose">
+    <h1>
+      {% blocktrans trimmed %}More news from{% endblocktrans %}
+      <!---->
+      {{ article.get_parent.title }}
+    </h1>
+  </div>
+
+  <ol class="grid grid-cols-12 grid-rows-[auto] gap-4">
+    {% for recommendation in recommendations %}
+    <!---->
+    {% include 'tcn/components/article-1.html' with article=recommendation %}
+    <!---->
+    {% endfor %}
+  </ol>
+</section>
+{% endif %}
+
+<script>
+  var clipboard = new ClipboardJS(".btn-copy");
+
+  clipboard.on("success", function (e) {
+    const btn = document.getElementById("btn-copy");
+    const clipboard = document.getElementById("clipboard");
+    const clipboardCheck = document.getElementById("clipboard-check");
+    btn.setAttribute("data-tip", "{% trans 'Copied' %}");
+    btn.classList.toggle("tooltip-open");
+
+    clipboard.classList.toggle("hidden");
+    clipboardCheck.classList.toggle("hidden");
+
+    setTimeout(() => {
+      btn.setAttribute("data-tip", "{% trans 'Copy URL' %}");
+      btn.classList.toggle("tooltip-open");
+
+      clipboard.classList.toggle("hidden");
+      clipboardCheck.classList.toggle("hidden");
+    }, 2000);
+  });
+</script>
+
+<div>
+  {% csrf_token %}
+  <div
+    id="notifications"
+    class="hidden toast toast-top toast-end top-24 right-4 lg:right-24 z-50"
+  >
+    <div class="alert alert-horizontal alert-success">
+      <i data-lucide="circle-check" class="size-4 lg:size-6"></i>
+      <p id="message"></p>
+    </div>
+  </div>
+  {% if request.user.is_authenticated %}
+  <script>
+    const token = document.querySelector("[name=csrfmiddlewaretoken]").value;
+    const message = document.getElementById("message");
+    const notifications = document.getElementById("notifications");
+
+    const save = (article) =>
+      fetch(`/{{ LANGUAGE_CODE }}/api/articles/${article}/save/`, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "X-CSRFToken": token,
+        },
+        body: JSON.stringify({}),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          message.innerText = data.detail;
+          notifications.classList.toggle("hidden");
+
+          setTimeout(() => {
+            notifications.classList.toggle("hidden");
+            message.innerText = "";
+          }, 2000);
+        })
+        .catch((err) => {
+          message.innerText = err.message;
+          notifications.classList.toggle("hidden");
+
+          setTimeout(() => {
+            notifications.classList.toggle("hidden");
+            message.innerText = "";
+          }, 2000);
+        });
+
+    const follow = (user) =>
+      fetch(`/{{ LANGUAGE_CODE }}/api/users/${user}/follow/`, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "X-CSRFToken": token,
+        },
+        body: JSON.stringify({}),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          message.innerText = data.detail;
+          notifications.classList.toggle("hidden");
+
+          setTimeout(() => {
+            notifications.classList.toggle("hidden");
+            message.innerText = "";
+          }, 2000);
+        })
+        .catch((err) => {
+          message.innerText = err.message;
+          notifications.classList.toggle("hidden");
+
+          setTimeout(() => {
+            notifications.classList.toggle("hidden");
+            message.innerText = "";
+          }, 2000);
+        });
+  </script>
+  {% endif %}
+</div>
+{% endblock %}

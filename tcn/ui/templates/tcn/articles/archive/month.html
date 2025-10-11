@@ -1,0 +1,75 @@
+{% extends 'tcn/base.html' %}{% load i18n %}
+
+<!---->
+{% block title %}{{ block.super }} | {{ month|date:"F Y" }}{% endblock %}
+
+<!---->
+{% block content %}
+<div class="flex items-center justify-between gap-4">
+  <div class="container-prose">
+    <h1>{% trans 'News' %} - {{ month|date:"F Y" }}</h1>
+  </div>
+
+  <div class="flex items-center gap-4">
+    {% if previous_month %}
+    <div
+      class="tooltip tooltip-bottom tooltip-primary"
+      data-tip="{% trans 'Previous' %}"
+    >
+      <a
+        class="btn btn-copy btn-square btn-sm btn-primary md:btn-md 2xl:btn-lg"
+        href="{% url 'tcn:articles-m' previous_month.year previous_month.month %}"
+      >
+        <i
+          data-lucide="chevron-left"
+          class="size-4 lg:size-6 rtl:rotate-180"
+        ></i>
+        <span class="sr-only">{% trans 'Previous' %}</span>
+      </a>
+    </div>
+    {% endif %}
+    <!---->
+    {% if next_month %}
+    <div
+      class="tooltip tooltip-bottom tooltip-primary"
+      data-tip="{% trans 'Next' %}"
+    >
+      <a
+        class="btn btn-copy btn-square btn-sm btn-primary md:btn-md 2xl:btn-lg"
+        href="{% url 'tcn:articles-m' next_month.year next_month.month %}"
+      >
+        <i
+          data-lucide="chevron-right"
+          class="size-4 lg:size-6 rtl:rotate-180"
+        ></i>
+        <span class="sr-only">{% trans 'Next' %}</span>
+      </a>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+<ol class="grid grid-cols-12 grid-rows-[auto] gap-4">
+  {% for article in articles %}
+  <!---->
+  {% include 'tcn/components/article.html' %}
+  <!---->
+  {% empty %}
+  <li class="col-span-12">
+    <article
+      class="card card-sm bg-base-200 shadow-xs lg:card-md xl:card-lg 2xl:card-xl overflow-hidden"
+    >
+      <main class="card-body items-center">
+        <i data-lucide="info" class="mx-auto size-1/4 text-primary"></i>
+        <h2 class="card-title text-primary">{% trans 'No articles' %}</h2>
+        <p>{% trans 'No articles published on' %} {{ month|date:"F Y" }}</p>
+      </main>
+    </article>
+  </li>
+  {% endfor %}
+</ol>
+
+{% include 'tcn/components/pagination.html' %}
+
+<!---->
+{% endblock %}

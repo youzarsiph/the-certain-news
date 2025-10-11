@@ -15,7 +15,7 @@ class StaticSitemap(Sitemap):
     changefreq = "daily"
 
     def items(self):
-        return ["ui:search", "ui:articles", "ui:archive"]
+        return ["tcn:search", "tcn:articles", "tcn:archive"]
 
     def location(self, item):
         return reverse_lazy(item)

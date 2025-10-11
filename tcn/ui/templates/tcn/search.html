@@ -1,0 +1,177 @@
+{% extends 'tcn/base.html' %}
+<!---->
+{% load i18n wagtailcore_tags wagtailsearchpromotions_tags %}
+
+<!---->
+{% block title %}{{ block.super }} | {% trans 'Search' %}{% endblock %}
+
+<!---->
+{% block content %}
+<div class="container-prose">
+  <h1>{% trans 'Search' %}</h1>
+</div>
+
+<form class="grid gap-4" method="get" action="{% url 'tcn:search' %}">
+  <label
+    class="mx-auto max-w-xl w-full input input-primary xl:input-lg 2xl:input-xl"
+  >
+    <i
+      data-lucide="search"
+      class="size-4 text-primary opacity-50 lg:size-6"
+    ></i>
+
+    <input
+      required
+      type="search"
+      name="search"
+      class="grow"
+      placeholder="{% trans 'Search' %}"
+      value="{{ search_query|default:'' }}"
+    />
+  </label>
+</form>
+
+<section class="grid gap-8">
+  {% if search_results %}
+  <div class="flex items-center justify-between gap-4">
+    <h2 class="text-xl text-primary lg:text-3xl">
+      {% trans 'Search results' %}
+    </h2>
+
+    <div class="flex gap-4 items-center justify-end">
+      {% if request.user.is_authenticated %}
+      <form
+        method="get"
+        data-tip="{% trans 'Following' %}"
+        class="tooltip tooltip-left rtl:tooltip-right tooltip-primary"
+      >
+        <input type="hidden" name="search" value="{{ search_query }}" />
+
+        <button
+          value="True"
+          type="submit"
+          name="following"
+          class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
+        >
+          <i data-lucide="users" class="size-4 lg:size-6"></i>
+          <span class="sr-only">{% trans 'Following' %}</span>
+        </button>
+      </form>
+      {% else %}
+      <div
+        data-tip="{% trans 'Following' %}"
+        class="tooltip tooltip-left rtl:tooltip-right tooltip-primary"
+      >
+        <a
+          href="{% url 'tcn:login' %}"
+          class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
+        >
+          <i data-lucide="users" class="size-4 lg:size-6"></i>
+          <span class="sr-only">
+            {% trans 'Login to view articles by writers you follow.' %}
+          </span>
+        </a>
+      </div>
+      {% endif %}
+
+      <div
+        data-tip="{% trans 'Filters' %}"
+        class="tooltip tooltip-left rtl:tooltip-right tooltip-primary"
+      >
+        <button
+          onclick="filters.showModal()"
+          class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
+        >
+          <i data-lucide="list-filter" class="size-4 lg:size-6"></i>
+          <span class="sr-only">{% trans 'Filters' %}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <ol class="grid grid-cols-12 grid-rows-[auto] gap-4">
+    {% for result in search_results %}
+    <!---->
+    {% include 'tcn/components/article.html' with article=result %}
+    <!---->
+    {% empty %}
+    <li>{% trans 'No results found' %}</li>
+    {% endfor %}
+  </ol>
+
+  {% include 'tcn/components/pagination.html' %}
+  <!---->
+  {% endif %}
+</section>
+
+<section class="grid gap-8">
+  <!---->
+  {% get_search_promotions search_query as search_promotions %}
+
+  <ul>
+    {% for search_promotion in search_promotions %}
+    <!---->
+    {% if search_promotion.page %}
+    <li>
+      <a href="{% pageurl search_promotion.page %}">
+        <h3>{{ search_promotion.page.title }}</h3>
+        <p>{{ search_promotion.description }}</p>
+      </a>
+    </li>
+    {% else %}
+    <li>
+      <a href="{{ search_promotion.external_link_url }}">
+        <h3>{{ search_promotion.external_link_text }}</h3>
+        <p>{{ search_promotion.description }}</p>
+      </a>
+    </li>
+    {% endif %}
+    <!---->
+    {% endfor %}
+  </ul>
+</section>
+
+<dialog id="filters" class="modal">
+  <section class="relative modal-box grid max-w-xl gap-6 bg-base-200">
+    <header class="flex items-center justify-between gap-4 text-primary">
+      <h1 class="text-lg font-semibold lg:text-2xl">{% trans 'Filters' %}</h1>
+
+      <div
+        class="tooltip tooltip-left rtl:tooltip-right"
+        data-tip="{% trans 'Close' %}"
+      >
+        <button
+          onclick="filters.close()"
+          class="btn btn-square btn-sm btn-ghost md:btn-md 2xl:btn-lg"
+        >
+          <i data-lucide="x" class="size-4 lg:size-6"></i>
+
+          <span class="sr-only">{% trans 'Close' %}</span>
+        </button>
+      </div>
+    </header>
+
+    <main id="dialog">
+      {% include 'tcn/components/form.html' with method='get' csrf=False
+      form=filter.form %}
+    </main>
+  </section>
+</dialog>
+
+<script>
+  // Add search and following to filter form
+  const form = document.querySelector("#dialog form");
+
+  const searchInput = document.createElement("input");
+  searchInput.setAttribute("type", "hidden");
+  searchInput.setAttribute("name", "search");
+  searchInput.setAttribute("value", "{{ search_query }}");
+  form.appendChild(searchInput);
+
+  const followingInput = document.createElement("input");
+  followingInput.setAttribute("type", "hidden");
+  followingInput.setAttribute("name", "following");
+  followingInput.setAttribute("value", "{{ request.GET.following }}");
+  form.appendChild(followingInput);
+</script>
+{% endblock %}

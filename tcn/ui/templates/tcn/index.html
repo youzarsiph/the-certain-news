@@ -1,0 +1,182 @@
+{% extends 'tcn/base.html' %}{% load i18n wagtailcore_tags %}
+
+<!---->
+{% block title %}{{ block.super }} | {% trans 'Latest news around the world'%}
+{% endblock %}
+
+<!---->
+{% block languages %}
+<!---->
+{% include 'tcn/components/lang_switch.html' %}
+<!---->
+{% endblock %}
+
+<!---->
+{% block container %}
+<div class="container mx-auto grid gap-16 px-4 py-24">
+  <section title="{% trans 'Breaking' %}">
+    <ol class="grid grid-cols-12 grid-rows-[auto] gap-4">
+      {% for article in breaking_news %}
+      <!---->
+      {% include 'tcn/components/article-1.html' %}
+      <!---->
+      {% endfor %}
+    </ol>
+  </section>
+
+  <section title="{% trans 'Live feed' %}" class="grid grid-cols-12 gap-4">
+    <div class="col-span-12 md:col-span-6 lg:col-span-4">
+      <div class="flex gap-8 size-full flex-col justify-center">
+        <div class="container-prose">
+          <h1>{% trans 'Live feed' %}</h1>
+          <p>
+            {% blocktrans trimmed %}Stay updated with the latest breaking news
+            as it happens. New breaking articles will appear instantly in the
+            live feed below.{% endblocktrans %}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-span-12 md:col-span-6 lg:col-span-8">
+      <ol
+        class="size-full items-center justify-center timeline timeline-vertical"
+      >
+        {% for article in breaking_news|slice:':3' %}
+        <li>
+          <hr class="bg-error" />
+          <time class="timeline-start text-xs text-primary font-semibold">
+            {{ article.created_at|timesince }}
+          </time>
+          <div class="timeline-middle">
+            <span class="status status-xl status-primary">
+              <span class="sr-only">{% trans 'Breaking' %}</span>
+            </span>
+          </div>
+          <a
+            href="{% url 'tcn:redirect' article.link.slug %}"
+            class="timeline-end timeline-box bg-primary font-bold text-primary-content"
+          >
+            {{ article.title }}
+          </a>
+
+          {% if not forloop.last %}
+          <hr class="bg-error" />
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    {% if trending_news %}
+    <div class="container-prose">
+      <h1>{% trans 'Trending now' %}</h1>
+    </div>
+
+    <ol class="list grid grid-cols-1 md:grid-cols-2 gap-4">
+      {% for article in trending_news %}
+      <!---->
+      {% include 'tcn/components/article-li.html' %}
+      <!---->
+      {% endfor %}
+    </ol>
+    {% endif %}
+  </section>
+
+  <section>
+    {% if latest_news %}
+    <div class="container-prose">
+      <h1>{% trans 'Latest News' %}</h1>
+    </div>
+
+    <ol class="grid grid-cols-12 grid-rows-[auto] gap-4">
+      {% for article in latest_news %}
+      <!---->
+      {% include 'tcn/components/article-2.html' %}
+      <!---->
+      {% endfor %}
+    </ol>
+    {% endif %}
+  </section>
+
+  <div class="grid gap-12">
+    {% for category in categories %}
+    <section>
+      <div class="container-prose">
+        <h1>
+          <a href="{% pageurl category %}" class="link link-primary link-hover">
+            {{ category.title }}
+          </a>
+        </h1>
+      </div>
+
+      {% if category.display_owner %}
+      <ol class="list grid grid-cols-1 md:grid-cols-2 gap-4">
+        {% for article in category.get_ordered_children.specific|slice:':9' %}
+        <!---->
+        {% include 'tcn/components/article-li.html' %}
+        <!---->
+        {% endfor %}
+      </ol>
+      {% else %}
+      <ol class="grid grid-cols-12 grid-rows-[auto] gap-4">
+        {% for article in category.get_ordered_children.specific|slice:':9' %}
+        <!---->
+        {% include 'tcn/components/article.html' %}
+        <!---->
+        {% endfor %}
+      </ol>
+      {% endif %}
+    </section>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+  function insertLiveArticle(article) {
+    // Find the timeline ol
+    const timeline = document.querySelector(".timeline.timeline-vertical");
+    if (!timeline) return;
+
+    // Create a new li element for the article
+    const li = document.createElement("li");
+
+    // Format time (you can adjust this as needed)
+    const timeAgo = article.created_at || "{% trans 'Now' %}";
+
+    li.innerHTML = `
+      <hr class="bg-error" />
+      <time class="timeline-start text-xs text-primary font-semibold">${timeAgo}</time>
+      <div class="timeline-middle">
+        <span class="status status-xl status-primary">
+          <span class="sr-only">{% trans 'Breaking' %}</span>
+        </span>
+      </div>
+      <a 
+        href="${article.url || "#"}"
+        class="timeline-end timeline-box bg-primary font-bold text-primary-content"
+      >
+        ${article.title}
+      </a>
+      <hr class="bg-error" />`;
+
+    // Insert as first child
+    timeline.insertBefore(li, timeline.firstChild);
+    lucide.createIcons();
+  }
+
+  const ws = new WebSocket(
+    "wss://" + window.location.host + "{% url 'tcn_live:live' LANGUAGE_CODE %}"
+  );
+
+  ws.onmessage = function (e) {
+    const article = JSON.parse(e.data);
+    insertLiveArticle(article);
+  };
+
+  ws.onclose = function (e) {
+    console.error("Chat socket closed unexpectedly");
+  };
+</script>
+{% endblock %}

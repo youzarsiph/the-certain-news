@@ -39,7 +39,7 @@ class SignupView(SuccessMessageMixin, generic.CreateView):
     model = User
     form_class = UserCreateForm
     template_name = "registration/signup.html"
-    success_url = reverse_lazy("ui:profile")
+    success_url = reverse_lazy("tcn:profile")
     success_message = _("Your account was created successfully!")
 
 
@@ -47,7 +47,7 @@ class UserDetailView(PaginatorMixin, generic.DetailView):
     """User detail view"""
 
     model = User
-    template_name = "ui/authors/id.html"
+    template_name = "tcn/authors/id.html"
 
     def get_context_data(self, **kwargs: Dict[str, Any]) -> Dict[str, Any]:
         """Add articles to context"""
@@ -101,7 +101,7 @@ class UserListView(LoginRequiredMixin, generic.ListView):
     model = User
     paginate_by = 25
     context_object_name = "users"
-    template_name = "ui/authors/list.html"
+    template_name = "tcn/authors/list.html"
 
     def get_queryset(self) -> QuerySet[User]:
         """Filter queryset to show only users that current user follows"""
@@ -118,7 +118,7 @@ class UserUpdateView(
     """Update a user"""
 
     model = User
-    success_url = reverse_lazy("ui:profile")
+    success_url = reverse_lazy("tcn:profile")
     template_name = "registration/edit.html"
     success_message = _("Your account was updated successfully!")
     fields = [
@@ -143,7 +143,7 @@ class UserDeleteView(
     """Delete a user"""
 
     model = User
-    success_url = reverse_lazy("ui:profile")
+    success_url = reverse_lazy("tcn:profile")
     template_name = "registration/delete.html"
     success_message = _("Your account was deleted successfully!")
 
@@ -202,13 +202,13 @@ class BaseArticleListView:
 class ArticleListView(BaseArticleListView, FilterView, generic.ListView):
     """Article list"""
 
-    template_name = "ui/articles/list.html"
+    template_name = "tcn/articles/list.html"
 
 
 class SavedArticleListView(LoginRequiredMixin, ArticleListView):
     """Saved articles list"""
 
-    template_name = "ui/articles/saved.html"
+    template_name = "tcn/articles/saved.html"
 
     def get_queryset(self) -> QuerySet[Article]:
         """Filter articles to show only saved articles"""
@@ -223,7 +223,7 @@ class SavedArticleListView(LoginRequiredMixin, ArticleListView):
 class FollowingArticleListView(LoginRequiredMixin, ArticleListView):
     """Articles from followed authors"""
 
-    template_name = "ui/articles/following.html"
+    template_name = "tcn/articles/following.html"
 
     def get_queryset(self) -> QuerySet[Article]:
         """Filter articles to show only saved articles"""
@@ -236,7 +236,7 @@ class FollowingArticleListView(LoginRequiredMixin, ArticleListView):
 class SearchView(ArticleListView):
     """Search View"""
 
-    template_name = "ui/search.html"
+    template_name = "tcn/search.html"
     context_object_name = "search_results"
 
     def get_context_data(self, **kwargs: Dict[str, Any]) -> Dict[str, Any]:
@@ -274,27 +274,27 @@ class SearchView(ArticleListView):
 class ArticleArchiveView(BaseArticleListView, generic.ArchiveIndexView):
     """Article archive index"""
 
-    template_name = "ui/articles/archive/index.html"
+    template_name = "tcn/articles/archive/index.html"
 
 
 class ArticleYearView(BaseArticleListView, generic.YearArchiveView):
     """Year archive for articles"""
 
-    template_name = "ui/articles/archive/year.html"
+    template_name = "tcn/articles/archive/year.html"
 
 
 class ArticleMonthView(BaseArticleListView, generic.MonthArchiveView):
     """Month archive for articles"""
 
     month_format = "%m"
-    template_name = "ui/articles/archive/month.html"
+    template_name = "tcn/articles/archive/month.html"
 
 
 class ArticleDayView(BaseArticleListView, generic.DayArchiveView):
     """Day archive for articles"""
 
     month_format = "%m"
-    template_name = "ui/articles/archive/day.html"
+    template_name = "tcn/articles/archive/day.html"
 
 
 class ArticleDetailView(BaseArticleListView, generic.DateDetailView):
@@ -303,4 +303,4 @@ class ArticleDetailView(BaseArticleListView, generic.DateDetailView):
     month_format = "%m"
     date_field = "created_at"
     context_object_name = "article"
-    template_name = "ui/articles/date_id.html"
+    template_name = "tcn/articles/date_id.html"

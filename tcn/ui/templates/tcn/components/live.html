@@ -1,0 +1,116 @@
+{% load i18n %}
+
+<section
+  id="container"
+  title="{% trans 'Breaking' %}"
+  class="container mx-auto max-w-dvw px-4"
+>
+  <ol id="live-line" class="carousel w-full carousel-center">
+    {% for article in articles %}
+    <li class="carousel-item w-full grow">
+      <div role="alert" class="alert-soft relative alert w-full alert-error">
+        <a
+          href="{% url 'tcn:redirect' article.link.slug %}"
+          class="absolute inset-x-0 z-10"
+        >
+          <span class="sr-only">{% trans 'Read' %}</span>
+        </a>
+
+        <div
+          class="tooltip tooltip-right z-20 tooltip-error rtl:tooltip-left"
+          data-tip="Breaking"
+        >
+          <a href="#" class="btn btn-circle btn-xs btn-error lg:btn-sm">
+            <span class="sr-only">Breaking</span>
+            <i data-lucide="alert-circle" class="size-4 lg:size-6"></i>
+          </a>
+        </div>
+
+        <p>{{ article.title }}</p>
+
+        <div class="z-20 flex items-center gap-2">
+          <div
+            class="tooltip tooltip-left tooltip-error rtl:tooltip-right"
+            data-tip="{% trans 'Previous' %}"
+          >
+            <a
+              href="#"
+              class="btn btn-circle btn-outline btn-xs btn-error lg:btn-sm"
+            >
+              <span class="sr-only">{% trans 'Previous' %}</span>
+              <i
+                data-lucide="chevron-left"
+                class="size-4 lg:size-6 rtl:rotate-180"
+              ></i>
+            </a>
+          </div>
+
+          <div
+            class="tooltip tooltip-left tooltip-error rtl:tooltip-right"
+            data-tip="{% trans 'Next' %}"
+          >
+            <a
+              href="#"
+              class="btn btn-circle btn-outline btn-xs btn-error lg:btn-sm"
+            >
+              <span class="sr-only">{% trans 'Next' %}</span>
+              <i
+                data-lucide="chevron-right"
+                class="size-4 lg:size-6 rtl:rotate-180"
+              ></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </li>
+    {% endfor %}
+  </ol>
+</section>
+
+<script>
+  function insertLiveArticleAlert(article) {
+    const carousel = document.getElementById("live-line");
+    if (!carousel) return;
+
+    const container = document.getElementById("container");
+    container.classList.toggle("hidden");
+
+    // Create a new li element for the article
+    const li = document.createElement("li");
+    li.classList = "carousel-item w-full grow";
+
+    li.innerHTML = `
+      <a
+        role="alert"
+        href="${article.url}"
+        class="alert-soft alert w-full alert-error"
+      >
+        <div
+          class="tooltip tooltip-right tooltip-error rtl:tooltip-left"
+          data-tip="{% trans 'Breaking' %}"
+        >
+          <span class="btn btn-circle btn-xs btn-error lg:btn-sm">
+            <span class="sr-only">{% trans 'Breaking' %}</span>
+            <i data-lucide="alert-circle" class="size-4 lg:size-6"></i>
+          </span>
+        </div>
+
+        <p>${article.title}</p>
+      </a>`;
+
+    // Insert as first child
+    carousel.insertBefore(li, carousel.firstChild);
+    lucide.createIcons();
+  }
+
+  const ws = new WebSocket("wss:" + window.location.host + "/ws/live-feed/");
+
+  ws.onmessage = function (e) {
+    const article = JSON.parse(e.data);
+    insertLiveArticleAlert(article);
+  };
+
+  ws.onclose = function (e) {
+    console.error("Chat socket closed unexpectedly");
+  };
+</script>

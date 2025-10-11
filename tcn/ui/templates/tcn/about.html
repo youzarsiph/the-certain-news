@@ -1,0 +1,19 @@
+{% extends 'tcn/base.html' %}{% load i18n %}
+
+<!---->
+{% block title %}{{ block.super }} | {{ about.title }}{% endblock %}
+
+<!---->
+{% block languages %}
+<!---->
+{% include 'tcn/components/lang_switch.html' %}
+<!---->
+{% endblock %}
+
+<!---->
+{% block content %}
+<div class="container-prose">
+  <h1>{{ about.title }}</h1>
+  {{ about.content }}
+</div>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% load i18n wagtailcore_tags wagtailimages_tags %}
+
+<li
+  class="group col-span-12 row-span-12 md:col-span-6 md:row-span-3 first:md:col-span-6 first:md:row-span-6 lg:col-span-4 xl:col-span-3"
+>
+  <article
+    class="card border border-base-300 overflow-hidden image-full relative bg-base-300 hover:bg-base-200 card-sm md:card-md xl:card-lg 2xl:card-xl size-full shadow-sm group-first:flex-col lg:flex-col"
+  >
+    <a
+      href="{% url 'tcn:redirect' article.link.slug %}"
+      class="absolute inset-0 z-10"
+    >
+      <span class="sr-only">{% trans 'Read' %}</span>
+    </a>
+
+    <figure class="skeleton overflow-clip">
+      {% image article.image fill-1920x1080 %}
+    </figure>
+
+    <div
+      class="card-body p-4 justify-end bg-gradient-to-t from-neutral-900 to-transparent"
+    >
+      <div class="card-actions items-center gap-1">
+        {% if article.is_breaking %}
+        <div
+          class="tooltip tooltip-bottom flex tooltip-error"
+          data-tip="{% trans 'Breaking' %}"
+        >
+          <div class="inline-grid *:[grid-area:1/1]">
+            <span class="sr-only">{% trans 'Breaking' %}</span>
+            <div class="status status-xl status-error animate-ping"></div>
+            <div class="status status-xl status-error"></div>
+          </div>
+        </div>
+        {% endif %}
+        <a
+          class="tooltip tooltip-bottom tooltip-primary z-20"
+          data-tip="{% trans 'Date published' %}"
+          href="{% url 'tcn:articles-d' article.created_at.year article.created_at.month article.created_at.day %}"
+        >
+          <span class="badge badge-soft badge-xs md:badge-sm badge-primary">
+            {{ article.created_at|date:'Y/m/d' }}
+          </span>
+        </a>
+        {% if article.country %}
+        <div
+          class="tooltip tooltip-bottom tooltip-success z-20"
+          data-tip="{{ article.country.name }}"
+        >
+          <a
+            href="{% url 'tcn:articles' %}?country={{ article.country }}"
+            class="badge badge-success badge-xs md:badge-sm"
+          >
+            {{ article.country }}
+          </a>
+        </div>
+        {% endif %}
+        <a
+          href="{% pageurl article.get_parent %}"
+          class="tooltip tooltip-bottom tooltip-primary z-20"
+          data-tip="{% trans 'Category' %}"
+        >
+          <span class="badge badge-xs md:badge-sm badge-primary">
+            {{ article.get_parent.title }}
+          </span>
+        </a>
+      </div>
+
+      <h2
+        class="card-title text-primary-content text-shadow-lg dark:text-primary"
+      >
+        {{ article.title }}
+      </h2>
+
+      <p
+        class="hidden grow-0 text-primary-content text-shadow-lg dark:text-primary group-first:block"
+      >
+        {{ article.headline }}
+      </p>
+    </div>
+  </article>
+</li>

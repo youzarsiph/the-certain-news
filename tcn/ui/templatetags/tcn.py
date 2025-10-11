@@ -14,7 +14,7 @@ register = template.Library()
 def short_link(context, slug=None):
     """Generates the short link for an article"""
 
-    url = reverse_lazy("ui:redirect", args=[slug if slug else "home"])
+    url = reverse_lazy("tcn:redirect", args=[slug if slug else "home"])
 
     return context["request"].build_absolute_uri(url)
 

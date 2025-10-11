@@ -1,0 +1,12 @@
+{% extends 'tcn/base.html' %}{% load i18n %}
+
+<!---->
+{% block title %}{{ block.super }} | {% trans 'Server error' %}{% endblock %}
+
+<!---->
+{% block content %}
+<section class="container-prose">
+  <h1>{% trans 'Server error' %}</h1>
+  <p>{% blocktrans trimmed %}Internal server error{% endblocktrans %}</p>
+</section>
+{% endblock %}

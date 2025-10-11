@@ -1,0 +1,15 @@
+{% extends 'tcn/base.html' %}{% load i18n %}
+
+<!---->
+{% block title %}{{ block.super }} | {% trans 'Bad request' %}{% endblock %}
+
+<!---->
+{% block content %}
+<section class="container-prose">
+  <h1>{% trans 'Bad request' %}</h1>
+  <p>
+    {% blocktrans trimmed %}You are trying to do or doing something
+    Suspicious.{% endblocktrans %}
+  </p>
+</section>
+{% endblock %}

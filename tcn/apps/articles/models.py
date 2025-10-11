@@ -64,7 +64,7 @@ class Article(DateTimeMixin, Page):
     )
 
     context_object_name = "article"
-    template = "ui/articles/id.html"
+    template = "tcn/articles/id.html"
     page_description = _("News Articles")
     content_panels = Page.content_panels + [
         FieldPanel("image"),

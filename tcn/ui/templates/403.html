@@ -1,0 +1,15 @@
+{% extends 'tcn/base.html' %}{% load i18n %}
+
+<!---->
+{% block title %}{{ block.super }} | {% trans 'Access denied' %}{% endblock %}
+
+<!---->
+{% block content %}
+<section class="container-prose">
+  <h1>{% trans 'Access denied' %}</h1>
+  <p>
+    {% blocktrans trimmed %}The requested path
+    <code>{{ request_path }}</code> not found.{% endblocktrans %}
+  </p>
+</section>
+{% endblock %}

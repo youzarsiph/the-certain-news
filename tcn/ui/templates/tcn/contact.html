@@ -1,0 +1,27 @@
+{% extends 'tcn/base.html' %}{% load i18n %}
+
+<!---->
+{% block title %}{{ block.super }} | {{ contact.title }}{% endblock %}
+
+<!---->
+{% block languages %}
+<!---->
+{% include 'tcn/components/lang_switch.html' %}
+<!---->
+{% endblock %}
+
+<!---->
+{% block content %}
+<section class="grid gap-8">
+  {% block message %}{% endblock %}
+
+  <div class="container-prose">
+    <h1>{{ contact.title }}</h1>
+    {{ contact.content }}
+  </div>
+
+  {% block form %}
+  <div>{% include 'tcn/components/form.html' %}</div>
+  {% endblock %}
+</section>
+{% endblock %}

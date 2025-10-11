@@ -10,7 +10,7 @@
 <!---->
 {% block styles %}{{ block.super }}
 <link
-  href="{% static 'ui/css/styles.css' %}"
+  href="{% static 'tcn/css/styles.css' %}"
   rel="stylesheet"
   type="text/css"
 />
@@ -49,7 +49,7 @@
     data-tip="{% trans 'Profile' %}"
   >
     <a
-      href="{% url 'ui:profile' %}"
+      href="{% url 'tcn:profile' %}"
       class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
     >
       <i data-lucide="user" class="size-4 lg:size-6"></i>
@@ -75,7 +75,7 @@
     data-tip="{% trans 'Log in' %}"
   >
     <a
-      href="{% url 'ui:login' %}"
+      href="{% url 'tcn:login' %}"
       class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
     >
       <i data-lucide="log-in" class="size-4 lg:size-6"></i>
@@ -87,7 +87,7 @@
     data-tip="{% trans 'Subscribe' %}"
   >
     <a
-      href="{% url 'ui:subscribe' %}"
+      href="{% url 'tcn:subscribe' %}"
       class="btn btn-square btn-soft btn-sm btn-success md:btn-md 2xl:btn-lg"
     >
       <i data-lucide="heart-handshake" class="size-4 lg:size-6"></i>
@@ -115,7 +115,7 @@
 {% endblock %}
 
 <!---->
-{% block footer %}{% include 'ui/components/footer.html' %}{% endblock %}
+{% block footer %}{% include 'tcn/components/footer.html' %}{% endblock %}
 
 <!---->
 {% block drawer_branding %}

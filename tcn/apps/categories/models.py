@@ -23,7 +23,7 @@ class CategoryIndex(DateTimeMixin, Page):
     )
 
     context_object_name = "index"
-    template = "ui/categories/index.html"
+    template = "tcn/categories/index.html"
     content_panels = Page.content_panels + [FieldPanel("description")]
     page_description = _("Category index page")
 
@@ -56,7 +56,7 @@ class Category(DateTimeMixin, ChildPaginatorMixin, Page):
 
     show_in_menus = True
     context_object_name = "category"
-    template = "ui/categories/id.html"
+    template = "tcn/categories/id.html"
     content_panels = Page.content_panels + [
         FieldPanel("description"),
         FieldPanel("display_owner"),

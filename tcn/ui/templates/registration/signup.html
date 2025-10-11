@@ -1,4 +1,4 @@
-{% extends 'ui/base.html' %}{% load i18n wagtailcore_tags %}
+{% extends 'tcn/base.html' %}{% load i18n wagtailcore_tags %}
 
 <!---->
 {% block title %}{{ block.super }} | {% trans 'Subscribe' %}{% endblock %}
@@ -39,14 +39,14 @@
       <p>{% trans 'Welcome, please signup to continue.' %}</p>
 
       <!---->
-      {% include 'ui/components/form.html' %}
+      {% include 'tcn/components/form.html' %}
 
       <div class="grid grid-cols-2 gap-4">
-        <a href="{% url 'ui:login' %}" class="btn btn-soft btn-primary">
+        <a href="{% url 'tcn:login' %}" class="btn btn-soft btn-primary">
           {% trans 'Log in' %}
         </a>
         <a
-          href="{% url 'ui:password_reset' %}"
+          href="{% url 'tcn:password_reset' %}"
           class="btn btn-soft btn-primary"
         >
           {% trans 'Forgot password?' %}

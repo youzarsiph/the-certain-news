@@ -1,15 +1,15 @@
-{% extends 'ui/base.html' %}{% load i18n wagtailcore_tags %}
+{% extends 'tcn/base.html' %}{% load i18n wagtailcore_tags %}
 
 <!---->
 {% block title %}{{ block.super }} | {% trans 'Profile' %}{% endblock %}
 
 <!---->
-{% block content %}
+{% block container %}
 <div class="drawer drawer-end">
   <input id="profile-drawer" type="checkbox" class="drawer-toggle sr-only" />
 
   <div class="drawer-content size-full overflow-y-auto">
-    <div class="relative container py-20 px-4 mx-auto">
+    <div class="relative container py-24 px-4 mx-auto">
       <main class="flex flex-col gap-4 lg:gap-6">
         <nav class="flex items-center gap-4">
           <div
@@ -28,7 +28,7 @@
           <div class="breadcrumbs p-0">
             <ol>
               <li>
-                <a href="{% url 'ui:profile' %}">{% trans 'Profile' %}</a>
+                <a href="{% url 'tcn:profile' %}">{% trans 'Profile' %}</a>
               </li>
               {% block breadcrumbs %}{% endblock %}
             </ol>
@@ -92,13 +92,13 @@
 
       <ul class="menu menu-vertical w-full">
         <li>
-          <a href="{% url 'ui:profile' %}">
+          <a href="{% url 'tcn:profile' %}">
             <i data-lucide="user" class="size-4 lg:size-6"></i>
             <span>{% trans 'Profile' %}</span>
           </a>
         </li>
         <li>
-          <a href="{% url 'ui:saved-articles' %}">
+          <a href="{% url 'tcn:saved-articles' %}">
             <i data-lucide="bookmark-check" class="size-4 lg:size-6"></i>
             <span>{% trans 'Saved articles' %}</span>
           </a>
@@ -111,28 +111,50 @@
             </summary>
             <ul>
               <li>
-                <a href="{% url 'ui:password_change' %}">
-                  <i data-lucide="rotate-ccw-key" class="size-4 lg:size-6"></i>
-                  <span>{% trans 'Change Password' %}</span>
-                </a>
-              </li>
-              <li>
-                <a href="{% url 'ui:u-user' request.user.slug %}">
+                <a href="{% url 'tcn:u-user' request.user.slug %}">
                   <i data-lucide="user-pen" class="size-4 lg:size-6"></i>
                   <span>{% trans 'Edit account' %}</span>
                 </a>
               </li>
               <li>
-                <a href="{% url 'ui:d-user' request.user.slug %}">
+                <a href="{% url 'tcn:d-user' request.user.slug %}">
                   <i data-lucide="user-x" class="size-4 lg:size-6"></i>
                   <span>{% trans 'Delete account' %}</span>
                 </a>
+              </li>
+              <li>
+                <details>
+                  <summary>
+                    <i data-lucide="lock-keyhole" class="size-4 lg:size-6"></i>
+                    {% trans 'Password' %}
+                  </summary>
+                  <ul>
+                    <li>
+                      <a href="{% url 'tcn:password_change' %}">
+                        <i
+                          data-lucide="rotate-ccw-key"
+                          class="size-4 lg:size-6"
+                        ></i>
+                        <span>{% trans 'Change Password' %}</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="{% url 'tcn:password_reset' %}">
+                        <i
+                          data-lucide="rectangle-ellipsis"
+                          class="size-4 lg:size-6"
+                        ></i>
+                        <span>{% trans 'Reset Password' %}</span>
+                      </a>
+                    </li>
+                  </ul>
+                </details>
               </li>
             </ul>
           </details>
         </li>
         <li>
-          <a href="{% url 'ui:authors' %}">
+          <a href="{% url 'tcn:authors' %}">
             <i data-lucide="users" class="size-4 lg:size-6"></i>
             <span>{% trans 'Following' %}</span>
           </a>

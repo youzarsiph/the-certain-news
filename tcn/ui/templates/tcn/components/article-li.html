@@ -1,0 +1,22 @@
+{% load i18n wagtailcore_tags wagtailimages_tags %}
+
+<li
+  class="list-row relative items-center border border-base-300 hover:bg-base-200"
+>
+  <a href="{% pageurl article %}" class="absolute inset-0 z-10">
+    <span class="sr-only">{% trans 'Read' %}</span>
+  </a>
+  <div>
+    <figure class="rounded-box overflow-clip size-32">
+      {% image article.image fill-1080x1080 %}
+    </figure>
+  </div>
+  <div>
+    <h2 class="text-xl text-primary font-bold lg:text-2xl">
+      {{ article.title }}
+    </h2>
+    <p>{{ article.headline }}</p>
+  </div>
+
+  <i data-lucide="chevron-right" class="size-8 rtl:rotate-180"></i>
+</li>

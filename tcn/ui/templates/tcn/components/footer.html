@@ -1,0 +1,105 @@
+{% load i18n wagtailcore_tags %}
+
+<div class="grid gap-4 w-full">
+  <footer class="footer gap-4 w-full sm:footer-horizontal p-10">
+    <nav>
+      <div class="footer-title">{% trans 'Services' %}</div>
+      <a href="#" class="link link-hover">{% trans 'Ads' %}</a>
+      <a href="#" class="link link-hover">{% trans 'News' %}</a>
+    </nav>
+    <nav>
+      <div class="footer-title">{% trans 'Company' %}</div>
+      {% for page in home.get_children %}
+      <a href="{% pageurl page %}" class="link link-hover">{{ page }}</a>
+      {% endfor %}
+    </nav>
+    <nav>
+      <div class="footer-title">{% trans 'Legal' %}</div>
+      <a href="#" class="link link-hover">{% trans 'Terms of use' %}</a>
+      <a href="#" class="link link-hover">{% trans 'Privacy policy' %}</a>
+      <a href="#" class="link link-hover">{% trans 'Cookie policy' %}</a>
+    </nav>
+  </footer>
+  <footer class="footer gap-4 w-full border-base-300 border-t p-10">
+    <aside class="grid-flow-col gap-4 items-center">
+      <h1 class="relative">
+        <a
+          href="{% pageurl home %}"
+          class="btn btn-square btn-primary lg:btn-lg"
+        >
+          <div
+            class="btn btn-square btn-primary rotate-45 p-0 shadow-none lg:btn-lg"
+          >
+            <i
+              data-lucide="scroll-text"
+              class="-rotate-45 lg:size-8 2xl:size-10"
+            ></i>
+          </div>
+          <span class="sr-only">{% trans 'The Certain News' %}</span>
+        </a>
+      </h1>
+
+      <p class="text-primary">
+        {% trans 'The Certain News' %}
+        <br />
+        {% trans 'Journalism with Certainty' %}
+      </p>
+    </aside>
+    <nav class="grid gap-4">
+      <div class="grid grid-flow-col gap-4">
+        <div
+          class="tooltip tooltip-right rtl:tooltip-left tooltip-success"
+          data-tip="{% trans 'Facebook' %}"
+        >
+          <a
+            href="https://facebook.com/"
+            class="btn btn-sm btn-square lg:btn-md btn-primary"
+          >
+            <i data-lucide="facebook" class="size-4 lg:size-6"></i>
+            <span class="sr-only">{% trans 'Facebook' %}</span>
+          </a>
+        </div>
+        <div
+          class="tooltip tooltip-right rtl:tooltip-left tooltip-success"
+          data-tip="{% trans 'Instagram' %}"
+        >
+          <a
+            href="https://instagram.com/"
+            class="btn btn-sm btn-square lg:btn-md btn-primary"
+          >
+            <i data-lucide="instagram" class="size-4 lg:size-6"></i>
+            <span class="sr-only">{% trans 'Instagram' %}</span>
+          </a>
+        </div>
+        <div
+          class="tooltip tooltip-right rtl:tooltip-left tooltip-success"
+          data-tip="{% trans 'Linkedin' %}"
+        >
+          <a
+            href="https://linkedin.com/"
+            class="btn btn-sm btn-square lg:btn-md btn-primary"
+          >
+            <i data-lucide="linkedin" class="size-4 lg:size-6"></i>
+            <span class="sr-only">{% trans 'Linkedin' %}</span>
+          </a>
+        </div>
+        <div
+          class="tooltip tooltip-right rtl:tooltip-left tooltip-success"
+          data-tip="{% trans 'RSS' %}"
+        >
+          <a
+            href="{% url 'tcn:rss-latest' %}"
+            class="btn btn-sm btn-square lg:btn-md btn-primary"
+          >
+            <i data-lucide="rss" class="size-4 lg:size-6"></i>
+            <span class="sr-only">{% trans 'RSS' %}</span>
+          </a>
+        </div>
+      </div>
+      <span class="flex items-center gap-2 text-primary">
+        <i data-lucide="copyright" class="size-4 lg:size-6"></i>
+        {% trans 'The Certain News' %}
+      </span>
+    </nav>
+  </footer>
+</div>

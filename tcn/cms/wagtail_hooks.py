@@ -45,7 +45,7 @@ def show_my_pages_only(parent_page, pages, request):
 # def global_admin_css():
 #     return format_html(
 #         '<link rel="stylesheet" href="{}">',
-#         static("ui/css/admin.css"),
+#         static("tcn/css/admin.css"),
 #     )
 
 
