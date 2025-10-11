@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: the-certain-news 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-09 00:23-0700\n"
+"POT-Creation-Date: 2025-10-11 02:29-0700\n"
 "PO-Revision-Date: 2025-6-20 HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\tcn\api\tests\test_articles_vs.py:48 .\tcn\api\viewsets.py:195
+#: .\tcn\api\tests\test_articles_vs.py:48 .\tcn\api\viewsets.py:196
 msgid "Article added to your saved list."
 msgstr "Kaydedilmiş listenize haber eklendi."
 
-#: .\tcn\api\tests\test_articles_vs.py:64 .\tcn\api\viewsets.py:191
+#: .\tcn\api\tests\test_articles_vs.py:64 .\tcn\api\viewsets.py:192
 msgid "Article removed from your saved list."
 msgstr "Kaydedilmiş listenizden haber kaldırıldı."
 
@@ -141,13 +141,13 @@ msgstr "kategori"
 msgid "categories"
 msgstr "kategoriler"
 
-#: .\tcn\apps\feeds\base.py:16
+#: .\tcn\apps\feeds\base.py:18
 #, fuzzy
 #| msgid "The Certain News"
 msgid "The Certain News feed"
 msgstr "Kesin Haber"
 
-#: .\tcn\apps\feeds\base.py:17 .\tcn\ui\templates\blog\base.html:19
+#: .\tcn\apps\feeds\base.py:19 .\tcn\ui\templates\blog\base.html:19
 #: .\tcn\ui\templates\blog\base.html:32 .\tcn\ui\templates\blog\base.html:118
 #: .\tcn\ui\templates\blog\base.html:131
 #: .\tcn\ui\templates\careers\base.html:19
@@ -172,20 +172,21 @@ msgstr "Kesin Haber"
 #: .\tcn\ui\templates\registration\signup.html:15
 #: .\tcn\ui\templates\registration\signup.html:30
 #: .\tcn\ui\templates\rest_framework\api.html:4
-#: .\tcn\ui\templates\ui\articles\id.html:14
-#: .\tcn\ui\templates\ui\articles\id.html:20
-#: .\tcn\ui\templates\ui\articles\id.html:24
-#: .\tcn\ui\templates\ui\articles\id.html:38
-#: .\tcn\ui\templates\ui\articles\id.html:42 .\tcn\ui\templates\ui\base.html:12
-#: .\tcn\ui\templates\ui\base.html:124 .\tcn\ui\templates\ui\base.html:140
-#: .\tcn\ui\templates\ui\base.html:329 .\tcn\ui\templates\ui\base.html:344
-#: .\tcn\ui\templates\ui\components\footer.html:38
-#: .\tcn\ui\templates\ui\components\footer.html:43
-#: .\tcn\ui\templates\ui\components\footer.html:101
+#: .\tcn\ui\templates\tcn\articles\id.html:14
+#: .\tcn\ui\templates\tcn\articles\id.html:20
+#: .\tcn\ui\templates\tcn\articles\id.html:24
+#: .\tcn\ui\templates\tcn\articles\id.html:38
+#: .\tcn\ui\templates\tcn\articles\id.html:42
+#: .\tcn\ui\templates\tcn\base.html:12 .\tcn\ui\templates\tcn\base.html:124
+#: .\tcn\ui\templates\tcn\base.html:140 .\tcn\ui\templates\tcn\base.html:333
+#: .\tcn\ui\templates\tcn\base.html:348
+#: .\tcn\ui\templates\tcn\components\footer.html:38
+#: .\tcn\ui\templates\tcn\components\footer.html:43
+#: .\tcn\ui\templates\tcn\components\footer.html:101
 msgid "The Certain News"
 msgstr "Kesin Haber"
 
-#: .\tcn\apps\feeds\base.py:19
+#: .\tcn\apps\feeds\base.py:21
 #, fuzzy
 #| msgid "Latest news around the world"
 msgid "Latest new from the World"
@@ -268,8 +269,8 @@ msgid "Links"
 msgstr "Bağlantılar"
 
 #: .\tcn\apps\mixins.py:15 .\tcn\apps\mixins.py:16
-#: .\tcn\ui\templates\ui\articles\id.html:240
-#: .\tcn\ui\templates\ui\articles\id.html:243
+#: .\tcn\ui\templates\tcn\articles\id.html:236
+#: .\tcn\ui\templates\tcn\articles\id.html:239
 msgid "Last update"
 msgstr "Son güncelleme"
 
@@ -457,6 +458,37 @@ msgstr "phone mockup"
 msgid "Phone mockup"
 msgstr "Phone mockup"
 
+#: .\tcn\ui\templates\400.html:4 .\tcn\ui\templates\400.html:9
+msgid "Bad request"
+msgstr "Geçersiz istek"
+
+#: .\tcn\ui\templates\400.html:11
+msgid "You are trying to do or doing something Suspicious."
+msgstr "Şüpheli bir şey yapmaya çalışıyorsunuz veya yapıyorsunuz."
+
+#: .\tcn\ui\templates\403.html:4 .\tcn\ui\templates\403.html:9
+msgid "Access denied"
+msgstr "Erişim reddedildi"
+
+#: .\tcn\ui\templates\403.html:11 .\tcn\ui\templates\404.html:11
+#, python-format
+msgid "The requested path <code>%(request_path)s</code> not found."
+msgstr "İstenen <code>%(request_path)s</code> yolu bulunamadı."
+
+#: .\tcn\ui\templates\404.html:4 .\tcn\ui\templates\404.html:9
+#, fuzzy
+#| msgid "No results found"
+msgid "Not found"
+msgstr "Sonuç bulunamadı"
+
+#: .\tcn\ui\templates\500.html:4 .\tcn\ui\templates\500.html:9
+msgid "Server error"
+msgstr "Sunucu hatası"
+
+#: .\tcn\ui\templates\500.html:10
+msgid "Internal server error"
+msgstr "Dahili sunucu hatası"
+
 #: .\tcn\ui\templates\blog\base.html:4
 #, fuzzy
 #| msgid "The Certain News | API"
@@ -477,7 +509,7 @@ msgstr "Blog"
 #: .\tcn\ui\templates\registration\base.html:56
 #: .\tcn\ui\templates\registration\base.html:97
 #: .\tcn\ui\templates\rest_framework\api.html:136
-#: .\tcn\ui\templates\ui\base.html:353 .\tcn\ui\templates\ui\base.html:360
+#: .\tcn\ui\templates\tcn\base.html:357 .\tcn\ui\templates\tcn\base.html:364
 msgid "Profile"
 msgstr "Profil"
 
@@ -485,8 +517,8 @@ msgstr "Profil"
 #: .\tcn\ui\templates\careers\base.html:58
 #: .\tcn\ui\templates\careers\base.html:66 .\tcn\ui\templates\docs\base.html:61
 #: .\tcn\ui\templates\docs\base.html:69
-#: .\tcn\ui\templates\registration\base.html:143
-#: .\tcn\ui\templates\ui\base.html:365 .\tcn\ui\templates\ui\base.html:373
+#: .\tcn\ui\templates\registration\base.html:165
+#: .\tcn\ui\templates\tcn\base.html:369 .\tcn\ui\templates\tcn\base.html:377
 msgid "Log out"
 msgstr "Çıkış yap"
 
@@ -494,13 +526,13 @@ msgstr "Çıkış yap"
 #: .\tcn\ui\templates\careers\base.html:72
 #: .\tcn\ui\templates\careers\base.html:79 .\tcn\ui\templates\docs\base.html:75
 #: .\tcn\ui\templates\docs\base.html:82
-#: .\tcn\ui\templates\registration\logged_out.html:43
+#: .\tcn\ui\templates\registration\logged_out.html:51
 #: .\tcn\ui\templates\registration\login.html:4
-#: .\tcn\ui\templates\registration\login.html:37
-#: .\tcn\ui\templates\registration\password_reset_complete.html:47
-#: .\tcn\ui\templates\registration\password_reset_done.html:51
+#: .\tcn\ui\templates\registration\login.html:38
+#: .\tcn\ui\templates\registration\password_reset_complete.html:51
+#: .\tcn\ui\templates\registration\password_reset_done.html:57
 #: .\tcn\ui\templates\registration\signup.html:46
-#: .\tcn\ui\templates\ui\base.html:379 .\tcn\ui\templates\ui\base.html:386
+#: .\tcn\ui\templates\tcn\base.html:383 .\tcn\ui\templates\tcn\base.html:390
 msgid "Log in"
 msgstr "Giriş yap"
 
@@ -508,11 +540,11 @@ msgstr "Giriş yap"
 #: .\tcn\ui\templates\careers\base.html:85
 #: .\tcn\ui\templates\careers\base.html:92 .\tcn\ui\templates\docs\base.html:87
 #: .\tcn\ui\templates\docs\base.html:94
-#: .\tcn\ui\templates\registration\logged_out.html:46
-#: .\tcn\ui\templates\registration\login.html:65
+#: .\tcn\ui\templates\registration\logged_out.html:58
+#: .\tcn\ui\templates\registration\login.html:71
 #: .\tcn\ui\templates\registration\signup.html:4
 #: .\tcn\ui\templates\registration\signup.html:37
-#: .\tcn\ui\templates\ui\base.html:391 .\tcn\ui\templates\ui\base.html:401
+#: .\tcn\ui\templates\tcn\base.html:395 .\tcn\ui\templates\tcn\base.html:405
 msgid "Subscribe"
 msgstr "Kayıt ol"
 
@@ -520,10 +552,10 @@ msgstr "Kayıt ol"
 #: .\tcn\ui\templates\careers\base.html:99
 #: .\tcn\ui\templates\careers\base.html:106
 #: .\tcn\ui\templates\docs\base.html:105 .\tcn\ui\templates\docs\base.html:112
-#: .\tcn\ui\templates\ui\base.html:182 .\tcn\ui\templates\ui\base.html:189
-#: .\tcn\ui\templates\ui\base.html:210 .\tcn\ui\templates\ui\base.html:435
-#: .\tcn\ui\templates\ui\search.html:6 .\tcn\ui\templates\ui\search.html:12
-#: .\tcn\ui\templates\ui\search.html:29
+#: .\tcn\ui\templates\tcn\base.html:182 .\tcn\ui\templates\tcn\base.html:189
+#: .\tcn\ui\templates\tcn\base.html:210 .\tcn\ui\templates\tcn\base.html:439
+#: .\tcn\ui\templates\tcn\search.html:6 .\tcn\ui\templates\tcn\search.html:11
+#: .\tcn\ui\templates\tcn\search.html:28
 msgid "Search"
 msgstr "Ara"
 
@@ -531,9 +563,9 @@ msgstr "Ara"
 #: .\tcn\ui\templates\careers\base.html:141
 #: .\tcn\ui\templates\rest_framework\api.html:45
 #: .\tcn\ui\templates\rest_framework\api.html:51
-#: .\tcn\ui\templates\ui\authors\id.html:12
-#: .\tcn\ui\templates\ui\authors\list.html:12
-#: .\tcn\ui\templates\ui\base.html:443
+#: .\tcn\ui\templates\tcn\authors\id.html:12
+#: .\tcn\ui\templates\tcn\authors\list.html:11
+#: .\tcn\ui\templates\tcn\base.html:447
 msgid "Home"
 msgstr "Ana Sayfa"
 
@@ -558,7 +590,7 @@ msgstr "Belgeler"
 #: .\tcn\ui\templates\registration\base.html:17
 #: .\tcn\ui\templates\registration\base.html:21
 #: .\tcn\ui\templates\registration\base.html:25
-#: .\tcn\ui\templates\ui\base.html:108 .\tcn\ui\templates\ui\base.html:117
+#: .\tcn\ui\templates\tcn\base.html:108 .\tcn\ui\templates\tcn\base.html:117
 msgid "Open drawer"
 msgstr "Menüyü aç"
 
@@ -568,16 +600,17 @@ msgstr "Menüyü kapat"
 
 #: .\tcn\ui\templates\registration\base.html:79
 #: .\tcn\ui\templates\registration\base.html:87
-#: .\tcn\ui\templates\ui\articles\list.html:107
-#: .\tcn\ui\templates\ui\articles\list.html:115
-#: .\tcn\ui\templates\ui\base.html:408 .\tcn\ui\templates\ui\base.html:416
-#: .\tcn\ui\templates\ui\search.html:143 .\tcn\ui\templates\ui\search.html:151
+#: .\tcn\ui\templates\tcn\articles\list.html:103
+#: .\tcn\ui\templates\tcn\articles\list.html:111
+#: .\tcn\ui\templates\tcn\base.html:412 .\tcn\ui\templates\tcn\base.html:420
+#: .\tcn\ui\templates\tcn\search.html:141
+#: .\tcn\ui\templates\tcn\search.html:149
 msgid "Close"
 msgstr "Kapat"
 
 #: .\tcn\ui\templates\registration\base.html:83
-#: .\tcn\ui\templates\ui\base.html:112 .\tcn\ui\templates\ui\base.html:318
-#: .\tcn\ui\templates\ui\base.html:412
+#: .\tcn\ui\templates\tcn\base.html:112 .\tcn\ui\templates\tcn\base.html:322
+#: .\tcn\ui\templates\tcn\base.html:416
 msgid "close sidebar"
 msgstr "Kenar çubuğunu kapat"
 
@@ -594,10 +627,6 @@ msgid "Account"
 msgstr "ülke"
 
 #: .\tcn\ui\templates\registration\base.html:116
-msgid "Change Password"
-msgstr "Şifreyi Değiştir"
-
-#: .\tcn\ui\templates\registration\base.html:122
 #: .\tcn\ui\templates\registration\edit.html:4
 #: .\tcn\ui\templates\registration\edit.html:9
 #, fuzzy
@@ -605,34 +634,50 @@ msgstr "Şifreyi Değiştir"
 msgid "Edit account"
 msgstr "Hesabı sil"
 
-#: .\tcn\ui\templates\registration\base.html:128
+#: .\tcn\ui\templates\registration\base.html:122
 #: .\tcn\ui\templates\registration\delete.html:4
 #: .\tcn\ui\templates\registration\delete.html:8
 #: .\tcn\ui\templates\registration\delete.html:14
 msgid "Delete account"
 msgstr "Hesabı sil"
 
-#: .\tcn\ui\templates\registration\base.html:137
-#: .\tcn\ui\templates\ui\articles\following.html:4
-#: .\tcn\ui\templates\ui\articles\following.html:9
-#: .\tcn\ui\templates\ui\articles\id.html:119
-#: .\tcn\ui\templates\ui\articles\id.html:126
-#: .\tcn\ui\templates\ui\articles\list.html:51
-#: .\tcn\ui\templates\ui\articles\list.html:59
-#: .\tcn\ui\templates\ui\authors\id.html:71
-#: .\tcn\ui\templates\ui\authors\id.html:78
-#: .\tcn\ui\templates\ui\authors\list.html:4
-#: .\tcn\ui\templates\ui\authors\list.html:19
-#: .\tcn\ui\templates\ui\search.html:46 .\tcn\ui\templates\ui\search.html:58
-#: .\tcn\ui\templates\ui\search.html:63
+#: .\tcn\ui\templates\registration\base.html:129
+#: .\tcn\ui\templates\registration\password_change_done.html:8
+#: .\tcn\ui\templates\registration\password_change_form.html:8
+msgid "Password"
+msgstr "Şifre"
+
+#: .\tcn\ui\templates\registration\base.html:138
+msgid "Change Password"
+msgstr "Şifreyi Değiştir"
+
+#: .\tcn\ui\templates\registration\base.html:147
+#, fuzzy
+#| msgid "Reset password"
+msgid "Reset Password"
+msgstr "Şifreyi sıfırla"
+
+#: .\tcn\ui\templates\registration\base.html:159
+#: .\tcn\ui\templates\tcn\articles\following.html:4
+#: .\tcn\ui\templates\tcn\articles\following.html:9
+#: .\tcn\ui\templates\tcn\articles\id.html:117
+#: .\tcn\ui\templates\tcn\articles\id.html:124
+#: .\tcn\ui\templates\tcn\articles\list.html:48
+#: .\tcn\ui\templates\tcn\articles\list.html:56
+#: .\tcn\ui\templates\tcn\authors\id.html:71
+#: .\tcn\ui\templates\tcn\authors\id.html:78
+#: .\tcn\ui\templates\tcn\authors\list.html:4
+#: .\tcn\ui\templates\tcn\authors\list.html:18
+#: .\tcn\ui\templates\tcn\search.html:45 .\tcn\ui\templates\tcn\search.html:57
+#: .\tcn\ui\templates\tcn\search.html:62
 msgid "Following"
 msgstr "İzlenenler"
 
-#: .\tcn\ui\templates\registration\delete.html:18
+#: .\tcn\ui\templates\registration\delete.html:16
 msgid "Are your sure that you want to delete your account?"
 msgstr "Hesabınızı silmek istediğinizden emin misiniz?"
 
-#: .\tcn\ui\templates\registration\delete.html:23
+#: .\tcn\ui\templates\registration\delete.html:20
 msgid "This action is destructive!"
 msgstr "Bu işlem geri alınamaz!"
 
@@ -640,19 +685,19 @@ msgstr "Bu işlem geri alınamaz!"
 msgid "Logged out"
 msgstr "Oturum kapatıldı"
 
-#: .\tcn\ui\templates\registration\logged_out.html:37
+#: .\tcn\ui\templates\registration\logged_out.html:38
 msgid "Logged Out"
 msgstr "Oturum kapatıldı"
 
-#: .\tcn\ui\templates\registration\logged_out.html:39
+#: .\tcn\ui\templates\registration\logged_out.html:41
 msgid "Thanks for spending some quality time with us today."
 msgstr "Bugün bizimle vakit geçirdiğiniz için teşekkürler."
 
-#: .\tcn\ui\templates\registration\login.html:39
+#: .\tcn\ui\templates\registration\login.html:40
 msgid "Welcome, please login to continue."
 msgstr "Hoş geldiniz, devam etmek için lütfen giriş yapın."
 
-#: .\tcn\ui\templates\registration\login.html:49
+#: .\tcn\ui\templates\registration\login.html:51
 msgid ""
 "Your account doesn't have access to this page. To proceed, please login with "
 "an account that has access. <!---->"
@@ -660,7 +705,7 @@ msgstr ""
 "Hesabınızın bu sayfaya erişim yetkisi yok. Devam etmek için lütfen yetkili "
 "bir hesapla giriş yapın."
 
-#: .\tcn\ui\templates\registration\login.html:71
+#: .\tcn\ui\templates\registration\login.html:78
 #: .\tcn\ui\templates\registration\signup.html:52
 msgid "Forgot password?"
 msgstr "Şifrenizi mi unuttunuz?"
@@ -668,11 +713,6 @@ msgstr "Şifrenizi mi unuttunuz?"
 #: .\tcn\ui\templates\registration\password_change_done.html:4
 msgid "Password Changed"
 msgstr "Şifre Değiştirildi"
-
-#: .\tcn\ui\templates\registration\password_change_done.html:8
-#: .\tcn\ui\templates\registration\password_change_form.html:8
-msgid "Password"
-msgstr "Şifre"
 
 #: .\tcn\ui\templates\registration\password_change_done.html:10
 #: .\tcn\ui\templates\registration\password_change_form.html:9
@@ -683,11 +723,11 @@ msgstr "Değiştir"
 msgid "Done"
 msgstr "Tamamlandı"
 
-#: .\tcn\ui\templates\registration\password_change_done.html:19
+#: .\tcn\ui\templates\registration\password_change_done.html:18
 msgid "Congrats"
 msgstr "Tebrikler"
 
-#: .\tcn\ui\templates\registration\password_change_done.html:22
+#: .\tcn\ui\templates\registration\password_change_done.html:20
 msgid "Your password was changed."
 msgstr "Şifreniz değiştirildi."
 
@@ -695,11 +735,11 @@ msgstr "Şifreniz değiştirildi."
 msgid "Password Change"
 msgstr "Şifre Değiştirme"
 
-#: .\tcn\ui\templates\registration\password_change_form.html:16
+#: .\tcn\ui\templates\registration\password_change_form.html:15
 msgid "Change password"
 msgstr "Şifreyi değiştir"
 
-#: .\tcn\ui\templates\registration\password_change_form.html:20
+#: .\tcn\ui\templates\registration\password_change_form.html:18
 msgid ""
 "Please enter your old password, for security's sake, and then enter your new "
 "password twice so we can verify you typed it in correctly."
@@ -717,17 +757,17 @@ msgstr "Şifre Sıfırlama"
 msgid "Password Reset Confirm"
 msgstr "Şifre Sıfırlama Onayı"
 
-#: .\tcn\ui\templates\registration\password_reset_complete.html:42
+#: .\tcn\ui\templates\registration\password_reset_complete.html:41
 msgid "Your password has been set. You may go ahead and log in now."
 msgstr "Şifreniz ayarlandı. Artık giriş yapabilirsiniz."
 
-#: .\tcn\ui\templates\registration\password_reset_confirm.html:43
+#: .\tcn\ui\templates\registration\password_reset_confirm.html:42
 msgid ""
 "Please enter your new password twice so we can verify you typed it in "
 "correctly."
 msgstr "Lütfen yeni şifrenizi doğrulamak için iki kez girin."
 
-#: .\tcn\ui\templates\registration\password_reset_confirm.html:50
+#: .\tcn\ui\templates\registration\password_reset_confirm.html:49
 msgid ""
 "The password reset link was invalid, possibly because it has already been "
 "used. Please request a new password reset. <!---->"
@@ -736,11 +776,11 @@ msgstr ""
 "yeni bir şifre sıfırlama isteğinde bulunun."
 
 #: .\tcn\ui\templates\registration\password_reset_done.html:4
-#: .\tcn\ui\templates\registration\password_reset_done.html:37
+#: .\tcn\ui\templates\registration\password_reset_done.html:38
 msgid "Password Reset Done"
 msgstr "Şifre Sıfırlama Tamamlandı"
 
-#: .\tcn\ui\templates\registration\password_reset_done.html:40
+#: .\tcn\ui\templates\registration\password_reset_done.html:41
 msgid ""
 "We've emailed you instructions for setting your password, if an account "
 "exists with the email you entered. You should receive them shortly."
@@ -748,7 +788,7 @@ msgstr ""
 "Girdiğiniz e-posta adresine kayıtlı bir hesap varsa, şifrenizi ayarlamanız "
 "için talimatları e-posta ile gönderdik. Kısa süre içinde ulaşacaktır."
 
-#: .\tcn\ui\templates\registration\password_reset_done.html:45
+#: .\tcn\ui\templates\registration\password_reset_done.html:46
 msgid ""
 "If you don't receive an email, please make sure you've entered the address "
 "you registered with, and check your spam folder."
@@ -770,7 +810,9 @@ msgid "Please go to the following page and choose a new password:"
 msgstr "Lütfen aşağıdaki sayfaya gidin ve yeni bir şifre seçin:"
 
 #: .\tcn\ui\templates\registration\password_reset_email.html:16
-msgid "Your username, in case you"
+#, fuzzy
+#| msgid "Your username, in case you"
+msgid "Your username, in case you have forgotten:"
 msgstr "Kullanıcı adınız (unutmanız durumunda):"
 
 #: .\tcn\ui\templates\registration\password_reset_email.html:18
@@ -783,11 +825,11 @@ msgid "The %(site_name)s team"
 msgstr "%(site_name)s ekibi"
 
 #: .\tcn\ui\templates\registration\password_reset_form.html:4
-#: .\tcn\ui\templates\registration\password_reset_form.html:37
+#: .\tcn\ui\templates\registration\password_reset_form.html:38
 msgid "Reset password"
 msgstr "Şifreyi sıfırla"
 
-#: .\tcn\ui\templates\registration\password_reset_form.html:40
+#: .\tcn\ui\templates\registration\password_reset_form.html:41
 msgid ""
 "Forgotten your password? Enter your email address below, and we'll email "
 "instructions for setting a new one. <!---->"
@@ -795,7 +837,7 @@ msgstr ""
 "Şifrenizi mi unuttunuz? Aşağıya e-posta adresinizi girin, size yeni bir "
 "şifre oluşturmanız için talimat göndereceğiz."
 
-#: .\tcn\ui\templates\registration\profile.html:33
+#: .\tcn\ui\templates\registration\profile.html:32
 msgid "Welcome to your Profile"
 msgstr "Profilinize hoş geldiniz"
 
@@ -825,10 +867,10 @@ msgstr "Belgeler"
 
 #: .\tcn\ui\templates\rest_framework\api.html:92
 #: .\tcn\ui\templates\rest_framework\api.html:99
-#: .\tcn\ui\templates\ui\authors\id.html:49
-#: .\tcn\ui\templates\ui\authors\id.html:114
-#: .\tcn\ui\templates\ui\authors\list.html:74
-#: .\tcn\ui\templates\ui\components\category.html:13
+#: .\tcn\ui\templates\tcn\authors\id.html:49
+#: .\tcn\ui\templates\tcn\authors\id.html:111
+#: .\tcn\ui\templates\tcn\authors\list.html:70
+#: .\tcn\ui\templates\tcn\components\category.html:13
 msgid "Articles"
 msgstr "Makaleler"
 
@@ -842,326 +884,322 @@ msgstr "Kategoriler"
 msgid "Users"
 msgstr "Kullanıcılar"
 
-#: .\tcn\ui\templates\ui\articles\archive\day.html:11
-#: .\tcn\ui\templates\ui\articles\archive\index.html:11
-#: .\tcn\ui\templates\ui\articles\archive\month.html:11
-#: .\tcn\ui\templates\ui\articles\archive\year.html:11
-#: .\tcn\ui\templates\ui\articles\id.html:14
-#: .\tcn\ui\templates\ui\articles\id.html:20
-#: .\tcn\ui\templates\ui\articles\id.html:24
-#: .\tcn\ui\templates\ui\articles\id.html:38
-#: .\tcn\ui\templates\ui\articles\id.html:42
-#: .\tcn\ui\templates\ui\components\footer.html:8
+#: .\tcn\ui\templates\tcn\articles\archive\day.html:10
+#: .\tcn\ui\templates\tcn\articles\archive\index.html:10
+#: .\tcn\ui\templates\tcn\articles\archive\month.html:10
+#: .\tcn\ui\templates\tcn\articles\archive\year.html:10
+#: .\tcn\ui\templates\tcn\articles\id.html:14
+#: .\tcn\ui\templates\tcn\articles\id.html:20
+#: .\tcn\ui\templates\tcn\articles\id.html:24
+#: .\tcn\ui\templates\tcn\articles\id.html:38
+#: .\tcn\ui\templates\tcn\articles\id.html:42
+#: .\tcn\ui\templates\tcn\components\footer.html:8
 msgid "News"
 msgstr "Haberler"
 
-#: .\tcn\ui\templates\ui\articles\archive\day.html:18
-#: .\tcn\ui\templates\ui\articles\archive\day.html:28
-#: .\tcn\ui\templates\ui\articles\archive\index.html:18
-#: .\tcn\ui\templates\ui\articles\archive\index.html:28
-#: .\tcn\ui\templates\ui\articles\archive\month.html:18
-#: .\tcn\ui\templates\ui\articles\archive\month.html:28
-#: .\tcn\ui\templates\ui\articles\archive\year.html:18
-#: .\tcn\ui\templates\ui\articles\archive\year.html:28
-#: .\tcn\ui\templates\ui\components\live.html:34
-#: .\tcn\ui\templates\ui\components\live.html:40
-#: .\tcn\ui\templates\ui\components\pagination.html:25
-#: .\tcn\ui\templates\ui\components\pagination.html:32
+#: .\tcn\ui\templates\tcn\articles\archive\day.html:17
+#: .\tcn\ui\templates\tcn\articles\archive\day.html:27
+#: .\tcn\ui\templates\tcn\articles\archive\index.html:17
+#: .\tcn\ui\templates\tcn\articles\archive\index.html:27
+#: .\tcn\ui\templates\tcn\articles\archive\month.html:17
+#: .\tcn\ui\templates\tcn\articles\archive\month.html:27
+#: .\tcn\ui\templates\tcn\articles\archive\year.html:17
+#: .\tcn\ui\templates\tcn\articles\archive\year.html:27
+#: .\tcn\ui\templates\tcn\components\live.html:34
+#: .\tcn\ui\templates\tcn\components\live.html:40
+#: .\tcn\ui\templates\tcn\components\pagination.html:25
+#: .\tcn\ui\templates\tcn\components\pagination.html:32
 msgid "Previous"
 msgstr "Önceki"
 
-#: .\tcn\ui\templates\ui\articles\archive\day.html:36
-#: .\tcn\ui\templates\ui\articles\archive\day.html:46
-#: .\tcn\ui\templates\ui\articles\archive\index.html:36
-#: .\tcn\ui\templates\ui\articles\archive\index.html:46
-#: .\tcn\ui\templates\ui\articles\archive\month.html:36
-#: .\tcn\ui\templates\ui\articles\archive\month.html:46
-#: .\tcn\ui\templates\ui\articles\archive\year.html:36
-#: .\tcn\ui\templates\ui\articles\archive\year.html:46
-#: .\tcn\ui\templates\ui\components\live.html:50
-#: .\tcn\ui\templates\ui\components\live.html:56
-#: .\tcn\ui\templates\ui\components\pagination.html:49
-#: .\tcn\ui\templates\ui\components\pagination.html:59
+#: .\tcn\ui\templates\tcn\articles\archive\day.html:35
+#: .\tcn\ui\templates\tcn\articles\archive\day.html:45
+#: .\tcn\ui\templates\tcn\articles\archive\index.html:35
+#: .\tcn\ui\templates\tcn\articles\archive\index.html:45
+#: .\tcn\ui\templates\tcn\articles\archive\month.html:35
+#: .\tcn\ui\templates\tcn\articles\archive\month.html:45
+#: .\tcn\ui\templates\tcn\articles\archive\year.html:35
+#: .\tcn\ui\templates\tcn\articles\archive\year.html:45
+#: .\tcn\ui\templates\tcn\components\live.html:50
+#: .\tcn\ui\templates\tcn\components\live.html:56
+#: .\tcn\ui\templates\tcn\components\pagination.html:49
+#: .\tcn\ui\templates\tcn\components\pagination.html:59
 msgid "Next"
 msgstr "Sonraki"
 
-#: .\tcn\ui\templates\ui\articles\archive\day.html:65
-#: .\tcn\ui\templates\ui\articles\archive\month.html:65
-#: .\tcn\ui\templates\ui\articles\list.html:89
-#: .\tcn\ui\templates\ui\authors\id.html:129
+#: .\tcn\ui\templates\tcn\articles\archive\day.html:64
+#: .\tcn\ui\templates\tcn\articles\archive\month.html:64
+#: .\tcn\ui\templates\tcn\articles\list.html:86
+#: .\tcn\ui\templates\tcn\authors\id.html:126
 msgid "No articles"
 msgstr "Haber yok"
 
-#: .\tcn\ui\templates\ui\articles\archive\day.html:66
-#: .\tcn\ui\templates\ui\articles\archive\month.html:66
+#: .\tcn\ui\templates\tcn\articles\archive\day.html:65
+#: .\tcn\ui\templates\tcn\articles\archive\month.html:65
 msgid "No articles published on"
 msgstr "Şu tarihte haber yayımlanmadı:"
 
-#: .\tcn\ui\templates\ui\articles\archive\index.html:4
-#: .\tcn\ui\templates\ui\articles\archive\index.html:11
-#: .\tcn\ui\templates\ui\base.html:454
+#: .\tcn\ui\templates\tcn\articles\archive\index.html:4
+#: .\tcn\ui\templates\tcn\articles\archive\index.html:10
+#: .\tcn\ui\templates\tcn\base.html:458
 msgid "Archive"
 msgstr "Arşiv"
 
-#: .\tcn\ui\templates\ui\articles\archive\index.html:62
-#: .\tcn\ui\templates\ui\articles\archive\year.html:65
-#: .\tcn\ui\templates\ui\components\article-1.html:11
-#: .\tcn\ui\templates\ui\components\article-2.html:13
-#: .\tcn\ui\templates\ui\components\article.html:13
-#: .\tcn\ui\templates\ui\components\live.html:16
+#: .\tcn\ui\templates\tcn\articles\archive\index.html:61
+#: .\tcn\ui\templates\tcn\articles\archive\year.html:64
+#: .\tcn\ui\templates\tcn\components\article-1.html:11
+#: .\tcn\ui\templates\tcn\components\article-2.html:13
+#: .\tcn\ui\templates\tcn\components\article-li.html:7
+#: .\tcn\ui\templates\tcn\components\article.html:13
+#: .\tcn\ui\templates\tcn\components\live.html:16
 msgid "Read"
 msgstr "Oku"
 
-#: .\tcn\ui\templates\ui\articles\archive\index.html:76
-#: .\tcn\ui\templates\ui\articles\archive\year.html:79
+#: .\tcn\ui\templates\tcn\articles\archive\index.html:75
+#: .\tcn\ui\templates\tcn\articles\archive\year.html:78
 msgid "None available"
 msgstr "Mevcut değil"
 
-#: .\tcn\ui\templates\ui\articles\id.html:132
-#: .\tcn\ui\templates\ui\articles\id.html:139
-#: .\tcn\ui\templates\ui\authors\id.html:84
-#: .\tcn\ui\templates\ui\authors\id.html:91
-#: .\tcn\ui\templates\ui\authors\id.html:106
+#: .\tcn\ui\templates\tcn\articles\id.html:130
+#: .\tcn\ui\templates\tcn\articles\id.html:137
+#: .\tcn\ui\templates\tcn\authors\id.html:82
+#: .\tcn\ui\templates\tcn\authors\id.html:88
+#: .\tcn\ui\templates\tcn\authors\id.html:103
 msgid "Follow"
 msgstr "İzle"
 
-#: .\tcn\ui\templates\ui\articles\id.html:151
-#: .\tcn\ui\templates\ui\articles\id.html:158
-#: .\tcn\ui\templates\ui\authors\id.html:99
+#: .\tcn\ui\templates\tcn\articles\id.html:149
+#: .\tcn\ui\templates\tcn\articles\id.html:156
+#: .\tcn\ui\templates\tcn\authors\id.html:96
 msgid "Login to follow"
 msgstr "İzlemek için giriş yapın"
 
-#: .\tcn\ui\templates\ui\articles\id.html:175
-#: .\tcn\ui\templates\ui\articles\id.html:182
-#: .\tcn\ui\templates\ui\articles\list.html:13
-#: .\tcn\ui\templates\ui\base.html:148 .\tcn\ui\templates\ui\base.html:158
-#: .\tcn\ui\templates\ui\base.html:447
-#: .\tcn\ui\templates\ui\components\article-1.html:27
-#: .\tcn\ui\templates\ui\components\article-1.html:29
-#: .\tcn\ui\templates\ui\components\article-2.html:34
-#: .\tcn\ui\templates\ui\components\article-2.html:37
-#: .\tcn\ui\templates\ui\components\article.html:27
-#: .\tcn\ui\templates\ui\components\article.html:30
-#: .\tcn\ui\templates\ui\components\live.html:5
-#: .\tcn\ui\templates\ui\components\live.html:90
-#: .\tcn\ui\templates\ui\components\live.html:93
-#: .\tcn\ui\templates\ui\index.html:17 .\tcn\ui\templates\ui\index.html:52
-#: .\tcn\ui\templates\ui\index.html:141
+#: .\tcn\ui\templates\tcn\articles\id.html:171
+#: .\tcn\ui\templates\tcn\articles\id.html:178
+#: .\tcn\ui\templates\tcn\articles\list.html:12
+#: .\tcn\ui\templates\tcn\base.html:148 .\tcn\ui\templates\tcn\base.html:158
+#: .\tcn\ui\templates\tcn\base.html:451
+#: .\tcn\ui\templates\tcn\components\article-1.html:27
+#: .\tcn\ui\templates\tcn\components\article-1.html:29
+#: .\tcn\ui\templates\tcn\components\article-2.html:34
+#: .\tcn\ui\templates\tcn\components\article-2.html:37
+#: .\tcn\ui\templates\tcn\components\article.html:27
+#: .\tcn\ui\templates\tcn\components\article.html:30
+#: .\tcn\ui\templates\tcn\components\live.html:5
+#: .\tcn\ui\templates\tcn\components\live.html:90
+#: .\tcn\ui\templates\tcn\components\live.html:93
+#: .\tcn\ui\templates\tcn\index.html:17 .\tcn\ui\templates\tcn\index.html:52
+#: .\tcn\ui\templates\tcn\index.html:153
 msgid "Breaking"
 msgstr "Son Dakika"
 
-#: .\tcn\ui\templates\ui\articles\id.html:205
-#: .\tcn\ui\templates\ui\components\article-1.html:60
-#: .\tcn\ui\templates\ui\components\article-2.html:68
-#: .\tcn\ui\templates\ui\components\article.html:61
+#: .\tcn\ui\templates\tcn\articles\id.html:201
+#: .\tcn\ui\templates\tcn\components\article-1.html:60
+#: .\tcn\ui\templates\tcn\components\article-2.html:68
+#: .\tcn\ui\templates\tcn\components\article.html:61
 msgid "Category"
 msgstr "Kategori"
 
-#: .\tcn\ui\templates\ui\articles\id.html:228
-#: .\tcn\ui\templates\ui\articles\id.html:231
-#: .\tcn\ui\templates\ui\components\article-1.html:37
-#: .\tcn\ui\templates\ui\components\article-2.html:45
-#: .\tcn\ui\templates\ui\components\article.html:38
+#: .\tcn\ui\templates\tcn\articles\id.html:224
+#: .\tcn\ui\templates\tcn\articles\id.html:227
+#: .\tcn\ui\templates\tcn\components\article-1.html:37
+#: .\tcn\ui\templates\tcn\components\article-2.html:45
+#: .\tcn\ui\templates\tcn\components\article.html:38
 msgid "Date published"
 msgstr "Yayın tarihi"
 
-#: .\tcn\ui\templates\ui\articles\id.html:254
-#: .\tcn\ui\templates\ui\articles\id.html:261
+#: .\tcn\ui\templates\tcn\articles\id.html:250
+#: .\tcn\ui\templates\tcn\articles\id.html:257
 msgid "Save"
 msgstr "Kaydet"
 
-#: .\tcn\ui\templates\ui\articles\id.html:267
-#: .\tcn\ui\templates\ui\articles\id.html:274
+#: .\tcn\ui\templates\tcn\articles\id.html:263
+#: .\tcn\ui\templates\tcn\articles\id.html:270
 msgid "Login to save"
 msgstr "Kaydetmek için giriş yapın"
 
-#: .\tcn\ui\templates\ui\articles\id.html:282
-#: .\tcn\ui\templates\ui\articles\id.html:298
-#: .\tcn\ui\templates\ui\articles\id.html:366
+#: .\tcn\ui\templates\tcn\articles\id.html:278
+#: .\tcn\ui\templates\tcn\articles\id.html:294
+#: .\tcn\ui\templates\tcn\articles\id.html:363
 msgid "Copy URL"
 msgstr "URL'yi Kopyala"
 
-#: .\tcn\ui\templates\ui\articles\id.html:304
-#: .\tcn\ui\templates\ui\articles\id.html:311
-#: .\tcn\ui\templates\ui\components\footer.html:52
-#: .\tcn\ui\templates\ui\components\footer.html:59
+#: .\tcn\ui\templates\tcn\articles\id.html:300
+#: .\tcn\ui\templates\tcn\articles\id.html:307
+#: .\tcn\ui\templates\tcn\components\footer.html:52
+#: .\tcn\ui\templates\tcn\components\footer.html:59
 msgid "Facebook"
 msgstr "Facebook"
 
-#: .\tcn\ui\templates\ui\articles\id.html:336
+#: .\tcn\ui\templates\tcn\articles\id.html:333
 msgid "More news from"
 msgstr "Daha fazla haber:"
 
-#: .\tcn\ui\templates\ui\articles\id.html:359
+#: .\tcn\ui\templates\tcn\articles\id.html:356
 msgid "Copied"
 msgstr "Kopyalandı"
 
-#: .\tcn\ui\templates\ui\articles\list.html:4
-#: .\tcn\ui\templates\ui\articles\list.html:17
-#: .\tcn\ui\templates\ui\index.html:90
+#: .\tcn\ui\templates\tcn\articles\list.html:4
+#: .\tcn\ui\templates\tcn\articles\list.html:14
+#: .\tcn\ui\templates\tcn\index.html:90
 msgid "Latest News"
 msgstr "En Son Haberler"
 
-#: .\tcn\ui\templates\ui\articles\list.html:25
-#: .\tcn\ui\templates\ui\articles\list.html:33
-#, fuzzy
-#| msgid "Latest News"
-msgid "Latest"
+#: .\tcn\ui\templates\tcn\articles\list.html:22
+#: .\tcn\ui\templates\tcn\articles\list.html:30
+#: .\tcn\ui\templates\tcn\base.html:164 .\tcn\ui\templates\tcn\base.html:174
+#: .\tcn\ui\templates\tcn\base.html:455
+msgid "Latest news"
 msgstr "En Son Haberler"
 
-#: .\tcn\ui\templates\ui\articles\list.html:38
-#: .\tcn\ui\templates\ui\articles\list.html:46
-#: .\tcn\ui\templates\ui\articles\saved.html:4
-#: .\tcn\ui\templates\ui\articles\saved.html:8
+#: .\tcn\ui\templates\tcn\articles\list.html:35
+#: .\tcn\ui\templates\tcn\articles\list.html:43
+#: .\tcn\ui\templates\tcn\articles\saved.html:4
+#: .\tcn\ui\templates\tcn\articles\saved.html:9
 #, fuzzy
 #| msgid "Save"
 msgid "Saved"
 msgstr "Kaydet"
 
-#: .\tcn\ui\templates\ui\articles\list.html:64
-#: .\tcn\ui\templates\ui\articles\list.html:72
-#: .\tcn\ui\templates\ui\articles\list.html:103
-#: .\tcn\ui\templates\ui\search.html:79 .\tcn\ui\templates\ui\search.html:87
-#: .\tcn\ui\templates\ui\search.html:139
+#: .\tcn\ui\templates\tcn\articles\list.html:61
+#: .\tcn\ui\templates\tcn\articles\list.html:69
+#: .\tcn\ui\templates\tcn\articles\list.html:99
+#: .\tcn\ui\templates\tcn\search.html:78 .\tcn\ui\templates\tcn\search.html:86
+#: .\tcn\ui\templates\tcn\search.html:137
 msgid "Filters"
 msgstr "Filtreler"
 
-#: .\tcn\ui\templates\ui\articles\list.html:90
-#: .\tcn\ui\templates\ui\authors\id.html:130
+#: .\tcn\ui\templates\tcn\articles\list.html:87
+#: .\tcn\ui\templates\tcn\authors\id.html:127
 msgid "Published news articles will appear here"
 msgstr "Yayımlanan haberler burada görünecek"
 
-#: .\tcn\ui\templates\ui\authors\id.html:4
-#: .\tcn\ui\templates\ui\authors\id.html:15
-#: .\tcn\ui\templates\ui\authors\list.html:14
+#: .\tcn\ui\templates\tcn\authors\id.html:4
+#: .\tcn\ui\templates\tcn\authors\id.html:15
+#: .\tcn\ui\templates\tcn\authors\list.html:13
 msgid "Authors"
 msgstr "Yazarlar"
 
-#: .\tcn\ui\templates\ui\authors\id.html:56
-#: .\tcn\ui\templates\ui\authors\list.html:63
+#: .\tcn\ui\templates\tcn\authors\id.html:56
+#: .\tcn\ui\templates\tcn\authors\list.html:59
 #, fuzzy
 #| msgid "Date published"
 msgid "Date joined"
 msgstr "Yayın tarihi"
 
-#: .\tcn\ui\templates\ui\authors\list.html:32
+#: .\tcn\ui\templates\tcn\authors\list.html:28
 msgid "Details"
 msgstr "Detaylar"
 
-#: .\tcn\ui\templates\ui\authors\list.html:94
+#: .\tcn\ui\templates\tcn\authors\list.html:90
 #, fuzzy
 #| msgid "followers"
 msgid "Follow writers"
 msgstr "takipçiler"
 
-#: .\tcn\ui\templates\ui\authors\list.html:95
+#: .\tcn\ui\templates\tcn\authors\list.html:91
 msgid "Writers followed by you will appear here."
 msgstr "İzlediğiniz yazarlar burada görünecektir."
 
-#: .\tcn\ui\templates\ui\base.html:16 .\tcn\ui\templates\ui\base.html:25
-#: .\tcn\ui\templates\ui\base.html:29 .\tcn\ui\templates\ui\base.html:49
-#: .\tcn\ui\templates\ui\base.html:53
+#: .\tcn\ui\templates\tcn\base.html:16 .\tcn\ui\templates\tcn\base.html:25
+#: .\tcn\ui\templates\tcn\base.html:29 .\tcn\ui\templates\tcn\base.html:49
+#: .\tcn\ui\templates\tcn\base.html:53
 msgid "The Certain News - Journalism with Certainty."
 msgstr "The Certain News - Kesin Gazetecilik."
 
-#: .\tcn\ui\templates\ui\base.html:164 .\tcn\ui\templates\ui\base.html:174
-#: .\tcn\ui\templates\ui\base.html:451
-msgid "Latest news"
-msgstr "En Son Haberler"
-
-#: .\tcn\ui\templates\ui\base.html:218 .\tcn\ui\templates\ui\base.html:231
-#: .\tcn\ui\templates\ui\base.html:255
-#: .\tcn\ui\templates\ui\components\lang_switch.html:5
-#: .\tcn\ui\templates\ui\components\lang_switch.html:14
-#: .\tcn\ui\templates\ui\components\lang_switch.html:23
+#: .\tcn\ui\templates\tcn\base.html:218 .\tcn\ui\templates\tcn\base.html:231
+#: .\tcn\ui\templates\tcn\base.html:255
+#: .\tcn\ui\templates\tcn\components\lang_switch.html:5
+#: .\tcn\ui\templates\tcn\components\lang_switch.html:14
+#: .\tcn\ui\templates\tcn\components\lang_switch.html:23
 msgid "Language"
 msgstr "Dil"
 
-#: .\tcn\ui\templates\ui\components\footer.html:6
+#: .\tcn\ui\templates\tcn\components\footer.html:6
 msgid "Services"
 msgstr "Hizmetler"
 
-#: .\tcn\ui\templates\ui\components\footer.html:7
+#: .\tcn\ui\templates\tcn\components\footer.html:7
 msgid "Ads"
 msgstr "Reklamlar"
 
-#: .\tcn\ui\templates\ui\components\footer.html:11
+#: .\tcn\ui\templates\tcn\components\footer.html:11
 msgid "Company"
 msgstr "Şirket"
 
-#: .\tcn\ui\templates\ui\components\footer.html:17
+#: .\tcn\ui\templates\tcn\components\footer.html:17
 msgid "Legal"
 msgstr "Yasal"
 
-#: .\tcn\ui\templates\ui\components\footer.html:18
+#: .\tcn\ui\templates\tcn\components\footer.html:18
 msgid "Terms of use"
 msgstr "Kullanım koşulları"
 
-#: .\tcn\ui\templates\ui\components\footer.html:19
+#: .\tcn\ui\templates\tcn\components\footer.html:19
 msgid "Privacy policy"
 msgstr "Gizlilik politikası"
 
-#: .\tcn\ui\templates\ui\components\footer.html:20
+#: .\tcn\ui\templates\tcn\components\footer.html:20
 msgid "Cookie policy"
 msgstr "Çerez politikası"
 
-#: .\tcn\ui\templates\ui\components\footer.html:45
+#: .\tcn\ui\templates\tcn\components\footer.html:45
 msgid "Journalism with Certainty"
 msgstr "Kesin Gazetecilik"
 
-#: .\tcn\ui\templates\ui\components\footer.html:64
-#: .\tcn\ui\templates\ui\components\footer.html:71
+#: .\tcn\ui\templates\tcn\components\footer.html:64
+#: .\tcn\ui\templates\tcn\components\footer.html:71
 msgid "Instagram"
 msgstr "Instagram"
 
-#: .\tcn\ui\templates\ui\components\footer.html:76
-#: .\tcn\ui\templates\ui\components\footer.html:83
+#: .\tcn\ui\templates\tcn\components\footer.html:76
+#: .\tcn\ui\templates\tcn\components\footer.html:83
 #, fuzzy
 #| msgid "Link"
 msgid "Linkedin"
 msgstr "Bağlantı"
 
-#: .\tcn\ui\templates\ui\components\footer.html:88
-#: .\tcn\ui\templates\ui\components\footer.html:95
+#: .\tcn\ui\templates\tcn\components\footer.html:88
+#: .\tcn\ui\templates\tcn\components\footer.html:95
 msgid "RSS"
 msgstr "RSS"
 
-#: .\tcn\ui\templates\ui\components\form.html:28
+#: .\tcn\ui\templates\tcn\components\form.html:28
 msgid "Submit"
 msgstr "Gönder"
 
-#: .\tcn\ui\templates\ui\components\pagination.html:9
-#: .\tcn\ui\templates\ui\components\pagination.html:19
+#: .\tcn\ui\templates\tcn\components\pagination.html:9
+#: .\tcn\ui\templates\tcn\components\pagination.html:19
 msgid "First"
 msgstr "İlk"
 
-#: .\tcn\ui\templates\ui\components\pagination.html:39
+#: .\tcn\ui\templates\tcn\components\pagination.html:39
 msgid "Current"
 msgstr "Geçerli"
 
-#: .\tcn\ui\templates\ui\components\pagination.html:42
+#: .\tcn\ui\templates\tcn\components\pagination.html:42
 msgid "of"
 msgstr " / "
 
-#: .\tcn\ui\templates\ui\components\pagination.html:65
-#: .\tcn\ui\templates\ui\components\pagination.html:72
+#: .\tcn\ui\templates\tcn\components\pagination.html:65
+#: .\tcn\ui\templates\tcn\components\pagination.html:72
 msgid "Last"
 msgstr "Son"
 
-#: .\tcn\ui\templates\ui\contact_landing.html:8
-#: .\tcn\ui\templates\ui\contact_landing.html:12
+#: .\tcn\ui\templates\tcn\contact_landing.html:8
+#: .\tcn\ui\templates\tcn\contact_landing.html:12
 msgid "Success"
 msgstr "Başarılı"
 
-#: .\tcn\ui\templates\ui\index.html:4
+#: .\tcn\ui\templates\tcn\index.html:4
 msgid "Latest news around the world"
 msgstr "Dünyadan en son haberler"
 
-#: .\tcn\ui\templates\ui\index.html:27 .\tcn\ui\templates\ui\index.html:31
+#: .\tcn\ui\templates\tcn\index.html:27 .\tcn\ui\templates\tcn\index.html:31
 msgid "Live feed"
 msgstr "Canlı yayın"
 
-#: .\tcn\ui\templates\ui\index.html:34
+#: .\tcn\ui\templates\tcn\index.html:33
 msgid ""
 "Stay updated with the latest breaking news as it happens. New breaking "
 "articles will appear instantly in the live feed below."
@@ -1169,37 +1207,42 @@ msgstr ""
 "En son dakika haberleriyle güncel kalın. Yeni son dakika makaleleri "
 "aşağıdaki canlı yayında anında görünecektir."
 
-#: .\tcn\ui\templates\ui\index.html:74
+#: .\tcn\ui\templates\tcn\index.html:74
 msgid "Trending now"
 msgstr "Gündemde"
 
-#: .\tcn\ui\templates\ui\index.html:134
+#: .\tcn\ui\templates\tcn\index.html:146
 msgid "Now"
 msgstr "Şimdi"
 
-#: .\tcn\ui\templates\ui\search.html:39
+#: .\tcn\ui\templates\tcn\search.html:38
 msgid "Search results"
 msgstr "Arama sonuçları"
 
-#: .\tcn\ui\templates\ui\search.html:72
+#: .\tcn\ui\templates\tcn\search.html:71
 msgid "Login to view articles by writers you follow."
 msgstr "İzlediğiniz yazarların makalelerini görmek için giriş yapın."
 
-#: .\tcn\ui\templates\ui\search.html:99
+#: .\tcn\ui\templates\tcn\search.html:98
 msgid "No results found"
 msgstr "Sonuç bulunamadı"
 
-#: .\tcn\ui\views.py:41
+#: .\tcn\ui\views.py:43
 msgid "Your account was created successfully!"
 msgstr "Hesabınız başarıyla oluşturuldu!"
 
-#: .\tcn\ui\views.py:117
+#: .\tcn\ui\views.py:123
 msgid "Your account was updated successfully!"
 msgstr "Hesabınız başarıyla güncellendi!"
 
-#: .\tcn\ui\views.py:142
+#: .\tcn\ui\views.py:148
 msgid "Your account was deleted successfully!"
 msgstr "Hesabınız başarıyla silindi!"
+
+#, fuzzy
+#~| msgid "Latest News"
+#~ msgid "Latest"
+#~ msgstr "En Son Haberler"
 
 #, fuzzy
 #~| msgid "Related article"
