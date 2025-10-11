@@ -4,8 +4,8 @@
 {% block title %}{{ block.super }} | {% trans 'Subscribe' %}{% endblock %}
 
 <!---->
-{% block content %}
-<div class="flex px-4 pb-20 pt-28 items-center justify-center">
+{% block container %}
+<div class="container mx-auto px-4 py-24 flex items-center justify-center">
   <section
     class="card card-sm w-full max-w-lg bg-base-200 shadow-xs md:card-md xl:card-lg 2xl:card-xl 2xl:max-w-xl"
   >
@@ -34,21 +34,26 @@
     </div>
 
     <main class="card-body gap-6">
-      <h2 class="card-title text-primary">{% trans 'Subscribe' %}</h2>
+      <div class="container-prose">
+        <h2>{% trans 'Subscribe' %}</h2>
+        <p>{% trans 'Welcome, please subscribe to continue.' %}</p>
+      </div>
 
-      <p>{% trans 'Welcome, please signup to continue.' %}</p>
-
-      <!---->
       {% include 'tcn/components/form.html' %}
 
-      <div class="grid grid-cols-2 gap-4">
-        <a href="{% url 'tcn:login' %}" class="btn btn-soft btn-primary">
+      <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <a
+          href="{% url 'tcn:login' %}"
+          class="btn btn-sm btn-soft btn-success lg:btn-md 2xl:btn-lg"
+        >
+          <i data-lucide="log-in" class="size-4 lg:size-6"></i>
           {% trans 'Log in' %}
         </a>
         <a
           href="{% url 'tcn:password_reset' %}"
-          class="btn btn-soft btn-primary"
+          class="btn btn-sm btn-soft btn-primary lg:btn-md 2xl:btn-lg"
         >
+          <i data-lucide="key" class="size-4 lg:size-6"></i>
           {% trans 'Forgot password?' %}
         </a>
       </div>

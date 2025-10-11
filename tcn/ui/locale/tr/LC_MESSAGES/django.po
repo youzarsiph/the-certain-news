@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: the-certain-news 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-11 02:29-0700\n"
+"POT-Creation-Date: 2025-10-11 03:41-0700\n"
 "PO-Revision-Date: 2025-6-20 HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -531,7 +531,7 @@ msgstr "Çıkış yap"
 #: .\tcn\ui\templates\registration\login.html:38
 #: .\tcn\ui\templates\registration\password_reset_complete.html:51
 #: .\tcn\ui\templates\registration\password_reset_done.html:57
-#: .\tcn\ui\templates\registration\signup.html:46
+#: .\tcn\ui\templates\registration\signup.html:50
 #: .\tcn\ui\templates\tcn\base.html:383 .\tcn\ui\templates\tcn\base.html:390
 msgid "Log in"
 msgstr "Giriş yap"
@@ -543,7 +543,7 @@ msgstr "Giriş yap"
 #: .\tcn\ui\templates\registration\logged_out.html:58
 #: .\tcn\ui\templates\registration\login.html:71
 #: .\tcn\ui\templates\registration\signup.html:4
-#: .\tcn\ui\templates\registration\signup.html:37
+#: .\tcn\ui\templates\registration\signup.html:38
 #: .\tcn\ui\templates\tcn\base.html:395 .\tcn\ui\templates\tcn\base.html:405
 msgid "Subscribe"
 msgstr "Kayıt ol"
@@ -706,7 +706,7 @@ msgstr ""
 "bir hesapla giriş yapın."
 
 #: .\tcn\ui\templates\registration\login.html:78
-#: .\tcn\ui\templates\registration\signup.html:52
+#: .\tcn\ui\templates\registration\signup.html:57
 msgid "Forgot password?"
 msgstr "Şifrenizi mi unuttunuz?"
 
@@ -842,7 +842,9 @@ msgid "Welcome to your Profile"
 msgstr "Profilinize hoş geldiniz"
 
 #: .\tcn\ui\templates\registration\signup.html:39
-msgid "Welcome, please signup to continue."
+#, fuzzy
+#| msgid "Welcome, please signup to continue."
+msgid "Welcome, please subscribe to continue."
 msgstr "Hoş geldiniz, devam etmek için lütfen kayıt olun."
 
 #: .\tcn\ui\templates\rest_framework\api.html:24
