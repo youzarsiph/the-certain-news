@@ -3,35 +3,27 @@
 <!---->
 {% block main_content %}
 <section class="grid gap-8 size-full">
-  <div
-    class="card mx-auto card-sm w-full max-w-lg bg-base-200 shadow-xs md:card-md xl:card-lg 2xl:card-xl 2xl:max-w-xl"
-  >
-    <div class="flex items-center justify-center py-8">
-      {% if request.user.photo %}
-      <div class="avatar">
-        <div class="mask mask-squircle size-20 lg:size-32">
-          <img src="{{ request.user.photo.url }}" alt="{{ request.user }}" />
-        </div>
-      </div>
-      {% else %}
-      <div class="avatar avatar-placeholder">
-        <div
-          class="mask mask-squircle flex items-center justify-center bg-primary text-primary-content size-20 lg:size-32"
-        >
-          <span class="text-5xl uppercase font-bold lg:text-7xl">
-            {{ request.user.first_name|slice:':1' }}
-          </span>
-        </div>
-      </div>
-      {% endif %}
+  <div class="container-prose">
+    {% if request.user.photo %}
+    <figure class="size-32 rounded-full mx-auto overflow-hidden lg:size-44">
+      <img
+        class="w-full"
+        src="{{ request.user.photo.url }}"
+        alt="{{ request.user }}"
+      />
+    </figure>
+    {% else %}
+    <div
+      class="size-32 rounded-box mx-auto mb-8 bg-primary text-primary-content overflow-hidden lg:size-44"
+    >
+      <i data-lucide="user" class="size-full"></i>
     </div>
+    {% endif %}
 
-    <div class="card-body gap-4 lg:gap-6">
-      <div class="container-prose">
-        <h1>{{ request.user.get_full_name }}</h1>
-        <p>{% trans 'Welcome to your Profile' %}</p>
-      </div>
-    </div>
+    <h1 class="text-center">
+      {% firstof request.user.get_full_name request.user.username %}
+    </h1>
+    <p class="lead text-center">{{ request.user.bio|default_if_none:"" }}</p>
   </div>
 </section>
 {% endblock %}

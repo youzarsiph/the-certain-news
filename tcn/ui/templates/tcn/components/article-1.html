@@ -2,7 +2,7 @@
 
 <li
   role="article"
-  class="relative card bg-base-300 hover:bg-base-200 card-side card-sm md:card-md xl:card-lg 2xl:card-xl nth-[2]:lg:col-span-6 nth-[3]:lg:col-span-6 nth-[2]:lg:row-span-3 nth-[3]:lg:row-span-3 group col-span-12 row-span-12 size-full shadow-sm first:flex-col md:col-span-6 md:row-span-6 first:md:col-span-12 lg:col-span-6 lg:row-span-6 first:lg:col-span-6 first:lg:row-span-6"
+  class="relative card card-side card-sm bg-base-100 border border-base-300 group col-span-12 row-span-12 size-full hover:bg-base-200 md:card-md xl:card-lg 2xl:card-xl md:col-span-6 md:row-span-6 first:md:col-span-12 lg:col-span-6 lg:row-span-6 nth-[2]:lg:col-span-6 nth-[3]:lg:col-span-6 nth-[2]:lg:row-span-3 nth-[3]:lg:row-span-3 first:flex-col first:lg:col-span-6 first:lg:row-span-6"
 >
   <a
     href="{% url 'tcn:redirect' article.link.slug %}"
@@ -12,7 +12,7 @@
   </a>
 
   <figure
-    class="skeleton overflow-clip w-full min-w-1/2 max-w-1/2 group-first:max-w-full"
+    class="rounded-box overflow-clip w-full max-w-1/3 group-first:max-w-full"
   >
     {% image article.image fill-1920x1080 %}
   </figure>

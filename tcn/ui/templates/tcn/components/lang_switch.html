@@ -31,8 +31,15 @@
         rel="alternate"
         href="{% pageurl page.localized %}"
         hreflang="{{ language_code }}"
+        class="flex flex-row items-center justify-between gap-6"
       >
-        {{ language_name }} - ({{ lang.name_local }})
+        <span class="flex items-center gap-4">
+          {{ language_name }} - ({{ lang.name_local }})
+        </span>
+
+        {% if language_code == LANGUAGE_CODE %}
+        <i data-lucide="check" class="size-4 lg:size-6"></i>
+        {% endif %}
       </a>
       {% endlanguage %}
     </li>

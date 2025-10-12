@@ -38,7 +38,7 @@ class Home(Page):
 
         return {
             **context,
-            "trending_news": articles.order_by("link__view_count")[:9],
+            "trending_news": articles.order_by("link__view_count")[:10],
             "latest_news": articles.order_by("-created_at")[:9],
             "breaking_news": articles.filter(is_breaking=True).order_by("-created_at")[
                 :9

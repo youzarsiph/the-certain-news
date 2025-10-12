@@ -1,12 +1,12 @@
-{% extends 'tcn/base.html' %}{% load i18n wagtailcore_tags %}
+{% extends 'registration/base.html' %}{% load i18n wagtailcore_tags %}
 
 <!---->
-{% block title %}{{ block.super }} | {% trans 'Authors' %}{% endblock %}
+{% block title %}{{ block.super }} | {% trans 'Following' %}{% endblock %}
 
 <!---->
-{% block content %}
+{% block main_content %}
 <div class="container-prose">
-  <h1>{% trans 'Authors' %}</h1>
+  <h1>{% trans 'Following' %}</h1>
 </div>
 
 <ol class="list grid grid-cols-1 lg:grid-cols-2 gap-4">

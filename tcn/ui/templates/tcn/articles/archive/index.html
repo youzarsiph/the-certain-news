@@ -67,14 +67,11 @@
     </article>
   </li>
   {% empty %}
-  <li class="col-span-12">
-    <article
-      class="card card-sm bg-base-200 shadow-xs lg:card-md xl:card-lg 2xl:card-xl overflow-hidden"
-    >
-      <main class="card-body items-center">
-        <h2 class="card-title text-primary">{% trans 'None available' %}</h2>
-      </main>
-    </article>
+  <li class="col-span-full">
+    <div class="container-prose">
+      <h2>{% trans 'No results' %}</h2>
+      <p>{% trans "We couldn't find any results." %}</p>
+    </div>
   </li>
   {% endfor %}
 </ol>

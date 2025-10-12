@@ -15,6 +15,11 @@ auth_urls = [
     path("accounts/subscribe/", views.SignupView.as_view(), name="subscribe"),
     path("accounts/profile/", views.ProfileView.as_view(), name="profile"),
     path(
+        "accounts/following/",
+        views.UserListView.as_view(template_name="registration/users.html"),
+        name="following",
+    ),
+    path(
         "accounts/<slug:slug>/edit/",
         views.UserUpdateView.as_view(),
         name="u-user",

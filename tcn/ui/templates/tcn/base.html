@@ -98,6 +98,7 @@
             <section
               class="bg-base-100 relative size-full grow overflow-hidden sm:rounded-box"
             >
+              {% block main %}
               <section class="size-full grid gap-8 overflow-y-auto">
                 {% block navbar %}
                 <header class="absolute inset-x-0 top-0 z-40 backdrop-blur-3xl">
@@ -250,7 +251,7 @@
                           popover
                           id="language"
                           style="position-anchor: --language"
-                          class="menu dropdown dropdown-bottom bg-base-100/75 dark:bg-base-100/50 dropdown-left rounded-box backdrop-blur-3xl text-base-content shadow-xl rtl:dropdown-right"
+                          class="menu dropdown dropdown-bottom bg-base-100/75 dark:bg-base-100/50 dropdown-left rounded-box backdrop-blur-3xl shadow-xl rtl:dropdown-right"
                         >
                           <li class="menu-title">{% translate 'Language' %}</li>
 
@@ -311,6 +312,7 @@
                 <!---->
                 {% endblock %}
               </section>
+              {% endblock %}
             </section>
           </div>
         </div>

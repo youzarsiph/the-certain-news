@@ -95,7 +95,12 @@
     {% include 'tcn/components/article.html' with article=result %}
     <!---->
     {% empty %}
-    <li>{% trans 'No results found' %}</li>
+    <li class="col-span-full">
+      <div class="container-prose">
+        <h2>{% trans 'No results' %}</h2>
+        <p>{% trans "We couldn't find any results." %}</p>
+      </div>
+    </li>
     {% endfor %}
   </ol>
 
