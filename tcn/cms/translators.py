@@ -3,7 +3,6 @@
 from typing import Any, Dict, List
 
 from django.conf import settings
-from django.utils.translation import gettext_lazy as _
 from huggingface_hub import InferenceClient
 from wagtail.models import Locale
 from wagtail_localize.strings import StringValue
@@ -59,7 +58,7 @@ class HuggingFaceTranslator(BaseMachineTranslator):
             return str(response.choices[0].message.content)
 
         except Exception as e:
-            return _(f"Failed to translate because of Error: {e}")
+            return f"Failed to translate.\n Error: {e}"
 
     def translate(
         self,
