@@ -106,6 +106,7 @@ class FormDetailPage(AbstractEmailForm):
 
     subpage_types = []
     template = "tcn/form.html"
+    landing_page_template = "tcn/form_landing.html"
     parent_page_types = ["home.Home"]
     page_description = _("Page with form")
 
