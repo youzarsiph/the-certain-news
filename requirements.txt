@@ -23,5 +23,5 @@ pygments
 python-dotenv
 wagtail
 wagtail-ai
-wagtail-localize
+wagtail-localize[google]
 wagtail-tw-blocks
