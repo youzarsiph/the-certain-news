@@ -23,7 +23,11 @@ def short_link(context, slug=None):
 def get_site_root(context):
     """Get site root"""
 
-    return Site.find_for_request(context["request"]).root_page.localized
+    try:
+        return Site.find_for_request(context["request"]).root_page.localized
+
+    except KeyError:
+        return Site.objects.filter(is_default_site=True).first().root_page.localized
 
 
 @register.simple_tag()
