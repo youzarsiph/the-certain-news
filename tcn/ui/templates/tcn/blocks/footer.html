@@ -1,0 +1,100 @@
+{% load i18n wagtailcore_tags %}
+
+<div
+  class="grid grid-cols-12 gap-4 border-t border-base-300 p-6 md:p-8 lg:p-12"
+>
+  <div class="col-span-12 lg:col-span-4">
+    <footer class="footer content-center gap-4 size-full">
+      <aside class="grid-flow-col gap-4 items-center">
+        <h1 class="relative">
+          <a href="/" class="btn btn-square btn-primary lg:btn-lg">
+            <div
+              class="btn btn-square btn-primary rotate-45 p-0 shadow-none lg:btn-lg"
+            >
+              <i
+                data-lucide="scroll-text"
+                class="-rotate-45 lg:size-8 2xl:size-10"
+              ></i>
+            </div>
+            <span class="sr-only">{{ self.title }}</span>
+          </a>
+        </h1>
+
+        <p class="text-primary">
+          {{ self.title }}
+          <br />
+          {{ self.headline }}
+        </p>
+      </aside>
+
+      <nav class="grid gap-4">
+        <div class="flex items-center gap-4">
+          {% for link in self.social %}
+          <div
+            class="tooltip tooltip-right rtl:tooltip-left tooltip-success"
+            data-tip="{{ link.label }}"
+          >
+            {% if link.icon %}
+            <a
+              href="{{ link.url }}"
+              class="btn btn-sm btn-square lg:btn-md btn-primary"
+            >
+              <i data-lucide="{{ link.icon }}" class="size-4 lg:size-6"></i>
+              <span class="sr-only">{{ link.label }}</span>
+            </a>
+            {% else %}
+            <a href="{{ link.url }}" class="btn btn-sm lg:btn-md btn-primary">
+              {{ link.label }}
+            </a>
+            {% endif %}
+          </div>
+          {% endfor %}
+          <div
+            class="tooltip tooltip-right rtl:tooltip-left tooltip-success"
+            data-tip="{% trans 'RSS' %}"
+          >
+            <a
+              href="{% url 'tcn:rss-latest' %}"
+              class="btn btn-sm btn-square lg:btn-md btn-primary"
+            >
+              <i data-lucide="rss" class="size-4 lg:size-6"></i>
+              <span class="sr-only">{% trans 'RSS' %}</span>
+            </a>
+          </div>
+        </div>
+
+        <span class="flex items-center gap-2 text-primary">
+          <span class="sr-only">
+            &copy; {% trans 'Copy right, All right reserved.' %}
+          </span>
+          <i data-lucide="copyright" class="size-4 lg:size-6"></i>
+          {{ self.title }}
+        </span>
+      </nav>
+    </footer>
+  </div>
+
+  <nav class="col-span-12 lg:col-span-8">
+    <ul
+      class="menu p-0 grid gap-4 menu-sm size-full grid-cols-2 md:menu-md lg:grid-cols-3 2xl:grid-cols-4"
+    >
+      {% for section in self.sections %}
+      <li>
+        <span class="menu-title font-semibold">{{ section.title }}</span>
+
+        <ul>
+          {% for link in section.links %}
+          <li>
+            <a
+              href="{% if link.url %}{{ link.url }}{% elif link.page %}{% pageurl link.page %}{% else %}#{% endif %}"
+            >
+              {{ link.label }}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </li>
+      {% endfor %}
+    </ul>
+  </nav>
+</div>

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: the-certain-news 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-12 07:29-0700\n"
+"POT-Creation-Date: 2025-10-13 07:47-0700\n"
 "PO-Revision-Date: 2025-6-20 HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,8 +50,9 @@ msgstr "başlık"
 msgid "Article headline"
 msgstr "Haber başlığı"
 
-#: .\tcn\apps\articles\models.py:45 .\tcn\apps\home\models.py:60
-#: .\tcn\apps\home\models.py:93
+#: .\tcn\apps\articles\models.py:45 .\tcn\apps\home\models.py:70
+#: .\tcn\apps\home\models.py:96 .\tcn\apps\home\models.py:123
+#: .\tcn\apps\home\models.py:179
 msgid "content"
 msgstr "içerik"
 
@@ -179,8 +180,8 @@ msgstr "Kesin Haber"
 #: .\tcn\ui\templates\tcn\articles\id.html:38
 #: .\tcn\ui\templates\tcn\articles\id.html:42
 #: .\tcn\ui\templates\tcn\base.html:12 .\tcn\ui\templates\tcn\base.html:125
-#: .\tcn\ui\templates\tcn\base.html:141 .\tcn\ui\templates\tcn\base.html:335
-#: .\tcn\ui\templates\tcn\base.html:350
+#: .\tcn\ui\templates\tcn\base.html:141 .\tcn\ui\templates\tcn\base.html:331
+#: .\tcn\ui\templates\tcn\base.html:346
 #: .\tcn\ui\templates\tcn\components\footer.html:38
 #: .\tcn\ui\templates\tcn\components\footer.html:43
 #: .\tcn\ui\templates\tcn\components\footer.html:101
@@ -193,49 +194,66 @@ msgstr "Kesin Haber"
 msgid "Latest new from the World"
 msgstr "Dünyadan en son haberler"
 
-#: .\tcn\apps\home\models.py:28
+#: .\tcn\apps\home\models.py:25
+msgid "footer"
+msgstr "altbilgi"
+
+#: .\tcn\apps\home\models.py:26
+msgid "Footer"
+msgstr "Altbilgi"
+
+#: .\tcn\apps\home\models.py:38
 msgid "Home page"
 msgstr "Ana sayfa"
 
-#: .\tcn\apps\home\models.py:29
+#: .\tcn\apps\home\models.py:39
 msgid "Home pages"
 msgstr "Ana sayfalar"
 
-#: .\tcn\apps\home\models.py:61 .\tcn\apps\home\models.py:94
+#: .\tcn\apps\home\models.py:71 .\tcn\apps\home\models.py:97
+#: .\tcn\apps\home\models.py:124 .\tcn\apps\home\models.py:180
 msgid "Page content"
 msgstr "Sayfa içeriği"
 
-#: .\tcn\apps\home\models.py:66
+#: .\tcn\apps\home\models.py:78
 msgid "About us page"
 msgstr "Hakkımızda sayfası"
 
-#: .\tcn\apps\home\models.py:74
+#: .\tcn\apps\home\models.py:85
 msgid "About page"
 msgstr "Hakkında sayfası"
 
-#: .\tcn\apps\home\models.py:75
+#: .\tcn\apps\home\models.py:86
 msgid "About pages"
 msgstr "Hakkında sayfaları"
 
-#: .\tcn\apps\home\models.py:99
+#: .\tcn\apps\home\models.py:105
+msgid "Detail pages like terms, privacy policy, disclaimer"
+msgstr "Detay sayfaları"
+
+#: .\tcn\apps\home\models.py:129 .\tcn\apps\home\models.py:185
 msgid "message"
 msgstr "mesaj"
 
-#: .\tcn\apps\home\models.py:100
+#: .\tcn\apps\home\models.py:130 .\tcn\apps\home\models.py:186
 msgid "Message to display after form submission"
 msgstr "Form gönderildikten sonra görüntülenecek mesaj"
 
-#: .\tcn\apps\home\models.py:105
+#: .\tcn\apps\home\models.py:135
 msgid "Contact us page"
 msgstr "Bize ulaşın sayfası"
 
-#: .\tcn\apps\home\models.py:130
+#: .\tcn\apps\home\models.py:160
 msgid "Contact page"
 msgstr "İletişim sayfası"
 
-#: .\tcn\apps\home\models.py:131
+#: .\tcn\apps\home\models.py:161
 msgid "Contact pages"
 msgstr "İletişim sayfaları"
+
+#: .\tcn\apps\home\models.py:192
+msgid "Page with form"
+msgstr "Formulu sayfa"
 
 #: .\tcn\apps\links\models.py:25
 msgid "article"
@@ -459,6 +477,88 @@ msgstr "phone mockup"
 msgid "Phone mockup"
 msgstr "Phone mockup"
 
+#: .\tcn\cms\blocks.py:90 .\tcn\cms\blocks.py:110
+msgid "icon"
+msgstr "ikon"
+
+#: .\tcn\cms\blocks.py:91 .\tcn\cms\blocks.py:111
+msgid "Link icon (Lucide icons)"
+msgstr "Bağlantı ikonu"
+
+#: .\tcn\cms\blocks.py:95
+msgid "url"
+msgstr "url"
+
+#: .\tcn\cms\blocks.py:96
+#, fuzzy
+#| msgid "Link"
+msgid "Link URL"
+msgstr "Bağlantı"
+
+#: .\tcn\cms\blocks.py:100 .\tcn\cms\blocks.py:120
+msgid "label"
+msgstr "etiket"
+
+#: .\tcn\cms\blocks.py:101 .\tcn\cms\blocks.py:121
+#, fuzzy
+#| msgid "Link url"
+msgid "Link label"
+msgstr "Bağlantı URL'si"
+
+#: .\tcn\cms\blocks.py:115
+#, fuzzy
+#| msgid "Home page"
+msgid "page"
+msgstr "Ana sayfa"
+
+#: .\tcn\cms\blocks.py:116
+#, fuzzy
+#| msgid "Login to save"
+msgid "Link to a page"
+msgstr "Kaydetmek için giriş yapın"
+
+#: .\tcn\cms\blocks.py:140
+msgid "Section title"
+msgstr "Bölüm başlığı"
+
+#: .\tcn\cms\blocks.py:144
+#, fuzzy
+#| msgid "Links"
+msgid "links"
+msgstr "Bağlantılar"
+
+#: .\tcn\cms\blocks.py:145
+msgid "List of links"
+msgstr "Bağlantılar listesi"
+
+#: .\tcn\cms\blocks.py:159
+msgid "Title"
+msgstr "Başlık"
+
+#: .\tcn\cms\blocks.py:160
+msgid "Same as Home page title"
+msgstr "Ana sayfa başlığıyla aynı"
+
+#: .\tcn\cms\blocks.py:164 .\tcn\cms\blocks.py:165
+msgid "Headline"
+msgstr "Manşet"
+
+#: .\tcn\cms\blocks.py:169
+msgid "Social media links"
+msgstr "Sosyal medya bağlantıları"
+
+#: .\tcn\cms\blocks.py:170
+msgid "List of social media links"
+msgstr "Sosyal medya bağlantılarının listesi"
+
+#: .\tcn\cms\blocks.py:174
+msgid "Navigation sections"
+msgstr "Gezinme bölümleri"
+
+#: .\tcn\cms\blocks.py:175
+msgid "List of footer nav sections"
+msgstr "Altbilgi gezinme bölümlerinin listesi"
+
 #: .\tcn\ui\templates\400.html:4 .\tcn\ui\templates\400.html:9
 msgid "Bad request"
 msgstr "Geçersiz istek"
@@ -511,7 +611,7 @@ msgstr "Blog"
 #: .\tcn\ui\templates\registration\base.html:274
 #: .\tcn\ui\templates\registration\base.html:278
 #: .\tcn\ui\templates\rest_framework\api.html:136
-#: .\tcn\ui\templates\tcn\base.html:359 .\tcn\ui\templates\tcn\base.html:366
+#: .\tcn\ui\templates\tcn\base.html:355 .\tcn\ui\templates\tcn\base.html:362
 msgid "Profile"
 msgstr "Profil"
 
@@ -521,7 +621,7 @@ msgstr "Profil"
 #: .\tcn\ui\templates\docs\base.html:69
 #: .\tcn\ui\templates\registration\base.html:426
 #: .\tcn\ui\templates\registration\base.html:430
-#: .\tcn\ui\templates\tcn\base.html:371 .\tcn\ui\templates\tcn\base.html:379
+#: .\tcn\ui\templates\tcn\base.html:367 .\tcn\ui\templates\tcn\base.html:375
 msgid "Log out"
 msgstr "Çıkış yap"
 
@@ -535,7 +635,7 @@ msgstr "Çıkış yap"
 #: .\tcn\ui\templates\registration\password_reset_complete.html:51
 #: .\tcn\ui\templates\registration\password_reset_done.html:57
 #: .\tcn\ui\templates\registration\signup.html:50
-#: .\tcn\ui\templates\tcn\base.html:385 .\tcn\ui\templates\tcn\base.html:392
+#: .\tcn\ui\templates\tcn\base.html:381 .\tcn\ui\templates\tcn\base.html:388
 msgid "Log in"
 msgstr "Giriş yap"
 
@@ -547,7 +647,7 @@ msgstr "Giriş yap"
 #: .\tcn\ui\templates\registration\login.html:71
 #: .\tcn\ui\templates\registration\signup.html:4
 #: .\tcn\ui\templates\registration\signup.html:38
-#: .\tcn\ui\templates\tcn\base.html:397 .\tcn\ui\templates\tcn\base.html:407
+#: .\tcn\ui\templates\tcn\base.html:393 .\tcn\ui\templates\tcn\base.html:403
 msgid "Subscribe"
 msgstr "Kayıt ol"
 
@@ -559,7 +659,7 @@ msgstr "Kayıt ol"
 #: .\tcn\ui\templates\registration\base.html:66
 #: .\tcn\ui\templates\registration\base.html:87
 #: .\tcn\ui\templates\tcn\base.html:183 .\tcn\ui\templates\tcn\base.html:190
-#: .\tcn\ui\templates\tcn\base.html:211 .\tcn\ui\templates\tcn\base.html:441
+#: .\tcn\ui\templates\tcn\base.html:211 .\tcn\ui\templates\tcn\base.html:437
 #: .\tcn\ui\templates\tcn\search.html:6 .\tcn\ui\templates\tcn\search.html:11
 #: .\tcn\ui\templates\tcn\search.html:28
 msgid "Search"
@@ -571,7 +671,7 @@ msgstr "Ara"
 #: .\tcn\ui\templates\registration\base.html:268
 #: .\tcn\ui\templates\rest_framework\api.html:45
 #: .\tcn\ui\templates\rest_framework\api.html:51
-#: .\tcn\ui\templates\tcn\base.html:449
+#: .\tcn\ui\templates\tcn\base.html:445
 msgid "Home"
 msgstr "Ana Sayfa"
 
@@ -604,8 +704,8 @@ msgstr "Menüyü aç"
 
 #: .\tcn\ui\templates\registration\base.html:25
 #: .\tcn\ui\templates\registration\base.html:188
-#: .\tcn\ui\templates\tcn\base.html:113 .\tcn\ui\templates\tcn\base.html:324
-#: .\tcn\ui\templates\tcn\base.html:418
+#: .\tcn\ui\templates\tcn\base.html:113 .\tcn\ui\templates\tcn\base.html:320
+#: .\tcn\ui\templates\tcn\base.html:414
 msgid "close sidebar"
 msgstr "Kenar çubuğunu kapat"
 
@@ -626,9 +726,9 @@ msgstr "Dil"
 #: .\tcn\ui\templates\tcn\articles\id.html:178
 #: .\tcn\ui\templates\tcn\articles\list.html:12
 #: .\tcn\ui\templates\tcn\base.html:149 .\tcn\ui\templates\tcn\base.html:159
-#: .\tcn\ui\templates\tcn\base.html:453
-#: .\tcn\ui\templates\tcn\categories\index.html:37
-#: .\tcn\ui\templates\tcn\categories\index.html:40
+#: .\tcn\ui\templates\tcn\base.html:449
+#: .\tcn\ui\templates\tcn\categories\index.html:39
+#: .\tcn\ui\templates\tcn\categories\index.html:42
 #: .\tcn\ui\templates\tcn\components\article-1.html:27
 #: .\tcn\ui\templates\tcn\components\article-1.html:29
 #: .\tcn\ui\templates\tcn\components\article-2.html:34
@@ -648,7 +748,7 @@ msgstr "Son Dakika"
 #: .\tcn\ui\templates\tcn\articles\list.html:22
 #: .\tcn\ui\templates\tcn\articles\list.html:30
 #: .\tcn\ui\templates\tcn\base.html:165 .\tcn\ui\templates\tcn\base.html:175
-#: .\tcn\ui\templates\tcn\base.html:457 .\tcn\ui\templates\tcn\index.html:87
+#: .\tcn\ui\templates\tcn\base.html:453 .\tcn\ui\templates\tcn\index.html:87
 msgid "Latest news"
 msgstr "En Son Haberler"
 
@@ -659,7 +759,7 @@ msgstr "En Son Haberler"
 #: .\tcn\ui\templates\tcn\articles\list.html:106
 #: .\tcn\ui\templates\tcn\articles\saved.html:79
 #: .\tcn\ui\templates\tcn\articles\saved.html:87
-#: .\tcn\ui\templates\tcn\base.html:414 .\tcn\ui\templates\tcn\base.html:422
+#: .\tcn\ui\templates\tcn\base.html:410 .\tcn\ui\templates\tcn\base.html:418
 #: .\tcn\ui\templates\tcn\search.html:146
 #: .\tcn\ui\templates\tcn\search.html:154
 msgid "Close"
@@ -1011,7 +1111,7 @@ msgstr "Sonraki"
 
 #: .\tcn\ui\templates\tcn\articles\archive\index.html:4
 #: .\tcn\ui\templates\tcn\articles\archive\index.html:10
-#: .\tcn\ui\templates\tcn\base.html:460
+#: .\tcn\ui\templates\tcn\base.html:456
 msgid "Archive"
 msgstr "Arşiv"
 
@@ -1129,6 +1229,17 @@ msgstr "Yayın tarihi"
 msgid "The Certain News - Journalism with Certainty."
 msgstr "The Certain News - Kesin Gazetecilik."
 
+#: .\tcn\ui\templates\tcn\blocks\footer.html:54
+#: .\tcn\ui\templates\tcn\blocks\footer.html:61
+#: .\tcn\ui\templates\tcn\components\footer.html:88
+#: .\tcn\ui\templates\tcn\components\footer.html:95
+msgid "RSS"
+msgstr "RSS"
+
+#: .\tcn\ui\templates\tcn\blocks\footer.html:68
+msgid "Copy right, All right reserved."
+msgstr "Telif hakkı, Tüm hakları saklıdır"
+
 #: .\tcn\ui\templates\tcn\components\footer.html:6
 msgid "Services"
 msgstr "Hizmetler"
@@ -1172,11 +1283,6 @@ msgstr "Instagram"
 #| msgid "Link"
 msgid "Linkedin"
 msgstr "Bağlantı"
-
-#: .\tcn\ui\templates\tcn\components\footer.html:88
-#: .\tcn\ui\templates\tcn\components\footer.html:95
-msgid "RSS"
-msgstr "RSS"
 
 #: .\tcn\ui\templates\tcn\components\form.html:28
 msgid "Submit"
@@ -1255,6 +1361,11 @@ msgstr "Hesabınız başarıyla güncellendi!"
 msgid "Your account was deleted successfully!"
 msgstr "Hesabınız başarıyla silindi!"
 
+#, fuzzy
+#~| msgid "description"
+#~ msgid "sections"
+#~ msgstr "açıklama"
+
 #~ msgid "Close drawer"
 #~ msgstr "Menüyü kapat"
 
@@ -1306,11 +1417,6 @@ msgstr "Hesabınız başarıyla silindi!"
 #~| msgid "Articles"
 #~ msgid "Article"
 #~ msgstr "Makaleler"
-
-#, fuzzy
-#~| msgid "description"
-#~ msgid "Reaction"
-#~ msgstr "açıklama"
 
 #, python-brace-format
 #~ msgid "You are no longer following {user.username}."

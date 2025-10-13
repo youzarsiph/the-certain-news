@@ -12,15 +12,25 @@ from wagtail.search import index
 
 from tcn.apps.articles.models import Article
 from tcn.apps.categories.models import Category
-from tcn.cms.blocks import MediaBlock
+from tcn.cms.blocks import FooterStreamBlock, MediaBlock
 
 
 class Home(Page):
     """Home page"""
 
+    footer = StreamField(
+        FooterStreamBlock(),
+        min_num=1,
+        max_num=1,
+        verbose_name=_("footer"),
+        help_text=_("Footer"),
+    )
+
     template = "tcn/index.html"
     context_object_name = "home"
     parent_page_types = ["wagtailcore.Page"]
+    content_panels = Page.content_panels + [FieldPanel("footer")]
+    search_fields = Page.search_fields + [index.SearchField("footer")]
 
     class Meta(Page.Meta):
         """Meta data"""
@@ -61,18 +71,38 @@ class About(Page):
         help_text=_("Page content"),
     )
 
-    template = "tcn/about.html"
+    subpage_types = []
     context_object_name = "about"
+    template = "tcn/about.html"
+    parent_page_types = ["home.Home"]
     page_description = _("About us page")
     content_panels = Page.content_panels + [FieldPanel("content")]
-    parent_page_types = ["home.Home"]
-    subpage_types = []
+    search_fields = Page.search_fields + [index.SearchField("content")]
 
     class Meta(Page.Meta):
         """Meta data"""
 
         verbose_name = _("About page")
         verbose_name_plural = _("About pages")
+
+
+class DetailPages(Page):
+    """Pages to create details like terms, privacy policy, disclaimer"""
+
+    content = StreamField(
+        MediaBlock(),
+        null=True,
+        blank=True,
+        verbose_name=_("content"),
+        help_text=_("Page content"),
+    )
+
+    subpage_types = []
+    template = "tcn/page.html"
+    parent_page_types = ["home.Home"]
+    content_panels = Page.content_panels + [FieldPanel("content")]
+    search_fields = Page.search_fields + [index.SearchField("content")]
+    page_description = _("Detail pages like terms, privacy policy, disclaimer")
 
 
 class FormField(AbstractFormField):
@@ -129,3 +159,52 @@ class Contact(AbstractEmailForm):
 
         verbose_name = _("Contact page")
         verbose_name_plural = _("Contact pages")
+
+
+class FormFields(AbstractFormField):
+    page = ParentalKey(
+        "home.FormDetailPage",
+        on_delete=models.CASCADE,
+        related_name="form_fields",
+    )
+
+
+class FormDetailPage(AbstractEmailForm):
+    """Page to create pages with forms like contact us, feedback"""
+
+    content = StreamField(
+        MediaBlock(),
+        null=True,
+        blank=True,
+        verbose_name=_("content"),
+        help_text=_("Page content"),
+    )
+    message = RichTextField(
+        null=True,
+        blank=True,
+        verbose_name=_("message"),
+        help_text=_("Message to display after form submission"),
+    )
+
+    subpage_types = []
+    template = "tcn/form.html"
+    parent_page_types = ["home.Home"]
+    page_description = _("Page with form")
+
+    content_panels = AbstractEmailForm.content_panels + [
+        FieldPanel("content"),
+        FieldPanel("message"),
+        FormSubmissionsPanel(),
+        InlinePanel("form_fields"),
+        MultiFieldPanel(
+            [
+                FieldPanel("subject"),
+                FieldRowPanel([FieldPanel("from_address"), FieldPanel("to_address")]),
+            ],
+            "Email",
+        ),
+    ]
+    search_fields = AbstractEmailForm.search_fields + [
+        index.SearchField("content"),
+        index.SearchField("message"),
+    ]

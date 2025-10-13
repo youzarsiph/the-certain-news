@@ -80,3 +80,113 @@ class MediaBlock(TextBlock):
         verbose_name=_("phone mockup"),
         help_text=_("Phone mockup"),
     )
+
+
+class ExternalLinkBlock(blocks.StructBlock):
+    """External links"""
+
+    icon = blocks.CharBlock(
+        required=False,
+        verbose_name=_("icon"),
+        help_text=_("Link icon (Lucide icons)"),
+    )
+    url = blocks.URLBlock(
+        required=False,
+        verbose_name=_("url"),
+        help_text=_("URL"),
+    )
+    label = blocks.CharBlock(
+        required=True,
+        verbose_name=_("label"),
+        help_text=_("Link label"),
+    )
+
+
+class InternalLinkBlock(blocks.StructBlock):
+    """Internal links"""
+
+    icon = blocks.CharBlock(
+        required=False,
+        verbose_name=_("icon"),
+        help_text=_("Link icon (Lucide icons)"),
+    )
+    page = blocks.PageChooserBlock(
+        required=False,
+        verbose_name=_("page"),
+        help_text=_("Link to a page"),
+    )
+    label = blocks.CharBlock(
+        required=True,
+        verbose_name=_("label"),
+        help_text=_("Link label"),
+    )
+
+
+class LinkBlock(ExternalLinkBlock, InternalLinkBlock):
+    """Link blocks"""
+
+    class Meta:
+        """Meta data"""
+
+        icon = "link"
+
+
+class SectionBlock(blocks.StructBlock):
+    """Menu sections"""
+
+    title = blocks.CharBlock(
+        max_length=255,
+        verbose_name=_("title"),
+        help_text=_("Section title"),
+    )
+    links = blocks.ListBlock(
+        LinkBlock(),
+        label=_("links"),
+        help_text=_("List of links"),
+    )
+
+    class Meta:
+        """Meta data"""
+
+        icon = "table"
+
+
+class FooterBlock(blocks.StructBlock):
+    """Footer block"""
+
+    title = blocks.CharBlock(
+        required=True,
+        label=_("Title"),
+        help_text=_("Same as Home page title"),
+    )
+    headline = blocks.CharBlock(
+        required=True,
+        label=_("Headline"),
+        help_text=_("Headline"),
+    )
+    social = blocks.ListBlock(
+        ExternalLinkBlock(),
+        label=_("Social media links"),
+        help_text=_("List of social media links"),
+    )
+    sections = blocks.ListBlock(
+        SectionBlock(),
+        label=_("Navigation sections"),
+        help_text=_("List of footer nav sections"),
+    )
+
+    class Meta:
+        """Meta data"""
+
+        icon = "minus"
+        template = "tcn/blocks/footer.html"
+        block_counts = {
+            "social": {"min_num": 1, "max_num": 1},
+            "sections": {"min_num": 1, "max_num": 1},
+        }
+
+
+class FooterStreamBlock(blocks.StreamBlock):
+    """Footer stream block"""
+
+    footer = FooterBlock()

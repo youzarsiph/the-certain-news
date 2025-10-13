@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: the-certain-news 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-12 07:29-0700\n"
+"POT-Creation-Date: 2025-10-13 07:46-0700\n"
 "PO-Revision-Date: 2025-6-20 HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,8 +58,9 @@ msgstr "عنوان المقال"
 msgid "Article headline"
 msgstr "عنوان المقال"
 
-#: .\tcn\apps\articles\models.py:45 .\tcn\apps\home\models.py:60
-#: .\tcn\apps\home\models.py:93
+#: .\tcn\apps\articles\models.py:45 .\tcn\apps\home\models.py:70
+#: .\tcn\apps\home\models.py:96 .\tcn\apps\home\models.py:123
+#: .\tcn\apps\home\models.py:179
 #, fuzzy
 #| msgid "Article content"
 msgid "content"
@@ -211,8 +212,8 @@ msgstr "النبأ اليقين"
 #: .\tcn\ui\templates\tcn\articles\id.html:38
 #: .\tcn\ui\templates\tcn\articles\id.html:42
 #: .\tcn\ui\templates\tcn\base.html:12 .\tcn\ui\templates\tcn\base.html:125
-#: .\tcn\ui\templates\tcn\base.html:141 .\tcn\ui\templates\tcn\base.html:335
-#: .\tcn\ui\templates\tcn\base.html:350
+#: .\tcn\ui\templates\tcn\base.html:141 .\tcn\ui\templates\tcn\base.html:331
+#: .\tcn\ui\templates\tcn\base.html:346
 #: .\tcn\ui\templates\tcn\components\footer.html:38
 #: .\tcn\ui\templates\tcn\components\footer.html:43
 #: .\tcn\ui\templates\tcn\components\footer.html:101
@@ -225,65 +226,82 @@ msgstr "النبأ اليقين"
 msgid "Latest new from the World"
 msgstr "آخر الأخبار من العالم"
 
-#: .\tcn\apps\home\models.py:28
+#: .\tcn\apps\home\models.py:25
+msgid "footer"
+msgstr "التذييل"
+
+#: .\tcn\apps\home\models.py:26
+msgid "Footer"
+msgstr "التذييل"
+
+#: .\tcn\apps\home\models.py:38
 #, fuzzy
 #| msgid "Home"
 msgid "Home page"
 msgstr "الرئيسية"
 
-#: .\tcn\apps\home\models.py:29
+#: .\tcn\apps\home\models.py:39
 msgid "Home pages"
 msgstr "الصفحات الرئيسية"
 
-#: .\tcn\apps\home\models.py:61 .\tcn\apps\home\models.py:94
+#: .\tcn\apps\home\models.py:71 .\tcn\apps\home\models.py:97
+#: .\tcn\apps\home\models.py:124 .\tcn\apps\home\models.py:180
 #, fuzzy
 #| msgid "Article content"
 msgid "Page content"
 msgstr "محتوى المقال"
 
-#: .\tcn\apps\home\models.py:66
+#: .\tcn\apps\home\models.py:78
 #, fuzzy
 #| msgid "About us"
 msgid "About us page"
 msgstr "من نحن"
 
-#: .\tcn\apps\home\models.py:74
+#: .\tcn\apps\home\models.py:85
 #, fuzzy
 #| msgid "About us"
 msgid "About page"
 msgstr "من نحن"
 
-#: .\tcn\apps\home\models.py:75
+#: .\tcn\apps\home\models.py:86
 #, fuzzy
 #| msgid "About us"
 msgid "About pages"
 msgstr "من نحن"
 
-#: .\tcn\apps\home\models.py:99
+#: .\tcn\apps\home\models.py:105
+msgid "Detail pages like terms, privacy policy, disclaimer"
+msgstr "صفحات التفاصيل مثل صفحة شروط الاستخدام"
+
+#: .\tcn\apps\home\models.py:129 .\tcn\apps\home\models.py:185
 msgid "message"
 msgstr "رسالة"
 
-#: .\tcn\apps\home\models.py:100
+#: .\tcn\apps\home\models.py:130 .\tcn\apps\home\models.py:186
 msgid "Message to display after form submission"
 msgstr "رسالة لعرضها بعد إرسال معلومات التواصل"
 
-#: .\tcn\apps\home\models.py:105
+#: .\tcn\apps\home\models.py:135
 #, fuzzy
 #| msgid "Contact"
 msgid "Contact us page"
 msgstr "اتصل بنا"
 
-#: .\tcn\apps\home\models.py:130
+#: .\tcn\apps\home\models.py:160
 #, fuzzy
 #| msgid "Contact"
 msgid "Contact page"
 msgstr "اتصل بنا"
 
-#: .\tcn\apps\home\models.py:131
+#: .\tcn\apps\home\models.py:161
 #, fuzzy
 #| msgid "Contact"
 msgid "Contact pages"
 msgstr "اتصل بنا"
+
+#: .\tcn\apps\home\models.py:192
+msgid "Page with form"
+msgstr "صفحة مع نموذج"
 
 #: .\tcn\apps\links\models.py:25
 #, fuzzy
@@ -521,6 +539,85 @@ msgstr "صورة هاتف"
 msgid "Phone mockup"
 msgstr "صورة هاتف"
 
+#: .\tcn\cms\blocks.py:90 .\tcn\cms\blocks.py:110
+msgid "icon"
+msgstr "أيقونة"
+
+#: .\tcn\cms\blocks.py:91 .\tcn\cms\blocks.py:111
+msgid "Link icon (Lucide icons)"
+msgstr "أيقونة الرابط (Lucide icons)"
+
+#: .\tcn\cms\blocks.py:95
+msgid "url"
+msgstr "رابط"
+
+#: .\tcn\cms\blocks.py:96
+#, fuzzy
+msgid "URL"
+msgstr "الرابط"
+
+#: .\tcn\cms\blocks.py:100 .\tcn\cms\blocks.py:120
+msgid "label"
+msgstr "نص"
+
+#: .\tcn\cms\blocks.py:101 .\tcn\cms\blocks.py:121
+msgid "Link label"
+msgstr "نص الرابط"
+
+#: .\tcn\cms\blocks.py:115
+#, fuzzy
+#| msgid "Home"
+msgid "page"
+msgstr "الرئيسية"
+
+#: .\tcn\cms\blocks.py:116
+#, fuzzy
+#| msgid "Login to save"
+msgid "Link to a page"
+msgstr "تسجيل الدخول للحفظ"
+
+#: .\tcn\cms\blocks.py:140
+msgid "Section title"
+msgstr "عنوان القسم"
+
+#: .\tcn\cms\blocks.py:144
+#, fuzzy
+#| msgid "Linkedin"
+msgid "links"
+msgstr "لينكدإن"
+
+#: .\tcn\cms\blocks.py:145
+msgid "List of links"
+msgstr "قائمة الروابط"
+
+#: .\tcn\cms\blocks.py:159
+msgid "Title"
+msgstr "العنوان"
+
+#: .\tcn\cms\blocks.py:160
+msgid "Same as Home page title"
+msgstr "مثل عنوان الصفحة"
+
+#: .\tcn\cms\blocks.py:164 .\tcn\cms\blocks.py:165
+msgid "Headline"
+msgstr "العنوان الفرعي"
+
+#: .\tcn\cms\blocks.py:169
+msgid "Social media links"
+msgstr "روابط صفحات التواصل الاجتماعي"
+
+#: .\tcn\cms\blocks.py:170
+msgid "List of social media links"
+msgstr "قائمة روابط صفحات التواصل الاجتماعي"
+
+#: .\tcn\cms\blocks.py:174
+msgid "Navigation sections"
+msgstr "أقسام التنقل"
+
+#: .\tcn\cms\blocks.py:175
+msgid "List of footer nav sections"
+msgstr "قائمة أقسام التنقل"
+
 #: .\tcn\ui\templates\400.html:4 .\tcn\ui\templates\400.html:9
 msgid "Bad request"
 msgstr "طلب غير صالح"
@@ -573,7 +670,7 @@ msgstr "المدونة"
 #: .\tcn\ui\templates\registration\base.html:274
 #: .\tcn\ui\templates\registration\base.html:278
 #: .\tcn\ui\templates\rest_framework\api.html:136
-#: .\tcn\ui\templates\tcn\base.html:359 .\tcn\ui\templates\tcn\base.html:366
+#: .\tcn\ui\templates\tcn\base.html:355 .\tcn\ui\templates\tcn\base.html:362
 msgid "Profile"
 msgstr "الملف الشخصي"
 
@@ -583,7 +680,7 @@ msgstr "الملف الشخصي"
 #: .\tcn\ui\templates\docs\base.html:69
 #: .\tcn\ui\templates\registration\base.html:426
 #: .\tcn\ui\templates\registration\base.html:430
-#: .\tcn\ui\templates\tcn\base.html:371 .\tcn\ui\templates\tcn\base.html:379
+#: .\tcn\ui\templates\tcn\base.html:367 .\tcn\ui\templates\tcn\base.html:375
 msgid "Log out"
 msgstr "تسجيل الخروج"
 
@@ -597,7 +694,7 @@ msgstr "تسجيل الخروج"
 #: .\tcn\ui\templates\registration\password_reset_complete.html:51
 #: .\tcn\ui\templates\registration\password_reset_done.html:57
 #: .\tcn\ui\templates\registration\signup.html:50
-#: .\tcn\ui\templates\tcn\base.html:385 .\tcn\ui\templates\tcn\base.html:392
+#: .\tcn\ui\templates\tcn\base.html:381 .\tcn\ui\templates\tcn\base.html:388
 msgid "Log in"
 msgstr "تسجيل الدخول"
 
@@ -609,7 +706,7 @@ msgstr "تسجيل الدخول"
 #: .\tcn\ui\templates\registration\login.html:71
 #: .\tcn\ui\templates\registration\signup.html:4
 #: .\tcn\ui\templates\registration\signup.html:38
-#: .\tcn\ui\templates\tcn\base.html:397 .\tcn\ui\templates\tcn\base.html:407
+#: .\tcn\ui\templates\tcn\base.html:393 .\tcn\ui\templates\tcn\base.html:403
 msgid "Subscribe"
 msgstr "إنشاء حساب"
 
@@ -621,7 +718,7 @@ msgstr "إنشاء حساب"
 #: .\tcn\ui\templates\registration\base.html:66
 #: .\tcn\ui\templates\registration\base.html:87
 #: .\tcn\ui\templates\tcn\base.html:183 .\tcn\ui\templates\tcn\base.html:190
-#: .\tcn\ui\templates\tcn\base.html:211 .\tcn\ui\templates\tcn\base.html:441
+#: .\tcn\ui\templates\tcn\base.html:211 .\tcn\ui\templates\tcn\base.html:437
 #: .\tcn\ui\templates\tcn\search.html:6 .\tcn\ui\templates\tcn\search.html:11
 #: .\tcn\ui\templates\tcn\search.html:28
 msgid "Search"
@@ -633,7 +730,7 @@ msgstr "بحث"
 #: .\tcn\ui\templates\registration\base.html:268
 #: .\tcn\ui\templates\rest_framework\api.html:45
 #: .\tcn\ui\templates\rest_framework\api.html:51
-#: .\tcn\ui\templates\tcn\base.html:449
+#: .\tcn\ui\templates\tcn\base.html:445
 msgid "Home"
 msgstr "الرئيسية"
 
@@ -666,8 +763,8 @@ msgstr "افتح القائمة"
 
 #: .\tcn\ui\templates\registration\base.html:25
 #: .\tcn\ui\templates\registration\base.html:188
-#: .\tcn\ui\templates\tcn\base.html:113 .\tcn\ui\templates\tcn\base.html:324
-#: .\tcn\ui\templates\tcn\base.html:418
+#: .\tcn\ui\templates\tcn\base.html:113 .\tcn\ui\templates\tcn\base.html:320
+#: .\tcn\ui\templates\tcn\base.html:414
 #, fuzzy
 #| msgid "Close drawer"
 msgid "close sidebar"
@@ -690,9 +787,9 @@ msgstr "اللغة"
 #: .\tcn\ui\templates\tcn\articles\id.html:178
 #: .\tcn\ui\templates\tcn\articles\list.html:12
 #: .\tcn\ui\templates\tcn\base.html:149 .\tcn\ui\templates\tcn\base.html:159
-#: .\tcn\ui\templates\tcn\base.html:453
-#: .\tcn\ui\templates\tcn\categories\index.html:37
-#: .\tcn\ui\templates\tcn\categories\index.html:40
+#: .\tcn\ui\templates\tcn\base.html:449
+#: .\tcn\ui\templates\tcn\categories\index.html:39
+#: .\tcn\ui\templates\tcn\categories\index.html:42
 #: .\tcn\ui\templates\tcn\components\article-1.html:27
 #: .\tcn\ui\templates\tcn\components\article-1.html:29
 #: .\tcn\ui\templates\tcn\components\article-2.html:34
@@ -712,7 +809,7 @@ msgstr "عاجل"
 #: .\tcn\ui\templates\tcn\articles\list.html:22
 #: .\tcn\ui\templates\tcn\articles\list.html:30
 #: .\tcn\ui\templates\tcn\base.html:165 .\tcn\ui\templates\tcn\base.html:175
-#: .\tcn\ui\templates\tcn\base.html:457 .\tcn\ui\templates\tcn\index.html:87
+#: .\tcn\ui\templates\tcn\base.html:453 .\tcn\ui\templates\tcn\index.html:87
 msgid "Latest news"
 msgstr "أحدث الأخبار"
 
@@ -723,7 +820,7 @@ msgstr "أحدث الأخبار"
 #: .\tcn\ui\templates\tcn\articles\list.html:106
 #: .\tcn\ui\templates\tcn\articles\saved.html:79
 #: .\tcn\ui\templates\tcn\articles\saved.html:87
-#: .\tcn\ui\templates\tcn\base.html:414 .\tcn\ui\templates\tcn\base.html:422
+#: .\tcn\ui\templates\tcn\base.html:410 .\tcn\ui\templates\tcn\base.html:418
 #: .\tcn\ui\templates\tcn\search.html:146
 #: .\tcn\ui\templates\tcn\search.html:154
 msgid "Close"
@@ -1086,7 +1183,7 @@ msgstr "التالي"
 
 #: .\tcn\ui\templates\tcn\articles\archive\index.html:4
 #: .\tcn\ui\templates\tcn\articles\archive\index.html:10
-#: .\tcn\ui\templates\tcn\base.html:460
+#: .\tcn\ui\templates\tcn\base.html:456
 msgid "Archive"
 msgstr "الأرشيف"
 
@@ -1206,6 +1303,17 @@ msgstr "تاريخ النشر"
 msgid "The Certain News - Journalism with Certainty."
 msgstr "النبأ اليقين - صحافة باليقين"
 
+#: .\tcn\ui\templates\tcn\blocks\footer.html:54
+#: .\tcn\ui\templates\tcn\blocks\footer.html:61
+#: .\tcn\ui\templates\tcn\components\footer.html:88
+#: .\tcn\ui\templates\tcn\components\footer.html:95
+msgid "RSS"
+msgstr "RSS"
+
+#: .\tcn\ui\templates\tcn\blocks\footer.html:68
+msgid "Copy right, All right reserved."
+msgstr "جميع الحقوق محفوظة"
+
 #: .\tcn\ui\templates\tcn\components\footer.html:6
 msgid "Services"
 msgstr "الخدمات"
@@ -1249,11 +1357,6 @@ msgstr "انستغرام"
 #| msgid "Linkedin"
 msgid "Linkedin"
 msgstr "لينكدإن"
-
-#: .\tcn\ui\templates\tcn\components\footer.html:88
-#: .\tcn\ui\templates\tcn\components\footer.html:95
-msgid "RSS"
-msgstr "RSS"
 
 #: .\tcn\ui\templates\tcn\components\form.html:28
 msgid "Submit"
@@ -1332,6 +1435,11 @@ msgstr "تم تحديث حسابك بنجاح"
 msgid "Your account was deleted successfully!"
 msgstr "تم حذف حسابك بنجاح"
 
+#, fuzzy
+#~| msgid "Category description"
+#~ msgid "sections"
+#~ msgstr "وصف الفئة"
+
 #~ msgid "Close drawer"
 #~ msgstr "أغلق القائمة"
 
@@ -1385,11 +1493,6 @@ msgstr "تم حذف حسابك بنجاح"
 #~| msgid "Articles"
 #~ msgid "Article"
 #~ msgstr "مقالات"
-
-#, fuzzy
-#~| msgid "Category description"
-#~ msgid "Reaction"
-#~ msgstr "وصف الفئة"
 
 #, python-brace-format
 #~ msgid "You are no longer following {user.username}."

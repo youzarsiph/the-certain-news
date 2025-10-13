@@ -306,11 +306,7 @@
                 {% endblock %}
 
                 <!---->
-                {% block footer %}
-                <!---->
-                {% include 'tcn/components/footer.html' %}
-                <!---->
-                {% endblock %}
+                {% block footer %}{{ home.footer }}{% endblock %}
               </section>
               {% endblock %}
             </section>

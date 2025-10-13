@@ -24,10 +24,12 @@ def get_site_root(context):
     """Get site root"""
 
     try:
-        return Site.find_for_request(context["request"]).root_page.localized
+        site = Site.find_for_request(context["request"])
 
     except KeyError:
-        return Site.objects.filter(is_default_site=True).first().root_page.localized
+        site = Site.objects.filter(is_default_site=True).first()
+
+    return site.root_page.specific.localized
 
 
 @register.simple_tag()
