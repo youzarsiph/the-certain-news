@@ -60,32 +60,6 @@ class Home(Page):
         }
 
 
-class About(Page):
-    """About page"""
-
-    content = StreamField(
-        MediaBlock(),
-        null=True,
-        blank=True,
-        verbose_name=_("content"),
-        help_text=_("Page content"),
-    )
-
-    subpage_types = []
-    context_object_name = "about"
-    template = "tcn/about.html"
-    parent_page_types = ["home.Home"]
-    page_description = _("About us page")
-    content_panels = Page.content_panels + [FieldPanel("content")]
-    search_fields = Page.search_fields + [index.SearchField("content")]
-
-    class Meta(Page.Meta):
-        """Meta data"""
-
-        verbose_name = _("About page")
-        verbose_name_plural = _("About pages")
-
-
 class DetailPages(Page):
     """Pages to create details like terms, privacy policy, disclaimer"""
 
@@ -103,62 +77,6 @@ class DetailPages(Page):
     content_panels = Page.content_panels + [FieldPanel("content")]
     search_fields = Page.search_fields + [index.SearchField("content")]
     page_description = _("Detail pages like terms, privacy policy, disclaimer")
-
-
-class FormField(AbstractFormField):
-    page = ParentalKey(
-        "home.Contact",
-        on_delete=models.CASCADE,
-        related_name="form_fields",
-    )
-
-
-class Contact(AbstractEmailForm):
-    """Contact page"""
-
-    content = StreamField(
-        MediaBlock(),
-        null=True,
-        blank=True,
-        verbose_name=_("content"),
-        help_text=_("Page content"),
-    )
-    message = RichTextField(
-        null=True,
-        blank=True,
-        verbose_name=_("message"),
-        help_text=_("Message to display after form submission"),
-    )
-
-    template = "tcn/contact.html"
-    context_object_name = "contact"
-    page_description = _("Contact us page")
-    parent_page_types = ["home.Home"]
-    subpage_types = []
-
-    content_panels = AbstractEmailForm.content_panels + [
-        FieldPanel("content"),
-        FieldPanel("message"),
-        FormSubmissionsPanel(),
-        InlinePanel("form_fields"),
-        MultiFieldPanel(
-            [
-                FieldPanel("subject"),
-                FieldRowPanel([FieldPanel("from_address"), FieldPanel("to_address")]),
-            ],
-            "Email",
-        ),
-    ]
-    search_fields = AbstractEmailForm.search_fields + [
-        index.SearchField("content"),
-        index.SearchField("message"),
-    ]
-
-    class Meta(Page.Meta):
-        """Meta data"""
-
-        verbose_name = _("Contact page")
-        verbose_name_plural = _("Contact pages")
 
 
 class FormFields(AbstractFormField):
