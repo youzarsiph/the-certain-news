@@ -4,46 +4,33 @@
 {% load i18n tcn wagtailcore_tags wagtailimages_tags %}
 
 <!---->
-{% block title %} {{ block.super }} | {{ article.get_parent }} | {{ article }}
-{% endblock %}
+{% block title %}{% include 'tcn/components/title.html' %}{% endblock %}
 
 <!---->
 {% block meta %}
-<meta
-  name="description"
-  content="{% trans 'The Certain News' %} | {% trans 'News' %} | {{ article.title }}"
-/>
 <meta property="og:url" content="{% short_link article.link.slug %}" />
 <meta property="og:type" content="website" />
-<meta
-  property="og:title"
-  content="{% trans 'The Certain News' %} | {% trans 'News' %} | {{ article.title }}"
-/>
+<meta property="og:title" content="{{ home.title }}" />
 <meta
   property="og:description"
-  content="{% trans 'The Certain News' %} | {% trans 'News' %} | {{ article.title }}"
+  content="{{ home.title }} | {{ article.headline }}"
 />
 <meta
   property="og:image"
-  content="{% image_url article.image 'fill-1920x1080' %}"
+  content="{{ request.scheme }}://{{ request.get_host }}{% image_url article.image 'fill-1200x630' %}"
 />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta property="twitter:domain" content="{% short_link article.link.slug %}" />
+<meta property="twitter:domain" content="{{ request.get_host }}" />
 <meta property="twitter:url" content="{% short_link article.link.slug %}" />
-<meta
-  name="twitter:title"
-  content="{% trans 'The Certain News' %} | {% trans 'News' %} | {{ article.title }}"
-/>
+<meta name="twitter:title" content="{{ home.title }}" />
 <meta
   name="twitter:description"
-  content="{% trans 'The Certain News' %} | {% trans 'News' %} | {{ article.title }}"
+  content="{{ home.title }} | {{ article.description }}"
 />
 <meta
   name="twitter:image"
-  content="{% image_url article.image 'fill-1920x1080' %}"
+  content="{{ request.scheme }}://{{ request.get_host }}{% image_url article.image 'fill-1200x630' %}"
 />
 {% endblock %}
 

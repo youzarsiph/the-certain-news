@@ -2,9 +2,7 @@
 
 <!---->
 {% block title %}
-<title>
-  {% trans 'The Certain News' %} | {% include 'docs/components/title.html' %}
-</title>
+<title>{% include 'docs/components/title.html' %}</title>
 {% endblock %}
 
 <!---->
@@ -20,7 +18,7 @@
 {% block branding %}
 <li
   class="tooltip tooltip-right rtl:tooltip-left tooltip-primary"
-  data-tip="{% trans 'The Certain News' %} | {% trans 'Docs' %}"
+  data-tip="{{ home.title }} | {% trans 'Docs' %}"
 >
   <h1 class="relative">
     <a href="{% pageurl home %}" class="btn btn-square btn-primary lg:btn-lg">
@@ -32,9 +30,7 @@
           class="-rotate-45 lg:size-8 2xl:size-10"
         ></i>
       </div>
-      <span class="sr-only">
-        {% trans 'The Certain News' %} | {% trans 'Docs' %}
-      </span>
+      <span class="sr-only">{{ home.title }} | {% trans 'Docs' %}</span>
     </a>
   </h1>
 </li>
@@ -121,7 +117,7 @@
 {% block drawer_branding %}
 <div
   class="tooltip tooltip-right rtl:tooltip-left tooltip-primary tooltip-open"
-  data-tip="{% trans 'The Certain News' %} | {% trans 'Docs' %}"
+  data-tip="{{ home.title }} | {% trans 'Docs' %}"
 >
   <h1 class="relative">
     <a href="{% pageurl home %}" class="btn btn-square btn-primary lg:btn-lg">
@@ -133,9 +129,7 @@
           class="-rotate-45 lg:size-8 2xl:size-10"
         ></i>
       </div>
-      <span class="sr-only">
-        {% trans 'The Certain News' %} | {% trans 'Docs' %}
-      </span>
+      <span class="sr-only">{{ home.title }} | {% trans 'Docs' %}</span>
     </a>
   </h1>
 </div>

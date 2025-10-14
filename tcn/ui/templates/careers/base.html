@@ -1,7 +1,7 @@
 {% extends 'careers/base.html' %}{% load i18n static wagtailcore_tags %}
 
 <!---->
-{% block title %}{% trans 'The Certain News | Careers' %}{% endblock %}
+{% block title %}{{ home.title }} {% trans 'Careers' %}{% endblock %}
 
 <!---->
 {% block styles %}{{ block.super }}
@@ -16,7 +16,7 @@
 {% block branding %}
 <li
   class="tooltip tooltip-right rtl:tooltip-left tooltip-primary"
-  data-tip="{% trans 'The Certain News' %} | {% trans 'Careers' %}"
+  data-tip="{{ home.title }} | {% trans 'Careers' %}"
 >
   <h1 class="relative">
     <a href="{% pageurl home %}" class="btn btn-square btn-primary lg:btn-lg">
@@ -28,9 +28,7 @@
           class="-rotate-45 lg:size-8 2xl:size-10"
         ></i>
       </div>
-      <span class="sr-only">
-        {% trans 'The Certain News' %} | {% trans 'Careers' %}
-      </span>
+      <span class="sr-only">{{ home.title }} | {% trans 'Careers' %}</span>
     </a>
   </h1>
 </li>
@@ -115,7 +113,7 @@
 {% block drawer_branding %}
 <div
   class="tooltip tooltip-right rtl:tooltip-left tooltip-primary tooltip-open"
-  data-tip="{% trans 'The Certain News' %} | {% trans 'Careers' %}"
+  data-tip="{{ home.title }} | {% trans 'Careers' %}"
 >
   <h1 class="relative">
     <a href="{% pageurl home %}" class="btn btn-square btn-primary lg:btn-lg">
@@ -127,9 +125,7 @@
           class="-rotate-45 lg:size-8 2xl:size-10"
         ></i>
       </div>
-      <span class="sr-only">
-        {% trans 'The Certain News' %} | {% trans 'Careers' %}
-      </span>
+      <span class="sr-only"> {{ home.title }} | {% trans 'Careers' %} </span>
     </a>
   </h1>
 </div>

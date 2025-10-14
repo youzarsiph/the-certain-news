@@ -4,58 +4,40 @@
   lang="{{ LANGUAGE_CODE }}"
   dir="{% if LANGUAGE_BIDI %}rtl{% else %}ltr{% endif %}"
 >
-  {% get_site_root as home %}{% get_category_index home as categories_index %}
+  {% get_site_root as home %}{% get_menu_items home as menu_items %}
+  <!---->
+  {% get_category_index home as categories_index %}
   <head>
     {% block head %}
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{% block title %}{% trans 'The Certain News' %}{% endblock %}</title>
+    <title>{% block title %}{{ home.title }}{% endblock %}</title>
+    <meta name="description" content="{{ home.title }}" />
+    <link
+      rel="shortcut icon"
+      href="{% static 'tcn/images/favicon.png' %}"
+      type="image/x-icon"
+    />
+
     {% block meta %}
-    <meta
-      name="description"
-      content="{% trans 'The Certain News - Journalism with Certainty.' %}"
-    />
-    <meta
-      property="og:url"
-      content="https://thecertainnews.pythonanywhere.com"
-    />
+    <meta property="og:url" content="{{ request.build_absolute_uri }}" />
     <meta property="og:type" content="website" />
-    <meta
-      property="og:title"
-      content="{% trans 'The Certain News - Journalism with Certainty.' %}"
-    />
+    <meta property="og:title" content="{{ home.title }}" />
     <meta
       property="og:description"
-      content="{% trans 'The Certain News - Journalism with Certainty.' %}"
+      content="{% trans 'Latest news around the world' %}"
     />
-    <meta
-      property="og:image"
-      content="https://thecertainnews.pythonanywhere.com/banner.png"
-    />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+    <meta property="og:image" content="{% static "tcn/images/logo.png" %}" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      property="twitter:domain"
-      content="thecertainnews.pythonanywhere.com"
-    />
-    <meta
-      property="twitter:url"
-      content="https://thecertainnews.pythonanywhere.com"
-    />
-    <meta
-      name="twitter:title"
-      content="{% trans 'The Certain News - Journalism with Certainty.' %}"
-    />
+    <meta property="twitter:domain" content="{{ request.get_host }}" />
+    <meta property="twitter:url" content="{{ request.build_absolute_uri }}" />
+    <meta name="twitter:title" content="{{ home.title }}" />
     <meta
       name="twitter:description"
-      content="{% trans 'The Certain News - Journalism with Certainty.' %}"
+      content="{% trans 'Latest news around the world' %}"
     />
-    <meta
-      name="twitter:image"
-      content="https://thecertainnews.pythonanywhere.com/banner.png"
-    />
+    <meta name="twitter:image" content="{% static "tcn/images/logo.png" %}" />
     {% endblock %}
 
     <!---->
@@ -103,8 +85,8 @@
                 {% block navbar %}
                 <header class="absolute inset-x-0 top-0 z-40 backdrop-blur-3xl">
                   <nav class="navbar p-4">
-                    <div class="navbar-start gap-4">
-                      <div
+                    <ul class="navbar-start gap-4">
+                      <li
                         class="tooltip tooltip-right rtl:tooltip-left tooltip-primary z-10"
                         data-tip="{% trans 'Open drawer' %}"
                       >
@@ -118,11 +100,11 @@
                             {% trans 'Open drawer' %}
                           </span>
                         </label>
-                      </div>
+                      </li>
 
-                      <div
+                      <li
                         class="tooltip tooltip-right rtl:tooltip-left tooltip-primary"
-                        data-tip="{% trans 'The Certain News' %}"
+                        data-tip="{{ home.title }}"
                       >
                         <h1 class="relative">
                           <a
@@ -137,14 +119,12 @@
                                 class="-rotate-45 lg:size-8 2xl:size-10"
                               ></i>
                             </div>
-                            <span class="sr-only">
-                              {% trans 'The Certain News' %}
-                            </span>
+                            <span class="sr-only"> {{ home.title }} </span>
                           </a>
                         </h1>
-                      </div>
+                      </li>
 
-                      <div
+                      <li
                         class="tooltip tooltip-right rtl:tooltip-left tooltip-error"
                         data-tip="{% trans 'Breaking' %}"
                       >
@@ -158,9 +138,9 @@
                           ></i>
                           <span class="sr-only">{% trans 'Breaking' %}</span>
                         </a>
-                      </div>
+                      </li>
 
-                      <div
+                      <li
                         class="tooltip tooltip-right rtl:tooltip-left tooltip-primary"
                         data-tip="{% trans 'Latest news' %}"
                       >
@@ -174,11 +154,24 @@
                           ></i>
                           <span class="sr-only">{% trans 'Latest news' %}</span>
                         </a>
-                      </div>
-                    </div>
+                      </li>
+                    </ul>
 
-                    <div class="navbar-end gap-4">
-                      <div
+                    <ul class="navbar-center hidden gap-4 md:inline-flex">
+                      {% for page in menu_items %}
+                      <li>
+                        <a
+                          href="{% pageurl page %}"
+                          class="link link-hover link-primary text-xs lg:text-sm"
+                        >
+                          {{ page.title }}
+                        </a>
+                      </li>
+                      {% endfor %}
+                    </ul>
+
+                    <ul class="navbar-end gap-4">
+                      <li
                         class="tooltip tooltip-left rtl:tooltip-right tooltip-primary lg:hidden"
                         data-tip="{% trans 'Search' %}"
                       >
@@ -189,32 +182,30 @@
                           <i data-lucide="search" class="size-4 lg:size-6"></i>
                           <span class="sr-only">{% trans 'Search' %}</span>
                         </a>
-                      </div>
+                      </li>
 
-                      <form
-                        method="get"
-                        action="{% url 'tcn:search' %}"
-                        class="hidden lg:block"
-                      >
-                        <label
-                          class="mx-auto max-w-xl w-full bg-transparent input input-ghost input-primary 2xl:input-lg"
-                        >
-                          <i
-                            data-lucide="search"
-                            class="size-4 text-primary lg:size-6"
-                          ></i>
-                          <input
-                            required
-                            type="search"
-                            name="search"
-                            class="grow placeholder-primary"
-                            placeholder="{% trans 'Search' %}"
-                          />
-                        </label>
-                      </form>
+                      <li class="hidden lg:block">
+                        <form method="get" action="{% url 'tcn:search' %}">
+                          <label
+                            class="mx-auto max-w-xl w-full bg-transparent input input-ghost input-primary 2xl:input-lg"
+                          >
+                            <i
+                              data-lucide="search"
+                              class="size-4 text-primary lg:size-6"
+                            ></i>
+                            <input
+                              required
+                              type="search"
+                              name="search"
+                              class="grow placeholder-primary"
+                              placeholder="{% trans 'Search' %}"
+                            />
+                          </label>
+                        </form>
+                      </li>
 
                       {% block languages %}
-                      <div
+                      <li
                         class="tooltip tooltip-left rtl:tooltip-right tooltip-primary"
                         data-tip="{% translate 'Language' %}"
                       >
@@ -288,9 +279,9 @@
                           </li>
                           {% endfor %}
                         </ul>
-                      </div>
+                      </li>
                       {% endblock %}
-                    </div>
+                    </ul>
                   </nav>
                 </header>
                 {% endblock %}
@@ -328,7 +319,7 @@
             <header class="flex items-center justify-between gap-4">
               <div
                 class="tooltip tooltip-right rtl:tooltip-left tooltip-primary tooltip-open aspect-square"
-                data-tip="{% trans 'The Certain News' %}"
+                data-tip="{{ home.title }}"
               >
                 <h1 class="relative">
                   <a
@@ -343,7 +334,7 @@
                         class="-rotate-45 lg:size-8 2xl:size-10"
                       ></i>
                     </div>
-                    <span class="sr-only">{% trans 'The Certain News' %}</span>
+                    <span class="sr-only">{{ home.title }}</span>
                   </a>
                 </h1>
               </div>
@@ -452,9 +443,6 @@
             <li>
               <a href="{% url 'tcn:articles' %}">{% trans 'Latest news' %}</a>
             </li>
-            <li>
-              <a href="{% url 'tcn:archive' %}">{% trans 'Archive' %}</a>
-            </li>
 
             {% if categories_index %}
             <li>
@@ -478,6 +466,21 @@
               </details>
             </li>
             {% endif %}
+
+            <!---->
+            {% if menu_items %}
+            <!---->
+            {% for page in menu_items %}
+            <li>
+              <a href="{% pageurl page %}">{{ page.title }}</a>
+            </li>
+            {% endfor %}
+            <!---->
+            {% endif %}
+
+            <li>
+              <a href="{% url 'tcn:archive' %}">{% trans 'Archive' %}</a>
+            </li>
           </ol>
         </section>
       </section>

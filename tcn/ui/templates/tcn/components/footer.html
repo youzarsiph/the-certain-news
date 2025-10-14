@@ -35,12 +35,12 @@
               class="-rotate-45 lg:size-8 2xl:size-10"
             ></i>
           </div>
-          <span class="sr-only">{% trans 'The Certain News' %}</span>
+          <span class="sr-only">{{ home.title }}</span>
         </a>
       </h1>
 
       <p class="text-primary">
-        {% trans 'The Certain News' %}
+        {{ home.title }}
         <br />
         {% trans 'Journalism with Certainty' %}
       </p>
@@ -98,7 +98,7 @@
       </div>
       <span class="flex items-center gap-2 text-primary">
         <i data-lucide="copyright" class="size-4 lg:size-6"></i>
-        {% trans 'The Certain News' %}
+        {{ home.title }}
       </span>
     </nav>
   </footer>

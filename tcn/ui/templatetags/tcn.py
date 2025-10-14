@@ -37,3 +37,10 @@ def get_category_index(home):
     """Get category index from home"""
 
     return home.get_children().type(CategoryIndex).last()
+
+
+@register.simple_tag()
+def get_menu_items(home):
+    """Get category index from home"""
+
+    return home.get_descendants().live().public().in_menu()
