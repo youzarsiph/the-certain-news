@@ -43,4 +43,4 @@ def get_category_index(home):
 def get_menu_items(home):
     """Get category index from home"""
 
-    return home.get_descendants().live().public().in_menu()
+    return home.get_descendants().live().public().in_menu()[:5]

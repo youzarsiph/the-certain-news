@@ -27,7 +27,10 @@
       property="og:description"
       content="{% trans 'Latest news around the world' %}"
     />
-    <meta property="og:image" content="{% static "tcn/images/logo.png" %}" />
+    <meta
+      property="og:image"
+      content="{{ request.scheme }}://{{ request.get_host }}{% static 'tcn/images/logo.png' %}"
+    />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta property="twitter:domain" content="{{ request.get_host }}" />
@@ -37,7 +40,10 @@
       name="twitter:description"
       content="{% trans 'Latest news around the world' %}"
     />
-    <meta name="twitter:image" content="{% static "tcn/images/logo.png" %}" />
+    <meta
+      name="twitter:image"
+      content="{{ request.scheme }}://{{ request.get_host }}{% static 'tcn/images/logo.png' %}"
+    />
     {% endblock %}
 
     <!---->
@@ -447,14 +453,7 @@
             {% if categories_index %}
             <li>
               <details>
-                <summary class="group" class="flex items-center gap-2">
-                  <a href="{% pageurl categories_index %}">
-                    <i data-lucide="link" class="size-4"></i>
-                    <span class="sr-only">{{ categories_index }}</span>
-                  </a>
-
-                  <span>{{ categories_index.title }}</span>
-                </summary>
+                <summary>{{ categories_index.title }}</summary>
 
                 <ul>
                   {% for category in categories_index.get_children %}
@@ -469,13 +468,19 @@
 
             <!---->
             {% if menu_items %}
-            <!---->
-            {% for page in menu_items %}
-            <li>
-              <a href="{% pageurl page %}">{{ page.title }}</a>
+            <li class="md:hidden">
+              <details>
+                <summary>{% trans 'More' %}</summary>
+
+                <ul>
+                  {% for page in menu_items %}
+                  <li>
+                    <a href="{% pageurl page %}">{{ page.title }}</a>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </details>
             </li>
-            {% endfor %}
-            <!---->
             {% endif %}
 
             <li>
