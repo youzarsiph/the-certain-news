@@ -1,6 +1,6 @@
-# SOME DESCRIPTIVE TITLE.
+# 一些描述性标题。
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# 本文件按 PACKAGE 软件包的同一许可协议分发。
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
@@ -8,143 +8,140 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-15 06:52-0700\n"
+"POT-Creation-Date: 2025-10-15 07:09-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Arabic <LL@li.org>\n"
-"Language: ar\n"
+"Language-Team: Chinese <LL@li.org>\n"
+"Language: zh\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: .\tcn\api\viewsets.py:192
 msgid "Article removed from your saved list."
-msgstr "تمت إزالة المقال من قائمة المحفوظات لديك."
+msgstr "已从你的保存列表中移除该文章。"
 
 #: .\tcn\api\viewsets.py:196
 msgid "Article added to your saved list."
-msgstr "تمت إضافة المقال إلى قائمة المحفوظات لديك."
+msgstr "已将该文章添加到你的保存列表。"
 
 #: .\tcn\apps\articles\models.py:27 .\tcn\apps\users\models.py:26
 msgid "country"
-msgstr "الدولة"
+msgstr "国家"
 
 #: .\tcn\apps\articles\models.py:28
 msgid "Country"
-msgstr "الدولة"
+msgstr "国家"
 
 #: .\tcn\apps\articles\models.py:34 .\tcn\apps\users\models.py:38
 #: .\tcn\cms\blocks.py:56
 msgid "image"
-msgstr "صورة"
+msgstr "图片"
 
 #: .\tcn\apps\articles\models.py:35
 msgid "Article image"
-msgstr "صورة المقال"
+msgstr "文章图片"
 
 #: .\tcn\apps\articles\models.py:40
 msgid "headline"
-msgstr "العنوان"
+msgstr "标题"
 
 #: .\tcn\apps\articles\models.py:41
 msgid "Article headline"
-msgstr "عنوان المقال"
+msgstr "文章标题"
 
 #: .\tcn\apps\articles\models.py:45 .\tcn\apps\home\models.py:70
 #: .\tcn\apps\home\models.py:97
 msgid "content"
-msgstr "المحتوى"
+msgstr "内容"
 
 #: .\tcn\apps\articles\models.py:46
 msgid "Article content"
-msgstr "محتوى المقال"
+msgstr "文章内容"
 
 #: .\tcn\apps\articles\models.py:50
 msgid "is breaking"
-msgstr "خبر عاجل"
+msgstr "是否突发"
 
 #: .\tcn\apps\articles\models.py:51
 msgid "Designates if the Article is in breaking news"
-msgstr "يُحدِّد ما إذا كان المقال خبرًا عاجلًا"
+msgstr "指示该文章是否为突发新闻"
 
 #: .\tcn\apps\articles\models.py:56
 msgid "tags"
-msgstr "وسوم"
+msgstr "标签"
 
 #: .\tcn\apps\articles\models.py:57 .\tcn\cms\wagtail_hooks.py:23
 msgid "Tags"
-msgstr "الوسوم"
+msgstr "标签"
 
 #: .\tcn\apps\articles\models.py:62
 msgid "recommendations"
-msgstr "توصيات"
+msgstr "推荐"
 
 #: .\tcn\apps\articles\models.py:63
 msgid "Similar articles"
-msgstr "مقالات مشابهة"
+msgstr "相似文章"
 
 #: .\tcn\apps\articles\models.py:68
 msgid "News Articles"
-msgstr "مقالات الأخبار"
+msgstr "新闻文章"
 
 #: .\tcn\apps\articles\models.py:107
 msgid "News article"
-msgstr "مقال إخباري"
+msgstr "新闻文章"
 
 #: .\tcn\apps\articles\models.py:108
 msgid "News articles"
-msgstr "مقالات إخبارية"
+msgstr "新闻文章"
 
 #: .\tcn\apps\categories\models.py:21 .\tcn\apps\categories\models.py:48
 msgid "description"
-msgstr "الوصف"
+msgstr "描述"
 
 #: .\tcn\apps\categories\models.py:22
 msgid "Page description"
-msgstr "وصف الصفحة"
+msgstr "页面描述"
 
 #: .\tcn\apps\categories\models.py:28 .\tcn\apps\categories\models.py:38
 msgid "Category index page"
-msgstr "صفحة فهرس الفئات"
+msgstr "分类索引页"
 
 #: .\tcn\apps\categories\models.py:39
 msgid "Category index pages"
-msgstr "صفحات فهرس الفئات"
+msgstr "分类索引页"
 
 #: .\tcn\apps\categories\models.py:49
 msgid "Category description"
-msgstr "وصف الفئة"
+msgstr "分类描述"
 
 #: .\tcn\apps\categories\models.py:53
 msgid "show owner"
-msgstr "إظهار الناشر"
+msgstr "显示作者"
 
 #: .\tcn\apps\categories\models.py:54
 msgid "Wether to display the name of the owner of news article"
-msgstr "ما إذا كان سيتم عرض اسم ناشر المقال الإخباري"
+msgstr "是否显示新闻文章的作者名称"
 
 #: .\tcn\apps\categories\models.py:65
 msgid ""
 "Categories help organize news article into thematic or subject-related "
 "groupings, making it easier for users to explore and filter available news "
 "article."
-msgstr ""
-"تُسهم الفئات في تنظيم المقالات الإخبارية ضمن مجموعات موضوعية أو بحسب المحتوى، "
-"مما يُسهّل على المستخدمين استكشاف الأخبار المتاحة وتصفيتها."
+msgstr "分类有助于将新闻文章按主题或话题分组，方便用户探索与筛选可用新闻内容。"
 
 #: .\tcn\apps\categories\models.py:85
 msgid "category"
-msgstr "فئة"
+msgstr "分类"
 
 #: .\tcn\apps\categories\models.py:86
 msgid "categories"
-msgstr "فئات"
+msgstr "分类"
 
 #: .\tcn\apps\feeds\base.py:18
 msgid "The Certain News feed"
-msgstr "خلاصة The Certain News"
+msgstr "The Certain News 信息源"
 
 #: .\tcn\apps\feeds\base.py:19
 msgid "The Certain News"
@@ -152,397 +149,397 @@ msgstr "The Certain News"
 
 #: .\tcn\apps\feeds\base.py:21
 msgid "Latest new from the World"
-msgstr "أحدث الأخبار من العالم"
+msgstr "全球最新资讯"
 
 #: .\tcn\apps\home\models.py:25
 msgid "footer"
-msgstr "تذييل"
+msgstr "页脚"
 
 #: .\tcn\apps\home\models.py:26
 msgid "Footer"
-msgstr "التذييل"
+msgstr "页脚"
 
 #: .\tcn\apps\home\models.py:38
 msgid "Home page"
-msgstr "الصفحة الرئيسية"
+msgstr "首页"
 
 #: .\tcn\apps\home\models.py:39
 msgid "Home pages"
-msgstr "الصفحات الرئيسية"
+msgstr "首页"
 
 #: .\tcn\apps\home\models.py:71 .\tcn\apps\home\models.py:98
 msgid "Page content"
-msgstr "محتوى الصفحة"
+msgstr "页面内容"
 
 #: .\tcn\apps\home\models.py:79
 msgid "Detail pages like terms, privacy policy, disclaimer"
-msgstr "صفحات تفصيلية مثل الشروط وسياسة الخصوصية وإخلاء المسؤولية"
+msgstr "条款、隐私政策、免责声明等详情页"
 
 #: .\tcn\apps\home\models.py:103
 msgid "message"
-msgstr "رسالة"
+msgstr "消息"
 
 #: .\tcn\apps\home\models.py:104
 msgid "Message to display after form submission"
-msgstr "رسالة تُعرض بعد إرسال النموذج"
+msgstr "表单提交后显示的消息"
 
 #: .\tcn\apps\home\models.py:111
 msgid "Page with form"
-msgstr "صفحة تحتوي نموذجًا"
+msgstr "包含表单的页面"
 
 #: .\tcn\apps\links\models.py:25
 msgid "article"
-msgstr "مقال"
+msgstr "文章"
 
 #: .\tcn\apps\links\models.py:26
 msgid "Related article"
-msgstr "مقال ذو صلة"
+msgstr "相关文章"
 
 #: .\tcn\apps\links\models.py:33 .\tcn\apps\users\models.py:20
 msgid "slug"
-msgstr "المعرف-اللطيف"
+msgstr "短链接"
 
 #: .\tcn\apps\links\models.py:34
 msgid "Link url"
-msgstr "عنوان الرابط"
+msgstr "链接地址"
 
 #: .\tcn\apps\links\models.py:39 .\tcn\apps\links\models.py:44
 msgid "views"
-msgstr "مشاهدات"
+msgstr "浏览量"
 
 #: .\tcn\apps\links\models.py:40 .\tcn\apps\links\models.py:45
 msgid "Article views"
-msgstr "مشاهدات المقال"
+msgstr "文章浏览量"
 
 #: .\tcn\apps\links\models.py:51
 msgid "Link"
-msgstr "رابط"
+msgstr "链接"
 
 #: .\tcn\apps\links\models.py:52
 msgid "Links"
-msgstr "روابط"
+msgstr "链接"
 
 #: .\tcn\apps\mixins.py:15 .\tcn\apps\mixins.py:16
 #: .\tcn\ui\templates\tcn\articles\id.html:223
 #: .\tcn\ui\templates\tcn\articles\id.html:226
 msgid "Last update"
-msgstr "آخر تحديث"
+msgstr "最后更新"
 
 #: .\tcn\apps\mixins.py:20 .\tcn\apps\mixins.py:21
 msgid "Date created"
-msgstr "تاريخ الإنشاء"
+msgstr "创建日期"
 
 #: .\tcn\apps\mixins.py:67
 msgid "Page is not “last”, nor can it be converted to an int."
-msgstr "الصفحة ليست «الأخيرة»، ولا يمكن تحويلها إلى عدد صحيح."
+msgstr "该页不是“last”，也无法转换为整数。"
 
 #: .\tcn\apps\mixins.py:76
 #, python-format
 msgid "Invalid page (%(page_number)s): %(message)s"
-msgstr "صفحة غير صالحة (%(page_number)s): %(message)s"
+msgstr "无效的页面 (%(page_number)s)：%(message)s"
 
 #: .\tcn\apps\settings\models.py:30
 msgid "logo"
-msgstr "الشعار"
+msgstr "标志"
 
 #: .\tcn\apps\settings\models.py:31
 msgid "Site logo displayed in the header and footer of the site."
-msgstr "شعار الموقع المعروض في الترويسة وتذييل الموقع."
+msgstr "显示在站点页眉与页脚的站点标志。"
 
 #: .\tcn\apps\settings\models.py:35 .\tcn\cms\blocks.py:139
 msgid "title"
-msgstr "العنوان"
+msgstr "标题"
 
 #: .\tcn\apps\settings\models.py:36
 msgid "Site title displayed in the header and footer of the site."
-msgstr "عنوان الموقع المعروض في الترويسة وتذييل الموقع."
+msgstr "显示在站点页眉与页脚的站点标题。"
 
 #: .\tcn\apps\settings\models.py:42
 msgid "Footer content."
-msgstr "محتوى التذييل."
+msgstr "页脚内容。"
 
 #: .\tcn\apps\settings\models.py:62
 msgid "General Settings"
-msgstr "الإعدادات العامة"
+msgstr "通用设置"
 
 #: .\tcn\apps\settings\models.py:72
 msgid "Site specific settings"
-msgstr "إعدادات خاصة بالموقع"
+msgstr "站点特定设置"
 
 #: .\tcn\apps\users\models.py:21
 msgid "Letters, numbers and dash only"
-msgstr "أحرف وأرقام وشرطة فقط"
+msgstr "仅限字母、数字和短横线"
 
 #: .\tcn\apps\users\models.py:27
 msgid "User country"
-msgstr "دولة المستخدم"
+msgstr "用户国家"
 
 #: .\tcn\apps\users\models.py:32
 msgid "phone number"
-msgstr "رقم الهاتف"
+msgstr "电话号码"
 
 #: .\tcn\apps\users\models.py:33
 msgid "User phone number"
-msgstr "رقم هاتف المستخدم"
+msgstr "用户电话号码"
 
 #: .\tcn\apps\users\models.py:40
 msgid "Profile image"
-msgstr "صورة الملف الشخصي"
+msgstr "头像"
 
 #: .\tcn\apps\users\models.py:46
 msgid "bio"
-msgstr "نبذة"
+msgstr "简介"
 
 #: .\tcn\apps\users\models.py:47
 msgid "Tell us about yourself"
-msgstr "حدّثنا عن نفسك"
+msgstr "介绍一下你自己"
 
 #: .\tcn\apps\users\models.py:53
 msgid "bookmarked articles"
-msgstr "مقالات مُعلَّمة"
+msgstr "已加书签文章"
 
 #: .\tcn\apps\users\models.py:54
 msgid "Articles bookmarked by user"
-msgstr "المقالات التي علّمها المستخدم"
+msgstr "用户加书签的文章"
 
 #: .\tcn\apps\users\models.py:61
 msgid "followers"
-msgstr "متابعون"
+msgstr "关注者"
 
 #: .\tcn\apps\users\models.py:62
 msgid "Users following this user"
-msgstr "المستخدمون الذين يتابعون هذا المستخدم"
+msgstr "关注该用户的用户"
 
 #: .\tcn\cms\blocks.py:15
 msgid "alert"
-msgstr "تنبيه"
+msgstr "提示"
 
 #: .\tcn\cms\blocks.py:16
 msgid "Alert"
-msgstr "تنبيه"
+msgstr "提示"
 
 #: .\tcn\cms\blocks.py:19
 msgid "accordion"
-msgstr "أكورديون"
+msgstr "手风琴"
 
 #: .\tcn\cms\blocks.py:20
 msgid "Accordion"
-msgstr "أكورديون"
+msgstr "手风琴"
 
 #: .\tcn\cms\blocks.py:23
 msgid "quote"
-msgstr "اقتباس"
+msgstr "引述"
 
 #: .\tcn\cms\blocks.py:24
 msgid "Quote"
-msgstr "اقتباس"
+msgstr "引述"
 
 #: .\tcn\cms\blocks.py:27
 msgid "paragraph"
-msgstr "فقرة"
+msgstr "段落"
 
 #: .\tcn\cms\blocks.py:28
 msgid "Rich Text"
-msgstr "نص منسّق"
+msgstr "富文本"
 
 #: .\tcn\cms\blocks.py:31
 msgid "timeline"
-msgstr "الجدول الزمني"
+msgstr "时间线"
 
 #: .\tcn\cms\blocks.py:32
 msgid "Timeline"
-msgstr "الجدول الزمني"
+msgstr "时间线"
 
 #: .\tcn\cms\blocks.py:35
 msgid "steps"
-msgstr "خطوات"
+msgstr "步骤"
 
 #: .\tcn\cms\blocks.py:36
 msgid "Steps"
-msgstr "خطوات"
+msgstr "步骤"
 
 #: .\tcn\cms\blocks.py:39
 msgid "list"
-msgstr "قائمة"
+msgstr "列表"
 
 #: .\tcn\cms\blocks.py:40
 msgid "List"
-msgstr "قائمة"
+msgstr "列表"
 
 #: .\tcn\cms\blocks.py:43
 msgid "tabs"
-msgstr "تبويبات"
+msgstr "标签页"
 
 #: .\tcn\cms\blocks.py:44
 msgid "Tabs"
-msgstr "تبويبات"
+msgstr "标签页"
 
 #: .\tcn\cms\blocks.py:52
 msgid "video"
-msgstr "فيديو"
+msgstr "视频"
 
 #: .\tcn\cms\blocks.py:53
 msgid "Video"
-msgstr "فيديو"
+msgstr "视频"
 
 #: .\tcn\cms\blocks.py:57
 msgid "Image"
-msgstr "صورة"
+msgstr "图片"
 
 #: .\tcn\cms\blocks.py:60
 msgid "carousel"
-msgstr "عرض شرائح"
+msgstr "轮播"
 
 #: .\tcn\cms\blocks.py:61
 msgid "Carousel"
-msgstr "عرض شرائح"
+msgstr "轮播"
 
 #: .\tcn\cms\blocks.py:64
 msgid "diff"
-msgstr "مقارنة"
+msgstr "对比"
 
 #: .\tcn\cms\blocks.py:65
 msgid "Diff (To compare 2 images)"
-msgstr "مقارنة (لمقارنة صورتين)"
+msgstr "对比（比较两张图片）"
 
 #: .\tcn\cms\blocks.py:68
 msgid "document"
-msgstr "مستند"
+msgstr "文档"
 
 #: .\tcn\cms\blocks.py:69
 msgid "Document"
-msgstr "مستند"
+msgstr "文档"
 
 #: .\tcn\cms\blocks.py:72
 msgid "hover gallery"
-msgstr "معرض عند التحويم"
+msgstr "悬停画廊"
 
 #: .\tcn\cms\blocks.py:73
 msgid "Hover gallery"
-msgstr "معرض تحويم"
+msgstr "悬停画廊"
 
 #: .\tcn\cms\blocks.py:76
 msgid "browser mockup"
-msgstr "محاكاة المتصفح"
+msgstr "浏览器模型"
 
 #: .\tcn\cms\blocks.py:77
 msgid "Browser mockup"
-msgstr "محاكاة المتصفح"
+msgstr "浏览器模型"
 
 #: .\tcn\cms\blocks.py:80
 msgid "phone mockup"
-msgstr "محاكاة الهاتف"
+msgstr "手机模型"
 
 #: .\tcn\cms\blocks.py:81
 msgid "Phone mockup"
-msgstr "محاكاة الهاتف"
+msgstr "手机模型"
 
 #: .\tcn\cms\blocks.py:90 .\tcn\cms\blocks.py:110
 msgid "icon"
-msgstr "أيقونة"
+msgstr "图标"
 
 #: .\tcn\cms\blocks.py:91 .\tcn\cms\blocks.py:111
 msgid "Link icon (Lucide icons)"
-msgstr "أيقونة الرابط (Lucide)"
+msgstr "链接图标（Lucide 图标）"
 
 #: .\tcn\cms\blocks.py:95
 msgid "url"
-msgstr "رابط"
+msgstr "网址"
 
 #: .\tcn\cms\blocks.py:96
 msgid "URL"
-msgstr "رابط"
+msgstr "网址"
 
 #: .\tcn\cms\blocks.py:100 .\tcn\cms\blocks.py:120
 msgid "label"
-msgstr "وسم"
+msgstr "标签"
 
 #: .\tcn\cms\blocks.py:101 .\tcn\cms\blocks.py:121
 msgid "Link label"
-msgstr "وسم الرابط"
+msgstr "链接标签"
 
 #: .\tcn\cms\blocks.py:115
 msgid "page"
-msgstr "صفحة"
+msgstr "页面"
 
 #: .\tcn\cms\blocks.py:116
 msgid "Link to a page"
-msgstr "رابط إلى صفحة"
+msgstr "页面链接"
 
 #: .\tcn\cms\blocks.py:140
 msgid "Section title"
-msgstr "عنوان القسم"
+msgstr "部分标题"
 
 #: .\tcn\cms\blocks.py:144
 msgid "links"
-msgstr "روابط"
+msgstr "链接"
 
 #: .\tcn\cms\blocks.py:145
 msgid "List of links"
-msgstr "قائمة الروابط"
+msgstr "链接列表"
 
 #: .\tcn\cms\blocks.py:159
 msgid "Title"
-msgstr "العنوان"
+msgstr "标题"
 
 #: .\tcn\cms\blocks.py:160
 msgid "Same as Home page title"
-msgstr "نفس عنوان الصفحة الرئيسية"
+msgstr "与首页标题相同"
 
 #: .\tcn\cms\blocks.py:164 .\tcn\cms\blocks.py:165
 msgid "Headline"
-msgstr "العنوان الرئيسي"
+msgstr "主标题"
 
 #: .\tcn\cms\blocks.py:169
 msgid "Social media links"
-msgstr "روابط وسائل التواصل الاجتماعي"
+msgstr "社交媒体链接"
 
 #: .\tcn\cms\blocks.py:170
 msgid "List of social media links"
-msgstr "قائمة روابط وسائل التواصل الاجتماعي"
+msgstr "社交媒体链接列表"
 
 #: .\tcn\cms\blocks.py:174
 msgid "Navigation sections"
-msgstr "أقسام التنقل"
+msgstr "导航部分"
 
 #: .\tcn\cms\blocks.py:175
 msgid "List of footer nav sections"
-msgstr "قائمة أقسام التذييل"
+msgstr "页脚导航部分列表"
 
 #: .\tcn\ui\templates\400.html:4 .\tcn\ui\templates\400.html:9
 msgid "Bad request"
-msgstr "طلب غير صالح"
+msgstr "错误的请求"
 
 #: .\tcn\ui\templates\400.html:11
 msgid "You are trying to do or doing something Suspicious."
-msgstr "تحاول فعل شيء مريب أو تقوم به بالفعل."
+msgstr "你正在尝试或执行可疑操作。"
 
 #: .\tcn\ui\templates\403.html:4 .\tcn\ui\templates\403.html:9
 msgid "Access denied"
-msgstr "تم رفض الوصول"
+msgstr "拒绝访问"
 
 #: .\tcn\ui\templates\403.html:11 .\tcn\ui\templates\404.html:11
 #, python-format
 msgid "The requested path <code>%(request_path)s</code> not found."
-msgstr "المسار المطلوب <code>%(request_path)s</code> غير موجود."
+msgstr "请求的路径 <code>%(request_path)s</code> 未找到。"
 
 #: .\tcn\ui\templates\404.html:4 .\tcn\ui\templates\404.html:9
 msgid "Not found"
-msgstr "غير موجود"
+msgstr "未找到"
 
 #: .\tcn\ui\templates\500.html:4 .\tcn\ui\templates\500.html:9
 msgid "Server error"
-msgstr "خطأ في الخادم"
+msgstr "服务器错误"
 
 #: .\tcn\ui\templates\500.html:10
 msgid "Internal server error"
-msgstr "خطأ داخلي في الخادم"
+msgstr "内部服务器错误"
 
 #: .\tcn\ui\templates\blog\base.html:4 .\tcn\ui\templates\blog\base.html:19
 #: .\tcn\ui\templates\blog\base.html:31 .\tcn\ui\templates\blog\base.html:116
 #: .\tcn\ui\templates\blog\base.html:128
 msgid "Blog"
-msgstr "مدونة"
+msgstr "博客"
 
 #: .\tcn\ui\templates\blog\base.html:43 .\tcn\ui\templates\blog\base.html:50
 #: .\tcn\ui\templates\careers\base.html:43
@@ -556,7 +553,7 @@ msgstr "مدونة"
 #: .\tcn\ui\templates\rest_framework\api.html:136
 #: .\tcn\ui\templates\tcn\base.html:352 .\tcn\ui\templates\tcn\base.html:359
 msgid "Profile"
-msgstr "الملف الشخصي"
+msgstr "个人资料"
 
 #: .\tcn\ui\templates\blog\base.html:56 .\tcn\ui\templates\blog\base.html:64
 #: .\tcn\ui\templates\careers\base.html:56
@@ -566,7 +563,7 @@ msgstr "الملف الشخصي"
 #: .\tcn\ui\templates\registration\base.html:430
 #: .\tcn\ui\templates\tcn\base.html:364 .\tcn\ui\templates\tcn\base.html:372
 msgid "Log out"
-msgstr "تسجيل الخروج"
+msgstr "退出登录"
 
 #: .\tcn\ui\templates\blog\base.html:70 .\tcn\ui\templates\blog\base.html:77
 #: .\tcn\ui\templates\careers\base.html:70
@@ -580,7 +577,7 @@ msgstr "تسجيل الخروج"
 #: .\tcn\ui\templates\registration\signup.html:50
 #: .\tcn\ui\templates\tcn\base.html:378 .\tcn\ui\templates\tcn\base.html:385
 msgid "Log in"
-msgstr "تسجيل الدخول"
+msgstr "登录"
 
 #: .\tcn\ui\templates\blog\base.html:83 .\tcn\ui\templates\blog\base.html:90
 #: .\tcn\ui\templates\careers\base.html:83
@@ -592,7 +589,7 @@ msgstr "تسجيل الدخول"
 #: .\tcn\ui\templates\registration\signup.html:38
 #: .\tcn\ui\templates\tcn\base.html:390 .\tcn\ui\templates\tcn\base.html:400
 msgid "Subscribe"
-msgstr "اشترك"
+msgstr "订阅"
 
 #: .\tcn\ui\templates\blog\base.html:97 .\tcn\ui\templates\blog\base.html:104
 #: .\tcn\ui\templates\careers\base.html:97
@@ -606,7 +603,7 @@ msgstr "اشترك"
 #: .\tcn\ui\templates\tcn\search.html:6 .\tcn\ui\templates\tcn\search.html:11
 #: .\tcn\ui\templates\tcn\search.html:28
 msgid "Search"
-msgstr "بحث"
+msgstr "搜索"
 
 #: .\tcn\ui\templates\blog\base.html:137
 #: .\tcn\ui\templates\careers\base.html:137
@@ -616,7 +613,7 @@ msgstr "بحث"
 #: .\tcn\ui\templates\rest_framework\api.html:51
 #: .\tcn\ui\templates\tcn\base.html:442
 msgid "Home"
-msgstr "الصفحة الرئيسية"
+msgstr "首页"
 
 #: .\tcn\ui\templates\careers\base.html:4
 #: .\tcn\ui\templates\careers\base.html:19
@@ -624,12 +621,12 @@ msgstr "الصفحة الرئيسية"
 #: .\tcn\ui\templates\careers\base.html:116
 #: .\tcn\ui\templates\careers\base.html:128
 msgid "Careers"
-msgstr "وظائف"
+msgstr "招聘"
 
 #: .\tcn\ui\templates\docs\base.html:21 .\tcn\ui\templates\docs\base.html:33
 #: .\tcn\ui\templates\docs\base.html:120 .\tcn\ui\templates\docs\base.html:132
 msgid "Docs"
-msgstr "وثائق"
+msgstr "文档"
 
 #: .\tcn\ui\templates\registration\base.html:21
 #: .\tcn\ui\templates\registration\base.html:29
@@ -638,14 +635,14 @@ msgstr "وثائق"
 #: .\tcn\ui\templates\registration\base.html:436
 #: .\tcn\ui\templates\tcn\base.html:97 .\tcn\ui\templates\tcn\base.html:106
 msgid "Open drawer"
-msgstr "فتح الدرج"
+msgstr "打开抽屉"
 
 #: .\tcn\ui\templates\registration\base.html:25
 #: .\tcn\ui\templates\registration\base.html:188
 #: .\tcn\ui\templates\tcn\base.html:101 .\tcn\ui\templates\tcn\base.html:317
 #: .\tcn\ui\templates\tcn\base.html:411
 msgid "close sidebar"
-msgstr "إغلاق الشريط الجانبي"
+msgstr "关闭侧边栏"
 
 #: .\tcn\ui\templates\registration\base.html:94
 #: .\tcn\ui\templates\registration\base.html:103
@@ -656,7 +653,7 @@ msgstr "إغلاق الشريط الجانبي"
 #: .\tcn\ui\templates\tcn\components\lang_switch.html:14
 #: .\tcn\ui\templates\tcn\components\lang_switch.html:23
 msgid "Language"
-msgstr "اللغة"
+msgstr "语言"
 
 #: .\tcn\ui\templates\registration\base.html:222
 #: .\tcn\ui\templates\registration\base.html:229
@@ -679,7 +676,7 @@ msgstr "اللغة"
 #: .\tcn\ui\templates\tcn\index.html:17 .\tcn\ui\templates\tcn\index.html:52
 #: .\tcn\ui\templates\tcn\index.html:153
 msgid "Breaking"
-msgstr "عاجل"
+msgstr "突发"
 
 #: .\tcn\ui\templates\registration\base.html:235
 #: .\tcn\ui\templates\registration\base.html:242
@@ -688,7 +685,7 @@ msgstr "عاجل"
 #: .\tcn\ui\templates\tcn\base.html:151 .\tcn\ui\templates\tcn\base.html:161
 #: .\tcn\ui\templates\tcn\base.html:450 .\tcn\ui\templates\tcn\index.html:87
 msgid "Latest news"
-msgstr "آخر الأخبار"
+msgstr "最新新闻"
 
 #: .\tcn\ui\templates\registration\base.html:248
 #: .\tcn\ui\templates\registration\base.html:255
@@ -701,50 +698,50 @@ msgstr "آخر الأخبار"
 #: .\tcn\ui\templates\tcn\search.html:146
 #: .\tcn\ui\templates\tcn\search.html:154
 msgid "Close"
-msgstr "إغلاق"
+msgstr "关闭"
 
 #: .\tcn\ui\templates\registration\base.html:284
 #: .\tcn\ui\templates\registration\base.html:289
 #: .\tcn\ui\templates\registration\base.html:343
 #: .\tcn\ui\templates\registration\base.html:349
 msgid "Account"
-msgstr "الحساب"
+msgstr "账户"
 
 #: .\tcn\ui\templates\registration\base.html:301
 #: .\tcn\ui\templates\registration\base.html:357
 #: .\tcn\ui\templates\registration\edit.html:4
 #: .\tcn\ui\templates\registration\edit.html:9
 msgid "Edit account"
-msgstr "تعديل الحساب"
+msgstr "编辑账户"
 
 #: .\tcn\ui\templates\registration\base.html:307
 #: .\tcn\ui\templates\registration\base.html:363
 #: .\tcn\ui\templates\registration\delete.html:4
 #: .\tcn\ui\templates\registration\delete.html:9
 msgid "Delete account"
-msgstr "حذف الحساب"
+msgstr "删除账户"
 
 #: .\tcn\ui\templates\registration\base.html:314
 #: .\tcn\ui\templates\registration\base.html:370
 msgid "Password"
-msgstr "كلمة المرور"
+msgstr "密码"
 
 #: .\tcn\ui\templates\registration\base.html:323
 #: .\tcn\ui\templates\registration\base.html:379
 msgid "Change Password"
-msgstr "تغيير كلمة المرور"
+msgstr "修改密码"
 
 #: .\tcn\ui\templates\registration\base.html:332
 #: .\tcn\ui\templates\registration\base.html:388
 msgid "Reset Password"
-msgstr "إعادة تعيين كلمة المرور"
+msgstr "重置密码"
 
 #: .\tcn\ui\templates\registration\base.html:400
 #: .\tcn\ui\templates\registration\base.html:405
 #: .\tcn\ui\templates\tcn\articles\saved.html:4
 #: .\tcn\ui\templates\tcn\articles\saved.html:10
 msgid "Saved articles"
-msgstr "مقالات محفوظة"
+msgstr "已保存文章"
 
 #: .\tcn\ui\templates\registration\base.html:412
 #: .\tcn\ui\templates\registration\base.html:417
@@ -763,168 +760,155 @@ msgstr "مقالات محفوظة"
 #: .\tcn\ui\templates\tcn\search.html:45 .\tcn\ui\templates\tcn\search.html:57
 #: .\tcn\ui\templates\tcn\search.html:62
 msgid "Following"
-msgstr "متابَعة"
+msgstr "关注"
 
 #: .\tcn\ui\templates\registration\delete.html:11
 msgid "Are your sure that you want to delete your account?"
-msgstr "هل أنت متأكد من رغبتك في حذف حسابك؟"
+msgstr "确定要删除你的账户吗？"
 
 #: .\tcn\ui\templates\registration\delete.html:15
 msgid "This action is destructive!"
-msgstr "هذا الإجراء تدميري!"
+msgstr "此操作不可逆！"
 
 #: .\tcn\ui\templates\registration\logged_out.html:4
 msgid "Logged out"
-msgstr "تم تسجيل الخروج"
+msgstr "已退出登录"
 
 #: .\tcn\ui\templates\registration\logged_out.html:38
 msgid "Logged Out"
-msgstr "تم تسجيل الخروج"
+msgstr "已退出登录"
 
 #: .\tcn\ui\templates\registration\logged_out.html:41
 msgid "Thanks for spending some quality time with us today."
-msgstr "شكرًا لقضاء بعض الوقت الجميل معنا اليوم."
+msgstr "感谢你今天与我们共度美好时光。"
 
 #: .\tcn\ui\templates\registration\login.html:40
 msgid "Welcome, please login to continue."
-msgstr "مرحبًا، يرجى تسجيل الدخول للمتابعة."
+msgstr "欢迎，请登录后继续。"
 
 #: .\tcn\ui\templates\registration\login.html:51
 msgid ""
 "Your account doesn't have access to this page. To proceed, please login with "
 "an account that has access. <!---->"
-msgstr ""
-"حسابك لا يمتلك صلاحية الوصول إلى هذه الصفحة. للمتابعة، يرجى تسجيل الدخول "
-"بحساب لديه صلاحية الوصول. <!---->"
+msgstr "你的账户无权访问此页面。要继续，请使用具有访问权限的账户登录。 <!---->"
 
 #: .\tcn\ui\templates\registration\login.html:78
 #: .\tcn\ui\templates\registration\signup.html:57
 msgid "Forgot password?"
-msgstr "هل نسيت كلمة المرور؟"
+msgstr "忘记密码？"
 
 #: .\tcn\ui\templates\registration\password_change_done.html:4
 msgid "Password Changed"
-msgstr "تم تغيير كلمة المرور"
+msgstr "密码已修改"
 
 #: .\tcn\ui\templates\registration\password_change_done.html:9
 msgid "Congrats"
-msgstr "تهانينا"
+msgstr "恭喜"
 
 #: .\tcn\ui\templates\registration\password_change_done.html:11
 msgid "Your password was changed."
-msgstr "تم تغيير كلمة المرور الخاصة بك."
+msgstr "你的密码已修改。"
 
 #: .\tcn\ui\templates\registration\password_change_form.html:4
 msgid "Password Change"
-msgstr "تغيير كلمة المرور"
+msgstr "修改密码"
 
 #: .\tcn\ui\templates\registration\password_change_form.html:9
 msgid "Change password"
-msgstr "غيّر كلمة المرور"
+msgstr "修改密码"
 
 #: .\tcn\ui\templates\registration\password_change_form.html:12
 msgid ""
 "Please enter your old password, for security's sake, and then enter your new "
 "password twice so we can verify you typed it in correctly."
-msgstr ""
-"يرجى إدخال كلمة المرور القديمة حفاظًا على الأمان، ثم أدخل كلمة المرور الجديدة "
-"مرتين حتى نتحقق من إدخالها بشكل صحيح."
+msgstr "为安全起见，请输入旧密码，然后将新密码输入两次，以便我们验证输入正确。"
 
 #: .\tcn\ui\templates\registration\password_reset_complete.html:4
 msgid "Password Reset"
-msgstr "إعادة تعيين كلمة المرور"
+msgstr "重置密码"
 
 #: .\tcn\ui\templates\registration\password_reset_complete.html:38
 #: .\tcn\ui\templates\registration\password_reset_confirm.html:4
 #: .\tcn\ui\templates\registration\password_reset_confirm.html:38
 msgid "Password Reset Confirm"
-msgstr "تأكيد إعادة تعيين كلمة المرور"
+msgstr "确认重置密码"
 
 #: .\tcn\ui\templates\registration\password_reset_complete.html:41
 msgid "Your password has been set. You may go ahead and log in now."
-msgstr "تم تعيين كلمة المرور الخاصة بك. يمكنك المتابعة وتسجيل الدخول الآن."
+msgstr "你的密码已设置，现在可以登录。"
 
 #: .\tcn\ui\templates\registration\password_reset_confirm.html:42
 msgid ""
 "Please enter your new password twice so we can verify you typed it in "
 "correctly."
-msgstr "يرجى إدخال كلمة المرور الجديدة مرتين حتى نتحقق من إدخالها بشكل صحيح."
+msgstr "请将新密码输入两次，以便我们验证输入正确。"
 
 #: .\tcn\ui\templates\registration\password_reset_confirm.html:49
 msgid ""
 "The password reset link was invalid, possibly because it has already been "
 "used. Please request a new password reset. <!---->"
-msgstr ""
-"رابط إعادة تعيين كلمة المرور غير صالح، ربما لأنه قد استُخدم سابقًا. يرجى طلب "
-"إعادة تعيين جديدة. <!---->"
+msgstr "密码重置链接无效，可能因为已被使用。请申请新的密码重置。 <!---->"
 
 #: .\tcn\ui\templates\registration\password_reset_done.html:4
 #: .\tcn\ui\templates\registration\password_reset_done.html:38
 msgid "Password Reset Done"
-msgstr "تمت إعادة تعيين كلمة المرور"
+msgstr "密码重置完成"
 
 #: .\tcn\ui\templates\registration\password_reset_done.html:41
 msgid ""
 "We've emailed you instructions for setting your password, if an account "
 "exists with the email you entered. You should receive them shortly."
-msgstr ""
-"لقد أرسلنا إليك عبر البريد تعليمات لضبط كلمة المرور، إذا كان هناك حساب مرتبط "
-"بالبريد الذي أدخلته. يُفترض أن تصلك قريبًا."
+msgstr "如果你输入的邮箱存在账户，我们已向你发送设置密码的说明，你将很快收到。"
 
 #: .\tcn\ui\templates\registration\password_reset_done.html:46
 msgid ""
 "If you don't receive an email, please make sure you've entered the address "
 "you registered with, and check your spam folder."
-msgstr ""
-"إن لم تتلقَّ رسالة، يرجى التأكد من إدخال البريد المسجّل والتحقق من مجلد الرسائل "
-"المزعجة."
+msgstr "若未收到邮件，请确认输入的是注册邮箱，并检查垃圾邮件文件夹。"
 
 #: .\tcn\ui\templates\registration\password_reset_email.html:6
 #, python-format
 msgid ""
 "You're receiving this email because you requested a password reset for your "
 "user account at %(site_name)s."
-msgstr ""
-"وصلك هذا البريد لأنك طلبت إعادة تعيين كلمة المرور لحسابك على %(site_name)s."
+msgstr "你收到此邮件，是因为你请求重置在 %(site_name)s 的用户账户密码。"
 
 #: .\tcn\ui\templates\registration\password_reset_email.html:10
 msgid "Please go to the following page and choose a new password:"
-msgstr "يرجى التوجّه إلى الصفحة التالية واختيار كلمة مرور جديدة:"
+msgstr "请访问以下页面并设置新密码："
 
 #: .\tcn\ui\templates\registration\password_reset_email.html:16
 msgid "Your username, in case you have forgotten:"
-msgstr "اسم المستخدم الخاص بك، في حال نسيته:"
+msgstr "你的用户名（以防忘记）："
 
 #: .\tcn\ui\templates\registration\password_reset_email.html:18
 msgid "Thanks for using our site!"
-msgstr "شكرًا لاستخدامك موقعنا!"
+msgstr "感谢使用我们的网站！"
 
 #: .\tcn\ui\templates\registration\password_reset_email.html:20
 #, python-format
 msgid "The %(site_name)s team"
-msgstr "فريق %(site_name)s"
+msgstr "%(site_name)s 团队"
 
 #: .\tcn\ui\templates\registration\password_reset_form.html:4
 #: .\tcn\ui\templates\registration\password_reset_form.html:38
 msgid "Reset password"
-msgstr "إعادة تعيين كلمة المرور"
+msgstr "重置密码"
 
 #: .\tcn\ui\templates\registration\password_reset_form.html:41
 msgid ""
 "Forgotten your password? Enter your email address below, and we'll email "
 "instructions for setting a new one. <!---->"
-msgstr ""
-"نسيت كلمة المرور؟ أدخل بريدك الإلكتروني أدناه، وسنرسل إليك تعليمات ضبط كلمة "
-"مرور جديدة. <!---->"
+msgstr "忘记密码？请输入你的邮箱地址，我们将发送设置新密码的说明。 <!---->"
 
 #: .\tcn\ui\templates\registration\signup.html:39
 msgid "Welcome, please subscribe to continue."
-msgstr "مرحبًا، يرجى الاشتراك للمتابعة."
+msgstr "欢迎，请订阅后继续。"
 
 #: .\tcn\ui\templates\registration\users.html:18
 #: .\tcn\ui\templates\tcn\authors\list.html:18
 msgid "Details"
-msgstr "تفاصيل"
+msgstr "详情"
 
 #: .\tcn\ui\templates\registration\users.html:49
 #: .\tcn\ui\templates\tcn\articles\archive\day.html:60
@@ -937,7 +921,7 @@ msgstr "تفاصيل"
 #: .\tcn\ui\templates\tcn\authors\list.html:49
 #: .\tcn\ui\templates\tcn\search.html:100
 msgid "No results"
-msgstr "لا توجد نتائج"
+msgstr "暂无结果"
 
 #: .\tcn\ui\templates\registration\users.html:50
 #: .\tcn\ui\templates\tcn\articles\archive\day.html:61
@@ -950,51 +934,51 @@ msgstr "لا توجد نتائج"
 #: .\tcn\ui\templates\tcn\authors\list.html:50
 #: .\tcn\ui\templates\tcn\search.html:101
 msgid "We couldn't find any results."
-msgstr "لم نتمكن من العثور على أي نتائج."
+msgstr "我们未找到任何结果。"
 
 #: .\tcn\ui\templates\rest_framework\api.html:24
 #: .\tcn\ui\templates\rest_framework\api.html:32
 msgid "The Certain News | API"
-msgstr "The Certain News | واجهة برمجة التطبيقات"
+msgstr "The Certain News | API"
 
 #: .\tcn\ui\templates\rest_framework\api.html:56
 #: .\tcn\ui\templates\rest_framework\api.html:63
 msgid "Pages"
-msgstr "صفحات"
+msgstr "页面"
 
 #: .\tcn\ui\templates\rest_framework\api.html:68
 #: .\tcn\ui\templates\rest_framework\api.html:75
 msgid "Images"
-msgstr "صور"
+msgstr "图片"
 
 #: .\tcn\ui\templates\rest_framework\api.html:80
 #: .\tcn\ui\templates\rest_framework\api.html:87
 msgid "Documents"
-msgstr "مستندات"
+msgstr "文档"
 
 #: .\tcn\ui\templates\rest_framework\api.html:92
 #: .\tcn\ui\templates\rest_framework\api.html:99
 #: .\tcn\ui\templates\tcn\authors\id.html:28
 #: .\tcn\ui\templates\tcn\authors\id.html:86
 msgid "Articles"
-msgstr "مقالات"
+msgstr "文章"
 
 #: .\tcn\ui\templates\rest_framework\api.html:104
 #: .\tcn\ui\templates\rest_framework\api.html:111
 msgid "Categories"
-msgstr "فئات"
+msgstr "分类"
 
 #: .\tcn\ui\templates\rest_framework\api.html:116
 #: .\tcn\ui\templates\rest_framework\api.html:123
 msgid "Users"
-msgstr "مستخدمون"
+msgstr "用户"
 
 #: .\tcn\ui\templates\tcn\articles\archive\day.html:10
 #: .\tcn\ui\templates\tcn\articles\archive\index.html:10
 #: .\tcn\ui\templates\tcn\articles\archive\month.html:10
 #: .\tcn\ui\templates\tcn\articles\archive\year.html:10
 msgid "News"
-msgstr "أخبار"
+msgstr "新闻"
 
 #: .\tcn\ui\templates\tcn\articles\archive\day.html:17
 #: .\tcn\ui\templates\tcn\articles\archive\day.html:27
@@ -1009,7 +993,7 @@ msgstr "أخبار"
 #: .\tcn\ui\templates\tcn\components\pagination.html:25
 #: .\tcn\ui\templates\tcn\components\pagination.html:32
 msgid "Previous"
-msgstr "السابق"
+msgstr "上一页"
 
 #: .\tcn\ui\templates\tcn\articles\archive\day.html:35
 #: .\tcn\ui\templates\tcn\articles\archive\day.html:45
@@ -1024,13 +1008,13 @@ msgstr "السابق"
 #: .\tcn\ui\templates\tcn\components\pagination.html:49
 #: .\tcn\ui\templates\tcn\components\pagination.html:59
 msgid "Next"
-msgstr "التالي"
+msgstr "下一页"
 
 #: .\tcn\ui\templates\tcn\articles\archive\index.html:4
 #: .\tcn\ui\templates\tcn\articles\archive\index.html:10
 #: .\tcn\ui\templates\tcn\base.html:487
 msgid "Archive"
-msgstr "الأرشيف"
+msgstr "归档"
 
 #: .\tcn\ui\templates\tcn\articles\archive\index.html:61
 #: .\tcn\ui\templates\tcn\articles\archive\year.html:64
@@ -1040,7 +1024,7 @@ msgstr "الأرشيف"
 #: .\tcn\ui\templates\tcn\components\article.html:13
 #: .\tcn\ui\templates\tcn\components\live.html:16
 msgid "Read"
-msgstr "اقرأ"
+msgstr "阅读"
 
 #: .\tcn\ui\templates\tcn\articles\id.html:117
 #: .\tcn\ui\templates\tcn\articles\id.html:124
@@ -1048,20 +1032,20 @@ msgstr "اقرأ"
 #: .\tcn\ui\templates\tcn\authors\id.html:64
 #: .\tcn\ui\templates\tcn\authors\id.html:79
 msgid "Follow"
-msgstr "اتبع"
+msgstr "关注"
 
 #: .\tcn\ui\templates\tcn\articles\id.html:136
 #: .\tcn\ui\templates\tcn\articles\id.html:143
 #: .\tcn\ui\templates\tcn\authors\id.html:72
 msgid "Login to follow"
-msgstr "سجّل الدخول للمتابعة"
+msgstr "登录后关注"
 
 #: .\tcn\ui\templates\tcn\articles\id.html:188
 #: .\tcn\ui\templates\tcn\components\article-1.html:60
 #: .\tcn\ui\templates\tcn\components\article-2.html:68
 #: .\tcn\ui\templates\tcn\components\article.html:61
 msgid "Category"
-msgstr "فئة"
+msgstr "分类"
 
 #: .\tcn\ui\templates\tcn\articles\id.html:211
 #: .\tcn\ui\templates\tcn\articles\id.html:214
@@ -1069,49 +1053,49 @@ msgstr "فئة"
 #: .\tcn\ui\templates\tcn\components\article-2.html:45
 #: .\tcn\ui\templates\tcn\components\article.html:38
 msgid "Date published"
-msgstr "تاريخ النشر"
+msgstr "发布时间"
 
 #: .\tcn\ui\templates\tcn\articles\id.html:237
 #: .\tcn\ui\templates\tcn\articles\id.html:244
 msgid "Save"
-msgstr "حفظ"
+msgstr "保存"
 
 #: .\tcn\ui\templates\tcn\articles\id.html:250
 #: .\tcn\ui\templates\tcn\articles\id.html:257
 msgid "Login to save"
-msgstr "سجّل الدخول للحفظ"
+msgstr "登录后保存"
 
 #: .\tcn\ui\templates\tcn\articles\id.html:265
 #: .\tcn\ui\templates\tcn\articles\id.html:281
 #: .\tcn\ui\templates\tcn\articles\id.html:350
 msgid "Copy URL"
-msgstr "نسخ الرابط"
+msgstr "复制链接"
 
 #: .\tcn\ui\templates\tcn\articles\id.html:287
 #: .\tcn\ui\templates\tcn\articles\id.html:294
 msgid "Facebook"
-msgstr "فيسبوك"
+msgstr "Facebook"
 
 #: .\tcn\ui\templates\tcn\articles\id.html:320
 msgid "More news from"
-msgstr "المزيد من الأخبار من"
+msgstr "更多来自以下来源的新闻："
 
 #: .\tcn\ui\templates\tcn\articles\id.html:343
 msgid "Copied"
-msgstr "تم النسخ"
+msgstr "已复制"
 
 #: .\tcn\ui\templates\tcn\articles\list.html:4
 #: .\tcn\ui\templates\tcn\articles\list.html:14
 #: .\tcn\ui\templates\tcn\index.html:90
 msgid "Latest News"
-msgstr "أحدث الأخبار"
+msgstr "最新新闻"
 
 #: .\tcn\ui\templates\tcn\articles\list.html:35
 #: .\tcn\ui\templates\tcn\articles\list.html:43
 #: .\tcn\ui\templates\tcn\articles\saved.html:16
 #: .\tcn\ui\templates\tcn\articles\saved.html:24
 msgid "Saved"
-msgstr "محفوظ"
+msgstr "已保存"
 
 #: .\tcn\ui\templates\tcn\articles\list.html:61
 #: .\tcn\ui\templates\tcn\articles\list.html:69
@@ -1122,26 +1106,26 @@ msgstr "محفوظ"
 #: .\tcn\ui\templates\tcn\search.html:78 .\tcn\ui\templates\tcn\search.html:86
 #: .\tcn\ui\templates\tcn\search.html:142
 msgid "Filters"
-msgstr "مرشّحات"
+msgstr "筛选"
 
 #: .\tcn\ui\templates\tcn\authors\id.html:4
 #: .\tcn\ui\templates\tcn\authors\list.html:4
 #: .\tcn\ui\templates\tcn\authors\list.html:9
 msgid "Authors"
-msgstr "كتّاب"
+msgstr "作者"
 
 #: .\tcn\ui\templates\tcn\authors\id.html:35
 msgid "Date joined"
-msgstr "تاريخ الانضمام"
+msgstr "加入日期"
 
 #: .\tcn\ui\templates\tcn\base.html:28 .\tcn\ui\templates\tcn\base.html:41
 #: .\tcn\ui\templates\tcn\index.html:4
 msgid "Latest news around the world"
-msgstr "أحدث الأخبار حول العالم"
+msgstr "全球最新新闻"
 
 #: .\tcn\ui\templates\tcn\base.html:473
 msgid "More"
-msgstr "المزيد"
+msgstr "更多"
 
 #: .\tcn\ui\templates\tcn\blocks\footer.html:54
 #: .\tcn\ui\templates\tcn\blocks\footer.html:61
@@ -1150,77 +1134,73 @@ msgstr "RSS"
 
 #: .\tcn\ui\templates\tcn\blocks\footer.html:68
 msgid "Copy right, All right reserved."
-msgstr "حقوق النشر محفوظة، جميع الحقوق محفوظة."
+msgstr "版权所有，保留所有权利。"
 
 #: .\tcn\ui\templates\tcn\components\form.html:28
 msgid "Submit"
-msgstr "إرسال"
+msgstr "提交"
 
 #: .\tcn\ui\templates\tcn\components\pagination.html:9
 #: .\tcn\ui\templates\tcn\components\pagination.html:19
 msgid "First"
-msgstr "الأولى"
+msgstr "第一页"
 
 #: .\tcn\ui\templates\tcn\components\pagination.html:39
 msgid "Current"
-msgstr "الحالية"
+msgstr "当前"
 
 #: .\tcn\ui\templates\tcn\components\pagination.html:42
 msgid "of"
-msgstr "من"
+msgstr "共"
 
 #: .\tcn\ui\templates\tcn\components\pagination.html:65
 #: .\tcn\ui\templates\tcn\components\pagination.html:72
 msgid "Last"
-msgstr "الأخيرة"
+msgstr "最后一页"
 
 #: .\tcn\ui\templates\tcn\form_landing.html:8
 #: .\tcn\ui\templates\tcn\form_landing.html:12
 msgid "Success"
-msgstr "نجاح"
+msgstr "成功"
 
 #: .\tcn\ui\templates\tcn\index.html:27 .\tcn\ui\templates\tcn\index.html:31
 msgid "Live feed"
-msgstr "خلاصة مباشرة"
+msgstr "实时资讯流"
 
 #: .\tcn\ui\templates\tcn\index.html:33
 msgid ""
 "Stay updated with the latest breaking news as it happens. New breaking "
 "articles will appear instantly in the live feed below."
-msgstr ""
-"ابقَ على اطلاع بآخر الأخبار العاجلة فور حدوثها. ستظهر المقالات العاجلة "
-"الجديدة مباشرة في الخلاصة المباشرة أدناه."
+msgstr "突发新闻发生即更新。新的突发文章将即时显示在下方的实时资讯流中。"
 
 #: .\tcn\ui\templates\tcn\index.html:71
 msgid "Trending"
-msgstr "الأكثر تداولًا"
+msgstr "热点"
 
 #: .\tcn\ui\templates\tcn\index.html:74
-#, fuzzy
-#| msgid "Trending"
 msgid "Trending now"
-msgstr "الأكثر تداولًا"
+msgstr "当前热点"
 
 #: .\tcn\ui\templates\tcn\index.html:146
 msgid "Now"
-msgstr "الآن"
+msgstr "现在"
 
 #: .\tcn\ui\templates\tcn\search.html:38
 msgid "Search results"
-msgstr "نتائج البحث"
+msgstr "搜索结果"
 
 #: .\tcn\ui\templates\tcn\search.html:71
 msgid "Login to view articles by writers you follow."
-msgstr "سجّل الدخول لعرض مقالات الكتّاب الذين تتابعهم."
+msgstr "登录后可查看你关注作者的文章。"
 
 #: .\tcn\ui\views.py:43
 msgid "Your account was created successfully!"
-msgstr "تم إنشاء حسابك بنجاح!"
+msgstr "你的账户已成功创建！"
 
 #: .\tcn\ui\views.py:123
 msgid "Your account was updated successfully!"
-msgstr "تم تحديث حسابك بنجاح!"
+msgstr "你的账户已成功更新！"
 
 #: .\tcn\ui\views.py:148
 msgid "Your account was deleted successfully!"
-msgstr "تم حذف حسابك بنجاح!"
+msgstr "你的账户已成功删除！"
