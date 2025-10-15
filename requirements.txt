@@ -16,10 +16,8 @@ djangorestframework
 djoser
 drf-restwind
 huggingface-hub
-markdown
 phonenumbers
 pillow
-pygments
 python-dotenv
 wagtail
 wagtail-ai

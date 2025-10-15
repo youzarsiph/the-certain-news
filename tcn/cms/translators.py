@@ -1,12 +1,16 @@
 """HuggingFace Machine translator"""
 
 from typing import Any, Dict, List
+import logging
 
 from django.conf import settings
 from huggingface_hub import InferenceClient
 from wagtail.models import Locale
 from wagtail_localize.strings import StringValue
 from wagtail_localize.machine_translators.base import BaseMachineTranslator
+
+
+logger = logging.getLogger(__name__)
 
 
 # Create your translators here.
@@ -21,7 +25,7 @@ class HuggingFaceTranslator(BaseMachineTranslator):
         "HF_TRANSLATION_MODEL",
         "meta-llama/Meta-Llama-3-8B-Instruct",
     )
-    SYSTEM_MESSAGE = """You are a professional bilingual editor and translator.
+    SYSTEM_MESSAGE = """You are a professional multi-lingual editor and translator.
     Translate the provided segments into the requested target language EXACTLY as specified.
     - Use Modern Standard Arabic for Arabic targets, suitable for news publishing.
     - Preserve meaning, clarity, and concise headline tone when applicable.
@@ -58,7 +62,9 @@ class HuggingFaceTranslator(BaseMachineTranslator):
             return str(response.choices[0].message.content)
 
         except Exception as e:
-            return f"Failed to translate.\n Error: {e}"
+            logger.error("Translation failed: %s", e, exc_info=True)
+
+            return "Failed to translate. Please try again later."
 
     def translate(
         self,
