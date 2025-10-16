@@ -1174,12 +1174,8 @@ msgid ""
 msgstr "突发新闻发生即更新。新的突发文章将即时显示在下方的实时资讯流中。"
 
 #: .\tcn\ui\templates\tcn\index.html:71
-msgid "Trending"
-msgstr "热点"
-
-#: .\tcn\ui\templates\tcn\index.html:74
-msgid "Trending now"
-msgstr "当前热点"
+msgid "Most viewed"
+msgstr "最多浏览"
 
 #: .\tcn\ui\templates\tcn\index.html:146
 msgid "Now"

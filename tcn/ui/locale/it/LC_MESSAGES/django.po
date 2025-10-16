@@ -1193,12 +1193,8 @@ msgstr ""
 "appariranno istantaneamente nel feed in diretta qui sotto."
 
 #: .\tcn\ui\templates\tcn\index.html:71
-msgid "Trending"
-msgstr "Tendenze"
-
-#: .\tcn\ui\templates\tcn\index.html:74
-msgid "Trending now"
-msgstr "Tendenze del momento"
+msgid "Most viewed"
+msgstr "Più visualizzati"
 
 #: .\tcn\ui\templates\tcn\index.html:146
 msgid "Now"

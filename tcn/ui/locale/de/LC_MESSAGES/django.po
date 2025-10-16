@@ -1197,12 +1197,8 @@ msgstr ""
 "erscheinen sofort im Live-Feed unten."
 
 #: .\tcn\ui\templates\tcn\index.html:71
-msgid "Trending"
-msgstr "Trending"
-
-#: .\tcn\ui\templates\tcn\index.html:74
-msgid "Trending now"
-msgstr "Jetzt im Trend"
+msgid "Most viewed"
+msgstr "Am häufigsten angesehen"
 
 #: .\tcn\ui\templates\tcn\index.html:146
 msgid "Now"

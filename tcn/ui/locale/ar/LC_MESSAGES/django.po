@@ -1192,14 +1192,8 @@ msgstr ""
 "الجديدة مباشرة في الخلاصة المباشرة أدناه."
 
 #: .\tcn\ui\templates\tcn\index.html:71
-msgid "Trending"
-msgstr "الأكثر تداولًا"
-
-#: .\tcn\ui\templates\tcn\index.html:74
-#, fuzzy
-#| msgid "Trending"
-msgid "Trending now"
-msgstr "الأكثر تداولًا"
+msgid "Most viewed"
+msgstr "الأكثر مشاهدة"
 
 #: .\tcn\ui\templates\tcn\index.html:146
 msgid "Now"

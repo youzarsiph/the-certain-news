@@ -1231,12 +1231,8 @@ msgstr ""
 "Selalu terbarui dengan berita kilat terbaru saat terjadi. Artikel kilat baru akan muncul seketika di feed langsung di bawah."
 
 #: .\tcn\ui\templates\tcn\index.html:71
-msgid "Trending"
-msgstr "Tren"
-
-#: .\tcn\ui\templates\tcn\index.html:74
-msgid "Trending now"
-msgstr "Sedang tren"
+msgid "Most viewed"
+msgstr "Yang paling dilihat"
 
 #: .\tcn\ui\templates\tcn\index.html:146
 msgid "Now"

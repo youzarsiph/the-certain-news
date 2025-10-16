@@ -200,7 +200,9 @@
       {% image article.image fill-1920x1080 %}
     </figure>
 
-    <div class="not-prose flex items-center justify-between">
+    <div
+      class="not-prose flex flex-col gap-4 md:items-center md:justify-between md:flex-row"
+    >
       <div class="flex text-primary flex-col text-xs gap-1">
         <a
           href="{% url 'tcn:articles-d' article.created_at.year|default:'2025' article.created_at.month|default:'08' article.created_at.day|default:'01' %}"
@@ -230,7 +232,7 @@
         </span>
       </div>
 
-      <div class="flex items-center gap-4">
+      <div class="flex items-center justify-end gap-2 lg:gap-4">
         {% if request.user.is_authenticated %}
         <div
           class="tooltip tooltip-left tooltip-success rtl:tooltip-right"
@@ -326,7 +328,7 @@
   <ol class="grid grid-cols-12 grid-rows-[auto] gap-4">
     {% for recommendation in recommendations %}
     <!---->
-    {% include 'tcn/components/article-1.html' with article=recommendation %}
+    {% include 'tcn/components/article.html' with article=recommendation %}
     <!---->
     {% endfor %}
   </ol>

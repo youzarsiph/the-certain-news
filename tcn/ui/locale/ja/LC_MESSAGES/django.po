@@ -1194,12 +1194,8 @@ msgstr ""
 "表示されます。"
 
 #: .\tcn\ui\templates\tcn\index.html:71
-msgid "Trending"
-msgstr "トレンド"
-
-#: .\tcn\ui\templates\tcn\index.html:74
-msgid "Trending now"
-msgstr "今のトレンド"
+msgid "Most viewed"
+msgstr "最も閲覧された"
 
 #: .\tcn\ui\templates\tcn\index.html:146
 msgid "Now"

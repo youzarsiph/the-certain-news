@@ -1231,12 +1231,8 @@ msgstr ""
 "발생하는 속보를 실시간으로 받아보세요. 새로운 속보 기사는 아래 라이브 피드에 즉시 표시됩니다."
 
 #: .\tcn\ui\templates\tcn\index.html:71
-msgid "Trending"
-msgstr "트렌드"
-
-#: .\tcn\ui\templates\tcn\index.html:74
-msgid "Trending now"
-msgstr "현재 트렌드"
+msgid "Most viewed"
+msgstr "가장 많이 본"
 
 #: .\tcn\ui\templates\tcn\index.html:146
 msgid "Now"

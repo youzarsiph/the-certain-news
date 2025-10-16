@@ -1231,12 +1231,8 @@ msgstr ""
 "Следите за срочными новостями по мере их появления. Новые материалы мгновенно появляются в живой ленте ниже."
 
 #: .\tcn\ui\templates\tcn\index.html:71
-msgid "Trending"
-msgstr "В тренде"
-
-#: .\tcn\ui\templates\tcn\index.html:74
-msgid "Trending now"
-msgstr "Актуальные тренды"
+msgid "Most viewed"
+msgstr "Наиболее просматриваемые"
 
 #: .\tcn\ui\templates\tcn\index.html:146
 msgid "Now"

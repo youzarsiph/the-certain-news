@@ -1204,12 +1204,8 @@ msgstr ""
 "instantanément dans le flux en direct ci-dessous."
 
 #: .\tcn\ui\templates\tcn\index.html:71
-msgid "Trending"
-msgstr "Tendance"
-
-#: .\tcn\ui\templates\tcn\index.html:74
-msgid "Trending now"
-msgstr "Tendances du moment"
+msgid "Most viewed"
+msgstr "Les plus consultés"
 
 #: .\tcn\ui\templates\tcn\index.html:146
 msgid "Now"

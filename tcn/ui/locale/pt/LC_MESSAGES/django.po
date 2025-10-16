@@ -1231,12 +1231,8 @@ msgstr ""
 "Mantenha-se atualizado com as últimas notícias de última hora. Novos artigos aparecem instantaneamente no feed ao vivo abaixo."
 
 #: .\tcn\ui\templates\tcn\index.html:71
-msgid "Trending"
-msgstr "Tendências"
-
-#: .\tcn\ui\templates\tcn\index.html:74
-msgid "Trending now"
-msgstr "Tendências agora"
+msgid "Most viewed"
+msgstr "Mais vistos"
 
 #: .\tcn\ui\templates\tcn\index.html:146
 msgid "Now"

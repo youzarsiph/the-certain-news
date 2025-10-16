@@ -1195,12 +1195,8 @@ msgstr ""
 "artículos aparecerán al instante en el canal en vivo de abajo."
 
 #: .\tcn\ui\templates\tcn\index.html:71
-msgid "Trending"
-msgstr "Tendencias"
-
-#: .\tcn\ui\templates\tcn\index.html:74
-msgid "Trending now"
-msgstr "Tendencias ahora"
+msgid "Most viewed"
+msgstr "Más vistos"
 
 #: .\tcn\ui\templates\tcn\index.html:146
 msgid "Now"

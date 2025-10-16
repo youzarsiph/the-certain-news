@@ -1195,12 +1195,8 @@ msgstr ""
 "aşağıdaki canlı akışta anında görünecektir."
 
 #: .\tcn\ui\templates\tcn\index.html:71
-msgid "Trending"
-msgstr "Trend"
-
-#: .\tcn\ui\templates\tcn\index.html:74
-msgid "Trending now"
-msgstr "Şu anda trend olanlar"
+msgid "Most viewed"
+msgstr "En çok görüntülenen"
 
 #: .\tcn\ui\templates\tcn\index.html:146
 msgid "Now"
