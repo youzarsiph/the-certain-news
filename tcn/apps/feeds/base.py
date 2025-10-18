@@ -2,7 +2,6 @@
 
 from django.conf import settings
 from django.contrib.syndication.views import Feed
-from django.urls import reverse_lazy
 from django.utils.feedgenerator import Atom1Feed
 from django.utils.translation import get_language
 from django.utils.translation import gettext_lazy as _
@@ -54,10 +53,7 @@ class BaseArticleFeed(Feed):
         return [item.get_parent().title]
 
     def item_link(self, item):
-        if item.link:
-            return reverse_lazy("tcn:redirect", args=[item.link.slug])
-
-        return item.full_url
+        return item.short_link
 
 
 class BaseArticleAtomFeed(BaseArticleFeed):

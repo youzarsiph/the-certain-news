@@ -10,45 +10,33 @@
 {% block meta %}
 <meta property="og:type" content="website" />
 <meta property="og:title" content="{{ home.title }}" />
-<meta name="twitter:title" content="{{ home.title }}" />
-<meta property="twitter:domain" content="{{ request.get_host }}" />
 <meta
   property="og:description"
   content="{{ article.title }} | {{ article.headline }}"
 />
 <meta
-  name="twitter:description"
-  content="{{ article.title }} | {{ article.headline }}"
+  property="og:url"
+  content="{{ request.scheme }}://{{ request.get_host }}{{ article.short_link }}"
 />
 <meta
   property="og:image"
   content="{{ request.scheme }}://{{ request.get_host }}{% image_url article.image 'fill-1200x630' %}"
+/>
+<meta name="twitter:title" content="{{ home.title }}" />
+<meta property="twitter:domain" content="{{ request.get_host }}" />
+<meta
+  name="twitter:description"
+  content="{{ article.title }} | {{ article.headline }}"
 />
 <meta name="twitter:card" content="summary_large_image" />
 <meta
   name="twitter:image"
   content="{{ request.scheme }}://{{ request.get_host }}{% image_url article.image 'fill-1200x630' %}"
 />
-{% if article.link %}
-<meta
-  property="og:url"
-  content="{{ request.scheme }}://{{ request.get_host }}{% url 'tcn:redirect' article.link.slug %}"
-/>
 <meta
   property="twitter:url"
-  content="{{ request.scheme }}://{{ request.get_host }}{% url 'tcn:redirect' article.link.slug %}"
+  content="{{ request.scheme }}://{{ request.get_host }}{{ article.short_link }}"
 />
-{% else %}
-<meta
-  property="og:url"
-  content="{{ request.scheme }}://{{ request.get_host }}{% pageurl article %}"
-/>
-<meta
-  property="twitter:url"
-  content="{{ request.scheme }}://{{ request.get_host }}{% pageurl article %}"
-/>
-{% endif %}
-<!---->
 {% endblock %}
 
 <!---->
@@ -278,8 +266,6 @@
         </div>
         {% endif %}
 
-        <!---->
-        {% if article.link %}
         <div
           id="btn-copy"
           class="tooltip tooltip-left tooltip-primary rtl:tooltip-right"
@@ -287,7 +273,7 @@
         >
           <button
             class="btn btn-copy btn-square btn-sm btn-primary md:btn-md 2xl:btn-lg"
-            data-clipboard-text="{{ request.scheme }}://{{ request.get_host }}{% url 'tcn:redirect' article.link.slug %}"
+            data-clipboard-text="{{ request.scheme }}://{{ request.get_host }}{{ article.short_link }}"
           >
             <i
               id="clipboard"
@@ -309,49 +295,12 @@
         >
           <a
             class="btn btn-copy btn-square btn-sm btn-info md:btn-md 2xl:btn-lg"
-            href="https://www.facebook.com/sharer/sharer.php?u={{ request.scheme }}://{{ request.get_host }}{% url 'tcn:redirect' article.link.slug %}"
+            href="https://www.facebook.com/sharer/sharer.php?u={{ request.scheme }}://{{ request.get_host }}{{ article.short_link }}"
           >
             <i data-lucide="facebook" class="size-4 lg:size-6"></i>
             <span class="sr-only">{% trans 'Facebook' %}</span>
           </a>
         </div>
-        {% else %}
-        <div
-          id="btn-copy"
-          class="tooltip tooltip-left tooltip-primary rtl:tooltip-right"
-          data-tip="{% trans 'Copy URL' %}"
-        >
-          <button
-            class="btn btn-copy btn-square btn-sm btn-primary md:btn-md 2xl:btn-lg"
-            data-clipboard-text="{{ request.scheme }}://{{ request.get_host }}{% pageurl article %}"
-          >
-            <i
-              id="clipboard"
-              data-lucide="clipboard"
-              class="size-4 lg:size-6"
-            ></i>
-            <i
-              id="clipboard-check"
-              data-lucide="clipboard-check"
-              class="hidden size-4 lg:size-6"
-            ></i>
-            <span class="sr-only">{% trans 'Copy URL' %}</span>
-          </button>
-        </div>
-
-        <div
-          class="tooltip tooltip-left tooltip-info rtl:tooltip-right"
-          data-tip="{% trans 'Facebook' %}"
-        >
-          <a
-            class="btn btn-copy btn-square btn-sm btn-info md:btn-md 2xl:btn-lg"
-            href="https://www.facebook.com/sharer/sharer.php?u={{ request.scheme }}://{{ request.get_host }}{% pageurl article %}"
-          >
-            <i data-lucide="facebook" class="size-4 lg:size-6"></i>
-            <span class="sr-only">{% trans 'Facebook' %}</span>
-          </a>
-        </div>
-        {% endif %}
       </div>
     </div>
   </div>

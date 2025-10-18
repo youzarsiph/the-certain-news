@@ -4,7 +4,6 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("home", "0007_detailpages_formdetailpage_home_footer_formfields"),
     ]

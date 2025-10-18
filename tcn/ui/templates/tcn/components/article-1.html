@@ -4,10 +4,7 @@
   role="article"
   class="relative card card-side card-sm bg-base-100 border border-base-300 group col-span-12 size-full hover:bg-base-200 md:card-md xl:card-lg 2xl:card-xl md:col-span-6 md:row-span-6 first:md:col-span-12 lg:col-span-6 lg:row-span-6 nth-[2]:lg:col-span-6 nth-[3]:lg:col-span-6 nth-[2]:lg:row-span-3 nth-[3]:lg:row-span-3 first:flex-col first:lg:col-span-6 first:lg:row-span-6"
 >
-  <a
-    class="absolute inset-0 z-10"
-    href="{% if article.link %}{% url 'tcn:redirect' article.link.slug %}{% else %}{% pageurl article %}{% endif %}"
-  >
+  <a class="absolute inset-0 z-10" href="{{ article.short_link }}">
     <span class="sr-only">{% trans 'Read' %}</span>
   </a>
 

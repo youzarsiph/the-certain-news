@@ -8,7 +8,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("home", "0006_alter_about_content_alter_contact_content"),
         ("wagtailcore", "0095_groupsitepermission"),

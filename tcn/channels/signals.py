@@ -2,7 +2,6 @@
 
 from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
-from django.urls import reverse_lazy
 from django.utils.timesince import timesince
 from wagtail.signals import page_published
 
@@ -20,19 +19,13 @@ def send_to_live_feed(sender, **kwargs):
 
     article: Article = kwargs["instance"]
 
-    if article.link:
-        url = reverse_lazy("tcn:redirect", args=[article.link.slug])
-
-    else:
-        url = article.url
-
     if article.is_breaking:
         async_to_sync(channel_layer.group_send)(
             f"{article.locale.language_code}-live",
             {
                 "type": "broadcast",
                 "article": {
-                    "url": url,
+                    "url": article.short_link,
                     "title": article.title,
                     "created_at": timesince(article.created_at),
                 },

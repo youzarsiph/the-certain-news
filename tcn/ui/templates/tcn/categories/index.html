@@ -34,9 +34,7 @@
       <ul>
         {% for art in category.get_ordered_children.live.specific|slice:':3' %}
         <li>
-          <a
-            href="{% if art.link %}{% url 'tcn:redirect' art.link.slug %}{% else %}{% pageurl art %}{% endif %}"
-          >
+          <a href="{{ art.short_link }}">
             {% if art.is_breaking %}
             <span
               class="tooltip flex tooltip-error"
@@ -48,7 +46,7 @@
                 <span class="status status-xl status-error"></span>
               </span>
             </span>
-            {% endif %} {{ art.title }}
+            {% endif %}{{ art.title }}
           </a>
         </li>
         {% endfor %}

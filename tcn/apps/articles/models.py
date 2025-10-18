@@ -1,6 +1,8 @@
 """Article model"""
 
 from django.db import models
+from django.urls import reverse_lazy
+from django.utils.functional import cached_property
 from django.utils.translation import gettext_lazy as _
 from django_countries.fields import CountryField
 from modelcluster.contrib.taggit import ClusterTaggableManager
@@ -114,3 +116,16 @@ class Article(DateTimeMixin, Page):
             .specific()
             .order_by("?")[:6],
         }
+
+    @cached_property
+    def short_link(self) -> str:
+        """Returns article's short link
+
+        Returns:
+            str: Article short link
+        """
+
+        if self.link:
+            return reverse_lazy("tcn:redirect", args=[self.link.slug])
+
+        return self.url

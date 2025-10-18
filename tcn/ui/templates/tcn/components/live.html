@@ -9,10 +9,7 @@
     {% for article in articles %}
     <li class="carousel-item w-full grow">
       <div role="alert" class="alert-soft relative alert w-full alert-error">
-        <a
-          class="absolute inset-x-0 z-10"
-          href="{% if article.link %}{% url 'tcn:redirect' article.link.slug %}{% else %}{% pageurl article %}{% endif %}"
-        >
+        <a class="absolute inset-x-0 z-10" href="{{ article.short_link }}">
           <span class="sr-only">{% trans 'Read' %}</span>
         </a>
 
