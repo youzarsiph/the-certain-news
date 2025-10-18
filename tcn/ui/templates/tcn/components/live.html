@@ -10,8 +10,8 @@
     <li class="carousel-item w-full grow">
       <div role="alert" class="alert-soft relative alert w-full alert-error">
         <a
-          href="{% url 'tcn:redirect' article.link.slug %}"
           class="absolute inset-x-0 z-10"
+          href="{% if article.link %}{% url 'tcn:redirect' article.link.slug %}{% else %}{% pageurl article %}{% endif %}"
         >
           <span class="sr-only">{% trans 'Read' %}</span>
         </a>

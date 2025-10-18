@@ -7,8 +7,8 @@
     class="relative card bg-base-100 size-full border border-base-300 hover:bg-base-200 card-sm md:card-md xl:card-lg 2xl:card-xl"
   >
     <a
-      href="{% url 'tcn:redirect' article.link.slug %}"
       class="absolute inset-0 z-10"
+      href="{% if article.link %}{% url 'tcn:redirect' article.link.slug %}{% else %}{% pageurl article %}{% endif %}"
     >
       <span class="sr-only">{% trans 'Read' %}</span>
     </a>

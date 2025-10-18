@@ -53,7 +53,7 @@
             </span>
           </div>
           <a
-            href="{% url 'tcn:redirect' article.link.slug %}"
+            href="{% if article.link %}{% url 'tcn:redirect' article.link.slug %}{% else %}{% pageurl article %}{% endif %}"
             class="timeline-end timeline-box bg-primary font-bold text-primary-content"
           >
             {{ article.title }}
