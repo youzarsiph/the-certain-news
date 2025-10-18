@@ -204,6 +204,21 @@ class ArticleListView(BaseArticleListView, FilterView, generic.ListView):
 
     template_name = "tcn/articles/list.html"
 
+    def get_context_data(self, **kwargs: Dict[str, Any]) -> Dict[str, Any]:
+        """Search articles if query is present"""
+
+        query = self.request.GET.get("search", None)
+        context = super().get_context_data(**kwargs)
+
+        if query:
+            context["search"] = query
+            context[self.context_object_name] = self.filterset.qs.search(query)
+
+            # Log the query so Wagtail can suggest promoted results
+            Query.get(query).add_hit()
+
+        return context
+
 
 class SavedArticleListView(LoginRequiredMixin, ArticleListView):
     """Saved articles list"""
@@ -238,24 +253,6 @@ class SearchView(ArticleListView):
 
     template_name = "tcn/search.html"
     context_object_name = "search_results"
-
-    def get_context_data(self, **kwargs: Dict[str, Any]) -> Dict[str, Any]:
-        """Search news articles"""
-
-        query = self.request.GET.get("search", None)
-        queryset = self.get_queryset()
-
-        if query:
-            queryset = self.filterset.qs.search(query)
-
-            # Log the query so Wagtail can suggest promoted results
-            Query.get(query).add_hit()
-
-        return {
-            **super().get_context_data(**kwargs),
-            "search_query": query,
-            "search_results": queryset,
-        }
 
     def get_queryset(self) -> QuerySet[Article]:
         """Check if search query is provided to return the queryset else none"""

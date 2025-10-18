@@ -17,57 +17,88 @@
   {% endblock %}
 </div>
 
-<div class="flex gap-4 items-center justify-end">
-  <div
-    data-tip="{% trans 'Latest news' %}"
-    class="tooltip tooltip-left rtl:tooltip-right tooltip-primary"
-  >
-    <a
-      href="{% url 'tcn:articles' %}"
-      class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
+<div class="flex flex-col gap-4 md:items-center md:justify-between md:flex-row">
+  <form method="get">
+    <label
+      class="mx-auto max-w-xl w-full bg-transparent input input-ghost input-primary"
     >
-      <i data-lucide="clock-fading" class="size-4 lg:size-6"></i>
-      <span class="sr-only">{% trans 'Latest news' %}</span>
-    </a>
-  </div>
+      <i data-lucide="search" class="size-4 text-primary lg:size-6"></i>
+      <input
+        required
+        type="search"
+        name="search"
+        value="{{ search }}"
+        class="grow placeholder-primary"
+        placeholder="{% trans 'Search' %}"
+      />
+    </label>
+  </form>
 
-  <div
-    data-tip="{% trans 'Saved' %}"
-    class="tooltip tooltip-left rtl:tooltip-right tooltip-primary"
-  >
-    <a
-      href="{% url 'tcn:saved-articles' %}"
-      class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
+  <div class="flex gap-4 items-center justify-end">
+    <div
+      data-tip="{% trans 'Breaking' %}"
+      class="tooltip tooltip-left rtl:tooltip-right tooltip-error"
     >
-      <i data-lucide="bookmark-check" class="size-4 lg:size-6"></i>
-      <span class="sr-only">{% trans 'Saved' %}</span>
-    </a>
-  </div>
+      <a
+        href="{% url 'tcn:articles' %}?is_breaking=true"
+        class="btn btn-square btn-soft btn-sm btn-error md:btn-md 2xl:btn-lg"
+      >
+        <i data-lucide="alert-circle" class="size-4 lg:size-6"></i>
+        <span class="sr-only">{% trans 'Breaking' %}</span>
+      </a>
+    </div>
 
-  <div
-    data-tip="{% trans 'Following' %}"
-    class="tooltip tooltip-left rtl:tooltip-right tooltip-primary"
-  >
-    <a
-      href="{% url 'tcn:following-articles' %}"
-      class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
+    <div
+      data-tip="{% trans 'Latest news' %}"
+      class="tooltip tooltip-left rtl:tooltip-right tooltip-primary"
     >
-      <i data-lucide="users" class="size-4 lg:size-6"></i>
-      <span class="sr-only">{% trans 'Following' %}</span>
-    </a>
-  </div>
+      <a
+        href="{% url 'tcn:articles' %}"
+        class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
+      >
+        <i data-lucide="clock-fading" class="size-4 lg:size-6"></i>
+        <span class="sr-only">{% trans 'Latest news' %}</span>
+      </a>
+    </div>
 
-  <div
-    data-tip="{% trans 'Filters' %}"
-    class="tooltip tooltip-left rtl:tooltip-right tooltip-primary"
-  >
-    <button
-      onclick="filters.showModal()"
-      class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
+    <div
+      data-tip="{% trans 'Saved' %}"
+      class="tooltip tooltip-left rtl:tooltip-right tooltip-primary"
     >
-      <i data-lucide="list-filter" class="size-4 lg:size-6"></i>
-      <span class="sr-only">{% trans 'Filters' %}</span>
-    </button>
+      <a
+        href="{% url 'tcn:saved-articles' %}"
+        class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
+      >
+        <i data-lucide="bookmark-check" class="size-4 lg:size-6"></i>
+        <span class="sr-only">{% trans 'Saved' %}</span>
+      </a>
+    </div>
+
+    <div
+      data-tip="{% trans 'Following' %}"
+      class="tooltip tooltip-left rtl:tooltip-right tooltip-primary"
+    >
+      <a
+        href="{% url 'tcn:following-articles' %}"
+        class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
+      >
+        <i data-lucide="users" class="size-4 lg:size-6"></i>
+        <span class="sr-only">{% trans 'Following' %}</span>
+      </a>
+    </div>
+
+    <div
+      data-tip="{% trans 'Filters' %}"
+      class="tooltip tooltip-left rtl:tooltip-right tooltip-primary"
+    >
+      <button
+        onclick="filters.showModal()"
+        class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
+      >
+        <i data-lucide="list-filter" class="size-4 lg:size-6"></i>
+        <span class="sr-only">{% trans 'Filters' %}</span>
+      </button>
+    </div>
   </div>
 </div>
 

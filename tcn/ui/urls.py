@@ -75,7 +75,7 @@ urlpatterns = [
     path("authors/", views.UserListView.as_view(), name="authors"),
     path("authors/<slug:slug>/", views.UserDetailView.as_view(), name="author"),
     path("search/", views.SearchView.as_view(), name="search"),
-    path("articles/", views.ArticleListView.as_view(), name="articles"),
+    path("news/", views.ArticleListView.as_view(), name="articles"),
     path(
         "articles/following/",
         views.FollowingArticleListView.as_view(),
@@ -84,20 +84,20 @@ urlpatterns = [
     path(
         "articles/saved/", views.SavedArticleListView.as_view(), name="saved-articles"
     ),
-    path("articles/archive/", views.ArticleArchiveView.as_view(), name="archive"),
-    path("articles/<int:year>/", views.ArticleYearView.as_view(), name="articles-y"),
+    path("news/archive/", views.ArticleArchiveView.as_view(), name="archive"),
+    path("news/<int:year>/", views.ArticleYearView.as_view(), name="articles-y"),
     path(
-        "articles/<int:year>/<int:month>/",
+        "news/<int:year>/<int:month>/",
         views.ArticleMonthView.as_view(),
         name="articles-m",
     ),
     path(
-        "articles/<int:year>/<int:month>/<int:day>/",
+        "news/<int:year>/<int:month>/<int:day>/",
         views.ArticleDayView.as_view(),
         name="articles-d",
     ),
     path(
-        "articles/<int:year>/<int:month>/<int:day>/<slug:slug>/",
+        "news/<int:year>/<int:month>/<int:day>/<slug:slug>/",
         views.ArticleDetailView.as_view(),
         name="article",
     ),

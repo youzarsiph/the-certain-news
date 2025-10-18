@@ -26,7 +26,7 @@
       name="search"
       class="grow"
       placeholder="{% trans 'Search' %}"
-      value="{{ search_query|default:'' }}"
+      value="{{ search|default:'' }}"
     />
   </label>
 </form>
@@ -45,7 +45,7 @@
         data-tip="{% trans 'Following' %}"
         class="tooltip tooltip-left rtl:tooltip-right tooltip-primary"
       >
-        <input type="hidden" name="search" value="{{ search_query }}" />
+        <input type="hidden" name="search" value="{{ search }}" />
 
         <button
           value="True"
@@ -63,7 +63,7 @@
         class="tooltip tooltip-left rtl:tooltip-right tooltip-primary"
       >
         <a
-          href="{% url 'tcn:login' %}"
+          href="{% url 'tcn:login' %}?next={{ request.path }}"
           class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
         >
           <i data-lucide="users" class="size-4 lg:size-6"></i>
@@ -111,7 +111,7 @@
 
 <section class="grid gap-8">
   <!---->
-  {% get_search_promotions search_query as search_promotions %}
+  {% get_search_promotions search as search_promotions %}
 
   <ul>
     {% for search_promotion in search_promotions %}
@@ -169,13 +169,7 @@
   const searchInput = document.createElement("input");
   searchInput.setAttribute("type", "hidden");
   searchInput.setAttribute("name", "search");
-  searchInput.setAttribute("value", "{{ search_query }}");
+  searchInput.setAttribute("value", "{{ search }}");
   form.appendChild(searchInput);
-
-  const followingInput = document.createElement("input");
-  followingInput.setAttribute("type", "hidden");
-  followingInput.setAttribute("name", "following");
-  followingInput.setAttribute("value", "{{ request.GET.following }}");
-  form.appendChild(followingInput);
 </script>
 {% endblock %}
