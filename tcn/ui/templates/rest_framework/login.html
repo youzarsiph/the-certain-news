@@ -1,4 +1,131 @@
-{% extends 'rest_framework/login_base.html' %}
+{% extends 'rest_framework/login_base.html' %}{% load i18n static %}
 
 <!---->
-{% block theme %}silk{% endblock %}{% block toggle_theme %}luxury{% endblock %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'tcn/css/styles.css' %}" />
+{{ block.super }}{% endblock %}
+
+<!---->
+{% block theme %}luxurylight{% endblock %}
+
+<!---->
+{% block drawer_branding %}
+<li
+  class="tooltip tooltip-right rtl:tooltip-left tooltip-primary"
+  data-tip="{% trans 'The Certain News' %}"
+>
+  <h1 class="relative">
+    <a href="/api/" class="btn btn-square btn-primary lg:btn-lg">
+      <div
+        class="btn btn-square btn-primary rotate-45 p-0 shadow-none lg:btn-lg"
+      >
+        <i
+          data-lucide="scroll-text"
+          class="-rotate-45 lg:size-8 2xl:size-10"
+        ></i>
+      </div>
+      <span class="sr-only">{% trans 'The Certain News' %}</span>
+    </a>
+  </h1>
+</li>
+{% endblock %}
+
+<!---->
+{% block package %}
+<div
+  class="tooltip tooltip-left tooltip-success rtl:tooltip-right"
+  data-tip="{% trans 'Profile' %}"
+>
+  <a
+    href="{% url 'tcn:profile' %}"
+    class="btn btn-sm lg:btn-md 2xl:btn-lg btn-square btn-success"
+  >
+    <i data-lucide="user" class="size-4 lg:size-6"></i>
+    <span class="sr-only">{% trans 'Profile' %}</span>
+  </a>
+</div>
+{% endblock %}
+
+<!---->
+{% block user_links %}
+<li
+  class="is-drawer-close:tooltip is-drawer-close:tooltip-right rtl:is-drawer-close:tooltip-left"
+  data-tip="{% trans 'Home' %}"
+>
+  <a href="/api/">
+    <i data-lucide="home" class="size-4 lg:size-6"></i>
+    <span class="is-drawer-close:sr-only">{% trans 'Home' %}</span>
+  </a>
+</li>
+<li
+  class="is-drawer-close:tooltip is-drawer-close:tooltip-right rtl:is-drawer-close:tooltip-left"
+  data-tip="{% trans 'Pages' %}"
+>
+  <a href="/api/pages/">
+    <i data-lucide="file-text" class="size-4 lg:size-6"></i>
+    <span class="is-drawer-close:sr-only">{% trans 'Pages' %}</span>
+  </a>
+</li>
+<li
+  class="is-drawer-close:tooltip is-drawer-close:tooltip-right rtl:is-drawer-close:tooltip-left"
+  data-tip="{% trans 'Images' %}"
+>
+  <a href="/api/images/">
+    <i data-lucide="images" class="size-4 lg:size-6"></i>
+    <span class="is-drawer-close:sr-only">{% trans 'Images' %}</span>
+  </a>
+</li>
+<li
+  class="is-drawer-close:tooltip is-drawer-close:tooltip-right rtl:is-drawer-close:tooltip-left"
+  data-tip="{% trans 'Docs' %}"
+>
+  <a href="/api/documents/">
+    <i data-lucide="book-text" class="size-4 lg:size-6"></i>
+    <span class="is-drawer-close:sr-only">{% trans 'Docs' %}</span>
+  </a>
+</li>
+<li
+  class="is-drawer-close:tooltip is-drawer-close:tooltip-right rtl:is-drawer-close:tooltip-left"
+  data-tip="{% trans 'Articles' %}"
+>
+  <a href="/api/articles/">
+    <i data-lucide="newspaper" class="size-4 lg:size-6"></i>
+    <span class="is-drawer-close:sr-only">{% trans 'Articles' %}</span>
+  </a>
+</li>
+<li
+  class="is-drawer-close:tooltip is-drawer-close:tooltip-right rtl:is-drawer-close:tooltip-left"
+  data-tip="{% trans 'Categories' %}"
+>
+  <a href="/api/categories/">
+    <i data-lucide="layers" class="size-4 lg:size-6"></i>
+    <span class="is-drawer-close:sr-only">{% trans 'Categories' %}</span>
+  </a>
+</li>
+<li
+  class="is-drawer-close:tooltip is-drawer-close:tooltip-right rtl:is-drawer-close:tooltip-left"
+  data-tip="{% trans 'Users' %}"
+>
+  <a href="/api/users/">
+    <i data-lucide="users" class="size-4 lg:size-6"></i>
+    <span class="is-drawer-close:sr-only">{% trans 'Users' %}</span>
+  </a>
+</li>
+{% endblock %}
+
+<!---->
+{% block profile_links %}
+<!---->
+{% if request.user.is_authenticated %}
+<li
+  class="is-drawer-close:tooltip is-drawer-close:tooltip-right rtl:is-drawer-close:tooltip-left"
+  data-tip="{% trans 'Profile' %}"
+>
+  <a href="/api/users/me">
+    <i data-lucide="user" class="size-4 lg:size-6"></i>
+    <span class="is-drawer-close:sr-only">{% trans 'Profile' %}</span>
+  </a>
+</li>
+{% endif %}
+<!---->
+{% endblock %}
