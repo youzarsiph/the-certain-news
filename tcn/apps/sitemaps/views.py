@@ -4,6 +4,8 @@ from django.contrib.sitemaps import Sitemap
 from django.urls import reverse_lazy
 from wagtail.contrib.sitemaps.sitemap_generator import Sitemap as WagtailSitemap
 
+from tcn import APP_NAME
+
 
 # Create your views here
 class StaticSitemap(Sitemap):
@@ -12,13 +14,28 @@ class StaticSitemap(Sitemap):
     i18n = True
     priority = 0.5
     alternates = True
-    changefreq = "daily"
+    changefreq = "monthly"
 
     def items(self):
-        return ["tcn:search", "tcn:articles", "tcn:archive"]
+        return [
+            "login",
+            "logout",
+            "subscribe",
+            "profile",
+            "following",
+            "password_change",
+            "password_reset",
+            "atom-latest",
+            "atom-breaking",
+            "rss-latest",
+            "rss-breaking",
+            "following-articles",
+            "saved-articles",
+            "archive",
+        ]
 
     def location(self, item):
-        return reverse_lazy(item)
+        return reverse_lazy(f"{APP_NAME}:{item}")
 
 
 sitemaps = {

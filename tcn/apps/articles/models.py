@@ -13,6 +13,7 @@ from wagtail.images import get_image_model
 from wagtail.models import Page
 from wagtail.search import index
 
+from tcn import APP_NAME
 from tcn.apps.mixins import DateTimeMixin
 from tcn.cms.blocks import MediaBlock
 
@@ -126,6 +127,6 @@ class Article(DateTimeMixin, Page):
         """
 
         if self.link:
-            return reverse_lazy("tcn:redirect", args=[self.link.slug])
+            return reverse_lazy(f"{APP_NAME}:redirect", args=[self.link.slug])
 
         return self.url

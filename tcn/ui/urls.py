@@ -3,10 +3,11 @@
 from django.contrib.auth import views as auth
 from django.urls import include, path, reverse_lazy
 
+from tcn import APP_NAME
 from tcn.ui import views
 
 # Create your URLConf here.
-app_name = "tcn"
+app_name = APP_NAME
 
 
 auth_urls = [
@@ -32,7 +33,7 @@ auth_urls = [
     path(
         "accounts/password/change/",
         auth.PasswordChangeView.as_view(
-            success_url=reverse_lazy("tcn:password_change_done")
+            success_url=reverse_lazy(f"{app_name}:password_change_done")
         ),
         name="password_change",
     ),
@@ -44,7 +45,7 @@ auth_urls = [
     path(
         "accounts/password/reset/",
         auth.PasswordResetView.as_view(
-            success_url=reverse_lazy("tcn:password_reset_done")
+            success_url=reverse_lazy(f"{app_name}:password_reset_done")
         ),
         name="password_reset",
     ),
@@ -56,7 +57,7 @@ auth_urls = [
     path(
         "accounts/password/reset/<uidb64>/<token>/",
         auth.PasswordResetConfirmView.as_view(
-            success_url=reverse_lazy("tcn:password_reset_complete")
+            success_url=reverse_lazy(f"{app_name}:password_reset_complete")
         ),
         name="password_reset_confirm",
     ),

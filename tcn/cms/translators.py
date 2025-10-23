@@ -1,14 +1,13 @@
 """HuggingFace Machine translator"""
 
-from typing import Any, Dict, List
 import logging
+from typing import Any, Dict, List
 
 from django.conf import settings
 from huggingface_hub import InferenceClient
 from wagtail.models import Locale
-from wagtail_localize.strings import StringValue
 from wagtail_localize.machine_translators.base import BaseMachineTranslator
-
+from wagtail_localize.strings import StringValue
 
 logger = logging.getLogger(__name__)
 

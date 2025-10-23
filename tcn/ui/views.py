@@ -17,6 +17,7 @@ from django_filters.views import FilterView
 from wagtail.contrib.search_promotions.models import Query
 from wagtail.models import Locale
 
+from tcn import APP_NAME
 from tcn.apps.articles.models import Article
 from tcn.apps.links.models import Link
 from tcn.apps.mixins import PaginatorMixin
@@ -39,7 +40,7 @@ class SignupView(SuccessMessageMixin, generic.CreateView):
     model = User
     form_class = UserCreateForm
     template_name = "registration/signup.html"
-    success_url = reverse_lazy("tcn:profile")
+    success_url = reverse_lazy(f"{APP_NAME}:profile")
     success_message = _("Your account was created successfully!")
 
 
@@ -118,7 +119,7 @@ class UserUpdateView(
     """Update a user"""
 
     model = User
-    success_url = reverse_lazy("tcn:profile")
+    success_url = reverse_lazy(f"{APP_NAME}:profile")
     template_name = "registration/edit.html"
     success_message = _("Your account was updated successfully!")
     fields = [
@@ -143,7 +144,7 @@ class UserDeleteView(
     """Delete a user"""
 
     model = User
-    success_url = reverse_lazy("tcn:profile")
+    success_url = reverse_lazy(f"{APP_NAME}:profile")
     template_name = "registration/delete.html"
     success_message = _("Your account was deleted successfully!")
 

@@ -103,4 +103,4 @@ jobs:
           source .venv/bin/activate
           poetry run python core/manage.py migrate
           poetry run python core/manage.py check
-          poetry run python core/manage.py test
+          poetry run python core/manage.py test --parallel

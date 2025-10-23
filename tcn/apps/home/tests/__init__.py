@@ -1,1 +1,1 @@
-"""Tests for tcn.home"""
+"""Tests for tcn.apps.home"""
