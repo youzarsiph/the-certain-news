@@ -24,48 +24,34 @@
     </ol>
   </section>
 
-  <section title="{% trans 'Live feed' %}" class="grid grid-cols-12 gap-4">
-    <div class="col-span-12 md:col-span-6 lg:col-span-4">
-      <div class="flex gap-8 size-full flex-col justify-center">
-        <div class="container-prose">
-          <h1>{% trans 'Live feed' %}</h1>
-          <p>
-            {% blocktrans trimmed %}Stay updated with the latest breaking news
-            as it happens. New breaking articles will appear instantly in the
-            live feed below.{% endblocktrans %}
-          </p>
+  <section title="{% trans 'Live feed' %}" class="grid">
+    <ol
+      class="size-full items-center justify-center timeline timeline-vertical"
+    >
+      {% for article in breaking_news|slice:':3' %}
+      <li>
+        <hr class="bg-error" />
+        <time class="timeline-start text-xs text-primary font-semibold">
+          {{ article.created_at|timesince }}
+        </time>
+        <div class="timeline-middle">
+          <span class="status status-xl status-primary">
+            <span class="sr-only">{% trans 'Breaking' %}</span>
+          </span>
         </div>
-      </div>
-    </div>
-    <div class="col-span-12 md:col-span-6 lg:col-span-8">
-      <ol
-        class="size-full items-center justify-center timeline timeline-vertical"
-      >
-        {% for article in breaking_news|slice:':3' %}
-        <li>
-          <hr class="bg-error" />
-          <time class="timeline-start text-xs text-primary font-semibold">
-            {{ article.created_at|timesince }}
-          </time>
-          <div class="timeline-middle">
-            <span class="status status-xl status-primary">
-              <span class="sr-only">{% trans 'Breaking' %}</span>
-            </span>
-          </div>
-          <a
-            href="{{ article.short_link }}"
-            class="timeline-end timeline-box bg-primary font-bold text-primary-content"
-          >
-            {{ article.title }}
-          </a>
+        <a
+          href="{{ article.short_link }}"
+          class="timeline-end timeline-box bg-primary font-bold text-primary-content"
+        >
+          {{ article.title }}
+        </a>
 
-          {% if not forloop.last %}
-          <hr class="bg-error" />
-          {% endif %}
-        </li>
-        {% endfor %}
-      </ol>
-    </div>
+        {% if not forloop.last %}
+        <hr class="bg-error" />
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ol>
   </section>
 
   <section title="{% trans 'Most viewed' %}">
