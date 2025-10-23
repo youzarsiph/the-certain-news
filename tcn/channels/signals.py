@@ -25,7 +25,7 @@ def send_to_live_feed(sender, **kwargs):
             {
                 "type": "broadcast",
                 "article": {
-                    "url": article.short_link,
+                    "url": str(article.short_link),
                     "title": article.title,
                     "created_at": timesince(article.created_at),
                 },
