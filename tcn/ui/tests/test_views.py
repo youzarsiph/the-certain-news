@@ -1,9 +1,12 @@
-"""Tests for tcn.ui.views"""
+"""Test view responses for GET methods"""
 
 from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse_lazy
 from rest_framework import status
+
+from tcn import APP_NAME
+from tcn.ui.tests import USERS
 
 User = get_user_model()
 
@@ -12,32 +15,16 @@ User = get_user_model()
 class ViewTests(TestCase):
     """View tests"""
 
-    user_info = {
-        "username": "user",
-        "email": "user@tests.com",
-        "password": "user.tests.1234",
-        "slug": "user",
-    }
     urlpatterns = {
         "login_required": {
             "profile": [],
-            "u-user": [user_info["slug"]],
-            "d-user": [user_info["slug"]],
-            "password_change": [],
-            "password_change_done": [],
-            "password_reset_confirm": ["uidb64", "token"],
         },
         "public": {
-            "password_reset": [],
-            "password_reset_done": [],
-            "password_reset_complete": [],
-            "login": [],
-            "subscribe": [],
             "atom-latest": [],
             "atom-breaking": [],
             "rss-latest": [],
             "rss-breaking": [],
-            "author": [user_info["slug"]],
+            "author": [USERS["user"]["slug"]],
             "authors": [],
             "search": [],
             "articles": [],
@@ -57,13 +44,13 @@ class ViewTests(TestCase):
     def setUpTestData(cls) -> None:
         """Setup data"""
 
-        cls.user = User.objects.create_user(**cls.user_info)
+        cls.user = User.objects.create_user(**USERS["user"])
 
     def test_public_views(self) -> None:
         """Test public views"""
 
         for url, args in self.urlpatterns["public"].items():
-            response = self.client.get(reverse_lazy(f"tcn:{url}", args=args))
+            response = self.client.get(reverse_lazy(f"{APP_NAME}:{url}", args=args))
             self.assertIn(
                 response.status_code,
                 [status.HTTP_200_OK, status.HTTP_302_FOUND],
@@ -75,14 +62,14 @@ class ViewTests(TestCase):
 
         # Authenticate user
         self.client.login(
-            username=self.user_info["username"],
-            password=self.user_info["password"],
+            username=USERS["user"]["username"],
+            password=USERS["user"]["password"],
         )
 
         for url, args in self.urlpatterns["login_required"].items():
-            response = self.client.get(reverse_lazy(f"tcn:{url}", args=args))
+            response = self.client.get(reverse_lazy(f"{APP_NAME}:{url}", args=args))
             self.assertIn(
                 response.status_code,
                 [status.HTTP_200_OK, status.HTTP_302_FOUND],
-                f"Failed for {url}",
+                f"Failed for {url}: {response.status_code}",
             )

@@ -17,8 +17,8 @@ from pathlib import Path
 from django.utils.translation import gettext_lazy as _
 from dotenv import load_dotenv
 
-# Load .env vars
-load_dotenv(override=True)
+# Load env vars
+load_dotenv(dotenv_path=os.environ.get("DOTENV_PATH"), verbose=True, override=True)
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
